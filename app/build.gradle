@@ -16,11 +16,11 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "com.example.barcodescanner"
+        applicationId "com.mckimquyen.barcodescanner"
         minSdkVersion 21
         targetSdkVersion 31
-        versionCode 12
-        versionName "1.10"
+        versionCode 20240523
+        versionName "2024.05.23"
         multiDexEnabled true
         vectorDrawables.useSupportLibrary true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
