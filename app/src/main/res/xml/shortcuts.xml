@@ -9,8 +9,8 @@
         >
         <intent
             android:action="com.example.barcodescanner.SCAN_FROM_CAMERA"
-            android:targetPackage="com.example.barcodescanner"
-            android:targetClass="com.example.barcodescanner.feature.tabs.BottomTabsActivity"
+            android:targetPackage="com.mckimquyen.barcodescanner"
+            android:targetClass="com.mckimquyen.barcodescanner.feature.tabs.BottomTabsActivity"
             />
     </shortcut>
 
@@ -23,8 +23,8 @@
         >
         <intent
             android:action="com.example.barcodescanner.SCAN_FROM_FILE"
-            android:targetPackage="com.example.barcodescanner"
-            android:targetClass="com.example.barcodescanner.feature.tabs.scan.file.ScanBarcodeFromFileActivity"
+            android:targetPackage="com.mckimquyen.barcodescanner"
+            android:targetClass="com.mckimquyen.barcodescanner.feature.tabs.scan.file.ScanBarcodeFromFileActivity"
             />
     </shortcut>
 
@@ -37,8 +37,8 @@
         >
         <intent
             android:action="com.example.barcodescanner.CREATE_BARCODE"
-            android:targetPackage="com.example.barcodescanner"
-            android:targetClass="com.example.barcodescanner.feature.tabs.BottomTabsActivity"
+            android:targetPackage="com.mckimquyen.barcodescanner"
+            android:targetClass="com.mckimquyen.barcodescanner.feature.tabs.BottomTabsActivity"
             />
     </shortcut>
 
@@ -51,8 +51,8 @@
         >
         <intent
             android:action="com.example.barcodescanner.HISTORY"
-            android:targetPackage="com.example.barcodescanner"
-            android:targetClass="com.example.barcodescanner.feature.tabs.BottomTabsActivity"
+            android:targetPackage="com.mckimquyen.barcodescanner"
+            android:targetClass="com.mckimquyen.barcodescanner.feature.tabs.BottomTabsActivity"
             />
     </shortcut>
 
