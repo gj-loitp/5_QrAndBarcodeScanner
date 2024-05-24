@@ -35,12 +35,12 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8.toString()
-        targetCompatibility = JavaVersion.VERSION_1_8.toString()
+        sourceCompatibility = JavaVersion.VERSION_11.toString()
+        targetCompatibility = JavaVersion.VERSION_11.toString()
     }
 
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8.toString()
+        jvmTarget = JavaVersion.VERSION_11.toString()
     }
 
     buildTypes {
@@ -51,11 +51,11 @@ android {
         }
     }
 
-    flavorDimensions "market"
+    flavorDimensions.add("market")
     productFlavors {
         appGallery {}
         googlePlay {
-            applicationId "org.barcodescanner"
+//            applicationId "org.barcodescanner"
         }
         fDroid {
             buildConfigField "boolean", "ERROR_REPORTS_ENABLED_BY_DEFAULT", "false"
@@ -67,7 +67,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     // Kotlin
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.6.0"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.7.21"
 
     // Android
     implementation 'androidx.core:core-ktx:1.7.0'

@@ -4,22 +4,23 @@ buildscript {
 //    ext.kotlin_version = '1.6.0'
     repositories {
         google()
+        gradlePluginPortal()
         mavenCentral()
         maven { url "https://jitpack.io" }
-        jcenter()
-        gradlePluginPortal()
+//        jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.0.2'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.0"
+        classpath 'com.android.tools.build:gradle:7.0.4'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.21"
     }
 }
 
 allprojects {
     repositories {
         google()
+        gradlePluginPortal()
         maven { url "https://jitpack.io" }
-        jcenter()
+        mavenCentral()
     }
 }
 
