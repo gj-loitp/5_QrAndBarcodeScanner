@@ -39,7 +39,7 @@ class ChooseCameraActivity : BaseActivity() {
     }
 
     private fun supportEdgeToEdge() {
-        root_view.applySystemWindowInsets(applyTop = true, applyBottom = true)
+        rootView.applySystemWindowInsets(applyTop = true, applyBottom = true)
     }
 
     private fun handleToolbarBackClicked() {

@@ -114,7 +114,7 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
 
 
     private fun supportEdgeToEdge() {
-        root_view.applySystemWindowInsets(applyTop = true, applyBottom = true)
+        rootView.applySystemWindowInsets(applyTop = true, applyBottom = true)
     }
 
     private fun saveOriginalBrightness() {

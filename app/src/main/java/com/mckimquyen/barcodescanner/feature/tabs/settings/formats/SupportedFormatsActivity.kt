@@ -11,7 +11,7 @@ import com.mckimquyen.barcodescanner.extension.unsafeLazy
 import com.mckimquyen.barcodescanner.feature.BaseActivity
 import com.mckimquyen.barcodescanner.usecase.SupportedBarcodeFormats
 import com.google.zxing.BarcodeFormat
-import kotlinx.android.synthetic.main.activity_supported_formats.*
+import kotlinx.android.synthetic.main.a_supported_formats.*
 
 class SupportedFormatsActivity : BaseActivity(), FormatsAdapter.Listener {
 
@@ -28,7 +28,7 @@ class SupportedFormatsActivity : BaseActivity(), FormatsAdapter.Listener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_supported_formats)
+        setContentView(R.layout.a_supported_formats)
         supportEdgeToEdge()
         initRecyclerView()
         handleToolbarBackClicked()
@@ -39,11 +39,11 @@ class SupportedFormatsActivity : BaseActivity(), FormatsAdapter.Listener {
     }
 
     private fun supportEdgeToEdge() {
-        root_view.applySystemWindowInsets(applyTop = true, applyBottom = true)
+        rootView.applySystemWindowInsets(applyTop = true, applyBottom = true)
     }
 
     private fun initRecyclerView() {
-        recycler_view_formats.apply {
+        recyclerViewFormats.apply {
             layoutManager = LinearLayoutManager(this@SupportedFormatsActivity)
             adapter = formatsAdapter
         }

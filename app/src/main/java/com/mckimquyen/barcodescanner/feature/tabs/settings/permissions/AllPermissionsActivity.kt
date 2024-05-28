@@ -20,7 +20,7 @@ class AllPermissionsActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_all_permissions)
-        root_view.applySystemWindowInsets(applyTop = true, applyBottom = true)
+        rootView.applySystemWindowInsets(applyTop = true, applyBottom = true)
         toolbar.setNavigationOnClickListener { finish() }
     }
 }
