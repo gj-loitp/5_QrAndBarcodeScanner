@@ -71,7 +71,7 @@ class ExportHistoryActivity : BaseActivity() {
         spinner_export_as.adapter = ArrayAdapter.createFromResource(
             this, R.array.activity_export_history_types, R.layout.item_spinner
         ).apply {
-            setDropDownViewResource(R.layout.item_spinner_dropdown)
+            setDropDownViewResource(R.layout.i_spinner_dropdown)
         }
     }
 

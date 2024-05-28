@@ -49,7 +49,7 @@ class CreateQrCodeCryptocurrencyFragment : BaseCreateBarcodeFragment() {
         spinner_cryptocurrency.adapter = ArrayAdapter.createFromResource(
             requireContext(), R.array.fragment_create_qr_code_cryptocurrencies, R.layout.item_spinner
         ).apply {
-            setDropDownViewResource(R.layout.item_spinner_dropdown)
+            setDropDownViewResource(R.layout.i_spinner_dropdown)
         }
     }
 
