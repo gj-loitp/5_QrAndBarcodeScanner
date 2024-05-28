@@ -10,23 +10,23 @@ import com.mckimquyen.barcodescanner.extension.textString
 import com.mckimquyen.barcodescanner.feature.tabs.create.BaseCreateBarcodeFragment
 import com.mckimquyen.barcodescanner.model.schema.Other
 import com.mckimquyen.barcodescanner.model.schema.Schema
-import kotlinx.android.synthetic.main.fragment_create_upc_e.*
+import kotlinx.android.synthetic.main.f_create_upc_e.*
 
 class CreateUpcEFragment : BaseCreateBarcodeFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_create_upc_e, container, false)
+        return inflater.inflate(R.layout.f_create_upc_e, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        edit_text.requestFocus()
-        edit_text.addTextChangedListener {
-            parentActivity.isCreateBarcodeButtonEnabled = edit_text.text.length == 7
+        editText.requestFocus()
+        editText.addTextChangedListener {
+            parentActivity.isCreateBarcodeButtonEnabled = editText.text?.length == 7
         }
     }
 
     override fun getBarcodeSchema(): Schema {
-        return Other(edit_text.textString)
+        return Other(editText.textString)
     }
 }

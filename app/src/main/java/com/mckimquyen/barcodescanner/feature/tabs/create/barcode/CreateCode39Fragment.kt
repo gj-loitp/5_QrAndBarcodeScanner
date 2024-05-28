@@ -21,13 +21,13 @@ class CreateCode39Fragment : BaseCreateBarcodeFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        edit_text.requestFocus()
-        edit_text.addTextChangedListener {
-            parentActivity.isCreateBarcodeButtonEnabled = edit_text.isNotBlank()
+        editText.requestFocus()
+        editText.addTextChangedListener {
+            parentActivity.isCreateBarcodeButtonEnabled = editText.isNotBlank()
         }
     }
 
     override fun getBarcodeSchema(): Schema {
-        return Other(edit_text.textString)
+        return Other(editText.textString)
     }
 }

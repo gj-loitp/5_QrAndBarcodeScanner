@@ -14,12 +14,12 @@ import com.mckimquyen.barcodescanner.extension.textString
 import com.mckimquyen.barcodescanner.feature.tabs.create.BaseCreateBarcodeFragment
 import com.mckimquyen.barcodescanner.model.schema.Schema
 import com.mckimquyen.barcodescanner.model.schema.Wifi
-import kotlinx.android.synthetic.main.fragment_create_qr_code_wifi.*
+import kotlinx.android.synthetic.main.f_create_qr_code_wifi.*
 
 class CreateQrCodeWifiFragment : BaseCreateBarcodeFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_create_qr_code_wifi, container, false)
+        return inflater.inflate(R.layout.f_create_qr_code_wifi, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -30,7 +30,7 @@ class CreateQrCodeWifiFragment : BaseCreateBarcodeFragment() {
     }
 
     override fun getBarcodeSchema(): Schema {
-        val encryption = when (spinner_encryption.selectedItemPosition) {
+        val encryption = when (spinnerEncryption.selectedItemPosition) {
             0 -> "WPA"
             1 -> "WEP"
             2 -> "nopass"
@@ -38,22 +38,22 @@ class CreateQrCodeWifiFragment : BaseCreateBarcodeFragment() {
         }
         return Wifi(
             encryption = encryption,
-            name = edit_text_network_name.textString,
-            password = edit_text_password.textString,
-            isHidden = check_box_is_hidden.isChecked
+            name = editTextNetworkName.textString,
+            password = editTextPassword.textString,
+            isHidden = checkBoxIsHidden.isChecked
         )
     }
 
     private fun initEncryptionTypesSpinner() {
-        spinner_encryption.adapter = ArrayAdapter.createFromResource(
+        spinnerEncryption.adapter = ArrayAdapter.createFromResource(
             requireContext(), R.array.fragment_create_qr_code_wifi_encryption_types, R.layout.i_spinner
         ).apply {
             setDropDownViewResource(R.layout.i_spinner_dropdown)
         }
 
-        spinner_encryption.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+        spinnerEncryption.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                text_input_layout_password.isVisible = position != 2
+                textInputLayoutPassword.isVisible = position != 2
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -63,15 +63,15 @@ class CreateQrCodeWifiFragment : BaseCreateBarcodeFragment() {
     }
 
     private fun initNetworkNameEditText() {
-        edit_text_network_name.requestFocus()
+        editTextNetworkName.requestFocus()
     }
 
     private fun handleTextChanged() {
-        edit_text_network_name.addTextChangedListener { toggleCreateBarcodeButton() }
-        edit_text_password.addTextChangedListener { toggleCreateBarcodeButton() }
+        editTextNetworkName.addTextChangedListener { toggleCreateBarcodeButton() }
+        editTextPassword.addTextChangedListener { toggleCreateBarcodeButton() }
     }
 
     private fun toggleCreateBarcodeButton() {
-        parentActivity.isCreateBarcodeButtonEnabled = edit_text_network_name.isNotBlank()
+        parentActivity.isCreateBarcodeButtonEnabled = editTextNetworkName.isNotBlank()
     }
 }

@@ -26,12 +26,12 @@ class CreateQrCodeUrlFragment : BaseCreateBarcodeFragment() {
     }
 
     override fun getBarcodeSchema(): Schema {
-        return Url(edit_text.textString)
+        return Url(editText.textString)
     }
 
     private fun showUrlPrefix() {
         val prefix = "https://"
-        edit_text.apply {
+        editText.apply {
             setText(prefix)
             setSelection(prefix.length)
             requestFocus()
@@ -39,8 +39,8 @@ class CreateQrCodeUrlFragment : BaseCreateBarcodeFragment() {
     }
 
     private fun handleTextChanged() {
-        edit_text.addTextChangedListener {
-            parentActivity.isCreateBarcodeButtonEnabled = edit_text.isNotBlank()
+        editText.addTextChangedListener {
+            parentActivity.isCreateBarcodeButtonEnabled = editText.isNotBlank()
         }
     }
 }

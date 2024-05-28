@@ -26,23 +26,23 @@ class CreateQrCodePhoneFragment : BaseCreateBarcodeFragment() {
     }
 
     override fun showPhone(phone: String) {
-        edit_text.apply {
+        editText.apply {
             setText(phone)
             setSelection(phone.length)
         }
     }
 
     override fun getBarcodeSchema(): Schema {
-        return Phone(edit_text.textString)
+        return Phone(editText.textString)
     }
 
     private fun initEditText() {
-        edit_text.requestFocus()
+        editText.requestFocus()
     }
 
     private fun handleTextChanged() {
-        edit_text.addTextChangedListener {
-            parentActivity.isCreateBarcodeButtonEnabled = edit_text.isNotBlank()
+        editText.addTextChangedListener {
+            parentActivity.isCreateBarcodeButtonEnabled = editText.isNotBlank()
         }
     }
 }

@@ -39,12 +39,12 @@ class CreateQrCodeTextFragment : BaseCreateBarcodeFragment() {
     }
 
     override fun getBarcodeSchema(): Schema {
-        return barcodeParser.parseSchema(BarcodeFormat.QR_CODE, edit_text.textString)
+        return barcodeParser.parseSchema(BarcodeFormat.QR_CODE, editText.textString)
     }
 
     private fun initEditText() {
         val defaultText = arguments?.getString(DEFAULT_TEXT_KEY).orEmpty()
-        edit_text.apply {
+        editText.apply {
             setText(defaultText)
             setSelection(defaultText.length)
             requestFocus()
@@ -52,8 +52,8 @@ class CreateQrCodeTextFragment : BaseCreateBarcodeFragment() {
     }
 
     private fun handleTextChanged() {
-        edit_text.addTextChangedListener {
-            parentActivity.isCreateBarcodeButtonEnabled = edit_text.isNotBlank()
+        editText.addTextChangedListener {
+            parentActivity.isCreateBarcodeButtonEnabled = editText.isNotBlank()
         }
     }
 }

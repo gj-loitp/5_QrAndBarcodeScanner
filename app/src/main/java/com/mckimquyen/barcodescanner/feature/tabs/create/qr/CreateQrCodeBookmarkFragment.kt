@@ -27,21 +27,21 @@ class CreateQrCodeBookmarkFragment : BaseCreateBarcodeFragment() {
 
     override fun getBarcodeSchema(): Schema {
         return Bookmark(
-            title = edit_text_title.textString,
+            title = editTextTitle.textString,
             url = edit_text_url.textString
         )
     }
 
     private fun initTitleEditText() {
-        edit_text_title.requestFocus()
+        editTextTitle.requestFocus()
     }
 
     private fun handleTextChanged() {
-        edit_text_title.addTextChangedListener { toggleCreateBarcodeButton() }
+        editTextTitle.addTextChangedListener { toggleCreateBarcodeButton() }
         edit_text_url.addTextChangedListener { toggleCreateBarcodeButton() }
     }
 
     private fun toggleCreateBarcodeButton() {
-        parentActivity.isCreateBarcodeButtonEnabled = edit_text_title.isNotBlank() || edit_text_url.isNotBlank()
+        parentActivity.isCreateBarcodeButtonEnabled = editTextTitle.isNotBlank() || edit_text_url.isNotBlank()
     }
 }
