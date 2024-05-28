@@ -28,7 +28,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
-import kotlinx.android.synthetic.main.fragment_scan_barcode_from_camera.*
+import kotlinx.android.synthetic.main.f_scan_barcode_from_camera.*
 import java.util.concurrent.TimeUnit
 import com.mckimquyen.barcodescanner.R
 
@@ -50,7 +50,7 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
     private var lastResult: Barcode? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_scan_barcode_from_camera, container, false)
+        return inflater.inflate(R.layout.f_scan_barcode_from_camera, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -101,8 +101,8 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
     }
 
     private fun supportEdgeToEdge() {
-        image_view_flash.applySystemWindowInsets(applyTop = true)
-        image_view_scan_from_file.applySystemWindowInsets(applyTop = true)
+        imageViewFlash.applySystemWindowInsets(applyTop = true)
+        imageViewScanFromFile.applySystemWindowInsets(applyTop = true)
     }
 
     private fun setDarkStatusBar() {
@@ -134,7 +134,7 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
     }
 
     private fun initScanner() {
-        codeScanner = CodeScanner(requireActivity(), scanner_view).apply {
+        codeScanner = CodeScanner(requireActivity(), scannerView).apply {
             camera = if (settings.isBackCamera) {
                 CodeScanner.CAMERA_BACK
             } else {
@@ -158,26 +158,26 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
     private fun initZoomSeekBar() {
         scannerCameraHelper.getCameraParameters(settings.isBackCamera)?.apply {
             this@ScanBarcodeFromCameraFragment.maxZoom = maxZoom
-            seek_bar_zoom.max = maxZoom
-            seek_bar_zoom.progress = zoom
+            seekBarZoom.max = maxZoom
+            seekBarZoom.progress = zoom
         }
     }
 
     private fun initFlashButton() {
-        layout_flash_container.setOnClickListener {
+        layoutFlashContainer.setOnClickListener {
             toggleFlash()
         }
-        image_view_flash.isActivated = settings.flash
+        imageViewFlash.isActivated = settings.flash
     }
 
     private fun handleScanFromFileClicked() {
-        layout_scan_from_file_container.setOnClickListener {
+        layoutScanFromFileContainer.setOnClickListener {
             navigateToScanFromFileScreen()
         }
     }
 
     private fun handleZoomChanged() {
-        seek_bar_zoom.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+        seekBarZoom.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onStartTrackingTouch(seekBar: SeekBar?) {}
             override fun onStopTrackingTouch(seekBar: SeekBar?) {}
 
@@ -190,13 +190,13 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
     }
 
     private fun handleDecreaseZoomClicked() {
-        button_decrease_zoom.setOnClickListener {
+        buttonDecreaseZoom.setOnClickListener {
             decreaseZoom()
         }
     }
 
     private fun handleIncreaseZoomClicked() {
-        button_increase_zoom.setOnClickListener {
+        buttonIncreaseZoom.setOnClickListener {
             increaseZoom()
         }
     }
@@ -208,7 +208,7 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
             } else {
                 zoom = 0
             }
-            seek_bar_zoom.progress = zoom
+            seekBarZoom.progress = zoom
         }
     }
 
@@ -219,7 +219,7 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
             } else {
                 zoom = maxZoom
             }
-            seek_bar_zoom.progress = zoom
+            seekBarZoom.progress = zoom
         }
     }
 
@@ -305,7 +305,7 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
     }
 
     private fun toggleFlash() {
-        image_view_flash.isActivated = image_view_flash.isActivated.not()
+        imageViewFlash.isActivated = imageViewFlash.isActivated.not()
         codeScanner.isFlashEnabled = codeScanner.isFlashEnabled.not()
     }
 

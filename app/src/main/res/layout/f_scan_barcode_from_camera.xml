@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.budiyev.android.codescanner.CodeScannerView
+        android:id="@+id/scannerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:autoFocusButtonVisible="false"
+        app:flashButtonVisible="false"
+        app:frameAspectRatioHeight="1"
+        app:frameAspectRatioWidth="1"
+        app:frameColor="@color/white"
+        app:frameSize="0.6"
+        app:frameThickness="2.5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:maskColor="@color/black_transparent3" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageViewFlash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_big"
+        app:layout_constraintEnd_toStartOf="@id/imageViewScanFromFile"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_flash" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textViewFlash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/fragment_scan_barcode_from_camera_flash"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_extra_small"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@id/imageViewFlash"
+        app:layout_constraintStart_toStartOf="@id/imageViewFlash"
+        app:layout_constraintTop_toBottomOf="@id/imageViewFlash" />
+
+    <FrameLayout
+        android:id="@+id/layoutFlashContainer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/textViewFlash"
+        app:layout_constraintEnd_toEndOf="@id/textViewFlash"
+        app:layout_constraintStart_toStartOf="@id/textViewFlash"
+        app:layout_constraintTop_toTopOf="@id/imageViewFlash" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageViewScanFromFile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/imageViewFlash"
+        app:layout_constraintTop_toTopOf="@id/imageViewFlash"
+        app:srcCompat="@drawable/ic_image_white" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textViewScanFromFile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/fragment_scan_barcode_from_camera_scan_from_file"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_extra_small"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@id/imageViewScanFromFile"
+        app:layout_constraintStart_toStartOf="@id/imageViewScanFromFile"
+        app:layout_constraintTop_toBottomOf="@id/imageViewScanFromFile" />
+
+    <FrameLayout
+        android:id="@+id/layoutScanFromFileContainer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/textViewScanFromFile"
+        app:layout_constraintEnd_toEndOf="@id/textViewScanFromFile"
+        app:layout_constraintStart_toStartOf="@id/textViewScanFromFile"
+        app:layout_constraintTop_toTopOf="@id/imageViewScanFromFile" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/buttonDecreaseZoom"
+        android:layout_width="@dimen/button_zoom_size"
+        android:layout_height="@dimen/button_zoom_size"
+        android:layout_marginStart="@dimen/margin"
+        android:layout_marginBottom="@dimen/margin_large"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_minus" />
+
+    <androidx.appcompat.widget.AppCompatSeekBar
+        android:id="@+id/seekBarZoom"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/zoom_seek_bar_height"
+        android:layout_marginHorizontal="@dimen/margin_small"
+        android:theme="@style/SeekBarTheme"
+        app:layout_constraintBottom_toBottomOf="@id/buttonDecreaseZoom"
+        app:layout_constraintEnd_toStartOf="@id/buttonIncreaseZoom"
+        app:layout_constraintStart_toEndOf="@id/buttonDecreaseZoom"
+        app:layout_constraintTop_toTopOf="@id/buttonDecreaseZoom" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/buttonIncreaseZoom"
+        android:layout_width="@dimen/button_zoom_size"
+        android:layout_height="@dimen/button_zoom_size"
+        android:layout_marginEnd="@dimen/margin"
+        app:layout_constraintBottom_toBottomOf="@id/buttonDecreaseZoom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/buttonDecreaseZoom"
+        app:srcCompat="@drawable/ic_plus" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
