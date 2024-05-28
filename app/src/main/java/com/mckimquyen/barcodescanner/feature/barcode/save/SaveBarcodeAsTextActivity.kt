@@ -19,7 +19,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
-import kotlinx.android.synthetic.main.activity_save_barcode_as_text.*
+import kotlinx.android.synthetic.main.a_save_barcode_as_text.*
 
 class SaveBarcodeAsTextActivity : BaseActivity() {
 
@@ -45,7 +45,7 @@ class SaveBarcodeAsTextActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_save_barcode_as_text)
+        setContentView(R.layout.a_save_barcode_as_text)
         supportEdgeToEdge()
         initToolbar()
         initFormatSpinner()
@@ -74,7 +74,7 @@ class SaveBarcodeAsTextActivity : BaseActivity() {
     }
 
     private fun initFormatSpinner() {
-        spinner_save_as.adapter = ArrayAdapter.createFromResource(
+        spinnerSaveAs.adapter = ArrayAdapter.createFromResource(
             this, R.array.activity_save_barcode_as_text_formats, R.layout.i_spinner
         ).apply {
             setDropDownViewResource(R.layout.i_spinner_dropdown)
@@ -82,7 +82,7 @@ class SaveBarcodeAsTextActivity : BaseActivity() {
     }
 
     private fun initSaveButton() {
-        button_save.setOnClickListener {
+        buttonSave.setOnClickListener {
             requestPermissions()
         }
     }
@@ -92,7 +92,7 @@ class SaveBarcodeAsTextActivity : BaseActivity() {
     }
 
     private fun saveBarcode() {
-        val saveFunc = when (spinner_save_as.selectedItemPosition) {
+        val saveFunc = when (spinnerSaveAs.selectedItemPosition) {
             0 -> barcodeSaver::saveBarcodeAsCsv
             1 -> barcodeSaver::saveBarcodeAsJson
             else -> return

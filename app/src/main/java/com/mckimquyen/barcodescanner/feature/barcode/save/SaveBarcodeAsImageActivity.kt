@@ -20,7 +20,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
-import kotlinx.android.synthetic.main.activity_save_barcode_as_image.*
+import kotlinx.android.synthetic.main.a_save_barcode_as_image.*
 
 class SaveBarcodeAsImageActivity : BaseActivity() {
 
@@ -46,7 +46,7 @@ class SaveBarcodeAsImageActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_save_barcode_as_image)
+        setContentView(R.layout.a_save_barcode_as_image)
         supportEdgeToEdge()
         initToolbar()
         initFormatSpinner()
@@ -75,7 +75,7 @@ class SaveBarcodeAsImageActivity : BaseActivity() {
     }
 
     private fun initFormatSpinner() {
-        spinner_save_as.adapter = ArrayAdapter.createFromResource(
+        spinnerSaveAs.adapter = ArrayAdapter.createFromResource(
             this, R.array.activity_save_barcode_as_image_formats, R.layout.i_spinner
         ).apply {
             setDropDownViewResource(R.layout.i_spinner_dropdown)
@@ -83,7 +83,7 @@ class SaveBarcodeAsImageActivity : BaseActivity() {
     }
 
     private fun initSaveButton() {
-        button_save.setOnClickListener {
+        buttonSave.setOnClickListener {
             requestPermissions()
         }
     }
@@ -93,7 +93,7 @@ class SaveBarcodeAsImageActivity : BaseActivity() {
     }
 
     private fun saveBarcode() {
-        val saveFunc = when (spinner_save_as.selectedItemPosition) {
+        val saveFunc = when (spinnerSaveAs.selectedItemPosition) {
             0 -> {
                 barcodeImageGenerator
                     .generateBitmapAsync(barcode, 640, 640, 2)

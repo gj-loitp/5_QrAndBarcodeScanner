@@ -1,90 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-    android:id="@+id/rootView"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rootView"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
 
-    <com.google.android.material.appbar.AppBarLayout
-        style="@style/AppBarLayoutStyle"
-        >
+    <com.google.android.material.appbar.AppBarLayout style="@style/AppBarLayoutStyle">
+
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
-            app:title="@string/activity_export_history_title"
             style="@style/ToolbarWithBackButtonStyle"
-            />
+            app:title="@string/activity_export_history_title" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/scrollView"
-        style="@style/ScrollStyle"
-        >
-        <LinearLayout
+        style="@style/ScrollStyle">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            >
-            <TextView
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_small"
                 android:layout_marginHorizontal="@dimen/margin_big"
+                android:layout_marginTop="@dimen/margin_small"
                 android:text="@string/activity_export_history_as_hint"
                 android:textColor="@color/edit_text_hint_color"
-                android:textSize="@dimen/text_size_extra_small"
-                />
-            <Spinner
-                android:id="@+id/spinner_export_as"
+                android:textSize="@dimen/text_size_extra_small" />
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/spinnerExportAs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_small"
                 android:layout_marginHorizontal="@dimen/margin_medium"
-                />
+                android:layout_marginTop="@dimen/margin_small" />
 
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/TextInputLayoutStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_medium"
                 android:layout_marginHorizontal="@dimen/margin"
-                style="@style/TextInputLayoutStyle"
-                >
-                <EditText
-                    android:id="@+id/edit_text_file_name"
+                android:layout_marginTop="@dimen/margin_medium">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/editTextFileName"
+                    style="@style/EditTextStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:backgroundTint="@color/blue"
                     android:gravity="start|top"
+                    android:hint="@string/activity_export_history_file_name_hint"
+                    android:imeOptions="actionNext"
+                    android:inputType="text"
                     android:lines="1"
                     android:maxLines="1"
-                    android:hint="@string/activity_export_history_file_name_hint"
-                    android:inputType="text"
-                    android:imeOptions="actionNext"
-                    android:backgroundTint="@color/blue"
-                    android:text="@string/activity_export_history_file_name_default"
-                    style="@style/EditTextStyle"
-                    />
+                    android:text="@string/activity_export_history_file_name_default" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
-                android:id="@+id/button_export"
+                android:id="@+id/buttonExport"
+                style="@style/ButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_big"
                 android:layout_marginHorizontal="@dimen/margin_big"
-                android:text="@string/activity_export_history_export"
-                style="@style/ButtonStyle"
-                />
-        </LinearLayout>
+                android:layout_marginTop="@dimen/margin_big"
+                android:text="@string/activity_export_history_export" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
     </androidx.core.widget.NestedScrollView>
 
     <ProgressBar
         android:id="@+id/progressBarLoading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:indeterminate="true"
         android:layout_gravity="center"
-        android:visibility="gone"
-        />
+        android:indeterminate="true"
+        android:visibility="gone" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

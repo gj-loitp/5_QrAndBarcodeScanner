@@ -21,7 +21,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
-import kotlinx.android.synthetic.main.activity_export_history.*
+import kotlinx.android.synthetic.main.a_export_history.*
 
 class ExportHistoryActivity : BaseActivity() {
     private val disposable = CompositeDisposable()
@@ -38,7 +38,7 @@ class ExportHistoryActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_export_history)
+        setContentView(R.layout.a_export_history)
         supportEdgeToEdge()
         initToolbar()
         initExportTypeSpinner()
@@ -68,7 +68,7 @@ class ExportHistoryActivity : BaseActivity() {
     }
 
     private fun initExportTypeSpinner() {
-        spinner_export_as.adapter = ArrayAdapter.createFromResource(
+        spinnerExportAs.adapter = ArrayAdapter.createFromResource(
             this, R.array.activity_export_history_types, R.layout.i_spinner
         ).apply {
             setDropDownViewResource(R.layout.i_spinner_dropdown)
@@ -76,13 +76,13 @@ class ExportHistoryActivity : BaseActivity() {
     }
 
     private fun initFileNameEditText() {
-        edit_text_file_name.addTextChangedListener {
-            button_export.isEnabled = edit_text_file_name.isNotBlank()
+        editTextFileName.addTextChangedListener {
+            buttonExport.isEnabled = editTextFileName.isNotBlank()
         }
     }
 
     private fun initExportButton() {
-        button_export.setOnClickListener {
+        buttonExport.setOnClickListener {
             requestPermissions()
         }
     }
@@ -92,8 +92,8 @@ class ExportHistoryActivity : BaseActivity() {
     }
 
     private fun exportHistory() {
-        val fileName = edit_text_file_name.textString
-        val saveFunc = when (spinner_export_as.selectedItemPosition) {
+        val fileName = editTextFileName.textString
+        val saveFunc = when (spinnerExportAs.selectedItemPosition) {
             0 -> barcodeSaver::saveBarcodeHistoryAsCsv
             1 -> barcodeSaver::saveBarcodeHistoryAsJson
             else -> return

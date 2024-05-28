@@ -25,7 +25,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
-import kotlinx.android.synthetic.main.activity_scan_barcode_from_file.*
+import kotlinx.android.synthetic.main.a_scan_barcode_from_file.*
 import java.util.concurrent.TimeUnit
 
 class ScanBarcodeFromFileActivity : BaseActivity() {
@@ -49,7 +49,7 @@ class ScanBarcodeFromFileActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_scan_barcode_from_file)
+        setContentView(R.layout.a_scan_barcode_from_file)
 
         supportEdgeToEdge()
         handleToolbarBackPressed()
@@ -143,8 +143,8 @@ class ScanBarcodeFromFileActivity : BaseActivity() {
     private fun handleToolbarMenuItemClicked() {
         toolbar.setOnMenuItemClickListener { item ->
             when (item.itemId) {
-                R.id.itemRotateLeft -> crop_image_view.rotateImage(CropImageView.RotateDegrees.ROTATE_M90D)
-                R.id.itemRotateRight -> crop_image_view.rotateImage(CropImageView.RotateDegrees.ROTATE_90D)
+                R.id.itemRotateLeft -> cropImageView.rotateImage(CropImageView.RotateDegrees.ROTATE_M90D)
+                R.id.itemRotateRight -> cropImageView.rotateImage(CropImageView.RotateDegrees.ROTATE_90D)
                 R.id.itemChangeImage -> startChooseImageActivityAgain()
             }
             return@setOnMenuItemClickListener true
@@ -152,7 +152,7 @@ class ScanBarcodeFromFileActivity : BaseActivity() {
     }
 
     private fun handleImageCropAreaChanged() {
-        crop_image_view.touches()
+        cropImageView.touches()
             .filter { it.action == ACTION_UP }
             .debounce(400, TimeUnit.MILLISECONDS)
             .observeOn(AndroidSchedulers.mainThread())
@@ -161,7 +161,7 @@ class ScanBarcodeFromFileActivity : BaseActivity() {
     }
 
     private fun handleScanButtonClicked() {
-        button_scan.setOnClickListener {
+        buttonScan.setOnClickListener {
             saveScanResult()
         }
     }
@@ -169,7 +169,7 @@ class ScanBarcodeFromFileActivity : BaseActivity() {
     private fun showImage(imageUri: Uri) {
         this.imageUri = imageUri
 
-        crop_image_view
+        cropImageView
             .load(imageUri)
             .executeAsCompletable()
             .subscribeOn(Schedulers.io())
@@ -195,7 +195,7 @@ class ScanBarcodeFromFileActivity : BaseActivity() {
         scanDisposable.clear()
         lastScanResult = null
 
-        crop_image_view
+        cropImageView
             .cropAsSingle()
             .subscribeOn(Schedulers.io())
             .subscribe(::scanCroppedImage, ::showError)
@@ -243,11 +243,11 @@ class ScanBarcodeFromFileActivity : BaseActivity() {
 
     private fun showLoading(isLoading: Boolean) {
         progressBarLoading.isVisible = isLoading
-        button_scan.isInvisible = isLoading
+        buttonScan.isInvisible = isLoading
     }
 
     private fun showScanButtonEnabled(isEnabled: Boolean) {
-        button_scan.isEnabled = isEnabled
+        buttonScan.isEnabled = isEnabled
     }
 
     private fun navigateToBarcodeScreen(barcode: Barcode) {

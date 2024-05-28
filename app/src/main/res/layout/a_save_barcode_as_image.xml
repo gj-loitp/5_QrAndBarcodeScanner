@@ -1,66 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-    android:id="@+id/rootView"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rootView"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
 
-    <com.google.android.material.appbar.AppBarLayout
-        style="@style/AppBarLayoutStyle"
-        >
+    <com.google.android.material.appbar.AppBarLayout style="@style/AppBarLayoutStyle">
+
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
-            app:title="@string/activity_save_barcode_as_image_title"
             style="@style/ToolbarWithBackButtonStyle"
-            />
+            app:title="@string/activity_save_barcode_as_image_title" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/scrollView"
-        style="@style/ScrollStyle"
-        >
-        <LinearLayout
+        style="@style/ScrollStyle">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            >
-            <TextView
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_small"
                 android:layout_marginHorizontal="@dimen/margin_big"
+                android:layout_marginTop="@dimen/margin_small"
                 android:text="@string/activity_save_barcode_as_image_save_as_hint"
                 android:textColor="@color/edit_text_hint_color"
-                android:textSize="@dimen/text_size_extra_small"
-                />
-            <Spinner
-                android:id="@+id/spinner_save_as"
+                android:textSize="@dimen/text_size_extra_small" />
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/spinnerSaveAs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_small"
                 android:layout_marginHorizontal="@dimen/margin_medium"
-                />
+                android:layout_marginTop="@dimen/margin_small" />
+
             <Button
-                android:id="@+id/button_save"
+                android:id="@+id/buttonSave"
+                style="@style/ButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_very_big"
                 android:layout_marginHorizontal="@dimen/margin_big"
-                android:text="@string/activity_save_barcode_as_image_file_name_save"
-                style="@style/ButtonStyle"
-                />
-        </LinearLayout>
+                android:layout_marginTop="@dimen/margin_very_big"
+                android:text="@string/activity_save_barcode_as_image_file_name_save" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
     </androidx.core.widget.NestedScrollView>
 
     <ProgressBar
         android:id="@+id/progressBarLoading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:indeterminate="true"
         android:layout_gravity="center"
-        android:visibility="gone"
-        />
+        android:indeterminate="true"
+        android:visibility="gone" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
