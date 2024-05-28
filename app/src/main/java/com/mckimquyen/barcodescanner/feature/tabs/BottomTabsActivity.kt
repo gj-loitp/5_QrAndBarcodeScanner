@@ -42,10 +42,10 @@ class BottomTabsActivity : BaseActivity(), BottomNavigationView.OnNavigationItem
     }
 
     override fun onBackPressed() {
-        if (bottom_navigation_view.selectedItemId == R.id.item_scan) {
+        if (bottom_navigation_view.selectedItemId == R.id.itemScan) {
             super.onBackPressed()
         } else {
-            bottom_navigation_view.selectedItemId = R.id.item_scan
+            bottom_navigation_view.selectedItemId = R.id.itemScan
         }
     }
 
@@ -61,18 +61,18 @@ class BottomTabsActivity : BaseActivity(), BottomNavigationView.OnNavigationItem
 
     private fun showInitialFragment() {
         when (intent?.action) {
-            ACTION_CREATE_BARCODE -> bottom_navigation_view.selectedItemId = R.id.item_create
-            ACTION_HISTORY -> bottom_navigation_view.selectedItemId = R.id.item_history
-            else -> showFragment(R.id.item_scan)
+            ACTION_CREATE_BARCODE -> bottom_navigation_view.selectedItemId = R.id.itemCreate
+            ACTION_HISTORY -> bottom_navigation_view.selectedItemId = R.id.itemHistory
+            else -> showFragment(R.id.itemScan)
         }
     }
 
     private fun showFragment(bottomItemId: Int) {
         val fragment = when (bottomItemId) {
-            R.id.item_scan -> ScanBarcodeFromCameraFragment()
-            R.id.item_create -> CreateBarcodeFragment()
-            R.id.item_history -> BarcodeHistoryFragment()
-            R.id.item_settings -> SettingsFragment()
+            R.id.itemScan -> ScanBarcodeFromCameraFragment()
+            R.id.itemCreate -> CreateBarcodeFragment()
+            R.id.itemHistory -> BarcodeHistoryFragment()
+            R.id.itemSettings -> SettingsFragment()
             else -> null
         }
         fragment?.apply(::replaceFragment)

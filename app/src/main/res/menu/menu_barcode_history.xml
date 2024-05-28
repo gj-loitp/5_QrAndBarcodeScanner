@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<tools:menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    >
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="AlwaysShowAction">
     <item
-        android:id="@+id/item_export_history"
-        android:title="@string/fragment_barcode_history_menu_title_export"
+        android:id="@+id/itemExportHistory"
         android:icon="@drawable/ic_download"
+        android:title="@string/fragment_barcode_history_menu_title_export"
         app:iconTint="@color/toolbar_menu_color"
-        app:showAsAction="never"
-        />
+        app:showAsAction="always" />
     <item
-        android:id="@+id/item_clear_history"
-        android:title="@string/fragment_barcode_history_menu_title_delete_all"
+        android:id="@+id/itemClearHistory"
         android:icon="@drawable/ic_delete"
+        android:title="@string/fragment_barcode_history_menu_title_delete_all"
         app:iconTint="@color/toolbar_menu_color"
-        app:showAsAction="never"
-        />
-</menu>
+        app:showAsAction="always" />
+</tools:menu>

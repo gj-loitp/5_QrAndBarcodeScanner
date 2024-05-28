@@ -63,18 +63,18 @@ class BarcodeImageActivity : BaseActivity() {
     private fun handleToolbarMenuItemClicked() {
         toolbar.setOnMenuItemClickListener { item ->
             when (item.itemId) {
-                R.id.item_increase_brightness -> {
+                R.id.itemIncreaseBrightness -> {
                     increaseBrightnessToMax()
                     toolbar.menu.apply {
-                        findItem(R.id.item_increase_brightness).isVisible = false
-                        findItem(R.id.item_decrease_brightness).isVisible = true
+                        findItem(R.id.itemIncreaseBrightness).isVisible = false
+                        findItem(R.id.itemDecreaseBrightness).isVisible = true
                     }
                 }
-                R.id.item_decrease_brightness -> {
+                R.id.itemDecreaseBrightness -> {
                     restoreOriginalBrightness()
                     toolbar.menu.apply {
-                        findItem(R.id.item_decrease_brightness).isVisible = false
-                        findItem(R.id.item_increase_brightness).isVisible = true
+                        findItem(R.id.itemDecreaseBrightness).isVisible = false
+                        findItem(R.id.itemIncreaseBrightness).isVisible = true
                     }
                 }
             }

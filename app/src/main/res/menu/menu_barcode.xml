@@ -1,53 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    >
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="AlwaysShowAction">
     <item
-        android:id="@+id/item_increase_brightness"
-        android:title="@string/activity_barcode_image_increase_brightness"
+        android:id="@+id/itemIncreaseBrightness"
         android:icon="@drawable/ic_brightness_high"
+        android:title="@string/activity_barcode_image_increase_brightness"
         android:visible="false"
         app:iconTint="@color/toolbar_menu_color"
-        app:showAsAction="ifRoom"
-        />
+        app:showAsAction="always" />
     <item
-        android:id="@+id/item_decrease_brightness"
-        android:title="@string/activity_barcode_image_decrease_brightness"
+        android:id="@+id/itemDecreaseBrightness"
         android:icon="@drawable/ic_brightness_low"
+        android:title="@string/activity_barcode_image_decrease_brightness"
         android:visible="false"
         app:iconTint="@color/toolbar_menu_color"
-        app:showAsAction="ifRoom"
-        />
+        app:showAsAction="always" />
     <item
-        android:id="@+id/item_add_to_favorites"
-        android:title="@string/activity_barcode_add_to_favorites"
+        android:id="@+id/itemAddToFavorites"
         android:icon="@drawable/ic_favorite_unchecked"
+        android:title="@string/activity_barcode_add_to_favorites"
         android:visible="false"
-        app:showAsAction="ifRoom"
-        />
+        app:showAsAction="always" />
     <item
-        android:id="@+id/item_show_barcode_image"
-        android:title="@string/activity_barcode_show_barcode_image"
+        android:id="@+id/itemShowBarcodeImage"
         android:icon="@drawable/ic_qr_code"
+        android:title="@string/activity_barcode_show_barcode_image"
         android:visible="false"
         app:iconTint="@color/toolbar_menu_color"
-        app:showAsAction="ifRoom"
-        />
+        app:showAsAction="always" />
     <item
-        android:id="@+id/item_save"
-        android:title="@string/activity_barcode_delete"
+        android:id="@+id/itemSave"
         android:icon="@drawable/ic_save"
-        android:visible="false"
-        app:iconTint="@color/toolbar_menu_color"
-        app:showAsAction="ifRoom"
-        />
-    <item
-        android:id="@+id/item_delete"
         android:title="@string/activity_barcode_delete"
-        android:icon="@drawable/ic_delete"
         android:visible="false"
         app:iconTint="@color/toolbar_menu_color"
-        app:showAsAction="ifRoom"
-        />
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/itemDelete"
+        android:icon="@drawable/ic_delete"
+        android:title="@string/activity_barcode_delete"
+        android:visible="false"
+        app:iconTint="@color/toolbar_menu_color"
+        app:showAsAction="always" />
 </menu>

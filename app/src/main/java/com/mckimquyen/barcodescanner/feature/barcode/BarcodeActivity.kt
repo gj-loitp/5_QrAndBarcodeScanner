@@ -163,20 +163,20 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
     private fun handleToolbarMenuClicked() {
         toolbar.setOnMenuItemClickListener { item ->
             when (item.itemId) {
-                R.id.item_increase_brightness -> {
+                R.id.itemIncreaseBrightness -> {
                     increaseBrightnessToMax()
-                    toolbar.menu.findItem(R.id.item_increase_brightness).isVisible = false
-                    toolbar.menu.findItem(R.id.item_decrease_brightness).isVisible = true
+                    toolbar.menu.findItem(R.id.itemIncreaseBrightness).isVisible = false
+                    toolbar.menu.findItem(R.id.itemDecreaseBrightness).isVisible = true
                 }
-                R.id.item_decrease_brightness -> {
+                R.id.itemDecreaseBrightness -> {
                     restoreOriginalBrightness()
-                    toolbar.menu.findItem(R.id.item_increase_brightness).isVisible = true
-                    toolbar.menu.findItem(R.id.item_decrease_brightness).isVisible = false
+                    toolbar.menu.findItem(R.id.itemIncreaseBrightness).isVisible = true
+                    toolbar.menu.findItem(R.id.itemDecreaseBrightness).isVisible = false
                 }
-                R.id.item_add_to_favorites -> toggleIsFavorite()
-                R.id.item_show_barcode_image -> navigateToBarcodeImageActivity()
-                R.id.item_save -> saveBarcode()
-                R.id.item_delete -> showDeleteBarcodeConfirmationDialog()
+                R.id.itemAddToFavorites -> toggleIsFavorite()
+                R.id.itemShowBarcodeImage -> navigateToBarcodeImageActivity()
+                R.id.itemSave -> saveBarcode()
+                R.id.itemDelete -> showDeleteBarcodeConfirmationDialog()
             }
             return@setOnMenuItemClickListener true
         }
@@ -264,7 +264,7 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
     }
 
     private fun saveBarcode() {
-        toolbar?.menu?.findItem(R.id.item_save)?.isVisible = false
+        toolbar?.menu?.findItem(R.id.itemSave)?.isVisible = false
 
         barcodeDatabase.save(originalBarcode, settings.doNotSaveDuplicates)
             .subscribeOn(Schedulers.io())
@@ -273,10 +273,10 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
                 { id ->
                     barcode.id = id
                     button_edit_name.isVisible = true
-                    toolbar?.menu?.findItem(R.id.item_delete)?.isVisible = true
+                    toolbar?.menu?.findItem(R.id.itemDelete)?.isVisible = true
                 },
                 { error ->
-                    toolbar?.menu?.findItem(R.id.item_save)?.isVisible = true
+                    toolbar?.menu?.findItem(R.id.itemSave)?.isVisible = true
                     showError(error)
                 }
             )
@@ -550,11 +550,11 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
     private fun showBarcodeMenuIfNeeded() {
         toolbar.inflateMenu(R.menu.menu_barcode)
         toolbar.menu.apply {
-            findItem(R.id.item_increase_brightness).isVisible = isCreated
-            findItem(R.id.item_add_to_favorites)?.isVisible = barcode.isInDb
-            findItem(R.id.item_show_barcode_image)?.isVisible = isCreated.not()
-            findItem(R.id.item_save)?.isVisible = barcode.isInDb.not()
-            findItem(R.id.item_delete)?.isVisible = barcode.isInDb
+            findItem(R.id.itemIncreaseBrightness).isVisible = isCreated
+            findItem(R.id.itemAddToFavorites)?.isVisible = barcode.isInDb
+            findItem(R.id.itemShowBarcodeImage)?.isVisible = isCreated.not()
+            findItem(R.id.itemSave)?.isVisible = barcode.isInDb.not()
+            findItem(R.id.itemDelete)?.isVisible = barcode.isInDb
         }
     }
 
@@ -568,7 +568,7 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
         } else {
             R.drawable.ic_favorite_unchecked
         }
-        toolbar.menu?.findItem(R.id.item_add_to_favorites)?.icon = ContextCompat.getDrawable(this, iconId)
+        toolbar.menu?.findItem(R.id.itemAddToFavorites)?.icon = ContextCompat.getDrawable(this, iconId)
     }
 
     private fun showBarcodeImageIfNeeded() {
