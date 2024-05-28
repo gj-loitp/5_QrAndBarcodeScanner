@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="InconsistentArrays">
     <string name="shortcut_history">پیشینه</string>
 
     <!--Delete dialog-->

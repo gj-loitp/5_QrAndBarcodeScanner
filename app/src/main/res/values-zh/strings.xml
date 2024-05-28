@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="InconsistentArrays">
     <string name="app_name">二维码&amp; 条形码扫描器</string>
 
     <!--Shortcuts-->

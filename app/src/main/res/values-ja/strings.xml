@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">QR &amp; バーコードスキャナー</string>
 
     <!--Shortcuts-->
@@ -82,7 +82,7 @@
 
     <!--Create QR code Wi-fi fragment-->
     <string name="fragment_create_qr_code_wifi_encryption_hint">セキュリティ</string>
-    <string-array name="fragment_create_qr_code_wifi_encryption_types">
+    <string-array name="fragment_create_qr_code_wifi_encryption_types" tools:ignore="InconsistentArrays">
         <item>WPA/WPA2</item>
         <item>WEP</item>
         <item>設定しない</item>
@@ -104,7 +104,7 @@
 
     <!--Create QR code cryptocurrency fragment-->
     <string name="fragment_create_qr_code_cryptocurrency_type_hint">暗号通貨</string>
-    <string-array name="fragment_create_qr_code_cryptocurrencies">
+    <string-array name="fragment_create_qr_code_cryptocurrencies" tools:ignore="InconsistentArrays">
         <item>ビットコイン（Bitcoin）</item>
         <item>ビットコインキャッシュ（Bitcoin Cash）</item>
         <item>イーサリアム（Ethereum）</item>
@@ -179,7 +179,7 @@
 
     <!--Barcode history fragment-->
     <string name="fragment_barcode_history_title">履歴</string>
-    <string-array name="fragment_barcode_history_tab_titles">
+    <string-array name="fragment_barcode_history_tab_titles" tools:ignore="InconsistentArrays">
         <item>新着</item>
         <item>お気に入り</item>
     </string-array>
@@ -328,7 +328,7 @@
     <!--Save barcode as text activity-->
     <string name="activity_save_barcode_as_text_title">保存</string>
     <string name="activity_save_barcode_as_text_save_as_hint">保存するファイル形式</string>
-    <string-array name="activity_save_barcode_as_text_formats">
+    <string-array name="activity_save_barcode_as_text_formats" tools:ignore="InconsistentArrays">
         <item>CSV</item>
         <item>JSON</item>
     </string-array>

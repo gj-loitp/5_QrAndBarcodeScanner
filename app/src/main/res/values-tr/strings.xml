@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="InconsistentArrays">
     <string name="app_name">Karekod ve Barkod Okuyucu</string>
 
     <!--Shortcuts-->
@@ -129,7 +129,7 @@
     </string-array>
     <string name="fragment_create_qr_code_otp_algorithm_hint">Algoritma</string>
     <string-array name="fragment_create_qr_code_otp_algorithms">
-        <item>SHA1</item>
+        <item tools:ignore="Typos">SHA1</item>
         <item>SHA256</item>
         <item>SHA512</item>
     </string-array>
@@ -309,7 +309,7 @@
     <string name="activity_barcode_save_as_image">Görüntü olarak kaydet</string>
     <string name="activity_barcode_print">Yazdır</string>
     <string name="activity_barcode_delete">Sil</string>
-    <string name="activity_barcode_connecting_to_wifi">Bağlanıyor...</string>
+    <string name="activity_barcode_connecting_to_wifi">Bağlanıyor…</string>
     <string name="activity_barcode_copied">Panoya kopyalandı</string>
     <string name="activity_barcode_no_app">Bu eylemi gerçekleştirecek bir uygulama bulunamadı</string>
     <string name="activity_barcode_choose_search_engine_dialog_negative_button">İptal</string>

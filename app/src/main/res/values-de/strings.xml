@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="InconsistentArrays">
     <string name="app_name">QR &amp; Barcode Scanner</string>
 
     <!--Shortcuts-->
@@ -129,7 +129,7 @@
     </string-array>
     <string name="fragment_create_qr_code_otp_algorithm_hint">Algorithmus</string>
     <string-array name="fragment_create_qr_code_otp_algorithms">
-        <item>SHA1</item>
+        <item tools:ignore="Typos">SHA1</item>
         <item>SHA256</item>
         <item>SHA512</item>
     </string-array>

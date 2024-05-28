@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="InconsistentArrays">
     <string name="app_name">Escàner de QR i codis de barres</string>
 
     <!--Shortcuts-->
@@ -345,7 +345,7 @@
     </string-array>
     <string name="activity_save_barcode_as_image_file_name_save">Desa</string>
     <string name="activity_save_barcode_as_image_file_name_saved">Desat a la Galeria</string>
-    
+
     <!--Barcode schemas-->
     <string name="barcode_schema_bookmark">Marcadors</string>
     <string name="barcode_schema_cryptocurrency">Bitcoin</string>
@@ -373,7 +373,7 @@
     <string name="barcode_format_code_93" translatable="false">Codi 93</string>
     <string name="barcode_format_code_128" translatable="false">Codi 128</string>
     <string name="barcode_format_data_matrix" translatable="false">Matriu de dades</string>
-    <string name="barcode_format_ean_8"  translatable="false">EAN-8</string>
+    <string name="barcode_format_ean_8" translatable="false">EAN-8</string>
     <string name="barcode_format_ean_13" translatable="false">EAN-13</string>
     <string name="barcode_format_itf_14" translatable="false">ITF</string>
     <string name="barcode_format_pdf_417" translatable="false">PDF417</string>

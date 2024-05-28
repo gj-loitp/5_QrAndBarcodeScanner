@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="InconsistentArrays">
     <string name="app_name">Σαρωτής QR &amp; Γραμμωτού Κώδικα</string>
 
     <!--Shortcuts-->
@@ -309,7 +309,7 @@
     <string name="activity_barcode_save_as_image">Αποθήκευση ως εικόνα</string>
     <string name="activity_barcode_print">Εκτύπωση</string>
     <string name="activity_barcode_delete">Διαγραφή</string>
-    <string name="activity_barcode_connecting_to_wifi">Σύνδεση...</string>
+    <string name="activity_barcode_connecting_to_wifi">Σύνδεση…</string>
     <string name="activity_barcode_copied">Αντιγράφηκε στο πρόχειρο</string>
     <string name="activity_barcode_no_app">Δε βρέθηκε εφαρμογή για αυτήν την ενέργεια</string>
     <string name="activity_barcode_choose_search_engine_dialog_negative_button">Ακύρωση</string>

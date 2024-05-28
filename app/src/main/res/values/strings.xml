@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="InconsistentArrays,MissingTranslation">
     <string name="app_name">QR &amp; Barcode Scanner</string>
 
     <!--Shortcuts-->
@@ -129,7 +129,7 @@
     </string-array>
     <string name="fragment_create_qr_code_otp_algorithm_hint">Algorithm</string>
     <string-array name="fragment_create_qr_code_otp_algorithms">
-        <item>SHA1</item>
+        <item tools:ignore="Typos">SHA1</item>
         <item>SHA256</item>
         <item>SHA512</item>
     </string-array>
@@ -346,7 +346,7 @@
     </string-array>
     <string name="activity_save_barcode_as_image_file_name_save">Save</string>
     <string name="activity_save_barcode_as_image_file_name_saved">Saved to Gallery</string>
-    
+
     <!--Barcode schemas-->
     <string name="barcode_schema_bookmark">Bookmark</string>
     <string name="barcode_schema_cryptocurrency">Bitcoin</string>
@@ -375,7 +375,7 @@
     <string name="barcode_format_code_93" translatable="false">Code 93</string>
     <string name="barcode_format_code_128" translatable="false">Code 128</string>
     <string name="barcode_format_data_matrix" translatable="false">Data Matrix</string>
-    <string name="barcode_format_ean_8"  translatable="false">EAN-8</string>
+    <string name="barcode_format_ean_8" translatable="false">EAN-8</string>
     <string name="barcode_format_ean_13" translatable="false">EAN-13</string>
     <string name="barcode_format_itf_14" translatable="false">ITF</string>
     <string name="barcode_format_pdf_417" translatable="false">PDF417</string>

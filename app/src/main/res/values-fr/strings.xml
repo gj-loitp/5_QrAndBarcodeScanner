@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="InconsistentArrays">
     <string name="app_name">QR &amp; Barcode Scanner</string>
 
     <!--Shortcuts-->

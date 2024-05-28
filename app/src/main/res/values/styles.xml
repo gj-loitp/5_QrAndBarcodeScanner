@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <style name="BaseAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/color_primary</item>
@@ -12,7 +12,7 @@
         <item name="android:actionOverflowButtonStyle">@style/ToolbarMenuButtonStyle</item>
     </style>
 
-    <style name="AppTheme" parent="BaseAppTheme"/>
+    <style name="AppTheme" parent="BaseAppTheme" />
 
     <style name="ClickableBackground">
         <item name="android:background">?attr/selectableItemBackground</item>
@@ -39,7 +39,7 @@
         <item name="android:textSize">20sp</item>
     </style>
 
-    <style name="ToolbarMenuButtonStyle" parent="@style/Widget.AppCompat.ActionButton.Overflow" >
+    <style name="ToolbarMenuButtonStyle" parent="@style/Widget.AppCompat.ActionButton.Overflow">
         <item name="android:tint">@color/toolbar_menu_color</item>
     </style>
 
@@ -126,7 +126,7 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
         <item name="layout_behavior">@string/appbar_scrolling_view_behavior</item>
-        <item name="android:scrollIndicators">none</item>
+        <item name="android:scrollIndicators" tools:ignore="NewApi">none</item>
     </style>
 
     <style name="SwitchTheme" parent="Theme.AppCompat.Light">
