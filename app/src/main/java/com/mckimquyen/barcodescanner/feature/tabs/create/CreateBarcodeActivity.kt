@@ -30,7 +30,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
-import kotlinx.android.synthetic.main.activity_create_barcode.*
+import kotlinx.android.synthetic.main.a_create_barcode.*
 
 
 class CreateBarcodeActivity : BaseActivity(), AppAdapter.Listener {
@@ -93,7 +93,7 @@ class CreateBarcodeActivity : BaseActivity(), AppAdapter.Listener {
             return
         }
 
-        setContentView(R.layout.activity_create_barcode)
+        setContentView(R.layout.a_create_barcode)
         supportEdgeToEdge()
         handleToolbarBackClicked()
         handleToolbarMenuItemClicked()
