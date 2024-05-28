@@ -61,19 +61,19 @@ class BarcodeHistoryAdapter(private val listener: Listener) : PagedListAdapter<B
         }
 
         private fun showText(barcode: Barcode) {
-            itemView.text_view_text.text = barcode.name ?: barcode.formattedText
+            itemView.textViewText.text = barcode.name ?: barcode.formattedText
         }
 
         private fun showImage(barcode: Barcode) {
             val imageId = barcode.schema.toImageId() ?: barcode.format.toImageId()
             val image = AppCompatResources.getDrawable(itemView.context, imageId)
-            itemView.image_view_schema.setImageDrawable(image)
+            itemView.imageViewSchema.setImageDrawable(image)
         }
 
         private fun showImageBackgroundColor(barcode: Barcode) {
             val colorId = barcode.format.toColorId()
             val color = itemView.context.resources.getColor(colorId)
-            (itemView.layout_image.background.mutate() as GradientDrawable).setColor(color)
+            (itemView.layoutImage.background.mutate() as GradientDrawable).setColor(color)
         }
 
         private fun showIsFavorite(barcode: Barcode) {

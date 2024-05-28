@@ -9,7 +9,7 @@ import android.widget.FrameLayout
 import com.mckimquyen.barcodescanner.R
 import com.mckimquyen.barcodescanner.extension.formatOrNull
 import com.github.florent37.singledateandtimepicker.dialog.SingleDateAndTimePickerDialog
-import kotlinx.android.synthetic.main.layout_date_time_picker_button.view.*
+import kotlinx.android.synthetic.main.lo_date_time_picker_button.view.*
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -22,7 +22,7 @@ class DateTimePickerButton : FrameLayout {
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
         view = LayoutInflater
             .from(context)
-            .inflate(R.layout.layout_date_time_picker_button, this, true)
+            .inflate(R.layout.lo_date_time_picker_button, this, true)
 
         context.obtainStyledAttributes(attrs, R.styleable.DateTimePickerButton).apply {
             showHint(this)
@@ -43,13 +43,13 @@ class DateTimePickerButton : FrameLayout {
         }
 
     private fun showHint(attributes: TypedArray) {
-        view.text_view_hint.text = attributes.getString(R.styleable.DateTimePickerButton_hint).orEmpty()
+        view.textViewHint.text = attributes.getString(R.styleable.DateTimePickerButton_hint).orEmpty()
     }
 
     private fun showDateTimePickerDialog() {
         SingleDateAndTimePickerDialog.Builder(context)
             .backgroundColor(context.resources.getColor(R.color.date_time_picker_dialog_background_color))
-            .title(view.text_view_hint.text.toString())
+            .title(view.textViewHint.text.toString())
             .mainColor(context.resources.getColor(R.color.blue))
             .listener { newDateTime ->
                 dateTime = newDateTime.time
@@ -59,6 +59,6 @@ class DateTimePickerButton : FrameLayout {
     }
 
     private fun showDateTime() {
-        view.text_view_date_time.text = dateFormatter.formatOrNull(dateTime).orEmpty()
+        view.textViewDateTime.text = dateFormatter.formatOrNull(dateTime).orEmpty()
     }
 }

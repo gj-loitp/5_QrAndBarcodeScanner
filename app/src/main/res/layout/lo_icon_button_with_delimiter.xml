@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/ClickableBackground"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingHorizontal="@dimen/margin"
+    android:paddingTop="@dimen/icon_button_with_delimiter_vertical_padding">
+
+    <FrameLayout
+        android:id="@+id/layoutImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_circle"
+        android:padding="@dimen/icon_button_icon_padding"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageViewSchema"
+            android:layout_width="@dimen/icon_button_icon_size"
+            android:layout_height="@dimen/icon_button_icon_size"
+            android:layout_gravity="center_vertical"
+            app:tint="@color/white"
+            tools:src="@drawable/ic_copy" />
+    </FrameLayout>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView"
+        style="@style/DefaultTextViewStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin"
+        android:textColor="@color/color_icon_button_icon_and_text"
+        app:layout_constraintBottom_toBottomOf="@id/layoutImage"
+        app:layout_constraintEnd_toStartOf="@id/imageViewArrow"
+        app:layout_constraintStart_toEndOf="@id/layoutImage"
+        app:layout_constraintTop_toTopOf="@id/layoutImage"
+        tools:text="Copy" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageViewArrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@id/layoutImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/layoutImage"
+        app:srcCompat="@drawable/ic_arrow_right" />
+
+    <View
+        android:id="@+id/delimiter"
+        android:layout_width="0dp"
+        android:layout_height="0.2dp"
+        android:layout_marginTop="@dimen/icon_button_with_delimiter_vertical_padding"
+        android:background="@color/delimiter_color"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/textView"
+        app:layout_constraintTop_toBottomOf="@id/layoutImage" />
+</androidx.constraintlayout.widget.ConstraintLayout>

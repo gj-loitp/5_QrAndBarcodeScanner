@@ -1,40 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/ClickableBackground"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:paddingHorizontal="@dimen/margin"
-    android:paddingVertical="@dimen/icon_button_vertical_padding"
-    style="@style/ClickableBackground"
-    >
+    android:paddingVertical="@dimen/icon_button_vertical_padding">
+
     <FrameLayout
-        android:id="@+id/layout_image"
+        android:id="@+id/layoutImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="@dimen/icon_button_icon_padding"
         android:background="@drawable/background_circle"
-        >
-        <ImageView
-            android:id="@+id/image_view_schema"
+        android:padding="@dimen/icon_button_icon_padding">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageViewSchema"
             android:layout_width="@dimen/icon_button_icon_size"
             android:layout_height="@dimen/icon_button_icon_size"
             android:layout_gravity="center_vertical"
             app:tint="@color/white"
-            tools:src="@drawable/ic_copy"
-            />
+            tools:src="@drawable/ic_copy" />
     </FrameLayout>
-    <TextView
-        android:id="@+id/text_view"
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView"
+        style="@style/DefaultTextViewStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:layout_marginStart="@dimen/margin"
         android:ellipsize="end"
         android:textColor="@color/color_icon_button_icon_and_text"
-        tools:text="Copy"
-        style="@style/DefaultTextViewStyle"
-        />
-</LinearLayout>
+        tools:text="Copy" />
+</androidx.appcompat.widget.LinearLayoutCompat>

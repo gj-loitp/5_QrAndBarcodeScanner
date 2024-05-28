@@ -38,7 +38,7 @@ class FormatsAdapter(
 
         fun show(position: Int) {
             val format = formats[position]
-            itemView.text_view_text.text = itemView.context.resources.getString(format.toStringId())
+            itemView.textViewText.text = itemView.context.resources.getString(format.toStringId())
             itemView.delimiter.isInvisible = position == formats.lastIndex
             itemView.check_box.isChecked = formatSelection[position]
 

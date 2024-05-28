@@ -8,7 +8,7 @@ import android.view.View
 import android.widget.FrameLayout
 import androidx.core.view.isVisible
 import com.mckimquyen.barcodescanner.R
-import kotlinx.android.synthetic.main.layout_settings_button.view.*
+import kotlinx.android.synthetic.main.lo_settings_button.view.*
 
 class SettingsButton : FrameLayout {
     private val view: View
@@ -18,7 +18,7 @@ class SettingsButton : FrameLayout {
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
         view = LayoutInflater
             .from(context)
-            .inflate(R.layout.layout_settings_button, this, true)
+            .inflate(R.layout.lo_settings_button, this, true)
 
         context.obtainStyledAttributes(attrs, R.styleable.SettingsButton).apply {
             showText(this)
@@ -29,31 +29,31 @@ class SettingsButton : FrameLayout {
     }
     
     var hint: String
-        get() = view.text_view_hint.text.toString()
+        get() = view.textViewHint.text.toString()
         set(value) {
-            view.text_view_hint.apply {
+            view.textViewHint.apply {
                 text = value
                 isVisible = text.isNullOrEmpty().not()
             }
         }
 
     var isChecked: Boolean
-        get() = view.switch_button.isChecked
-        set(value) { view.switch_button.isChecked = value }
+        get() = view.switchButton.isChecked
+        set(value) { view.switchButton.isChecked = value }
 
     override fun setEnabled(enabled: Boolean) {
         super.setEnabled(enabled)
-        text_view_text.isEnabled = enabled
+        textViewText.isEnabled = enabled
     }
 
     fun setCheckedChangedListener(listener: ((Boolean) -> Unit)?) {
-        view.switch_button.setOnCheckedChangeListener { _, isChecked ->
+        view.switchButton.setOnCheckedChangeListener { _, isChecked ->
             listener?.invoke(isChecked)
         }
     }
 
     private fun showText(attributes: TypedArray) {
-        view.text_view_text.text = attributes.getString(R.styleable.SettingsButton_text).orEmpty()
+        view.textViewText.text = attributes.getString(R.styleable.SettingsButton_text).orEmpty()
     }
 
     private fun showHint(attributes: TypedArray) {
@@ -61,10 +61,10 @@ class SettingsButton : FrameLayout {
     }
 
     private fun showSwitch(attributes: TypedArray) {
-        view.switch_button.isVisible = attributes.getBoolean(R.styleable.SettingsButton_isSwitchVisible, true)
-        if (view.switch_button.isVisible) {
+        view.switchButton.isVisible = attributes.getBoolean(R.styleable.SettingsButton_isSwitchVisible, true)
+        if (view.switchButton.isVisible) {
             view.setOnClickListener {
-                view.switch_button.toggle()
+                view.switchButton.toggle()
             }
         }
     }

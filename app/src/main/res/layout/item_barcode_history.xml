@@ -8,7 +8,7 @@
     style="@style/ClickableBackground"
     >
     <FrameLayout
-        android:id="@+id/layout_image"
+        android:id="@+id/layoutImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
@@ -19,7 +19,7 @@
         android:background="@drawable/background_circle"
         >
         <ImageView
-            android:id="@+id/image_view_schema"
+            android:id="@+id/imageViewSchema"
             android:layout_width="@dimen/icon_button_icon_size"
             android:layout_height="@dimen/icon_button_icon_size"
             android:layout_gravity="center_vertical"
@@ -32,14 +32,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toEndOf="@id/layout_image"
+        app:layout_constraintStart_toEndOf="@id/layoutImage"
         android:layout_marginTop="@dimen/margin_medium"
         android:layout_marginStart="@dimen/margin"
         tools:text="01.09.1993 12:00"
         style="@style/SecondaryTextViewStyle"
         />
     <TextView
-        android:id="@+id/text_view_text"
+        android:id="@+id/textViewText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_very_small"
@@ -58,8 +58,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_very_small"
-        app:layout_constraintTop_toBottomOf="@id/text_view_text"
-        app:layout_constraintStart_toStartOf="@id/text_view_text"
+        app:layout_constraintTop_toBottomOf="@id/textViewText"
+        app:layout_constraintStart_toStartOf="@id/textViewText"
         tools:text="Data matrix"
         style="@style/SecondaryTextViewStyle"
         />

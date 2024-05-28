@@ -8,7 +8,7 @@
     style="@style/ClickableBackground"
     >
     <TextView
-        android:id="@+id/text_view_text"
+        android:id="@+id/textViewText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin"
@@ -26,9 +26,9 @@
         android:layout_height="0.2dp"
         android:layout_marginTop="@dimen/margin"
         android:layout_marginEnd="@dimen/margin"
-        app:layout_constraintStart_toStartOf="@id/text_view_text"
+        app:layout_constraintStart_toStartOf="@id/textViewText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/text_view_text"
+        app:layout_constraintTop_toBottomOf="@id/textViewText"
         android:background="@color/delimiter_color"
         />
     <CheckBox

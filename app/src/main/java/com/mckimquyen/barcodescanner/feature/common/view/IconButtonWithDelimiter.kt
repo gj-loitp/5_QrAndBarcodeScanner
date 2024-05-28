@@ -11,7 +11,7 @@ import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import com.mckimquyen.barcodescanner.R
-import kotlinx.android.synthetic.main.layout_icon_button_with_delimiter.view.*
+import kotlinx.android.synthetic.main.lo_icon_button_with_delimiter.view.*
 
 
 class IconButtonWithDelimiter : FrameLayout {
@@ -22,7 +22,7 @@ class IconButtonWithDelimiter : FrameLayout {
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
         view = LayoutInflater
             .from(context)
-            .inflate(R.layout.layout_icon_button_with_delimiter, this, true)
+            .inflate(R.layout.lo_icon_button_with_delimiter, this, true)
 
         context.obtainStyledAttributes(attrs, R.styleable.IconButtonWithDelimiter).apply {
             showIcon(this)
@@ -37,20 +37,20 @@ class IconButtonWithDelimiter : FrameLayout {
     private fun showIcon(attributes: TypedArray) {
         val iconResId = attributes.getResourceId(R.styleable.IconButtonWithDelimiter_icon, -1)
         val icon = AppCompatResources.getDrawable(context, iconResId)
-        view.image_view_schema.setImageDrawable(icon)
+        view.imageViewSchema.setImageDrawable(icon)
     }
 
     private fun showIconBackgroundColor(attributes: TypedArray) {
         val color = attributes.getColor(R.styleable.IconButtonWithDelimiter_iconBackground, view.context.resources.getColor(R.color.green))
-        (view.layout_image.background.mutate() as GradientDrawable).setColor(color)
+        (view.layoutImage.background.mutate() as GradientDrawable).setColor(color)
     }
 
     private fun showText(attributes: TypedArray) {
-        view.text_view.text = attributes.getString(R.styleable.IconButtonWithDelimiter_text).orEmpty()
+        view.textView.text = attributes.getString(R.styleable.IconButtonWithDelimiter_text).orEmpty()
     }
 
     private fun showArrow(attributes: TypedArray) {
-        view.image_view_arrow.isVisible = attributes.getBoolean(R.styleable.IconButtonWithDelimiter_isArrowVisible, false)
+        view.imageViewArrow.isVisible = attributes.getBoolean(R.styleable.IconButtonWithDelimiter_isArrowVisible, false)
     }
 
     private fun showDelimiter(attributes: TypedArray) {
@@ -59,7 +59,7 @@ class IconButtonWithDelimiter : FrameLayout {
 
     override fun setEnabled(enabled: Boolean) {
         super.setEnabled(enabled)
-        view.image_view_schema.isEnabled = enabled
-        view.text_view.isEnabled = enabled
+        view.imageViewSchema.isEnabled = enabled
+        view.textView.isEnabled = enabled
     }
 }

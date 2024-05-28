@@ -50,7 +50,7 @@ class AppAdapter(private val listener: Listener) : RecyclerView.Adapter<AppAdapt
         }
 
         private fun showName(app: ResolveInfo) {
-            itemView.text_view.text = app.loadLabel(packageManager)
+            itemView.textView.text = app.loadLabel(packageManager)
         }
 
         private fun showIcon(app: ResolveInfo) {

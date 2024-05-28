@@ -8,7 +8,7 @@ import android.view.View
 import android.widget.FrameLayout
 import androidx.core.view.isInvisible
 import com.mckimquyen.barcodescanner.R
-import kotlinx.android.synthetic.main.layout_settings_radio_button.view.*
+import kotlinx.android.synthetic.main.lo_settings_radio_button.view.*
 
 class SettingsRadioButton : FrameLayout {
     private val view: View
@@ -18,7 +18,7 @@ class SettingsRadioButton : FrameLayout {
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
         view = LayoutInflater
             .from(context)
-            .inflate(R.layout.layout_settings_radio_button, this, true)
+            .inflate(R.layout.lo_settings_radio_button, this, true)
 
         context.obtainStyledAttributes(attrs, R.styleable.SettingsRadioButton).apply {
             showText(this)
@@ -27,22 +27,22 @@ class SettingsRadioButton : FrameLayout {
         }
 
         view.setOnClickListener {
-            radio_button.toggle()
+            radioButton.toggle()
         }
     }
 
     var isChecked: Boolean
-        get() = view.radio_button.isChecked
-        set(value) { view.radio_button.isChecked = value }
+        get() = view.radioButton.isChecked
+        set(value) { view.radioButton.isChecked = value }
     
     fun setCheckedChangedListener(listener: ((Boolean) -> Unit)?) {
-        view.radio_button.setOnCheckedChangeListener { _, isChecked ->
+        view.radioButton.setOnCheckedChangeListener { _, isChecked ->
             listener?.invoke(isChecked)
         }
     }
 
     private fun showText(attributes: TypedArray) {
-        view.text_view_text.text = attributes.getString(R.styleable.SettingsRadioButton_text).orEmpty()
+        view.textViewText.text = attributes.getString(R.styleable.SettingsRadioButton_text).orEmpty()
     }
 
     private fun showDelimiter(attributes: TypedArray) {
