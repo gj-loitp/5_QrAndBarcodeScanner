@@ -15,7 +15,7 @@ import com.mckimquyen.barcodescanner.extension.toColorId
 import com.mckimquyen.barcodescanner.extension.toImageId
 import com.mckimquyen.barcodescanner.extension.toStringId
 import com.mckimquyen.barcodescanner.model.Barcode
-import kotlinx.android.synthetic.main.item_barcode_history.view.*
+import kotlinx.android.synthetic.main.i_barcode_history.view.*
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -29,7 +29,7 @@ class BarcodeHistoryAdapter(private val listener: Listener) : PagedListAdapter<B
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val view = inflater.inflate(R.layout.item_barcode_history, parent, false)
+        val view = inflater.inflate(R.layout.i_barcode_history, parent, false)
         return ViewHolder(view)
     }
 
@@ -53,7 +53,7 @@ class BarcodeHistoryAdapter(private val listener: Listener) : PagedListAdapter<B
         }
 
         private fun showDate(barcode: Barcode) {
-            itemView.text_view_date.text = dateFormatter.format(barcode.date)
+            itemView.textViewDate.text = dateFormatter.format(barcode.date)
         }
 
         private fun showFormat(barcode: Barcode) {
@@ -77,7 +77,7 @@ class BarcodeHistoryAdapter(private val listener: Listener) : PagedListAdapter<B
         }
 
         private fun showIsFavorite(barcode: Barcode) {
-            itemView.image_view_favorite.isVisible = barcode.isFavorite
+            itemView.imageViewFavorite.isVisible = barcode.isFavorite
         }
 
         private fun showOrHideDelimiter(isLastItem: Boolean) {

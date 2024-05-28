@@ -110,7 +110,7 @@ class BarcodeImageActivity : BaseActivity() {
     }
 
     private fun showBarcodeDate() {
-        text_view_date.text = dateFormatter.format(barcode.date)
+        textViewDate.text = dateFormatter.format(barcode.date)
     }
 
     private fun showBarcodeFormat() {

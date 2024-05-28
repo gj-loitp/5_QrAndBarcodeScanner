@@ -1,45 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
     style="@style/ClickableBackground"
-    >
-    <TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textViewText"
+        style="@style/DefaultTextViewStyle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin"
         android:layout_marginStart="@dimen/margin"
+        android:layout_marginTop="@dimen/margin"
         android:layout_marginEnd="@dimen/margin"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/checkBox"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/check_box"
-        style="@style/DefaultTextViewStyle"
-        tools:text="Textffffffffffffffffffffffffffffffffffffffffffffffffffffff"
-        />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/app_name" />
+
     <View
         android:id="@+id/delimiter"
         android:layout_width="0dp"
         android:layout_height="0.2dp"
         android:layout_marginTop="@dimen/margin"
         android:layout_marginEnd="@dimen/margin"
-        app:layout_constraintStart_toStartOf="@id/textViewText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textViewText"
         android:background="@color/delimiter_color"
-        />
-    <CheckBox
-        android:id="@+id/check_box"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/textViewText"
+        app:layout_constraintTop_toBottomOf="@id/textViewText" />
+
+    <androidx.appcompat.widget.AppCompatCheckBox
+        android:id="@+id/checkBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/margin_medium"
-        app:layout_constraintTop_toTopOf="parent"
+        android:background="@null"
+        android:theme="@style/RadioButtonTheme"
         app:layout_constraintBottom_toTopOf="@id/delimiter"
         app:layout_constraintEnd_toEndOf="parent"
-        android:theme="@style/RadioButtonTheme"
-        android:background="@null"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

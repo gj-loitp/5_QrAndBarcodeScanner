@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.core.view.isInvisible
 import androidx.recyclerview.widget.RecyclerView
 import com.mckimquyen.barcodescanner.R
-import kotlinx.android.synthetic.main.item_app.view.*
+import kotlinx.android.synthetic.main.i_app.view.*
 
 class AppAdapter(private val listener: Listener) : RecyclerView.Adapter<AppAdapter.ViewHolder>() {
 
@@ -28,7 +28,7 @@ class AppAdapter(private val listener: Listener) : RecyclerView.Adapter<AppAdapt
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val itemView = inflater.inflate(R.layout.item_app, parent, false)
+        val itemView = inflater.inflate(R.layout.i_app, parent, false)
         return ViewHolder(itemView)
     }
 
@@ -54,7 +54,7 @@ class AppAdapter(private val listener: Listener) : RecyclerView.Adapter<AppAdapt
         }
 
         private fun showIcon(app: ResolveInfo) {
-            itemView.image_view.setImageDrawable(app.loadIcon(packageManager))
+            itemView.imageView.setImageDrawable(app.loadIcon(packageManager))
         }
 
         private fun showDelimiter(isLastPosition: Boolean) {
