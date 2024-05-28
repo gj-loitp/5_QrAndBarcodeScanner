@@ -1,155 +1,151 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-    android:id="@+id/rootView"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rootView"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
-        style="@style/AppBarLayoutStyle"
-        >
+        style="@style/AppBarLayoutStyle">
+
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
-            app:title="@string/fragment_create_qr_code_list_title"
             style="@style/ToolbarWithBackButtonStyle"
-            />
+            app:title="@string/fragment_create_qr_code_list_title" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/scrollView"
-        style="@style/ScrollStyle"
-        >
-        <LinearLayout
+        style="@style/ScrollStyle">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="@dimen/margin_small"
             android:orientation="vertical"
-            >
+            android:paddingBottom="@dimen/margin_small">
+
             <com.mckimquyen.barcodescanner.feature.common.view.IconButtonWithDelimiter
                 android:id="@+id/buttonText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:icon="@drawable/ic_text"
                 app:iconBackground="@color/blue3"
-                app:text="@string/fragment_create_barcode_qr_code_text"
-                />
+                app:text="@string/fragment_create_barcode_qr_code_text" />
+
             <com.mckimquyen.barcodescanner.feature.common.view.IconButtonWithDelimiter
                 android:id="@+id/buttonUrl"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:icon="@drawable/ic_link"
                 app:iconBackground="@color/blue3"
-                app:text="@string/barcode_schema_url"
-                />
+                app:text="@string/barcode_schema_url" />
+
             <com.mckimquyen.barcodescanner.feature.common.view.IconButtonWithDelimiter
                 android:id="@+id/buttonWifi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:icon="@drawable/ic_wifi"
                 app:iconBackground="@color/blue3"
-                app:text="@string/barcode_schema_wifi"
-                />
+                app:text="@string/barcode_schema_wifi" />
+
             <com.mckimquyen.barcodescanner.feature.common.view.IconButtonWithDelimiter
                 android:id="@+id/buttonLocation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:icon="@drawable/ic_location"
                 app:iconBackground="@color/blue3"
-                app:text="@string/barcode_schema_geo"
-                />
+                app:text="@string/barcode_schema_geo" />
+
             <com.mckimquyen.barcodescanner.feature.common.view.IconButtonWithDelimiter
-                android:id="@+id/button_otp"
+                android:id="@+id/buttonOtp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:icon="@drawable/ic_otp"
                 app:iconBackground="@color/blue3"
-                app:text="@string/barcode_schema_otp"
-                />
+                app:text="@string/barcode_schema_otp" />
+
             <com.mckimquyen.barcodescanner.feature.common.view.IconButtonWithDelimiter
                 android:id="@+id/buttonContactVcard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:icon="@drawable/ic_contact"
                 app:iconBackground="@color/blue3"
-                app:text="@string/barcode_schema_v_card"
-                />
+                app:text="@string/barcode_schema_v_card" />
+
             <com.mckimquyen.barcodescanner.feature.common.view.IconButtonWithDelimiter
-                android:id="@+id/button_contact_mecard"
+                android:id="@+id/buttonContactMecard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:icon="@drawable/ic_contact"
                 app:iconBackground="@color/blue3"
-                app:text="@string/barcode_schema_me_card"
-                />
+                app:text="@string/barcode_schema_me_card" />
+
             <com.mckimquyen.barcodescanner.feature.common.view.IconButtonWithDelimiter
-                android:id="@+id/button_event"
+                android:id="@+id/buttonEvent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:icon="@drawable/ic_calendar"
                 app:iconBackground="@color/blue3"
-                app:text="@string/barcode_schema_v_event"
-                />
+                app:text="@string/barcode_schema_v_event" />
+
             <com.mckimquyen.barcodescanner.feature.common.view.IconButtonWithDelimiter
-                android:id="@+id/button_phone"
+                android:id="@+id/buttonPhone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:icon="@drawable/ic_phone"
                 app:iconBackground="@color/blue3"
-                app:text="@string/barcode_schema_phone"
-                />
+                app:text="@string/barcode_schema_phone" />
+
             <com.mckimquyen.barcodescanner.feature.common.view.IconButtonWithDelimiter
-                android:id="@+id/button_email"
+                android:id="@+id/buttonEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:icon="@drawable/ic_email"
                 app:iconBackground="@color/blue3"
-                app:text="@string/barcode_schema_email"
-                />
+                app:text="@string/barcode_schema_email" />
+
             <com.mckimquyen.barcodescanner.feature.common.view.IconButtonWithDelimiter
-                android:id="@+id/button_sms"
+                android:id="@+id/buttonSms"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:icon="@drawable/ic_sms"
                 app:iconBackground="@color/blue3"
-                app:text="@string/barcode_schema_sms"
-                />
+                app:text="@string/barcode_schema_sms" />
+
             <com.mckimquyen.barcodescanner.feature.common.view.IconButtonWithDelimiter
-                android:id="@+id/button_mms"
+                android:id="@+id/buttonMms"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:icon="@drawable/ic_mms"
                 app:iconBackground="@color/blue3"
-                app:text="@string/barcode_schema_mms"
-                />
+                app:text="@string/barcode_schema_mms" />
+
             <com.mckimquyen.barcodescanner.feature.common.view.IconButtonWithDelimiter
-                android:id="@+id/button_cryptocurrency"
+                android:id="@+id/buttonCryptoCurrency"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:icon="@drawable/ic_bitcoin"
                 app:iconBackground="@color/blue3"
-                app:text="@string/barcode_schema_cryptocurrency"
-                />
+                app:text="@string/barcode_schema_cryptocurrency" />
+
             <com.mckimquyen.barcodescanner.feature.common.view.IconButtonWithDelimiter
-                android:id="@+id/button_bookmark"
+                android:id="@+id/buttonBookmark"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:icon="@drawable/ic_bookmark"
                 app:iconBackground="@color/blue3"
-                app:text="@string/barcode_schema_bookmark"
-                />
+                app:text="@string/barcode_schema_bookmark" />
+
             <com.mckimquyen.barcodescanner.feature.common.view.IconButtonWithDelimiter
-                android:id="@+id/button_app"
+                android:id="@+id/buttonApp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:icon="@drawable/ic_app"
                 app:iconBackground="@color/blue3"
-                app:text="@string/barcode_schema_google_play"
                 app:isDelimiterVisible="false"
-                />
-        </LinearLayout>
+                app:text="@string/barcode_schema_google_play" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
     </androidx.core.widget.NestedScrollView>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
