@@ -1,31 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="@dimen/margin_small"
     android:paddingHorizontal="@dimen/margin"
-    android:paddingBottom="@dimen/margin"
-    >
+    android:paddingTop="@dimen/margin_small"
+    android:paddingBottom="@dimen/margin">
+
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         style="@style/TextInputLayoutStyle"
-        >
-        <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/editText"
+            style="@style/EditTextStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/blue"
+            android:digits="0123456789"
             android:gravity="start|top"
             android:hint="@string/fragment_create_ean_8_hint"
+            android:imeOptions="actionDone"
             android:inputType="number"
             android:lines="1"
-            android:maxLines="1"
-            android:digits="0123456789"
-            android:backgroundTint="@color/blue"
             android:maxLength="7"
-            android:imeOptions="actionDone"
-            style="@style/EditTextStyle"
-            />
+            android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
 </FrameLayout>

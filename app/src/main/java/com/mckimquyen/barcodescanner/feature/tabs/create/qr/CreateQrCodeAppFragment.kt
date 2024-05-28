@@ -9,7 +9,8 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mckimquyen.barcodescanner.R
-import com.mckimquyen.barcodescanner.extension.*
+import com.mckimquyen.barcodescanner.extension.showError
+import com.mckimquyen.barcodescanner.extension.unsafeLazy
 import com.mckimquyen.barcodescanner.feature.tabs.create.BaseCreateBarcodeFragment
 import com.mckimquyen.barcodescanner.model.schema.App
 import com.mckimquyen.barcodescanner.model.schema.Schema
@@ -18,14 +19,15 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
-import kotlinx.android.synthetic.main.fragment_create_qr_code_app.*
+import kotlinx.android.synthetic.main.f_create_qr_code_app.progressBarLoading
+import kotlinx.android.synthetic.main.f_create_qr_code_app.recyclerViewApps
 
 class CreateQrCodeAppFragment : BaseCreateBarcodeFragment() {
     private val disposable = CompositeDisposable()
     private val appAdapter by unsafeLazy { AppAdapter(parentActivity) }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_create_qr_code_app, container, false)
+        return inflater.inflate(R.layout.f_create_qr_code_app, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -44,7 +46,7 @@ class CreateQrCodeAppFragment : BaseCreateBarcodeFragment() {
     }
 
     private fun initRecyclerView() {
-        recycler_view_apps.apply {
+        recyclerViewApps.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = appAdapter
         }
@@ -80,8 +82,8 @@ class CreateQrCodeAppFragment : BaseCreateBarcodeFragment() {
     }
 
     private fun showLoading(isLoading: Boolean) {
-        progress_bar_loading.isVisible = isLoading
-        recycler_view_apps.isVisible = isLoading.not()
+        progressBarLoading.isVisible = isLoading
+        recyclerViewApps.isVisible = isLoading.not()
     }
 
     private fun showApps(apps: List<ResolveInfo>) {

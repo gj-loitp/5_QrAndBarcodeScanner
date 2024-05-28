@@ -12,12 +12,12 @@ import com.mckimquyen.barcodescanner.extension.textString
 import com.mckimquyen.barcodescanner.feature.tabs.create.BaseCreateBarcodeFragment
 import com.mckimquyen.barcodescanner.model.schema.Cryptocurrency
 import com.mckimquyen.barcodescanner.model.schema.Schema
-import kotlinx.android.synthetic.main.fragment_create_qr_code_cryptocurrency.*
+import kotlinx.android.synthetic.main.f_create_qr_code_cryptocurrency.*
 
 class CreateQrCodeCryptocurrencyFragment : BaseCreateBarcodeFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_create_qr_code_cryptocurrency, container, false)
+        return inflater.inflate(R.layout.f_create_qr_code_cryptocurrency, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -28,7 +28,7 @@ class CreateQrCodeCryptocurrencyFragment : BaseCreateBarcodeFragment() {
     }
 
     override fun getBarcodeSchema(): Schema {
-        val cryptocurrency = when (spinner_cryptocurrency.selectedItemPosition) {
+        val cryptocurrency = when (spinnerCryptocurrency.selectedItemPosition) {
             0 -> "bitcoin"
             1 -> "bitcoincash"
             2 -> "ethereum"
@@ -38,15 +38,15 @@ class CreateQrCodeCryptocurrencyFragment : BaseCreateBarcodeFragment() {
         }
         return Cryptocurrency(
             cryptocurrency = cryptocurrency,
-            address = edit_text_address.textString,
-            label = edit_text_label.textString,
-            amount = edit_text_amount.textString,
+            address = editTextAddress.textString,
+            label = editTextLabel.textString,
+            amount = editTextAmount.textString,
             message = editTextMessage.textString
         )
     }
 
     private fun initCryptocurrenciesSpinner() {
-        spinner_cryptocurrency.adapter = ArrayAdapter.createFromResource(
+        spinnerCryptocurrency.adapter = ArrayAdapter.createFromResource(
             requireContext(), R.array.fragment_create_qr_code_cryptocurrencies, R.layout.i_spinner
         ).apply {
             setDropDownViewResource(R.layout.i_spinner_dropdown)
@@ -54,16 +54,16 @@ class CreateQrCodeCryptocurrencyFragment : BaseCreateBarcodeFragment() {
     }
 
     private fun initAddressEditText() {
-        edit_text_address.requestFocus()
+        editTextAddress.requestFocus()
     }
 
     private fun handleTextChanged() {
-        listOf(edit_text_address, edit_text_amount, edit_text_label, editTextMessage).forEach { editText ->
+        listOf(editTextAddress, editTextAmount, editTextLabel, editTextMessage).forEach { editText ->
             editText.addTextChangedListener { toggleCreateBarcodeButton() }
         }
     }
 
     private fun toggleCreateBarcodeButton() {
-        parentActivity.isCreateBarcodeButtonEnabled = edit_text_address.isNotBlank()
+        parentActivity.isCreateBarcodeButtonEnabled = editTextAddress.isNotBlank()
     }
 }
