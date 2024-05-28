@@ -28,7 +28,7 @@ class CreateBarcodeFragment : Fragment() {
     }
 
     private fun supportEdgeToEdge() {
-        app_bar_layout.applySystemWindowInsets(applyTop = true)
+        appBarLayout.applySystemWindowInsets(applyTop = true)
     }
 
     private fun handleButtonsClicked() {

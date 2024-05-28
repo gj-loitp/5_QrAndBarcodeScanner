@@ -115,7 +115,7 @@ class SaveBarcodeAsTextActivity : BaseActivity() {
 
     private fun showLoading(isLoading: Boolean) {
         progress_bar_loading.isVisible = isLoading
-        scroll_view.isVisible = isLoading.not()
+        scrollView.isVisible = isLoading.not()
     }
 
     private fun showBarcodeSaved() {

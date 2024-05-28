@@ -19,7 +19,7 @@
 
 
     <androidx.core.widget.NestedScrollView
-        android:id="@+id/scroll_view"
+        android:id="@+id/scrollView"
         style="@style/ScrollStyle"
         >
         <LinearLayout

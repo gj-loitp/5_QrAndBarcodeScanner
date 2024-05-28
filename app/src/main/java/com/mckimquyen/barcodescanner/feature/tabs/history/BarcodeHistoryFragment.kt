@@ -42,7 +42,7 @@ class BarcodeHistoryFragment : Fragment(), DeleteConfirmationDialogFragment.List
     }
 
     private fun supportEdgeToEdge() {
-        app_bar_layout.applySystemWindowInsets(applyTop = true)
+        appBarLayout.applySystemWindowInsets(applyTop = true)
     }
 
     private fun initTabs() {
