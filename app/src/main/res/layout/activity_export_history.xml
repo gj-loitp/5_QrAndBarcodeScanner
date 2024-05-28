@@ -33,7 +33,7 @@
                 android:layout_marginHorizontal="@dimen/margin_big"
                 android:text="@string/activity_export_history_as_hint"
                 android:textColor="@color/edit_text_hint_color"
-                android:textSize="@dimen/default_text_size_extra_small"
+                android:textSize="@dimen/text_size_extra_small"
                 />
             <Spinner
                 android:id="@+id/spinner_export_as"

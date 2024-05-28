@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:textColor="@color/gray10"
-        android:textSize="@dimen/default_text_size_extra_small"
+        android:textSize="@dimen/text_size_extra_small"
         tools:text="Select time"
         />
     <TextView

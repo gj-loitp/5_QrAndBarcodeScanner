@@ -43,7 +43,7 @@
         app:layout_constraintEnd_toEndOf="@id/image_view_flash"
         android:textColor="@color/white"
         android:text="@string/fragment_scan_barcode_from_camera_flash"
-        android:textSize="@dimen/default_text_size_extra_small"
+        android:textSize="@dimen/text_size_extra_small"
         android:textStyle="bold"
         />
     <FrameLayout
@@ -75,7 +75,7 @@
         android:gravity="center"
         android:textColor="@color/white"
         android:text="@string/fragment_scan_barcode_from_camera_scan_from_file"
-        android:textSize="@dimen/default_text_size_extra_small"
+        android:textSize="@dimen/text_size_extra_small"
         android:textStyle="bold"
         />
     <FrameLayout
@@ -93,7 +93,7 @@
         android:layout_width="@dimen/button_zoom_size"
         android:layout_height="@dimen/button_zoom_size"
         android:layout_marginStart="@dimen/margin"
-        android:layout_marginBottom="@dimen/default_margin_large"
+        android:layout_marginBottom="@dimen/margin_large"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:srcCompat="@drawable/ic_minus"

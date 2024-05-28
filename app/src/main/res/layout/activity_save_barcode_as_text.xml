@@ -33,7 +33,7 @@
                 android:layout_marginHorizontal="@dimen/margin_big"
                 android:text="@string/activity_save_barcode_as_text_save_as_hint"
                 android:textColor="@color/edit_text_hint_color"
-                android:textSize="@dimen/default_text_size_extra_small"
+                android:textSize="@dimen/text_size_extra_small"
                 />
             <Spinner
                 android:id="@+id/spinner_save_as"
@@ -46,7 +46,7 @@
                 android:id="@+id/button_save"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/default_margin_very_big"
+                android:layout_marginTop="@dimen/margin_very_big"
                 android:layout_marginHorizontal="@dimen/margin_big"
                 android:text="@string/activity_save_barcode_as_text_file_name_save"
                 style="@style/ButtonStyle"

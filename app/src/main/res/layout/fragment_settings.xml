@@ -61,7 +61,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/default_margin_very_big"
+                android:layout_marginTop="@dimen/margin_very_big"
                 android:layout_marginBottom="@dimen/margin_small"
                 android:layout_marginHorizontal="@dimen/margin"
                 android:text="@string/fragment_settings_scanner_settings"
@@ -136,7 +136,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/default_margin_very_big"
+                android:layout_marginTop="@dimen/margin_very_big"
                 android:layout_marginBottom="@dimen/margin_small"
                 android:layout_marginHorizontal="@dimen/margin"
                 android:text="@string/fragment_settings_history_settings"
@@ -175,7 +175,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/default_margin_very_big"
+                android:layout_marginTop="@dimen/margin_very_big"
                 android:layout_marginBottom="@dimen/margin_small"
                 android:layout_marginHorizontal="@dimen/margin"
                 android:text="@string/fragment_settings_advanced_settings"
@@ -195,7 +195,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/default_margin_very_big"
+                android:layout_marginTop="@dimen/margin_very_big"
                 android:layout_marginBottom="@dimen/margin_small"
                 android:layout_marginHorizontal="@dimen/margin"
                 android:text="@string/fragment_settings_error_reports"
@@ -214,7 +214,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/default_margin_very_big"
+                android:layout_marginTop="@dimen/margin_very_big"
                 android:layout_marginBottom="@dimen/margin_small"
                 android:layout_marginHorizontal="@dimen/margin"
                 android:text="@string/fragment_settings_about"

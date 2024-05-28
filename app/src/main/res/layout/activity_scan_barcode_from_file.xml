@@ -55,7 +55,7 @@
         android:text="@string/activity_scan_barcode_from_file_scan"
         android:enabled="false"
         android:visibility="invisible"
-        android:paddingHorizontal="@dimen/default_margin_very_large"
+        android:paddingHorizontal="@dimen/margin_very_large"
         style="@style/ButtonStyle"
         />
     <ProgressBar

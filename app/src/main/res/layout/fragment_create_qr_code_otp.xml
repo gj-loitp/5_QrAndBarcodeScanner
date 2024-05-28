@@ -14,7 +14,7 @@
         android:layout_marginHorizontal="@dimen/margin_big"
         android:text="@string/fragment_create_qr_code_otp_type_hint"
         android:textColor="@color/edit_text_hint_color"
-        android:textSize="@dimen/default_text_size_extra_small"
+        android:textSize="@dimen/text_size_extra_small"
         />
     <Spinner
         android:id="@+id/spinner_opt_types"
@@ -31,7 +31,7 @@
         android:layout_marginHorizontal="@dimen/margin_big"
         android:text="@string/fragment_create_qr_code_otp_algorithm_hint"
         android:textColor="@color/edit_text_hint_color"
-        android:textSize="@dimen/default_text_size_extra_small"
+        android:textSize="@dimen/text_size_extra_small"
         />
     <Spinner
         android:id="@+id/spinner_algorithms"
