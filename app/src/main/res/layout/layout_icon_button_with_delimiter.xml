@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:paddingHorizontal="@dimen/default_margin"
+    android:paddingHorizontal="@dimen/margin"
     android:paddingTop="@dimen/icon_button_with_delimiter_vertical_padding"
     style="@style/ClickableBackground"
     >
@@ -32,7 +32,7 @@
         android:id="@+id/text_view"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/default_margin"
+        android:layout_marginHorizontal="@dimen/margin"
         app:layout_constraintTop_toTopOf="@id/layout_image"
         app:layout_constraintBottom_toBottomOf="@id/layout_image"
         app:layout_constraintStart_toEndOf="@id/layout_image"

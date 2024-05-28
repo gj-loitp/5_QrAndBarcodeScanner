@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:paddingHorizontal="@dimen/default_margin"
+    android:paddingHorizontal="@dimen/margin"
     android:paddingTop="@dimen/icon_button_vertical_padding"
     style="@style/ClickableBackground"
     >
@@ -22,7 +22,7 @@
         android:id="@+id/text_view"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/default_margin"
+        android:layout_marginStart="@dimen/margin"
         app:layout_constraintTop_toTopOf="@id/image_view"
         app:layout_constraintBottom_toBottomOf="@id/image_view"
         app:layout_constraintStart_toEndOf="@id/image_view"

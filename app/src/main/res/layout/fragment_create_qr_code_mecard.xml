@@ -2,14 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingTop="@dimen/default_margin_small"
-    android:paddingBottom="@dimen/default_margin"
+    android:paddingTop="@dimen/margin_small"
+    android:paddingBottom="@dimen/margin"
     android:orientation="vertical">
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/default_margin"
+        android:layout_marginHorizontal="@dimen/margin"
         style="@style/TextInputLayoutStyle"
         >
         <EditText
@@ -30,8 +30,8 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/default_margin_small"
-        android:layout_marginHorizontal="@dimen/default_margin"
+        android:layout_marginTop="@dimen/margin_small"
+        android:layout_marginHorizontal="@dimen/margin"
         style="@style/TextInputLayoutStyle"
         >
         <EditText
@@ -52,8 +52,8 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/default_margin_small"
-        android:layout_marginHorizontal="@dimen/default_margin"
+        android:layout_marginTop="@dimen/margin_small"
+        android:layout_marginHorizontal="@dimen/margin"
         style="@style/TextInputLayoutStyle"
         >
         <EditText
@@ -74,8 +74,8 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/default_margin_small"
-        android:layout_marginHorizontal="@dimen/default_margin"
+        android:layout_marginTop="@dimen/margin_small"
+        android:layout_marginHorizontal="@dimen/margin"
         style="@style/TextInputLayoutStyle"
         >
         <EditText
@@ -97,16 +97,16 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/default_margin_big"
-        android:layout_marginHorizontal="@dimen/default_margin"
+        android:layout_marginTop="@dimen/margin_big"
+        android:layout_marginHorizontal="@dimen/margin"
         android:text="@string/fragment_create_barcode_alternative"
         style="@style/SettingsGroupTitleTextViewStyle"
         />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/default_margin_small"
-        android:layout_marginHorizontal="@dimen/default_margin"
+        android:layout_marginTop="@dimen/margin_small"
+        android:layout_marginHorizontal="@dimen/margin"
         android:text="@string/fragment_create_qr_code_contact_alternative"
         style="@style/CreateBarcodeFragmentAlternativeTextViewStyle"
         />

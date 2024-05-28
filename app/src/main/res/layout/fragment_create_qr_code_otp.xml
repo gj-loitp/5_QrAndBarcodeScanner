@@ -10,8 +10,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/default_margin_small"
-        android:layout_marginHorizontal="@dimen/default_margin_big"
+        android:layout_marginTop="@dimen/margin_small"
+        android:layout_marginHorizontal="@dimen/margin_big"
         android:text="@string/fragment_create_qr_code_otp_type_hint"
         android:textColor="@color/edit_text_hint_color"
         android:textSize="@dimen/default_text_size_extra_small"
@@ -20,15 +20,15 @@
         android:id="@+id/spinner_opt_types"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/default_margin_small"
-        android:layout_marginHorizontal="@dimen/default_margin_medium"
+        android:layout_marginTop="@dimen/margin_small"
+        android:layout_marginHorizontal="@dimen/margin_medium"
         />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/default_margin_medium"
-        android:layout_marginHorizontal="@dimen/default_margin_big"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:layout_marginHorizontal="@dimen/margin_big"
         android:text="@string/fragment_create_qr_code_otp_algorithm_hint"
         android:textColor="@color/edit_text_hint_color"
         android:textSize="@dimen/default_text_size_extra_small"
@@ -37,15 +37,15 @@
         android:id="@+id/spinner_algorithms"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/default_margin_small"
-        android:layout_marginHorizontal="@dimen/default_margin_medium"
+        android:layout_marginTop="@dimen/margin_small"
+        android:layout_marginHorizontal="@dimen/margin_medium"
         />
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/default_margin_medium"
-        android:layout_marginHorizontal="@dimen/default_margin"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:layout_marginHorizontal="@dimen/margin"
         style="@style/TextInputLayoutStyle"
         >
         <EditText
@@ -66,8 +66,8 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/default_margin_medium"
-        android:layout_marginHorizontal="@dimen/default_margin"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:layout_marginHorizontal="@dimen/margin"
         style="@style/TextInputLayoutStyle"
         >
         <EditText
@@ -87,8 +87,8 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/default_margin_medium"
-        android:layout_marginHorizontal="@dimen/default_margin"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:layout_marginHorizontal="@dimen/margin"
         style="@style/TextInputLayoutStyle"
         >
         <EditText
@@ -109,8 +109,8 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/default_margin_medium"
-        android:layout_marginHorizontal="@dimen/default_margin"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:layout_marginHorizontal="@dimen/margin"
         style="@style/TextInputLayoutStyle"
         >
         <EditText
@@ -132,8 +132,8 @@
         android:id="@+id/text_input_layout_counter"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/default_margin_medium"
-        android:layout_marginHorizontal="@dimen/default_margin"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:layout_marginHorizontal="@dimen/margin"
         style="@style/TextInputLayoutStyle"
         >
         <EditText
@@ -154,8 +154,8 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/default_margin_medium"
-        android:layout_marginHorizontal="@dimen/default_margin"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:layout_marginHorizontal="@dimen/margin"
         style="@style/TextInputLayoutStyle"
         >
         <EditText
@@ -173,9 +173,9 @@
         android:id="@+id/button_generate_random_secret"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/default_margin_medium"
-        android:layout_marginBottom="@dimen/default_margin"
-        android:layout_marginHorizontal="@dimen/default_margin"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:layout_marginBottom="@dimen/margin"
+        android:layout_marginHorizontal="@dimen/margin"
         android:text="@string/fragment_create_qr_code_otp_generate_random_secret"
         style="@style/ButtonStyle"
         />

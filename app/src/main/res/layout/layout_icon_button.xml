@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:paddingHorizontal="@dimen/default_margin"
+    android:paddingHorizontal="@dimen/margin"
     android:paddingVertical="@dimen/icon_button_vertical_padding"
     style="@style/ClickableBackground"
     >
@@ -31,7 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:layout_marginStart="@dimen/default_margin"
+        android:layout_marginStart="@dimen/margin"
         android:ellipsize="end"
         android:textColor="@color/color_icon_button_icon_and_text"
         tools:text="Copy"

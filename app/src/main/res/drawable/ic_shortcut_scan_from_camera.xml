@@ -9,10 +9,10 @@
 
     <item
         android:drawable="@drawable/ic_scan_white"
-        android:top="@dimen/default_margin_small"
-        android:left="@dimen/default_margin_small"
-        android:right="@dimen/default_margin_small"
-        android:bottom="@dimen/default_margin_small"
+        android:top="@dimen/margin_small"
+        android:left="@dimen/margin_small"
+        android:right="@dimen/margin_small"
+        android:bottom="@dimen/margin_small"
         />
 
 </layer-list>

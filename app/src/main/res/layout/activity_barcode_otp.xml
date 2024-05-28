@@ -25,7 +25,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/default_margin"
+            android:padding="@dimen/margin"
             android:orientation="vertical"
             >
 
@@ -45,7 +45,7 @@
                 android:id="@+id/text_view_counter"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/default_margin"
+                android:layout_marginTop="@dimen/margin"
                 android:gravity="center"
                 android:visibility="gone"
                 style="@style/DefaultTextViewStyle"
@@ -54,7 +54,7 @@
                 android:id="@+id/button_refresh"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/default_margin"
+                android:layout_marginTop="@dimen/margin"
                 android:visibility="gone"
                 android:text="@string/activity_barcode_otp_refresh_otp"
                 style="@style/ButtonStyle"
@@ -65,7 +65,7 @@
                 android:id="@+id/text_view_timer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/default_margin"
+                android:layout_marginTop="@dimen/margin"
                 android:gravity="center"
                 android:visibility="gone"
                 style="@style/DefaultTextViewStyle"

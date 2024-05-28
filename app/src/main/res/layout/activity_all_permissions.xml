@@ -31,9 +31,9 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/default_margin"
-                android:layout_marginBottom="@dimen/default_margin_small"
-                android:layout_marginHorizontal="@dimen/default_margin"
+                android:layout_marginTop="@dimen/margin"
+                android:layout_marginBottom="@dimen/margin_small"
+                android:layout_marginHorizontal="@dimen/margin"
                 android:text="@string/activity_all_permissions_normal_permissions"
                 style="@style/SettingsGroupTitleTextViewStyle"
                 />
@@ -66,9 +66,9 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/default_margin"
-                android:layout_marginBottom="@dimen/default_margin_small"
-                android:layout_marginHorizontal="@dimen/default_margin"
+                android:layout_marginTop="@dimen/margin"
+                android:layout_marginBottom="@dimen/margin_small"
+                android:layout_marginHorizontal="@dimen/margin"
                 android:text="@string/activity_all_permissions_runtime_permissions"
                 style="@style/SettingsGroupTitleTextViewStyle"
                 />

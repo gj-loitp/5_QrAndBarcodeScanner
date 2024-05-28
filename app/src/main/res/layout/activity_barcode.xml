@@ -25,7 +25,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="@dimen/default_margin"
+            android:paddingBottom="@dimen/margin"
             android:orientation="vertical"
             >
 
@@ -34,10 +34,10 @@
                 android:id="@+id/layout_barcode_image_background"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/default_margin"
-                android:layout_marginBottom="@dimen/default_margin"
-                android:layout_marginHorizontal="@dimen/default_margin"
-                android:padding="@dimen/default_margin_medium2"
+                android:layout_marginTop="@dimen/margin"
+                android:layout_marginBottom="@dimen/margin"
+                android:layout_marginHorizontal="@dimen/margin"
+                android:padding="@dimen/margin_medium2"
                 android:visibility="gone"
                 >
                 <com.mckimquyen.barcodescanner.feature.common.view.SquareImageView
@@ -53,7 +53,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/default_margin_small"
+                android:layout_marginTop="@dimen/margin_small"
                 android:orientation="horizontal"
                 >
                 <TextView
@@ -61,7 +61,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:layout_marginStart="@dimen/default_margin"
+                    android:layout_marginStart="@dimen/margin"
                     tools:text="01.09.1993 12:00"
                     android:layout_gravity="center"
                     style="@style/SecondaryTextViewStyle"
@@ -70,7 +70,7 @@
                     android:id="@+id/button_edit_name"
                     android:layout_width="@dimen/icon_edit_barcode_name_size"
                     android:layout_height="@dimen/icon_edit_barcode_name_size"
-                    android:layout_marginEnd="@dimen/default_margin"
+                    android:layout_marginEnd="@dimen/margin"
                     android:layout_gravity="center"
                     android:src="@drawable/ic_edit"
                     app:tint="@color/toolbar_menu_color"
@@ -82,8 +82,8 @@
                 android:id="@+id/text_view_barcode_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/default_margin_small"
-                android:layout_marginHorizontal="@dimen/default_margin"
+                android:layout_marginTop="@dimen/margin_small"
+                android:layout_marginHorizontal="@dimen/margin"
                 tools:text="Name"
                 style="@style/DefaultTextViewStyle"
                 />
@@ -91,8 +91,8 @@
                 android:id="@+id/text_view_barcode_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/default_margin_small"
-                android:layout_marginHorizontal="@dimen/default_margin"
+                android:layout_marginTop="@dimen/margin_small"
+                android:layout_marginHorizontal="@dimen/margin"
                 android:lineSpacingMultiplier="1.2"
                 android:autoLink="all"
                 android:textColorLink="@color/blue"
@@ -103,8 +103,8 @@
                 android:id="@+id/text_view_country"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/default_margin_small"
-                android:layout_marginStart="@dimen/default_margin"
+                android:layout_marginTop="@dimen/margin_small"
+                android:layout_marginStart="@dimen/margin"
                 tools:text="Russia"
                 android:visibility="gone"
                 tools:visibility="visible"
@@ -113,7 +113,7 @@
             <View
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/default_margin_medium"
+                android:layout_marginBottom="@dimen/margin_medium"
                 />
 
             <!--Specific buttons-->
