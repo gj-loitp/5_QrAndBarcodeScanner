@@ -55,7 +55,7 @@ class CreateQrCodeOtpFragment : BaseCreateBarcodeFragment() {
 
     private fun initOtpTypesSpinner() {
         spinner_opt_types.adapter = ArrayAdapter.createFromResource(
-            requireContext(), R.array.fragment_create_qr_code_otp_types, R.layout.item_spinner
+            requireContext(), R.array.fragment_create_qr_code_otp_types, R.layout.i_spinner
         ).apply {
             setDropDownViewResource(R.layout.i_spinner_dropdown)
         }
@@ -73,7 +73,7 @@ class CreateQrCodeOtpFragment : BaseCreateBarcodeFragment() {
 
     private fun initAlgorithmsSpinner() {
         spinner_algorithms.adapter = ArrayAdapter.createFromResource(
-            requireContext(), R.array.fragment_create_qr_code_otp_algorithms, R.layout.item_spinner
+            requireContext(), R.array.fragment_create_qr_code_otp_algorithms, R.layout.i_spinner
         ).apply {
             setDropDownViewResource(R.layout.i_spinner_dropdown)
         }

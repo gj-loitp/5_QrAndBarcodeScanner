@@ -46,7 +46,7 @@ class CreateQrCodeWifiFragment : BaseCreateBarcodeFragment() {
 
     private fun initEncryptionTypesSpinner() {
         spinner_encryption.adapter = ArrayAdapter.createFromResource(
-            requireContext(), R.array.fragment_create_qr_code_wifi_encryption_types, R.layout.item_spinner
+            requireContext(), R.array.fragment_create_qr_code_wifi_encryption_types, R.layout.i_spinner
         ).apply {
             setDropDownViewResource(R.layout.i_spinner_dropdown)
         }

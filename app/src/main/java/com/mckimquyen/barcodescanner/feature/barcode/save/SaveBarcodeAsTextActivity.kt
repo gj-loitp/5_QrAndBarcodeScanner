@@ -75,7 +75,7 @@ class SaveBarcodeAsTextActivity : BaseActivity() {
 
     private fun initFormatSpinner() {
         spinner_save_as.adapter = ArrayAdapter.createFromResource(
-            this, R.array.activity_save_barcode_as_text_formats, R.layout.item_spinner
+            this, R.array.activity_save_barcode_as_text_formats, R.layout.i_spinner
         ).apply {
             setDropDownViewResource(R.layout.i_spinner_dropdown)
         }
