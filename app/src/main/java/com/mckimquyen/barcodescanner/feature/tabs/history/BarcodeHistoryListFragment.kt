@@ -18,7 +18,7 @@ import io.reactivex.BackpressureStrategy
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
-import kotlinx.android.synthetic.main.fragment_barcode_history_list.*
+import kotlinx.android.synthetic.main.f_barcode_history_list.*
 
 class BarcodeHistoryListFragment : Fragment(), BarcodeHistoryAdapter.Listener {
 
@@ -49,7 +49,7 @@ class BarcodeHistoryListFragment : Fragment(), BarcodeHistoryAdapter.Listener {
     private val scanHistoryAdapter = BarcodeHistoryAdapter(this)
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_barcode_history_list, container, false)
+        return inflater.inflate(R.layout.f_barcode_history_list, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -68,7 +68,7 @@ class BarcodeHistoryListFragment : Fragment(), BarcodeHistoryAdapter.Listener {
     }
 
     private fun initRecyclerView() {
-        recycler_view_history.apply {
+        recyclerViewHistory.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = scanHistoryAdapter
         }

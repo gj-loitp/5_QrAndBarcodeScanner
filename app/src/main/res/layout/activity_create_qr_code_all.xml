@@ -29,7 +29,7 @@
             android:orientation="vertical"
             >
             <com.mckimquyen.barcodescanner.feature.common.view.IconButtonWithDelimiter
-                android:id="@+id/button_text"
+                android:id="@+id/buttonText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:icon="@drawable/ic_text"
@@ -37,7 +37,7 @@
                 app:text="@string/fragment_create_barcode_qr_code_text"
                 />
             <com.mckimquyen.barcodescanner.feature.common.view.IconButtonWithDelimiter
-                android:id="@+id/button_url"
+                android:id="@+id/buttonUrl"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:icon="@drawable/ic_link"
@@ -45,7 +45,7 @@
                 app:text="@string/barcode_schema_url"
                 />
             <com.mckimquyen.barcodescanner.feature.common.view.IconButtonWithDelimiter
-                android:id="@+id/button_wifi"
+                android:id="@+id/buttonWifi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:icon="@drawable/ic_wifi"
@@ -53,7 +53,7 @@
                 app:text="@string/barcode_schema_wifi"
                 />
             <com.mckimquyen.barcodescanner.feature.common.view.IconButtonWithDelimiter
-                android:id="@+id/button_location"
+                android:id="@+id/buttonLocation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:icon="@drawable/ic_location"
@@ -69,7 +69,7 @@
                 app:text="@string/barcode_schema_otp"
                 />
             <com.mckimquyen.barcodescanner.feature.common.view.IconButtonWithDelimiter
-                android:id="@+id/button_contact_vcard"
+                android:id="@+id/buttonContactVcard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:icon="@drawable/ic_contact"
