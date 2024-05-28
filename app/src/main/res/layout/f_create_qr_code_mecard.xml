@@ -1,114 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:orientation="vertical"
     android:paddingTop="@dimen/margin_small"
-    android:paddingBottom="@dimen/margin"
-    android:orientation="vertical">
+    android:paddingBottom="@dimen/margin">
 
     <com.google.android.material.textfield.TextInputLayout
+        style="@style/TextInputLayoutStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/margin"
-        style="@style/TextInputLayoutStyle"
-        >
-        <EditText
+        android:layout_marginHorizontal="@dimen/margin">
+
+        <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/editTextFirstName"
+            style="@style/EditTextStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/blue"
             android:gravity="start|top"
-            android:lines="1"
-            android:maxLines="1"
             android:hint="@string/fragment_create_qr_code_contact_first_name_hint"
             android:imeOptions="actionNext"
-            android:backgroundTint="@color/blue"
             android:inputType="text"
-            style="@style/EditTextStyle"
-            />
+            android:lines="1"
+            android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        style="@style/TextInputLayoutStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_small"
         android:layout_marginHorizontal="@dimen/margin"
-        style="@style/TextInputLayoutStyle"
-        >
-        <EditText
+        android:layout_marginTop="@dimen/margin_small">
+
+        <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/editTextLastName"
+            style="@style/EditTextStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/blue"
             android:gravity="start|top"
-            android:lines="1"
-            android:maxLines="1"
             android:hint="@string/fragment_create_qr_code_contact_last_name_hint"
             android:imeOptions="actionNext"
-            android:backgroundTint="@color/blue"
             android:inputType="text"
-            style="@style/EditTextStyle"
-            />
+            android:lines="1"
+            android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        style="@style/TextInputLayoutStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_small"
         android:layout_marginHorizontal="@dimen/margin"
-        style="@style/TextInputLayoutStyle"
-        >
-        <EditText
+        android:layout_marginTop="@dimen/margin_small">
+
+        <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/editTextEmail"
+            style="@style/EditTextStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/blue"
             android:gravity="start|top"
-            android:lines="1"
-            android:maxLines="1"
             android:hint="@string/fragment_create_qr_code_contact_email_hint"
             android:imeOptions="actionNext"
-            android:backgroundTint="@color/blue"
             android:inputType="textEmailAddress"
-            style="@style/EditTextStyle"
-            />
+            android:lines="1"
+            android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        style="@style/TextInputLayoutStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_small"
         android:layout_marginHorizontal="@dimen/margin"
-        style="@style/TextInputLayoutStyle"
-        >
-        <EditText
+        android:layout_marginTop="@dimen/margin_small">
+
+        <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/editTextPhone"
+            style="@style/EditTextStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/blue"
+            android:digits="+0123456789"
             android:gravity="start|top"
-            android:lines="1"
-            android:maxLines="1"
             android:hint="@string/fragment_create_qr_code_contact_phone_hint"
             android:imeOptions="actionNext"
-            android:backgroundTint="@color/blue"
             android:inputType="phone"
-            android:digits="+0123456789"
-            style="@style/EditTextStyle"
-            />
+            android:lines="1"
+            android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/SettingsGroupTitleTextViewStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_big"
         android:layout_marginHorizontal="@dimen/margin"
-        android:text="@string/fragment_create_barcode_alternative"
-        style="@style/SettingsGroupTitleTextViewStyle"
-        />
-    <TextView
+        android:layout_marginTop="@dimen/margin_big"
+        android:text="@string/fragment_create_barcode_alternative" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/CreateBarcodeFragmentAlternativeTextViewStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_small"
         android:layout_marginHorizontal="@dimen/margin"
-        android:text="@string/fragment_create_qr_code_contact_alternative"
-        style="@style/CreateBarcodeFragmentAlternativeTextViewStyle"
-        />
+        android:layout_marginTop="@dimen/margin_small"
+        android:text="@string/fragment_create_qr_code_contact_alternative" />
 
-</LinearLayout>
+</androidx.appcompat.widget.LinearLayoutCompat>

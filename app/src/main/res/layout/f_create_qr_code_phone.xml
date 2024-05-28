@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingHorizontal="@dimen/margin"
+    android:paddingTop="@dimen/margin_small"
+    android:paddingBottom="@dimen/margin">
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/editText"
+        style="@style/EditTextStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/blue"
+        android:digits="+0123456789"
+        android:gravity="start|top"
+        android:hint="@string/barcode_schema_phone"
+        android:imeOptions="actionDone"
+        android:inputType="phone"
+        android:lines="1"
+        android:maxLines="1" />
+</androidx.appcompat.widget.LinearLayoutCompat>

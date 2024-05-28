@@ -1,71 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingTop="@dimen/margin_small"
-    android:paddingHorizontal="@dimen/margin"
-    android:paddingBottom="@dimen/margin"
     android:orientation="vertical"
-    >
+    android:paddingHorizontal="@dimen/margin"
+    android:paddingTop="@dimen/margin_small"
+    android:paddingBottom="@dimen/margin">
 
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         style="@style/TextInputLayoutStyle"
-        >
-        <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/editTextPhone"
+            style="@style/EditTextStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/blue"
+            android:digits="+0123456789"
             android:gravity="start|top"
-            android:lines="1"
-            android:maxLines="1"
             android:hint="@string/barcode_schema_phone"
             android:imeOptions="actionNext"
-            android:backgroundTint="@color/blue"
             android:inputType="phone"
-            android:digits="+0123456789"
-            style="@style/EditTextStyle"
-            />
+            android:lines="1"
+            android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        style="@style/TextInputLayoutStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_small"
-        style="@style/TextInputLayoutStyle"
-        >
-        <EditText
-            android:id="@+id/edit_text_subject"
+        android:layout_marginTop="@dimen/margin_small">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/editTextSubject"
+            style="@style/EditTextStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/blue"
             android:gravity="start|top"
             android:hint="@string/fragment_create_qr_code_mms_subject_hint"
-            android:inputType="text"
-            android:backgroundTint="@color/blue"
             android:imeOptions="actionNext"
-            style="@style/EditTextStyle"
-            />
+            android:inputType="text" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        style="@style/TextInputLayoutStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_small"
-        style="@style/TextInputLayoutStyle"
-        >
-        <EditText
+        android:layout_marginTop="@dimen/margin_small">
+
+        <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/editTextMessage"
+            style="@style/EditTextStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/blue"
             android:gravity="start|top"
             android:hint="@string/fragment_create_qr_code_mms_message_hint"
-            android:inputType="text"
-            android:backgroundTint="@color/blue"
             android:imeOptions="actionDone"
-            style="@style/EditTextStyle"
-            />
+            android:inputType="text" />
     </com.google.android.material.textfield.TextInputLayout>
 
-</LinearLayout>
+</androidx.appcompat.widget.LinearLayoutCompat>

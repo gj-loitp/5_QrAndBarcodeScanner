@@ -11,18 +11,18 @@ import com.mckimquyen.barcodescanner.extension.textString
 import com.mckimquyen.barcodescanner.feature.tabs.create.BaseCreateBarcodeFragment
 import com.mckimquyen.barcodescanner.model.schema.Geo
 import com.mckimquyen.barcodescanner.model.schema.Schema
-import kotlinx.android.synthetic.main.fragment_create_qr_code_location.*
+import kotlinx.android.synthetic.main.f_create_qr_code_location.*
 
 class CreateQrCodeLocationFragment : BaseCreateBarcodeFragment() {
 
     override val latitude: Double?
-        get() = edit_text_latitude.textString.toDoubleOrNull()
+        get() = editTextLatitude.textString.toDoubleOrNull()
 
     override val longitude: Double?
-        get() = edit_text_longitude.textString.toDoubleOrNull()
+        get() = editTextLongitude.textString.toDoubleOrNull()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_create_qr_code_location, container, false)
+        return inflater.inflate(R.layout.f_create_qr_code_location, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -33,31 +33,31 @@ class CreateQrCodeLocationFragment : BaseCreateBarcodeFragment() {
 
     override fun getBarcodeSchema(): Schema {
        return Geo(
-           latitude = edit_text_latitude.textString,
-           longitude = edit_text_longitude.textString,
-           altitude = edit_text_altitude.textString
+           latitude = editTextLatitude.textString,
+           longitude = editTextLongitude.textString,
+           altitude = editTextAltitude.textString
        )
     }
 
     override fun showLocation(latitude: Double?, longitude: Double?) {
         latitude?.apply {
-            edit_text_latitude.setText(latitude.toString())
+            editTextLatitude.setText(latitude.toString())
         }
         longitude?.apply {
-            edit_text_longitude.setText(longitude.toString())
+            editTextLongitude.setText(longitude.toString())
         }
     }
 
     private fun initLatitudeEditText() {
-        edit_text_latitude.requestFocus()
+        editTextLatitude.requestFocus()
     }
 
     private fun handleTextChanged() {
-        edit_text_latitude.addTextChangedListener { toggleCreateBarcodeButton() }
-        edit_text_longitude.addTextChangedListener { toggleCreateBarcodeButton() }
+        editTextLatitude.addTextChangedListener { toggleCreateBarcodeButton() }
+        editTextLongitude.addTextChangedListener { toggleCreateBarcodeButton() }
     }
 
     private fun toggleCreateBarcodeButton() {
-        parentActivity.isCreateBarcodeButtonEnabled = edit_text_latitude.isNotBlank() && edit_text_longitude.isNotBlank()
+        parentActivity.isCreateBarcodeButtonEnabled = editTextLatitude.isNotBlank() && editTextLongitude.isNotBlank()
     }
 }
