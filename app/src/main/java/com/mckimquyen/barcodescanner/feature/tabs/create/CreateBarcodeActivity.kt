@@ -80,7 +80,7 @@ class CreateBarcodeActivity : BaseActivity(), AppAdapter.Listener {
                 R.drawable.ic_confirm_disabled
             }
 
-            toolbar.menu?.findItem(R.id.item_create_barcode)?.apply {
+            toolbar.menu?.findItem(R.id.itemCreateBarcode)?.apply {
                 icon = ContextCompat.getDrawable(this@CreateBarcodeActivity, iconId)
                 isEnabled = enabled
             }
@@ -201,9 +201,9 @@ class CreateBarcodeActivity : BaseActivity(), AppAdapter.Listener {
     private fun handleToolbarMenuItemClicked() {
         toolbar.setOnMenuItemClickListener { item ->
             when (item.itemId) {
-                R.id.item_phone -> choosePhone()
-                R.id.item_contacts -> requestContactsPermissions()
-                R.id.item_create_barcode -> createBarcode()
+                R.id.itemPhone -> choosePhone()
+                R.id.itemContacts -> requestContactsPermissions()
+                R.id.itemCreateBarcode -> createBarcode()
             }
             return@setOnMenuItemClickListener true
         }

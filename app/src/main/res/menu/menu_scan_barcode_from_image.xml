@@ -1,27 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    >
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="AlwaysShowAction">
     <item
-        android:id="@+id/item_rotate_left"
-        android:title="@string/activity_scan_barcode_from_file_rotate_left"
+        android:id="@+id/itemRotateLeft"
         android:icon="@drawable/ic_rotate_left"
+        android:title="@string/activity_scan_barcode_from_file_rotate_left"
         app:iconTint="@color/toolbar_menu_color"
-        app:showAsAction="ifRoom"
-        />
+        app:showAsAction="always" />
     <item
-        android:id="@+id/item_rotate_right"
-        android:title="@string/activity_scan_barcode_from_file_rotate_right"
+        android:id="@+id/itemRotateRight"
         android:icon="@drawable/ic_rotate_right"
+        android:title="@string/activity_scan_barcode_from_file_rotate_right"
         app:iconTint="@color/toolbar_menu_color"
-        app:showAsAction="ifRoom"
-        />
+        app:showAsAction="always" />
     <item
-        android:id="@+id/item_change_image"
-        android:title="@string/activity_scan_barcode_from_file_change_image"
+        android:id="@+id/itemChangeImage"
         android:icon="@drawable/ic_image_black"
+        android:title="@string/activity_scan_barcode_from_file_change_image"
         app:iconTint="@color/toolbar_menu_color"
-        app:showAsAction="ifRoom"
-        />
+        app:showAsAction="always" />
 </menu>

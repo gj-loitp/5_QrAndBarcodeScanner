@@ -143,9 +143,9 @@ class ScanBarcodeFromFileActivity : BaseActivity() {
     private fun handleToolbarMenuItemClicked() {
         toolbar.setOnMenuItemClickListener { item ->
             when (item.itemId) {
-                R.id.item_rotate_left -> crop_image_view.rotateImage(CropImageView.RotateDegrees.ROTATE_M90D)
-                R.id.item_rotate_right -> crop_image_view.rotateImage(CropImageView.RotateDegrees.ROTATE_90D)
-                R.id.item_change_image -> startChooseImageActivityAgain()
+                R.id.itemRotateLeft -> crop_image_view.rotateImage(CropImageView.RotateDegrees.ROTATE_M90D)
+                R.id.itemRotateRight -> crop_image_view.rotateImage(CropImageView.RotateDegrees.ROTATE_90D)
+                R.id.itemChangeImage -> startChooseImageActivityAgain()
             }
             return@setOnMenuItemClickListener true
         }
