@@ -41,7 +41,7 @@ class CreateQrCodeCryptocurrencyFragment : BaseCreateBarcodeFragment() {
             address = edit_text_address.textString,
             label = edit_text_label.textString,
             amount = edit_text_amount.textString,
-            message = edit_text_message.textString
+            message = editTextMessage.textString
         )
     }
 
@@ -58,7 +58,7 @@ class CreateQrCodeCryptocurrencyFragment : BaseCreateBarcodeFragment() {
     }
 
     private fun handleTextChanged() {
-        listOf(edit_text_address, edit_text_amount, edit_text_label, edit_text_message).forEach { editText ->
+        listOf(edit_text_address, edit_text_amount, edit_text_label, editTextMessage).forEach { editText ->
             editText.addTextChangedListener { toggleCreateBarcodeButton() }
         }
     }

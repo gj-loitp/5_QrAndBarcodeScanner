@@ -11,12 +11,12 @@ import com.mckimquyen.barcodescanner.extension.textString
 import com.mckimquyen.barcodescanner.feature.tabs.create.BaseCreateBarcodeFragment
 import com.mckimquyen.barcodescanner.model.schema.Schema
 import com.mckimquyen.barcodescanner.model.schema.Url
-import kotlinx.android.synthetic.main.fragment_create_qr_code_url.*
+import kotlinx.android.synthetic.main.f_create_qr_code_url.*
 
 class CreateQrCodeUrlFragment : BaseCreateBarcodeFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_create_qr_code_url, container, false)
+        return inflater.inflate(R.layout.f_create_qr_code_url, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

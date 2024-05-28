@@ -20,23 +20,23 @@ class CreateQrCodeMeCardFragment : BaseCreateBarcodeFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        edit_text_first_name.requestFocus()
+        editTextFirstName.requestFocus()
         parentActivity.isCreateBarcodeButtonEnabled = true
     }
 
     override fun getBarcodeSchema(): Schema {
         return MeCard(
-            firstName = edit_text_first_name.textString,
-            lastName = edit_text_last_name.textString,
-            email = edit_text_email.textString,
-            phone = edit_text_phone.textString
+            firstName = editTextFirstName.textString,
+            lastName = editTextLastName.textString,
+            email = editTextEmail.textString,
+            phone = editTextPhone.textString
         )
     }
 
     override fun showContact(contact: Contact) {
-        edit_text_first_name.setText(contact.firstName)
-        edit_text_last_name.setText(contact.lastName)
-        edit_text_email.setText(contact.email)
-        edit_text_phone.setText(contact.phone)
+        editTextFirstName.setText(contact.firstName)
+        editTextLastName.setText(contact.lastName)
+        editTextEmail.setText(contact.email)
+        editTextPhone.setText(contact.phone)
     }
 }

@@ -26,7 +26,7 @@ class CreateQrCodeMmsFragment : BaseCreateBarcodeFragment() {
     }
 
     override fun showPhone(phone: String) {
-        edit_text_phone.apply {
+        editTextPhone.apply {
             setText(phone)
             setSelection(phone.length)
         }
@@ -34,23 +34,23 @@ class CreateQrCodeMmsFragment : BaseCreateBarcodeFragment() {
 
     override fun getBarcodeSchema(): Schema {
         return Mms(
-            phone = edit_text_phone.textString,
+            phone = editTextPhone.textString,
             subject = edit_text_subject.textString,
-            message = edit_text_message.textString
+            message = editTextMessage.textString
         )
     }
 
     private fun initTitleEditText() {
-        edit_text_phone.requestFocus()
+        editTextPhone.requestFocus()
     }
 
     private fun handleTextChanged() {
-        edit_text_phone.addTextChangedListener { toggleCreateBarcodeButton() }
+        editTextPhone.addTextChangedListener { toggleCreateBarcodeButton() }
         edit_text_subject.addTextChangedListener { toggleCreateBarcodeButton() }
-        edit_text_message.addTextChangedListener { toggleCreateBarcodeButton() }
+        editTextMessage.addTextChangedListener { toggleCreateBarcodeButton() }
     }
 
     private fun toggleCreateBarcodeButton() {
-        parentActivity.isCreateBarcodeButtonEnabled = edit_text_phone.isNotBlank() || edit_text_subject.isNotBlank() || edit_text_message.isNotBlank()
+        parentActivity.isCreateBarcodeButtonEnabled = editTextPhone.isNotBlank() || edit_text_subject.isNotBlank() || editTextMessage.isNotBlank()
     }
 }

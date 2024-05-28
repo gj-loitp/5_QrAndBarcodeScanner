@@ -15,7 +15,7 @@
         style="@style/TextInputLayoutStyle"
         >
         <EditText
-            android:id="@+id/edit_text_email"
+            android:id="@+id/editTextEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="start|top"
@@ -55,7 +55,7 @@
         style="@style/TextInputLayoutStyle"
         >
         <EditText
-            android:id="@+id/edit_text_message"
+            android:id="@+id/editTextMessage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="start|top"

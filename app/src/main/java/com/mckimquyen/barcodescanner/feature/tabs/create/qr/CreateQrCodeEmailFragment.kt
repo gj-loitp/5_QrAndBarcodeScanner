@@ -27,23 +27,23 @@ class CreateQrCodeEmailFragment : BaseCreateBarcodeFragment() {
 
     override fun getBarcodeSchema(): Schema {
         return Email(
-            email = edit_text_email.textString,
+            email = editTextEmail.textString,
             subject = edit_text_subject.textString,
-            body = edit_text_message.textString
+            body = editTextMessage.textString
         )
     }
 
     private fun initTitleEditText() {
-        edit_text_email.requestFocus()
+        editTextEmail.requestFocus()
     }
 
     private fun handleTextChanged() {
-        edit_text_email.addTextChangedListener { toggleCreateBarcodeButton() }
+        editTextEmail.addTextChangedListener { toggleCreateBarcodeButton() }
         edit_text_subject.addTextChangedListener { toggleCreateBarcodeButton() }
-        edit_text_message.addTextChangedListener { toggleCreateBarcodeButton() }
+        editTextMessage.addTextChangedListener { toggleCreateBarcodeButton() }
     }
 
     private fun toggleCreateBarcodeButton() {
-        parentActivity.isCreateBarcodeButtonEnabled = edit_text_email.isNotBlank() || edit_text_subject.isNotBlank() || edit_text_message.isNotBlank()
+        parentActivity.isCreateBarcodeButtonEnabled = editTextEmail.isNotBlank() || edit_text_subject.isNotBlank() || editTextMessage.isNotBlank()
     }
 }

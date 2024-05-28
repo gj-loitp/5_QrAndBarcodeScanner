@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingHorizontal="@dimen/margin"
+    android:paddingTop="@dimen/margin_small"
+    android:paddingBottom="@dimen/margin">
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/editText"
+        style="@style/EditTextStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/blue"
+        android:gravity="start|top"
+        android:hint="@string/barcode_schema_url"
+        android:imeOptions="actionDone"
+        android:inputType="textUri"
+        android:lines="1"
+        android:maxLines="1" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/SettingsGroupTitleTextViewStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_big"
+        android:text="@string/fragment_create_barcode_alternative" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/CreateBarcodeFragmentAlternativeTextViewStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_small"
+        android:text="@string/fragment_create_qr_code_url_alternative" />
+</androidx.appcompat.widget.LinearLayoutCompat>

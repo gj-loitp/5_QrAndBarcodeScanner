@@ -11,12 +11,12 @@ import com.mckimquyen.barcodescanner.extension.textString
 import com.mckimquyen.barcodescanner.feature.tabs.create.BaseCreateBarcodeFragment
 import com.mckimquyen.barcodescanner.model.schema.Schema
 import com.mckimquyen.barcodescanner.model.schema.Sms
-import kotlinx.android.synthetic.main.fragment_create_qr_code_sms.*
+import kotlinx.android.synthetic.main.f_create_qr_code_sms.*
 
 class CreateQrCodeSmsFragment : BaseCreateBarcodeFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_create_qr_code_sms, container, false)
+        return inflater.inflate(R.layout.f_create_qr_code_sms, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -26,29 +26,29 @@ class CreateQrCodeSmsFragment : BaseCreateBarcodeFragment() {
     }
 
     override fun showPhone(phone: String) {
-        edit_text_phone.apply {
+        editTextPhone.apply {
             setText(phone)
             setSelection(phone.length)
         }
     }
 
     override fun getBarcodeSchema(): Schema {
-       return Sms(
-           phone = edit_text_phone.textString,
-           message = edit_text_message.textString
-       )
+        return Sms(
+            phone = editTextPhone.textString,
+            message = editTextMessage.textString
+        )
     }
 
     private fun initTitleEditText() {
-        edit_text_phone.requestFocus()
+        editTextPhone.requestFocus()
     }
 
     private fun handleTextChanged() {
-        edit_text_phone.addTextChangedListener { toggleCreateBarcodeButton() }
-        edit_text_message.addTextChangedListener { toggleCreateBarcodeButton() }
+        editTextPhone.addTextChangedListener { toggleCreateBarcodeButton() }
+        editTextMessage.addTextChangedListener { toggleCreateBarcodeButton() }
     }
 
     private fun toggleCreateBarcodeButton() {
-        parentActivity.isCreateBarcodeButtonEnabled = edit_text_phone.isNotBlank() || edit_text_message.isNotBlank()
+        parentActivity.isCreateBarcodeButtonEnabled = editTextPhone.isNotBlank() || editTextMessage.isNotBlank()
     }
 }
