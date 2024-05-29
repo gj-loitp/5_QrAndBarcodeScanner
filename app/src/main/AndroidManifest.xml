@@ -53,7 +53,7 @@
         </service>
 
         <activity
-            android:name=".feature.tabs.ActivityBottomTabsBase"
+            android:name=".feature.tabs.ActivityBottomTabs"
             android:configChanges="orientation|screenSize"
             android:exported="true"
             android:screenOrientation="fullSensor">
@@ -74,7 +74,7 @@
         </activity>
 
         <activity
-            android:name=".feature.tabs.scan.file.ScanBarcodeFromFileActivityBase"
+            android:name=".feature.tabs.scan.file.ActivityScanBarcodeFromFile"
             android:configChanges="orientation|screenSize"
             android:exported="true"
             android:screenOrientation="fullSensor"
@@ -150,7 +150,7 @@
             android:screenOrientation="fullSensor" />
 
         <activity
-            android:name=".feature.tabs.history.export.ExportHistoryActivityBase"
+            android:name=".feature.tabs.history.export.ActivityExportHistory"
             android:configChanges="orientation|screenSize"
             android:exported="false"
             android:screenOrientation="fullSensor" />

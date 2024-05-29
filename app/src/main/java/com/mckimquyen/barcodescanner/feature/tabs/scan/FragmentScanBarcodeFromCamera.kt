@@ -17,7 +17,7 @@ import com.mckimquyen.barcodescanner.di.*
 import com.mckimquyen.barcodescanner.extension.*
 import com.mckimquyen.barcodescanner.feature.barcode.BarcodeActivityBase
 import com.mckimquyen.barcodescanner.feature.common.dialog.ConfirmBarcodeDialogFragment
-import com.mckimquyen.barcodescanner.feature.tabs.scan.file.ScanBarcodeFromFileActivityBase
+import com.mckimquyen.barcodescanner.feature.tabs.scan.file.ActivityScanBarcodeFromFile
 import com.mckimquyen.barcodescanner.model.Barcode
 import com.mckimquyen.barcodescanner.usecase.SupportedBarcodeFormats
 import com.mckimquyen.barcodescanner.usecase.save
@@ -32,7 +32,7 @@ import kotlinx.android.synthetic.main.f_scan_barcode_from_camera.*
 import java.util.concurrent.TimeUnit
 import com.mckimquyen.barcodescanner.R
 
-class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.Listener {
+class FragmentScanBarcodeFromCamera : Fragment(), ConfirmBarcodeDialogFragment.Listener {
 
     companion object {
         private val PERMISSIONS = arrayOf(Manifest.permission.CAMERA)
@@ -49,7 +49,11 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
     private var toast: Toast? = null
     private var lastResult: Barcode? = null
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?,
+    ): View? {
         return inflater.inflate(R.layout.f_scan_barcode_from_camera, container, false)
     }
 
@@ -74,7 +78,12 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
         }
     }
 
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+    @Deprecated("Deprecated in Java")
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray,
+    ) {
         if (requestCode == PERMISSION_REQUEST_CODE && areAllPermissionsGranted(grantResults)) {
             initZoomSeekBar()
             codeScanner.startPreview()
@@ -157,7 +166,7 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
 
     private fun initZoomSeekBar() {
         scannerCameraHelper.getCameraParameters(settings.isBackCamera)?.apply {
-            this@ScanBarcodeFromCameraFragment.maxZoom = maxZoom
+            this@FragmentScanBarcodeFromCamera.maxZoom = maxZoom
             seekBarZoom.max = maxZoom
             seekBarZoom.progress = zoom
         }
@@ -180,8 +189,11 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
         seekBarZoom.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onStartTrackingTouch(seekBar: SeekBar?) {}
             override fun onStopTrackingTouch(seekBar: SeekBar?) {}
-
-            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+            override fun onProgressChanged(
+                seekBar: SeekBar?,
+                progress: Int,
+                fromUser: Boolean,
+            ) {
                 if (fromUser) {
                     codeScanner.zoom = progress
                 }
@@ -333,7 +345,7 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
     }
 
     private fun navigateToScanFromFileScreen() {
-        ScanBarcodeFromFileActivityBase.start(requireActivity())
+        ActivityScanBarcodeFromFile.start(requireActivity())
     }
 
     private fun navigateToBarcodeScreen(barcode: Barcode) {

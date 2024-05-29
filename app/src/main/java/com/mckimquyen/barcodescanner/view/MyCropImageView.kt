@@ -1,4 +1,4 @@
-package com.mckimquyen.barcodescanner.feature.tabs.scan.file
+package com.mckimquyen.barcodescanner.view
 
 import android.content.Context
 import android.util.AttributeSet
@@ -11,8 +11,16 @@ class MyCropImageView : CropImageView {
     private val touches = PublishSubject.create<MotionEvent>()
 
     constructor(context: Context?) : super(context)
-    constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs)
-    constructor(context: Context?, attrs: AttributeSet?, defStyle: Int) : super(
+    constructor(
+        context: Context?,
+        attrs: AttributeSet?,
+    ) : super(context, attrs)
+
+    constructor(
+        context: Context?,
+        attrs: AttributeSet?,
+        defStyle: Int,
+    ) : super(
         context,
         attrs,
         defStyle

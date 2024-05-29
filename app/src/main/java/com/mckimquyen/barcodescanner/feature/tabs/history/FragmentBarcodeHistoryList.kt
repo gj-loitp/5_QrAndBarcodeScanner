@@ -20,7 +20,7 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import kotlinx.android.synthetic.main.f_barcode_history_list.*
 
-class BarcodeHistoryListFragment : Fragment(), BarcodeHistoryAdapter.Listener {
+class FragmentBarcodeHistoryList : Fragment(), AdapterBarcodeHistory.Listener {
 
     companion object {
         private const val PAGE_SIZE = 20
@@ -28,16 +28,16 @@ class BarcodeHistoryListFragment : Fragment(), BarcodeHistoryAdapter.Listener {
         private const val TYPE_FAVORITES = 1
         private const val TYPE_KEY = "TYPE_KEY"
 
-        fun newInstanceAll(): BarcodeHistoryListFragment {
-            return BarcodeHistoryListFragment().apply {
+        fun newInstanceAll(): FragmentBarcodeHistoryList {
+            return FragmentBarcodeHistoryList().apply {
                 arguments = Bundle().apply {
                     putInt(TYPE_KEY, TYPE_ALL)
                 }
             }
         }
 
-        fun newInstanceFavorites(): BarcodeHistoryListFragment {
-            return BarcodeHistoryListFragment().apply {
+        fun newInstanceFavorites(): FragmentBarcodeHistoryList {
+            return FragmentBarcodeHistoryList().apply {
                 arguments = Bundle().apply {
                     putInt(TYPE_KEY, TYPE_FAVORITES)
                 }
@@ -46,9 +46,13 @@ class BarcodeHistoryListFragment : Fragment(), BarcodeHistoryAdapter.Listener {
     }
 
     private val disposable = CompositeDisposable()
-    private val scanHistoryAdapter = BarcodeHistoryAdapter(this)
+    private val scanHistoryAdapter = AdapterBarcodeHistory(this)
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?,
+    ): View? {
         return inflater.inflate(R.layout.f_barcode_history_list, container, false)
     }
 

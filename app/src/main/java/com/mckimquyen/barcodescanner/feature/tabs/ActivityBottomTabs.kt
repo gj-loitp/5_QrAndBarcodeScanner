@@ -8,13 +8,13 @@ import com.mckimquyen.barcodescanner.R
 import com.mckimquyen.barcodescanner.extension.applySystemWindowInsets
 import com.mckimquyen.barcodescanner.feature.ActivityBase
 import com.mckimquyen.barcodescanner.feature.tabs.create.CreateBarcodeFragment
-import com.mckimquyen.barcodescanner.feature.tabs.history.BarcodeHistoryFragment
-import com.mckimquyen.barcodescanner.feature.tabs.scan.ScanBarcodeFromCameraFragment
+import com.mckimquyen.barcodescanner.feature.tabs.history.FragmentBarcodeHistory
+import com.mckimquyen.barcodescanner.feature.tabs.scan.FragmentScanBarcodeFromCamera
 import com.mckimquyen.barcodescanner.feature.tabs.setting.SettingsFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_bottom_tabs.*
 
-class ActivityBottomTabsBase : ActivityBase(), BottomNavigationView.OnNavigationItemSelectedListener {
+class ActivityBottomTabs : ActivityBase(), BottomNavigationView.OnNavigationItemSelectedListener {
 
     companion object {
         private const val ACTION_CREATE_BARCODE = "${BuildConfig.APPLICATION_ID}.CREATE_BARCODE"
@@ -56,7 +56,7 @@ class ActivityBottomTabsBase : ActivityBase(), BottomNavigationView.OnNavigation
 
     private fun initBottomNavigationView() {
         bottom_navigation_view.apply {
-            setOnNavigationItemSelectedListener(this@ActivityBottomTabsBase)
+            setOnNavigationItemSelectedListener(this@ActivityBottomTabs)
         }
     }
 
@@ -70,9 +70,9 @@ class ActivityBottomTabsBase : ActivityBase(), BottomNavigationView.OnNavigation
 
     private fun showFragment(bottomItemId: Int) {
         val fragment = when (bottomItemId) {
-            R.id.itemScan -> ScanBarcodeFromCameraFragment()
+            R.id.itemScan -> FragmentScanBarcodeFromCamera()
             R.id.itemCreate -> CreateBarcodeFragment()
-            R.id.itemHistory -> BarcodeHistoryFragment()
+            R.id.itemHistory -> FragmentBarcodeHistory()
             R.id.itemSettings -> SettingsFragment()
             else -> null
         }

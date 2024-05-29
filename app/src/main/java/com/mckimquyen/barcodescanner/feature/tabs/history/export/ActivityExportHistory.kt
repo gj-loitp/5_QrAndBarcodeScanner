@@ -23,7 +23,7 @@ import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.a_export_history.*
 
-class ExportHistoryActivityBase : ActivityBase() {
+class ActivityExportHistory : ActivityBase() {
     private val disposable = CompositeDisposable()
 
     companion object {
@@ -31,7 +31,7 @@ class ExportHistoryActivityBase : ActivityBase() {
         private val PERMISSIONS = arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE)
 
         fun start(context: Context) {
-            val intent = Intent(context, ExportHistoryActivityBase::class.java)
+            val intent = Intent(context, ActivityExportHistory::class.java)
             context.startActivity(intent)
         }
     }
@@ -46,7 +46,11 @@ class ExportHistoryActivityBase : ActivityBase() {
         initExportButton()
     }
 
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray,
+    ) {
         if (permissionsHelper.areAllPermissionsGranted(grantResults)) {
             exportHistory()
         }
@@ -88,7 +92,11 @@ class ExportHistoryActivityBase : ActivityBase() {
     }
 
     private fun requestPermissions() {
-        permissionsHelper.requestPermissions(this, PERMISSIONS, REQUEST_PERMISSIONS_CODE)
+        permissionsHelper.requestPermissions(
+            activity = this,
+            permissions = PERMISSIONS,
+            requestCode = REQUEST_PERMISSIONS_CODE
+        )
     }
 
     private fun exportHistory() {

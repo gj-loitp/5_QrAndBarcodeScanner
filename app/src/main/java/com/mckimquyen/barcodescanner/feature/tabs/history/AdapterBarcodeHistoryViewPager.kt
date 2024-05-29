@@ -6,7 +6,8 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 import com.mckimquyen.barcodescanner.R
 
-class BarcodeHistoryViewPagerAdapter(context: Context, fragmentManager: FragmentManager) : FragmentStatePagerAdapter(fragmentManager) {
+class AdapterBarcodeHistoryViewPager(context: Context, fragmentManager: FragmentManager) :
+    FragmentStatePagerAdapter(fragmentManager) {
     private val pageTitles = context.resources.getStringArray(R.array.fragment_barcode_history_tab_titles)
 
     override fun getCount(): Int {
@@ -19,8 +20,8 @@ class BarcodeHistoryViewPagerAdapter(context: Context, fragmentManager: Fragment
 
     override fun getItem(position: Int): Fragment {
         return when (position) {
-            0 -> BarcodeHistoryListFragment.newInstanceAll()
-            1 -> BarcodeHistoryListFragment.newInstanceFavorites()
+            0 -> FragmentBarcodeHistoryList.newInstanceAll()
+            1 -> FragmentBarcodeHistoryList.newInstanceFavorites()
             else -> throw IllegalArgumentException("No fragment for position greater than 1")
         }
     }

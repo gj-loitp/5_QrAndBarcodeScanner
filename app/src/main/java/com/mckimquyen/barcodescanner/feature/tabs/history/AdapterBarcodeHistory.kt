@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.core.content.ContextCompat
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.paging.PagedListAdapter
@@ -19,7 +20,8 @@ import kotlinx.android.synthetic.main.i_barcode_history.view.*
 import java.text.SimpleDateFormat
 import java.util.*
 
-class BarcodeHistoryAdapter(private val listener: Listener) : PagedListAdapter<Barcode, BarcodeHistoryAdapter.ViewHolder>(DiffUtilCallback) {
+class AdapterBarcodeHistory(private val listener: Listener) :
+    PagedListAdapter<Barcode, AdapterBarcodeHistory.ViewHolder>(DiffUtilCallback) {
 
     interface Listener {
         fun onBarcodeClicked(barcode: Barcode)
@@ -35,13 +37,19 @@ class BarcodeHistoryAdapter(private val listener: Listener) : PagedListAdapter<B
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         getItem(position)?.also { barcode ->
-            holder.show(barcode, position == itemCount.dec())
+            holder.show(
+                barcode = barcode,
+                isLastItem = position == itemCount.dec()
+            )
         }
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun show(barcode: Barcode, isLastItem: Boolean) {
+        fun show(
+            barcode: Barcode,
+            isLastItem: Boolean,
+        ) {
             showDate(barcode)
             showFormat(barcode)
             showText(barcode)
@@ -72,7 +80,8 @@ class BarcodeHistoryAdapter(private val listener: Listener) : PagedListAdapter<B
 
         private fun showImageBackgroundColor(barcode: Barcode) {
             val colorId = barcode.format.toColorId()
-            val color = itemView.context.resources.getColor(colorId)
+//            val color = itemView.context.resources.getColor(colorId)
+            val color = ContextCompat.getColor(itemView.context, colorId)
             (itemView.layoutImage.background.mutate() as GradientDrawable).setColor(color)
         }
 
@@ -93,11 +102,17 @@ class BarcodeHistoryAdapter(private val listener: Listener) : PagedListAdapter<B
 
     private object DiffUtilCallback : DiffUtil.ItemCallback<Barcode>() {
 
-        override fun areItemsTheSame(oldItem: Barcode, newItem: Barcode): Boolean {
+        override fun areItemsTheSame(
+            oldItem: Barcode,
+            newItem: Barcode,
+        ): Boolean {
             return oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(oldItem: Barcode, newItem: Barcode): Boolean {
+        override fun areContentsTheSame(
+            oldItem: Barcode,
+            newItem: Barcode,
+        ): Boolean {
             return oldItem == newItem
         }
     }

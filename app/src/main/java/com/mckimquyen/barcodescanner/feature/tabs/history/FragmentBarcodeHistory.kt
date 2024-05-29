@@ -10,7 +10,7 @@ import com.mckimquyen.barcodescanner.di.barcodeDatabase
 import com.mckimquyen.barcodescanner.extension.applySystemWindowInsets
 import com.mckimquyen.barcodescanner.extension.showError
 import com.mckimquyen.barcodescanner.feature.common.dialog.DeleteConfirmationDialogFragment
-import com.mckimquyen.barcodescanner.feature.tabs.history.export.ExportHistoryActivityBase
+import com.mckimquyen.barcodescanner.feature.tabs.history.export.ActivityExportHistory
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
@@ -18,10 +18,14 @@ import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.f_barcode_history.*
 
 
-class BarcodeHistoryFragment : Fragment(), DeleteConfirmationDialogFragment.Listener {
+class FragmentBarcodeHistory : Fragment(), DeleteConfirmationDialogFragment.Listener {
     private val disposable = CompositeDisposable()
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?,
+    ): View? {
         return inflater.inflate(R.layout.f_barcode_history, container, false)
     }
 
@@ -46,7 +50,7 @@ class BarcodeHistoryFragment : Fragment(), DeleteConfirmationDialogFragment.List
     }
 
     private fun initTabs() {
-        viewPager.adapter = BarcodeHistoryViewPagerAdapter(requireContext(), childFragmentManager)
+        viewPager.adapter = AdapterBarcodeHistoryViewPager(requireContext(), childFragmentManager)
         tabLayout.setupWithViewPager(viewPager)
     }
 
@@ -61,7 +65,7 @@ class BarcodeHistoryFragment : Fragment(), DeleteConfirmationDialogFragment.List
     }
 
     private fun navigateToExportHistoryScreen() {
-        ExportHistoryActivityBase.start(requireActivity())
+        ActivityExportHistory.start(requireActivity())
     }
 
     private fun showDeleteHistoryConfirmationDialog() {

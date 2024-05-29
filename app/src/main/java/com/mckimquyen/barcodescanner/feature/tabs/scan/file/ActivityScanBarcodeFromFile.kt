@@ -28,7 +28,7 @@ import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.a_scan_barcode_from_file.*
 import java.util.concurrent.TimeUnit
 
-class ScanBarcodeFromFileActivityBase : ActivityBase() {
+class ActivityScanBarcodeFromFile : ActivityBase() {
 
     companion object {
         private const val CHOOSE_FILE_REQUEST_CODE = 12
@@ -37,7 +37,7 @@ class ScanBarcodeFromFileActivityBase : ActivityBase() {
         private val PERMISSIONS = arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE)
 
         fun start(context: Context) {
-            val intent = Intent(context, ScanBarcodeFromFileActivityBase::class.java)
+            val intent = Intent(context, ActivityScanBarcodeFromFile::class.java)
             context.startActivity(intent)
         }
     }
@@ -62,7 +62,11 @@ class ScanBarcodeFromFileActivityBase : ActivityBase() {
         }
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+    override fun onActivityResult(
+        requestCode: Int,
+        resultCode: Int,
+        data: Intent?,
+    ) {
         super.onActivityResult(requestCode, resultCode, data)
 
         if ((requestCode == CHOOSE_FILE_REQUEST_CODE || requestCode == CHOOSE_FILE_AGAIN_REQUEST_CODE) && resultCode == RESULT_OK) {
@@ -75,7 +79,11 @@ class ScanBarcodeFromFileActivityBase : ActivityBase() {
         }
     }
 
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray,
+    ) {
         if (requestCode == PERMISSIONS_REQUEST_CODE && permissionsHelper.areAllPermissionsGranted(grantResults)) {
             imageUri?.apply(::showImage)
         } else {
@@ -120,7 +128,10 @@ class ScanBarcodeFromFileActivityBase : ActivityBase() {
         startChooseImageActivity(CHOOSE_FILE_AGAIN_REQUEST_CODE, null)
     }
 
-    private fun startChooseImageActivity(requestCode: Int,  savedInstanceState: Bundle?) {
+    private fun startChooseImageActivity(
+        requestCode: Int,
+        savedInstanceState: Bundle?,
+    ) {
         if (savedInstanceState != null) {
             return
         }
