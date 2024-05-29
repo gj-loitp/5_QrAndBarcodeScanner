@@ -6,7 +6,7 @@ import com.google.zxing.BarcodeFormat
 import com.google.zxing.Result
 import com.google.zxing.ResultMetadataType
 
-object BarcodeParser {
+object ParserBarcode {
 
     fun parseResult(result: Result): Barcode {
         val schema = parseSchema(result.barcodeFormat, result.text)
@@ -24,7 +24,7 @@ object BarcodeParser {
     fun parseSchema(format: BarcodeFormat, text: String): Schema {
         if (format != BarcodeFormat.QR_CODE) {
             return BoardingPass.parse(text)
-                   ?:Other(text)
+                ?: Other(text)
         }
 
         return App.parse(text)

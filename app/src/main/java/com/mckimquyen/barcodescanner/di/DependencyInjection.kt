@@ -11,7 +11,7 @@ val RApp.settings
 
 
 val AppCompatActivity.barcodeParser
-    get() = BarcodeParser
+    get() = ParserBarcode
 
 val AppCompatActivity.barcodeImageScanner
     get() = BarcodeImageScanner
@@ -20,10 +20,10 @@ val AppCompatActivity.barcodeImageGenerator
     get() = BarcodeImageGenerator
 
 val AppCompatActivity.barcodeSaver
-    get() = BarcodeSaver
+    get() = SaverBarcode
 
 val AppCompatActivity.barcodeImageSaver
-    get() = BarcodeImageSaver
+    get() = SaverBarcodeImage
 
 val AppCompatActivity.wifiConnector
     get() = WifiConnector
@@ -38,7 +38,7 @@ val AppCompatActivity.settings
     get() = Settings.getInstance(this)
 
 val AppCompatActivity.contactHelper
-    get() = ContactHelper
+    get() = HelperContact
 
 val AppCompatActivity.permissionsHelper
     get() = HelperPermissions
@@ -51,7 +51,7 @@ val Fragment.scannerCameraHelper
     get() = HelperScannerCamera
 
 val Fragment.barcodeParser
-    get() = BarcodeParser
+    get() = ParserBarcode
 
 val Fragment.barcodeDatabase
     get() = BarcodeDatabase.getInstance(requireContext())

@@ -19,11 +19,20 @@ object BarcodeImageGenerator {
         height: Int,
         margin: Int = 0,
         codeColor: Int = Color.BLACK,
-        backgroundColor: Int = Color.WHITE
+        backgroundColor: Int = Color.WHITE,
     ): Single<Bitmap> {
         return Single.create { emitter ->
             try {
-                emitter.onSuccess(generateBitmap(barcode, width, height, margin, codeColor, backgroundColor))
+                emitter.onSuccess(
+                    generateBitmap(
+                        barcode = barcode,
+                        width = width,
+                        height = height,
+                        margin = margin,
+                        codeColor = codeColor,
+                        backgroundColor = backgroundColor
+                    )
+                )
             } catch (ex: Exception) {
                 Logger.log(ex)
                 emitter.onError(ex)
@@ -37,26 +46,42 @@ object BarcodeImageGenerator {
         height: Int,
         margin: Int = 0,
         codeColor: Int = Color.BLACK,
-        backgroundColor: Int = Color.WHITE
+        backgroundColor: Int = Color.WHITE,
     ): Bitmap {
         try {
             val matrix = encoder.encode(
-                barcode.text,
-                barcode.format,
-                width,
-                height,
-                createHints(barcode.errorCorrectionLevel, margin)
+                /* contents = */ barcode.text,
+                /* format = */ barcode.format,
+                /* width = */ width,
+                /* height = */ height,
+                /* hints = */ createHints(barcode.errorCorrectionLevel, margin)
             )
-            return createBitmap(matrix, codeColor, backgroundColor)
+            return createBitmap(
+                matrix = matrix,
+                codeColor = codeColor,
+                backgroundColor = backgroundColor
+            )
         } catch (ex: Exception) {
             throw Exception("Unable to generate barcode image, ${barcode.format}, ${barcode.text}", ex)
         }
     }
 
-    fun generateSvgAsync(barcode: Barcode, width: Int, height: Int, margin: Int = 0): Single<String> {
+    fun generateSvgAsync(
+        barcode: Barcode,
+        width: Int,
+        height: Int,
+        margin: Int = 0,
+    ): Single<String> {
         return Single.create { emitter ->
             try {
-                emitter.onSuccess(generateSvg(barcode, width, height, margin))
+                emitter.onSuccess(
+                    generateSvg(
+                        barcode = barcode,
+                        width = width,
+                        height = height,
+                        margin = margin
+                    )
+                )
             } catch (ex: Exception) {
                 Logger.log(ex)
                 emitter.onError(ex)
@@ -64,18 +89,26 @@ object BarcodeImageGenerator {
         }
     }
 
-    private fun generateSvg(barcode: Barcode, width: Int, height: Int, margin: Int = 0): String {
+    private fun generateSvg(
+        barcode: Barcode,
+        width: Int,
+        height: Int,
+        margin: Int = 0,
+    ): String {
         val matrix = writer.encode(
-            barcode.text,
-            barcode.format,
-            0,
-            0,
-            createHints(barcode.errorCorrectionLevel, margin)
+            /* contents = */ barcode.text,
+            /* format = */ barcode.format,
+            /* width = */ 0,
+            /* height = */ 0,
+            /* hints = */ createHints(barcode.errorCorrectionLevel, margin)
         )
         return createSvg(width, height, matrix)
     }
 
-    private fun createHints(errorCorrectionLevel: String?, margin: Int): Map<EncodeHintType, Any> {
+    private fun createHints(
+        errorCorrectionLevel: String?,
+        margin: Int,
+    ): Map<EncodeHintType, Any> {
         val hints = mapOf(
             EncodeHintType.CHARACTER_SET to "utf-8",
             EncodeHintType.MARGIN to margin
@@ -88,7 +121,11 @@ object BarcodeImageGenerator {
         return hints
     }
 
-    private fun createSvg(width: Int, height: Int, matrix: BitMatrix): String {
+    private fun createSvg(
+        width: Int,
+        height: Int,
+        matrix: BitMatrix,
+    ): String {
         val result = StringBuilder()
             .append("<svg width=\"$width\" height=\"$height\"")
             .append(" viewBox=\"0 0 $width $height\"")
@@ -115,7 +152,11 @@ object BarcodeImageGenerator {
         return result.toString()
     }
 
-    private fun createBitmap(matrix: BitMatrix, codeColor: Int, backgroundColor: Int): Bitmap {
+    private fun createBitmap(
+        matrix: BitMatrix,
+        codeColor: Int,
+        backgroundColor: Int,
+    ): Bitmap {
         val width = matrix.width
         val height = matrix.height
         val pixels = IntArray(width * height)
@@ -127,8 +168,20 @@ object BarcodeImageGenerator {
             }
         }
 
-        return Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888).apply {
-            setPixels(pixels, 0, width, 0, 0, width, height)
+        return Bitmap.createBitmap(
+            /* width = */ width,
+            /* height = */ height,
+            /* config = */ Bitmap.Config.ARGB_8888
+        ).apply {
+            setPixels(
+                /* pixels = */ pixels,
+                /* offset = */ 0,
+                /* stride = */ width,
+                /* x = */ 0,
+                /* y = */ 0,
+                /* width = */ width,
+                /* height = */ height
+            )
         }
     }
 }

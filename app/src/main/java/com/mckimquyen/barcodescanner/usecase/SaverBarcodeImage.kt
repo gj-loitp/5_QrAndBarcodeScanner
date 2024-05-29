@@ -14,9 +14,13 @@ import java.io.FileOutputStream
 import java.io.OutputStream
 
 
-object BarcodeImageSaver {
+object SaverBarcodeImage {
 
-    fun saveImageToCache(context: Context, image: Bitmap, barcode: ParsedBarcode): Uri? {
+    fun saveImageToCache(
+        context: Context,
+        image: Bitmap,
+        barcode: ParsedBarcode,
+    ): Uri? {
         // Create folder for image
         val imagesFolder = File(context.cacheDir, "images")
         imagesFolder.mkdirs()
@@ -27,7 +31,11 @@ object BarcodeImageSaver {
 
         // Save image to file
         FileOutputStream(imageFile).apply {
-            image.compress(Bitmap.CompressFormat.PNG, 100, this)
+            image.compress(
+                /* format = */ Bitmap.CompressFormat.PNG,
+                /* quality = */ 100,
+                /* stream = */ this
+            )
             flush()
             close()
         }
@@ -36,11 +44,23 @@ object BarcodeImageSaver {
         return FileProvider.getUriForFile(context, "com.mckimquyen.barcodescanner.fileprovider", imageFile)
     }
 
-    fun savePngImageToPublicDirectory(context: Context, image: Bitmap, barcode: Barcode): Completable {
+    fun savePngImageToPublicDirectory(
+        context: Context,
+        image: Bitmap,
+        barcode: Barcode,
+    ): Completable {
         return Completable.create { emitter ->
             try {
-                saveToPublicDirectory(context, barcode, "image/png") { outputStream ->
-                    image.compress(Bitmap.CompressFormat.PNG, 100, outputStream)
+                saveToPublicDirectory(
+                    context = context,
+                    barcode = barcode,
+                    mimeType = "image/png"
+                ) { outputStream ->
+                    image.compress(
+                        /* format = */ Bitmap.CompressFormat.PNG,
+                        /* quality = */ 100,
+                        /* stream = */ outputStream
+                    )
                 }
                 emitter.onComplete()
             } catch (ex: Exception) {
@@ -50,7 +70,11 @@ object BarcodeImageSaver {
         }
     }
 
-    fun saveSvgImageToPublicDirectory(context: Context, image: String, barcode: Barcode): Completable {
+    fun saveSvgImageToPublicDirectory(
+        context: Context,
+        image: String,
+        barcode: Barcode,
+    ): Completable {
         return Completable.create { emitter ->
             try {
                 saveToPublicDirectory(context, barcode, "image/svg+xml") { outputStream ->
@@ -64,7 +88,12 @@ object BarcodeImageSaver {
         }
     }
 
-    private fun saveToPublicDirectory(context: Context, barcode: Barcode, mimeType:String, action: (OutputStream)-> Unit) {
+    private fun saveToPublicDirectory(
+        context: Context,
+        barcode: Barcode,
+        mimeType: String,
+        action: (OutputStream) -> Unit,
+    ) {
         val contentResolver = context.contentResolver ?: return
 
         val imageTitle = "${barcode.format}_${barcode.schema}_${barcode.date}"

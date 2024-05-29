@@ -20,13 +20,28 @@ object OTPGenerator {
         val period = otp.period ?: TOTP_DEFAULT_PERIOD
 
         return when (otp.type) {
-            OtpAuth.TOTP_TYPE -> generateTOTP(secret, period, digits, algorithm)
-            OtpAuth.HOTP_TYPE -> generateHOTP(secret, counter, digits, algorithm)
+            OtpAuth.TOTP_TYPE -> generateTOTP(
+                secret = secret,
+                period = period,
+                digits = digits,
+                algorithm = algorithm
+            )
+            OtpAuth.HOTP_TYPE -> generateHOTP(
+                secret = secret,
+                counter = counter,
+                digits = digits,
+                algorithm = algorithm
+            )
             else -> null
         }
     }
 
-    private fun generateTOTP(secret: ByteArray, period: Long, digits: Int, algorithm: HmacAlgorithm): String {
+    private fun generateTOTP(
+        secret: ByteArray,
+        period: Long,
+        digits: Int,
+        algorithm: HmacAlgorithm,
+    ): String {
         val config = TimeBasedOneTimePasswordConfig(
             timeStep = period,
             timeStepUnit = TimeUnit.SECONDS,
@@ -37,7 +52,12 @@ object OTPGenerator {
         return generator.generate()
     }
 
-    private fun generateHOTP(secret: ByteArray, counter: Long, digits: Int, algorithm: HmacAlgorithm): String {
+    private fun generateHOTP(
+        secret: ByteArray,
+        counter: Long,
+        digits: Int,
+        algorithm: HmacAlgorithm,
+    ): String {
         val config = HmacOneTimePasswordConfig(
             codeDigits = digits,
             hmacAlgorithm = algorithm

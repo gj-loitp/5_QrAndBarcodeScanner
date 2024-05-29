@@ -53,8 +53,8 @@ interface BarcodeDatabase {
             return INSTANCE ?: Room
                 .databaseBuilder(context.applicationContext, BarcodeDatabaseFactory::class.java, "db")
                 .addMigrations(object : Migration(1, 2) {
-                    override fun migrate(database: SupportSQLiteDatabase) {
-                        database.execSQL("ALTER TABLE codes ADD COLUMN name TEXT")
+                    override fun migrate(db: SupportSQLiteDatabase) {
+                        db.execSQL("ALTER TABLE codes ADD COLUMN name TEXT")
                     }
                 })
                 .build()

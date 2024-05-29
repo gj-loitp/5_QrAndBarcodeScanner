@@ -22,11 +22,9 @@ import java.io.OutputStream
 import java.text.SimpleDateFormat
 import java.util.*
 
-
-object BarcodeSaver {
+object SaverBarcode {
     private const val JSON_MIME_TYPE = "application/json"
     private const val JSON_FILE_EXTENSION = ".json"
-
     private const val CSV_MIME_TYPE = "text/csv"
     private const val CSV_FILE_EXTENSION = ".csv"
 
@@ -35,11 +33,20 @@ object BarcodeSaver {
     }
 
 
-    fun saveBarcodeAsJson(context: Context, barcode: Barcode): Completable {
+    fun saveBarcodeAsJson(
+        context: Context,
+        barcode: Barcode,
+    ): Completable {
         return Completable.create { emitter ->
             try {
                 val json = convertToJson(barcode)
-                saveToDownloads(context, barcode, json, JSON_FILE_EXTENSION, JSON_MIME_TYPE)
+                saveToDownloads(
+                    context = context,
+                    barcode = barcode,
+                    content = json,
+                    extension = JSON_FILE_EXTENSION,
+                    mimeType = JSON_MIME_TYPE
+                )
                 emitter.onComplete()
             } catch (ex: Exception) {
                 Logger.log(ex)
@@ -52,7 +59,13 @@ object BarcodeSaver {
         return Completable.create { emitter ->
             try {
                 val csv = convertToCsv(barcode)
-                saveToDownloads(context, barcode, csv, CSV_FILE_EXTENSION, CSV_MIME_TYPE)
+                saveToDownloads(
+                    context = context,
+                    barcode = barcode,
+                    content = csv,
+                    extension = CSV_FILE_EXTENSION,
+                    mimeType = CSV_MIME_TYPE
+                )
                 emitter.onComplete()
             } catch (ex: Exception) {
                 Logger.log(ex)
@@ -62,10 +75,18 @@ object BarcodeSaver {
     }
 
 
-    fun saveBarcodeHistoryAsJson(context: Context, fileName: String, barcodes: List<ExportBarcode>): Completable {
+    fun saveBarcodeHistoryAsJson(
+        context: Context,
+        fileName: String,
+        barcodes: List<ExportBarcode>,
+    ): Completable {
         return Completable.create { emitter ->
             try {
-                trySaveBarcodeHistoryAsJson(context, fileName, barcodes)
+                trySaveBarcodeHistoryAsJson(
+                    context = context,
+                    fileName = fileName,
+                    barcodes = barcodes
+                )
                 emitter.onComplete()
             } catch (ex: Exception) {
                 Logger.log(ex)
@@ -74,10 +95,18 @@ object BarcodeSaver {
         }
     }
 
-    fun saveBarcodeHistoryAsCsv(context: Context, fileName: String, barcodes: List<ExportBarcode>): Completable {
+    fun saveBarcodeHistoryAsCsv(
+        context: Context,
+        fileName: String,
+        barcodes: List<ExportBarcode>,
+    ): Completable {
         return Completable.create { emitter ->
             try {
-                trySaveBarcodeHistoryCsv(context, fileName, barcodes)
+                trySaveBarcodeHistoryCsv(
+                    context = context,
+                    fileName = fileName,
+                    barcodes = barcodes
+                )
                 emitter.onComplete()
             } catch (ex: Exception) {
                 Logger.log(ex)
@@ -87,7 +116,11 @@ object BarcodeSaver {
     }
 
 
-    private fun trySaveBarcodeHistoryAsJson(context: Context, fileName: String, barcodes: List<ExportBarcode>) {
+    private fun trySaveBarcodeHistoryAsJson(
+        context: Context,
+        fileName: String,
+        barcodes: List<ExportBarcode>,
+    ) {
         val jsons = barcodes.map(::convertToJson)
         val result = JSONArray(jsons)
 
@@ -97,18 +130,35 @@ object BarcodeSaver {
             "$fileName$JSON_FILE_EXTENSION"
         }
 
-        saveToDownloads(context, newFileName, result.toString(), JSON_FILE_EXTENSION)
+        saveToDownloads(
+            context = context,
+            fileName = newFileName,
+            content = result.toString(),
+            mimeType = JSON_FILE_EXTENSION
+        )
     }
 
     private fun convertToJson(barcode: Barcode): String {
-        return convertToJson(barcode.date, barcode.format, barcode.text).toString()
+        return convertToJson(
+            date = barcode.date,
+            format = barcode.format,
+            text = barcode.text
+        ).toString()
     }
 
     private fun convertToJson(barcode: ExportBarcode): JSONObject {
-        return convertToJson(barcode.date, barcode.format, barcode.text)
+        return convertToJson(
+            date = barcode.date,
+            format = barcode.format,
+            text = barcode.text
+        )
     }
 
-    private fun convertToJson(date: Long, format: BarcodeFormat, text: String): JSONObject {
+    private fun convertToJson(
+        date: Long,
+        format: BarcodeFormat,
+        text: String,
+    ): JSONObject {
         return JSONObject()
             .put("date", dateFormatter.formatOrNull(date))
             .put("format", format.name)
@@ -116,7 +166,11 @@ object BarcodeSaver {
     }
 
 
-    private fun trySaveBarcodeHistoryCsv(context: Context, fileName: String, barcodes: List<ExportBarcode>) {
+    private fun trySaveBarcodeHistoryCsv(
+        context: Context,
+        fileName: String,
+        barcodes: List<ExportBarcode>,
+    ) {
         val result = StringBuilder()
             .append("Date,Format,Text\n")
 
@@ -142,12 +196,28 @@ object BarcodeSaver {
     }
 
 
-    private fun saveToDownloads(context: Context, barcode: Barcode, content: String, extension: String, mimeType: String) {
+    private fun saveToDownloads(
+        context: Context,
+        barcode: Barcode,
+        content: String,
+        extension: String,
+        mimeType: String,
+    ) {
         val fileName = "${barcode.format}_${barcode.schema}_${barcode.date}$extension"
-        saveToDownloads(context, fileName, content, mimeType)
+        saveToDownloads(
+            context = context,
+            fileName = fileName,
+            content = content,
+            mimeType = mimeType
+        )
     }
 
-    private fun saveToDownloads(context: Context, fileName: String, content: String, mimeType: String) {
+    private fun saveToDownloads(
+        context: Context,
+        fileName: String,
+        content: String,
+        mimeType: String,
+    ) {
         openFileOutputStream(context, fileName, mimeType).apply {
             write(content.toByteArray())
             flush()
@@ -155,15 +225,22 @@ object BarcodeSaver {
         }
     }
 
-    private fun openFileOutputStream(context: Context, fileName: String, mimeType: String): OutputStream {
+    private fun openFileOutputStream(
+        context: Context,
+        fileName: String,
+        mimeType: String,
+    ): OutputStream {
         return if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
             openFileOutputStreamOldSdk(fileName)
         } else {
-            openFileOutputStreamNewSdk(context, fileName, mimeType)
+            openFileOutputStreamNewSdk(
+                context = context,
+                fileName = fileName,
+                mimeType = mimeType
+            )
         }
     }
 
-    @Suppress("DEPRECATION")
     private fun openFileOutputStreamOldSdk(fileName: String): OutputStream {
         val dir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
         val file = File(dir, fileName)
@@ -174,7 +251,11 @@ object BarcodeSaver {
     }
 
     @RequiresApi(Build.VERSION_CODES.Q)
-    private fun openFileOutputStreamNewSdk(context: Context, fileName: String, mimeType: String): OutputStream {
+    private fun openFileOutputStreamNewSdk(
+        context: Context,
+        fileName: String,
+        mimeType: String,
+    ): OutputStream {
         val resolver = context.contentResolver
         val values = ContentValues().apply {
             put(MediaStore.Downloads.DISPLAY_NAME, fileName)

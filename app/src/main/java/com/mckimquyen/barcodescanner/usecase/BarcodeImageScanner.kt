@@ -16,13 +16,16 @@ object BarcodeImageScanner {
 
     fun parse(image: Bitmap): Single<Result> {
         return Single
-            .create<Result> { emitter ->
+            .create { emitter ->
                 parse(image, emitter)
             }
             .subscribeOn(Schedulers.newThread())
     }
 
-    private fun parse(image: Bitmap, emitter: SingleEmitter<Result>) {
+    private fun parse(
+        image: Bitmap,
+        emitter: SingleEmitter<Result>,
+    ) {
         try {
             emitter.onSuccess(tryParse(image))
         } catch (ex: Exception) {
@@ -41,7 +44,15 @@ object BarcodeImageScanner {
         }
 
         bitmapBuffer?.let {
-            image.getPixels(it, 0, width, 0, 0, width, height)
+            image.getPixels(
+                /* pixels = */ it,
+                /* offset = */ 0,
+                /* stride = */ width,
+                /* x = */ 0,
+                /* y = */ 0,
+                /* width = */ width,
+                /* height = */ height
+            )
         }
 
         val source = RGBLuminanceSource(width, height, bitmapBuffer)
