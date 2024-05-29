@@ -5,7 +5,7 @@ import com.mckimquyen.barcodescanner.di.settings
 import com.mckimquyen.barcodescanner.usecase.Logger
 import io.reactivex.plugins.RxJavaPlugins
 
-class App : MultiDexApplication() {
+class RApp : MultiDexApplication() {
 
     override fun onCreate() {
         handleUnhandledRxJavaErrors()

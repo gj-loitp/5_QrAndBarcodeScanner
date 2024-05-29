@@ -3,7 +3,7 @@ package com.mckimquyen.barcodescanner.usecase
 import android.hardware.Camera
 
 
-object ScannerCameraHelper {
+object HelperScannerCamera {
 
     fun getCameraParameters(isBackCamera: Boolean): Camera.Parameters? {
         return try {

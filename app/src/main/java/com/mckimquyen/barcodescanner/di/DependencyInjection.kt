@@ -2,11 +2,11 @@ package com.mckimquyen.barcodescanner.di
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.mckimquyen.barcodescanner.App
+import com.mckimquyen.barcodescanner.RApp
 import com.mckimquyen.barcodescanner.usecase.*
 
 
-val App.settings
+val RApp.settings
     get() = Settings.getInstance(applicationContext)
 
 
@@ -41,14 +41,14 @@ val AppCompatActivity.contactHelper
     get() = ContactHelper
 
 val AppCompatActivity.permissionsHelper
-    get() = PermissionsHelper
+    get() = HelperPermissions
 
 val AppCompatActivity.rotationHelper
-    get() = RotationHelper
+    get() = HelperRotation
 
 
 val Fragment.scannerCameraHelper
-    get() = ScannerCameraHelper
+    get() = HelperScannerCamera
 
 val Fragment.barcodeParser
     get() = BarcodeParser
@@ -60,4 +60,4 @@ val Fragment.settings
     get() = Settings.getInstance(requireContext())
 
 val Fragment.permissionsHelper
-    get() = PermissionsHelper
+    get() = HelperPermissions

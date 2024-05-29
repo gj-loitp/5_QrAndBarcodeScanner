@@ -1,5 +1,6 @@
 package com.mckimquyen.barcodescanner.usecase
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.Configuration
 import android.graphics.Color
@@ -18,6 +19,8 @@ class Settings(private val context: Context) {
         const val THEME_DARK = AppCompatDelegate.MODE_NIGHT_YES
 
         private const val SHARED_PREFERENCES_NAME = "SHARED_PREFERENCES_NAME"
+
+        @SuppressLint("StaticFieldLeak")
         private var INSTANCE: Settings? = null
 
         fun getInstance(context: Context): Settings {
@@ -62,7 +65,7 @@ class Settings(private val context: Context) {
         set(value) = set(Key.INVERSE_BARCODE_COLORS, value)
 
     val barcodeContentColor: Int
-        get() = when  {
+        get() = when {
             isDarkTheme && areBarcodeColorsInversed -> Color.WHITE
             else -> Color.BLACK
         }
@@ -132,7 +135,10 @@ class Settings(private val context: Context) {
         return sharedPreferences.getBoolean(format.name, true)
     }
 
-    fun setFormatSelected(format: BarcodeFormat, isSelected: Boolean) {
+    fun setFormatSelected(
+        format: BarcodeFormat,
+        isSelected: Boolean,
+    ) {
         sharedPreferences.edit()
             .putBoolean(format.name, isSelected)
             .apply()
@@ -178,6 +184,7 @@ class Settings(private val context: Context) {
             AppCompatDelegate.MODE_NIGHT_NO, AppCompatDelegate.MODE_NIGHT_YES -> {
                 AppCompatDelegate.setDefaultNightMode(theme)
             }
+
             else -> {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)

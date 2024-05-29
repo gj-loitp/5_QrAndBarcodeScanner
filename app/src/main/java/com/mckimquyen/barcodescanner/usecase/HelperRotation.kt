@@ -4,7 +4,7 @@ import android.content.Context
 import android.content.pm.ActivityInfo
 import androidx.appcompat.app.AppCompatActivity
 
-object RotationHelper {
+object HelperRotation {
 
     fun lockCurrentOrientationIfNeeded(activity: AppCompatActivity) {
         if (isAutoRotateOptionDisabled(activity)) {
@@ -14,9 +14,9 @@ object RotationHelper {
 
     private fun isAutoRotateOptionDisabled(context: Context): Boolean {
         val result = android.provider.Settings.System.getInt(
-            context.contentResolver,
-            android.provider.Settings.System.ACCELEROMETER_ROTATION,
-            0
+            /* cr = */ context.contentResolver,
+            /* name = */ android.provider.Settings.System.ACCELEROMETER_ROTATION,
+            /* def = */ 0
         )
         return result == 0
     }

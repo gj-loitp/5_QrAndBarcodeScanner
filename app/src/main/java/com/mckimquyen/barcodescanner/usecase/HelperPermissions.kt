@@ -6,30 +6,49 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 
-object PermissionsHelper {
+object HelperPermissions {
 
-    fun requestPermissions(activity: AppCompatActivity, permissions: Array<out String>, requestCode: Int) {
+    fun requestPermissions(
+        activity: AppCompatActivity,
+        permissions: Array<out String>,
+        requestCode: Int,
+    ) {
         if (areAllPermissionsGranted(activity, permissions)) {
             activity.onRequestPermissionsResult(
-                requestCode,
-                permissions,
-                IntArray(permissions.size) { PackageManager.PERMISSION_GRANTED }
+                /* requestCode = */ requestCode,
+                /* permissions = */ permissions,
+                /* grantResults = */ IntArray(permissions.size) { PackageManager.PERMISSION_GRANTED }
             )
             return
         }
 
         val notGrantedPermissions = permissions.filterNot { isPermissionGranted(activity, it) }
-        ActivityCompat.requestPermissions(activity, notGrantedPermissions.toTypedArray(), requestCode)
+        ActivityCompat.requestPermissions(
+            /* activity = */ activity,
+            /* permissions = */ notGrantedPermissions.toTypedArray(),
+            /* requestCode = */ requestCode
+        )
     }
 
-    fun requestNotGrantedPermissions(activity: AppCompatActivity, permissions: Array<out String>, requestCode: Int) {
+    fun requestNotGrantedPermissions(
+        activity: AppCompatActivity,
+        permissions: Array<out String>,
+        requestCode: Int,
+    ) {
         val notGrantedPermissions = permissions.filterNot { isPermissionGranted(activity, it) }
         if (notGrantedPermissions.isNotEmpty()) {
-            ActivityCompat.requestPermissions(activity, notGrantedPermissions.toTypedArray(), requestCode)
+            ActivityCompat.requestPermissions(
+                /* activity = */ activity,
+                /* permissions = */ notGrantedPermissions.toTypedArray(),
+                /* requestCode = */ requestCode
+            )
         }
     }
 
-    fun areAllPermissionsGranted(context: Context, permissions: Array<out String>): Boolean {
+    fun areAllPermissionsGranted(
+        context: Context,
+        permissions: Array<out String>,
+    ): Boolean {
         permissions.forEach { permission ->
             if (isPermissionGranted(context, permission).not()) {
                 return false
