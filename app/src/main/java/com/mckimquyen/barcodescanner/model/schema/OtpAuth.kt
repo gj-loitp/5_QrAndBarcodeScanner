@@ -1,9 +1,11 @@
 package com.mckimquyen.barcodescanner.model.schema
 
 import android.net.Uri
+import androidx.annotation.Keep
 import com.mckimquyen.barcodescanner.extension.appendQueryParameterIfNotNullOrBlank
 import java.io.Serializable
 
+@Keep
 data class OtpAuth(
     val type: String? = null,
     val label: String? = null,
@@ -12,7 +14,7 @@ data class OtpAuth(
     val algorithm: String? = null,
     val digits: Int? = null,
     val period: Long? = null,
-    val counter: Long? = null
+    val counter: Long? = null,
 ) : Schema, Serializable {
 
     companion object {
@@ -51,7 +53,16 @@ data class OtpAuth(
             val period = uri.getQueryParameter(PERIOD_KEY)?.toLongOrNull()
             val counter = uri.getQueryParameter(COUNTER_KEY)?.toLongOrNull()
 
-            return OtpAuth(type, label, issuer, secret, algorithm, digits, period, counter)
+            return OtpAuth(
+                type = type,
+                label = label,
+                issuer = issuer,
+                secret = secret,
+                algorithm = algorithm,
+                digits = digits,
+                period = period,
+                counter = counter
+            )
         }
     }
 

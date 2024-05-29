@@ -1,8 +1,10 @@
 package com.mckimquyen.barcodescanner.model.schema
 
+import androidx.annotation.Keep
 import com.mckimquyen.barcodescanner.extension.removePrefixIgnoreCase
 import com.mckimquyen.barcodescanner.extension.startsWithIgnoreCase
 
+@Keep
 class Phone(val phone: String) : Schema {
 
     companion object {

@@ -1,11 +1,16 @@
 package com.mckimquyen.barcodescanner.model.schema
 
+import androidx.annotation.Keep
 import com.mckimquyen.barcodescanner.extension.startsWithAnyIgnoreCase
 
+@Keep
 data class GoogleMaps(val url: String) : Schema {
 
     companion object {
-        private val PREFIXES = listOf("http://maps.google.com/", "https://maps.google.com/")
+        private val PREFIXES = listOf(
+            "http://maps.google.com/",
+            "https://maps.google.com/"
+        )
 
         fun parse(text: String): GoogleMaps? {
             if (text.startsWithAnyIgnoreCase(PREFIXES).not()) {

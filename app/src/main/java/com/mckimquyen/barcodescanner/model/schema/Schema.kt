@@ -1,5 +1,8 @@
 package com.mckimquyen.barcodescanner.model.schema
 
+import androidx.annotation.Keep
+
+@Keep
 enum class BarcodeSchema {
     APP,
     BOOKMARK,
@@ -22,6 +25,7 @@ enum class BarcodeSchema {
     OTHER;
 }
 
+@Keep
 interface Schema {
     val schema: BarcodeSchema
     fun toFormattedText(): String

@@ -1,5 +1,6 @@
 package com.mckimquyen.barcodescanner.model.schema
 
+import androidx.annotation.Keep
 import com.mckimquyen.barcodescanner.extension.joinToStringNotNullOrBlank
 import com.mckimquyen.barcodescanner.extension.joinToStringNotNullOrBlankWithLineSeparator
 import com.mckimquyen.barcodescanner.extension.startsWithIgnoreCase
@@ -9,6 +10,7 @@ import ezvcard.property.*
 import ezvcard.property.Email
 import ezvcard.property.Url
 
+@Keep
 data class VCard(
     val firstName: String? = null,
     val lastName: String? = null,
@@ -29,7 +31,7 @@ data class VCard(
     val tertiaryPhoneType: String? = null,
     val address: String? = null,
     val geoUri: String? = null,
-    val url: String? = null
+    val url: String? = null,
 ) : Schema {
 
     companion object {
@@ -100,26 +102,26 @@ data class VCard(
             }
 
             return VCard(
-                firstName,
-                lastName,
-                nickname,
-                organization,
-                title,
-                email,
-                emailType,
-                secondaryEmail,
-                secondaryEmailType,
-                tertiaryEmail,
-                tertiaryEmailType,
-                phone,
-                phoneType,
-                secondaryPhone,
-                secondaryPhoneType,
-                tertiaryPhone,
-                tertiaryPhoneType,
-                address,
-                geoUri,
-                url
+                firstName = firstName,
+                lastName = lastName,
+                nickname = nickname,
+                organization = organization,
+                title = title,
+                email = email,
+                emailType = emailType,
+                secondaryEmail = secondaryEmail,
+                secondaryEmailType = secondaryEmailType,
+                tertiaryEmail = tertiaryEmail,
+                tertiaryEmailType = tertiaryEmailType,
+                phone = phone,
+                phoneType = phoneType,
+                secondaryPhone = secondaryPhone,
+                secondaryPhoneType = secondaryPhoneType,
+                tertiaryPhone = tertiaryPhone,
+                tertiaryPhoneType = tertiaryPhoneType,
+                address = address,
+                geoUri = geoUri,
+                url = url
             )
         }
     }

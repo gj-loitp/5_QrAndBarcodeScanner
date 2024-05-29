@@ -1,9 +1,11 @@
 package com.mckimquyen.barcodescanner.model.schema
 
+import androidx.annotation.Keep
 import com.mckimquyen.barcodescanner.extension.*
 import java.text.SimpleDateFormat
 import java.util.*
 
+@Keep
 data class MeCard(
     val firstName: String? = null,
     val lastName: String? = null,
@@ -12,7 +14,7 @@ data class MeCard(
     val email: String? = null,
     val birthday: String? = null,
     val note: String? = null,
-    val address: String? = null
+    val address: String? = null,
 ) : Schema {
 
     companion object {
@@ -85,7 +87,16 @@ data class MeCard(
                     }
                 }
 
-            return MeCard(firstName, lastName, nickname, phone, email, birthday, note, address)
+            return MeCard(
+                firstName = firstName,
+                lastName = lastName,
+                nickname = nickname,
+                phone = phone,
+                email = email,
+                birthday = birthday,
+                note = note,
+                address = address
+            )
         }
     }
 
@@ -112,7 +123,7 @@ data class MeCard(
             firstName.isNullOrBlank() && lastName.isNullOrBlank() -> null
             firstName.isNullOrBlank() -> lastName
             lastName.isNullOrBlank() -> firstName
-            else -> "${firstName.orEmpty()}$NAME_SEPARATOR${lastName.orEmpty()}"
+            else -> "${firstName}$NAME_SEPARATOR${lastName}"
         }
 
         return StringBuilder()

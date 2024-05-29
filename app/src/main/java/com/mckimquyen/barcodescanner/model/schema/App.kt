@@ -1,13 +1,20 @@
 package com.mckimquyen.barcodescanner.model.schema
 
+import androidx.annotation.Keep
 import com.mckimquyen.barcodescanner.extension.removePrefixIgnoreCase
 import com.mckimquyen.barcodescanner.extension.startsWithAnyIgnoreCase
 import com.mckimquyen.barcodescanner.extension.unsafeLazy
 
+@Keep
 class App(val url: String) : Schema {
 
     companion object {
-        private val PREFIXES = listOf("market://details?id=", "market://search", "http://play.google.com/", "https://play.google.com/")
+        private val PREFIXES = listOf(
+            "market://details?id=",
+            "market://search",
+            "http://play.google.com/",
+            "https://play.google.com/"
+        )
 
         fun parse(text: String): App? {
             if (text.startsWithAnyIgnoreCase(PREFIXES).not()) {

@@ -1,5 +1,8 @@
 package com.mckimquyen.barcodescanner.model
 
+import androidx.annotation.Keep
+
+@Keep
 enum class SearchEngine(val templateUrl: String) {
     NONE(""),
     ASK_EVERY_TIME(""),

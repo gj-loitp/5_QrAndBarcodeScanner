@@ -1,6 +1,6 @@
 package com.mckimquyen.barcodescanner.model.schema
 
-
+import androidx.annotation.Keep
 import com.mckimquyen.barcodescanner.extension.joinToStringNotNullOrBlankWithLineSeparator
 import com.mckimquyen.barcodescanner.extension.removePrefixIgnoreCase
 import com.mckimquyen.barcodescanner.extension.startsWithIgnoreCase
@@ -9,10 +9,11 @@ import org.json.JSONException
 import org.json.JSONObject
 import java.lang.Exception
 
+@Keep
 class NZCovidTracer(
     val title: String? = null,
     val addr: String? = null,
-    private val decodedBytes: String? = null
+    private val decodedBytes: String? = null,
 ) : Schema {
     //{"gln":"9429300660232","opn":"Queens Park ","adr":"150 Gala Street \nInvercargill ","ver":"c19:1","typ":"entry"}
     //{"gln":"7000000754500","ver":"c19:1","typ":"entry","opn":"Treetown Gym","adr":"1 Shakespeare Road\nBastia Hill\nWhanganui"}
@@ -25,14 +26,13 @@ class NZCovidTracer(
                 return null
             }
 
-            var title: String? = null
-            var addr: String? = null
-            var decodedBytes: String? = null
+            val title: String?
+            lateinit var addr: String
+            val decodedBytes: String?
 
             try {
                 decodedBytes = String(Base64().decode(text.removePrefixIgnoreCase(PREFIX)))
-            }
-            catch (e: Exception) {
+            } catch (e: Exception) {
                 return null
             }
 
@@ -40,13 +40,15 @@ class NZCovidTracer(
                 val obj = JSONObject(decodedBytes)
                 title = obj.getString("opn")
                 addr = obj.getString("adr")
-            }
-            catch (e: JSONException) {
+            } catch (e: JSONException) {
                 return null
             }
 
             addr = addr.replace("\\n", "\n")
-            return NZCovidTracer(title.trim(), addr.trim())
+            return NZCovidTracer(
+                title = title.trim(),
+                addr = addr.trim()
+            )
         }
     }
 

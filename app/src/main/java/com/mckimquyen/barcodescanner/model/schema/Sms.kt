@@ -1,12 +1,14 @@
 package com.mckimquyen.barcodescanner.model.schema
 
+import androidx.annotation.Keep
 import com.mckimquyen.barcodescanner.extension.joinToStringNotNullOrBlankWithLineSeparator
 import com.mckimquyen.barcodescanner.extension.removePrefixIgnoreCase
 import com.mckimquyen.barcodescanner.extension.startsWithIgnoreCase
 
+@Keep
 data class Sms(
     val phone: String? = null,
-    val message: String? = null
+    val message: String? = null,
 ) : Schema {
 
     companion object {

@@ -1,8 +1,10 @@
 package com.mckimquyen.barcodescanner.model.schema
 
+import androidx.annotation.Keep
 import com.mckimquyen.barcodescanner.extension.removePrefixIgnoreCase
 import com.mckimquyen.barcodescanner.extension.startsWithIgnoreCase
 
+@Keep
 class Geo : Schema {
 
     companion object {
@@ -23,7 +25,11 @@ class Geo : Schema {
         this.uri = uri
     }
 
-    constructor(latitude: String, longitude: String, altitude: String? = null) {
+    constructor(
+        latitude: String,
+        longitude: String,
+        altitude: String? = null,
+    ) {
         uri = if (altitude.isNullOrEmpty()) {
             "$PREFIX$latitude$SEPARATOR$longitude"
         } else {

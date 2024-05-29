@@ -1,8 +1,10 @@
 package com.mckimquyen.barcodescanner.model
 
+import androidx.annotation.Keep
 import com.mckimquyen.barcodescanner.model.schema.*
 import com.google.zxing.BarcodeFormat
 
+@Keep
 class ParsedBarcode(barcode: Barcode) {
     var id = barcode.id
     var name = barcode.name
@@ -13,33 +15,27 @@ class ParsedBarcode(barcode: Barcode) {
     val date = barcode.date
     var isFavorite = barcode.isFavorite
     val country = barcode.country
-
     var firstName: String? = null
     var lastName: String? = null
     var organization: String? = null
     var jobTitle: String? = null
-    var address: String? = null
-
+    private var address: String? = null
     var email: String? = null
     var emailSubject: String? = null
     var emailBody: String? = null
-
     var emailType: String? = null
     var secondaryEmail: String? = null
     var secondaryEmailType: String? = null
     var tertiaryEmail: String? = null
     var tertiaryEmailType: String? = null
     var note: String? = null
-
     var phone: String? = null
     var phoneType: String? = null
     var secondaryPhone: String? = null
     var secondaryPhoneType: String? = null
     var tertiaryPhone: String? = null
     var tertiaryPhoneType: String? = null
-
     var smsBody: String? = null
-
     var networkAuthType: String? = null
     var networkName: String? = null
     var networkPassword: String? = null
@@ -48,23 +44,20 @@ class ParsedBarcode(barcode: Barcode) {
     var identity: String? = null
     var eapMethod: String? = null
     var phase2Method: String? = null
-
     var bookmarkTitle: String? = null
     var url: String? = null
     var youtubeUrl: String? = null
     var bitcoinUri: String? = null
     var otpUrl: String? = null
     var geoUri: String? = null
-
-    var eventUid: String? = null
-    var eventStamp: String? = null
-    var eventOrganizer: String? = null
+    private var eventUid: String? = null
+    private var eventStamp: String? = null
+    private var eventOrganizer: String? = null
     var eventDescription: String? = null
     var eventLocation: String? = null
     var eventSummary: String? = null
     var eventStartDate: Long? = null
     var eventEndDate: Long? = null
-
     var appMarketUrl: String? = null
     var appPackage: String? = null
 
@@ -82,11 +75,15 @@ class ParsedBarcode(barcode: Barcode) {
             BarcodeSchema.BOOKMARK -> parseBookmark()
             BarcodeSchema.EMAIL -> parseEmail()
             BarcodeSchema.GEO,
-            BarcodeSchema.GOOGLE_MAPS -> parseGeoInfo()
+            BarcodeSchema.GOOGLE_MAPS,
+            -> parseGeoInfo()
+
             BarcodeSchema.APP -> parseApp()
             BarcodeSchema.VEVENT -> parseCalendar()
             BarcodeSchema.MMS,
-            BarcodeSchema.SMS -> parseSms()
+            BarcodeSchema.SMS,
+            -> parseSms()
+
             BarcodeSchema.MECARD -> parseMeCard()
             BarcodeSchema.PHONE -> parsePhone()
             BarcodeSchema.VCARD -> parseVCard()
@@ -96,7 +93,9 @@ class ParsedBarcode(barcode: Barcode) {
             BarcodeSchema.OTP_AUTH -> parseOtp()
             BarcodeSchema.NZCOVIDTRACER -> parseNZCovidTracer()
             BarcodeSchema.BOARDINGPASS,
-            BarcodeSchema.URL -> parseUrl()
+            BarcodeSchema.URL,
+            -> parseUrl()
+
             else -> {}
         }
     }
@@ -157,14 +156,14 @@ class ParsedBarcode(barcode: Barcode) {
 
     private fun parseVCard() {
         val vCard = VCard.parse(text) ?: return
-        
+
         firstName = vCard.firstName
         lastName = vCard.lastName
         organization = vCard.organization
         jobTitle = vCard.title
         url = vCard.url
         geoUri = vCard.geoUri
-        
+
         phone = vCard.phone
         phoneType = vCard.phoneType
         secondaryPhone = vCard.secondaryPhone

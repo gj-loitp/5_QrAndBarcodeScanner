@@ -1,8 +1,10 @@
 package com.mckimquyen.barcodescanner.model.schema
 
+import androidx.annotation.Keep
 import com.mckimquyen.barcodescanner.extension.*
 import java.util.*
 
+@Keep
 class Wifi(
     val encryption: String? = null,
     val name: String? = null,
@@ -11,7 +13,7 @@ class Wifi(
     val anonymousIdentity: String? = null,
     val identity: String? = null,
     val eapMethod: String? = null,
-    val phase2Method: String? = null
+    val phase2Method: String? = null,
 ) : Schema {
 
     companion object {

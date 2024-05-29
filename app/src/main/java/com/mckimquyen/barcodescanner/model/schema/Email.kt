@@ -1,16 +1,18 @@
 package com.mckimquyen.barcodescanner.model.schema
 
 import android.net.MailTo
+import androidx.annotation.Keep
 import com.mckimquyen.barcodescanner.extension.appendIfNotNullOrBlank
 import com.mckimquyen.barcodescanner.extension.joinToStringNotNullOrBlankWithLineSeparator
 import com.mckimquyen.barcodescanner.extension.removePrefixIgnoreCase
 import com.mckimquyen.barcodescanner.extension.startsWithIgnoreCase
 import com.mckimquyen.barcodescanner.usecase.Logger
 
+@Keep
 data class Email(
     val email: String? = null,
     val subject: String? = null,
-    val body: String? = null
+    val body: String? = null,
 ) : Schema {
 
     companion object {
@@ -52,13 +54,21 @@ data class Email(
                 }
             }
 
-            return Email(email, subject, body)
+            return Email(
+                email = email,
+                subject = subject,
+                body = body
+            )
         }
 
         private fun parseAsMailTo(text: String): Email? {
             return try {
                 val mailto = MailTo.parse(text)
-                Email(mailto.to, mailto.subject, mailto.body)
+                Email(
+                    email = mailto.to,
+                    subject = mailto.subject,
+                    body = mailto.body
+                )
             } catch (ex: Exception) {
                 Logger.log(ex)
                 null

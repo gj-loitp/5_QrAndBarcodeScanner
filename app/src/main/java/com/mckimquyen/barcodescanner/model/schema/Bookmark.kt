@@ -1,14 +1,15 @@
 package com.mckimquyen.barcodescanner.model.schema
 
+import androidx.annotation.Keep
 import com.mckimquyen.barcodescanner.extension.appendIfNotNullOrBlank
 import com.mckimquyen.barcodescanner.extension.joinToStringNotNullOrBlankWithLineSeparator
 import com.mckimquyen.barcodescanner.extension.removePrefixIgnoreCase
 import com.mckimquyen.barcodescanner.extension.startsWithIgnoreCase
 
-
+@Keep
 data class Bookmark(
     val title: String? = null,
-    val url: String? = null
+    val url: String? = null,
 ) : Schema {
 
     companion object {

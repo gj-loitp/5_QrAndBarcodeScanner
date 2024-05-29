@@ -1,6 +1,6 @@
 package com.mckimquyen.barcodescanner.model.schema
 
-
+import androidx.annotation.Keep
 import com.mckimquyen.barcodescanner.extension.joinToStringNotNullOrBlankWithLineSeparator
 import com.mckimquyen.barcodescanner.extension.startsWithIgnoreCase
 import com.mckimquyen.barcodescanner.extension.unsafeLazy
@@ -8,6 +8,7 @@ import java.util.Calendar
 import java.text.SimpleDateFormat
 import java.util.Locale
 
+@Keep
 class BoardingPass(
     val name: String? = null,
     val pnr: String? = null,
@@ -28,7 +29,7 @@ class BoardingPass(
 ) : Schema {
 
     companion object {
-        private const val TAG = "QRandBAR"
+//        private const val TAG = "QRandBAR"
         private val DATE_FORMATTER by unsafeLazy { SimpleDateFormat("d MMMM", Locale.ENGLISH) }
 
         fun parse(text: String): BoardingPass? {
@@ -47,7 +48,7 @@ class BoardingPass(
                 return null
             }
             // ^ is the mandatory security marker
-            if (text[60+fieldSize] != '^') {
+            if (text[60 + fieldSize] != '^') {
                 return null
             }
 
@@ -66,11 +67,11 @@ class BoardingPass(
             val today = Calendar.getInstance()
             today.set(Calendar.DAY_OF_YEAR, dateJ.toInt())
             val date: String = DATE_FORMATTER.format(today.getTime())
-            var selectee : String = ""
-            var ticket : String = ""
-            var ffAirline : String = ""
-            var ffNo : String = ""
-            var fasttrack: String = ""
+            var selectee = ""
+            var ticket = ""
+            var ffAirline = ""
+            var ffNo = ""
+            var fasttrack = ""
 
             if (fieldSize != 0) {
                 val size: Int = text.slice(62..63).toInt(16)
@@ -79,37 +80,65 @@ class BoardingPass(
                 }
                 // don't really care about the first optional field
                 // it's mostly baggage and checkin information
-                val size1: Int = text.slice(64+size..65+size).toInt(16)
+                val size1: Int = text.slice(64 + size..65 + size).toInt(16)
                 // European boarding passes are 42 to have appended fasttrack
                 // US boarding passes are size 41 with no fasttrack
                 if (size1 != 0 && size1 != 41 && size1 != 42) {
                     return null
                 } else {
-                    ticket = text.slice(66+size..78+size).trim()
+                    ticket = text.slice(66 + size..78 + size).trim()
                     // TSA field:
                     // blank for not US flights
                     // 0 - normal cleared
                     // 1 - no fly
                     // 2 - selected for enhanced security
                     // 3 - precheck
-                    selectee = text.slice(79+size..79+size)
-                    ffAirline = text.slice(84+size..86+size).trim()
-                    ffNo = text.slice(87+size..102+size).trim()
+                    selectee = text.slice(79 + size..79 + size)
+                    ffAirline = text.slice(84 + size..86 + size).trim()
+                    ffNo = text.slice(87 + size..102 + size).trim()
                     if (size1 == 42) {
                         // Y - fasttrack eligible
-                        fasttrack = text.slice(107+size..107+size)
+                        fasttrack = text.slice(107 + size..107 + size)
                     }
                 }
             }
 
-            return BoardingPass(name, pnr, from, to, carrier, flight, date,
-                                cabin, seat, seq, ticket, selectee,
-                                ffAirline, ffNo, fasttrack,
-                                text)
+            return BoardingPass(
+                name = name,
+                pnr = pnr,
+                from = from,
+                to = to,
+                carrier = carrier,
+                flight = flight,
+                date = date,
+                cabin = cabin,
+                seat = seat,
+                seq = seq,
+                ticket = ticket,
+                selectee = selectee,
+                ffAirline = ffAirline,
+                ffNo = ffNo,
+                fasttrack = fasttrack,
+                blob = text
+            )
         }
     }
 
     override val schema = BarcodeSchema.BOARDINGPASS
-    override fun toFormattedText(): String = listOf(name, pnr, "$from->$to", "$carrier$flight", date, cabin, seat, seq, ticket, selectee, "$ffAirline$ffNo", fasttrack).joinToStringNotNullOrBlankWithLineSeparator()
+    override fun toFormattedText(): String = listOf(
+        name,
+        pnr,
+        "$from->$to",
+        "$carrier$flight",
+        date,
+        cabin,
+        seat,
+        seq,
+        ticket,
+        selectee,
+        "$ffAirline$ffNo",
+        fasttrack
+    ).joinToStringNotNullOrBlankWithLineSeparator()
+
     override fun toBarcodeText(): String = "$blob"
 }

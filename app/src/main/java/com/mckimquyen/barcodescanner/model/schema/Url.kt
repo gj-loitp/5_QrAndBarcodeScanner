@@ -1,8 +1,10 @@
 package com.mckimquyen.barcodescanner.model.schema
 
+import androidx.annotation.Keep
 import com.mckimquyen.barcodescanner.extension.startsWithAnyIgnoreCase
 import com.mckimquyen.barcodescanner.extension.startsWithIgnoreCase
 
+@Keep
 class Url(val url: String) : Schema {
 
     companion object {

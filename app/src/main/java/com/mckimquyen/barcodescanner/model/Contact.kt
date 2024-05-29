@@ -1,5 +1,8 @@
 package com.mckimquyen.barcodescanner.model
 
+import androidx.annotation.Keep
+
+@Keep
 class Contact {
     var firstName: String? = null
     var middleName: String? = null
