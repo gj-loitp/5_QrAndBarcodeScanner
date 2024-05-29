@@ -27,7 +27,7 @@ fun BarcodeFormat.toImageId(): Int {
         BarcodeFormat.QR_CODE -> R.drawable.ic_qr_code
         BarcodeFormat.DATA_MATRIX -> R.drawable.ic_data_matrix
         BarcodeFormat.AZTEC -> R.drawable.ic_aztec
-        BarcodeFormat.PDF_417 -> R.drawable.ic_pdf417
+        BarcodeFormat.PDF_417 -> R.drawable.ic_pdf_417
         else -> R.drawable.ic_barcode
     }
 }

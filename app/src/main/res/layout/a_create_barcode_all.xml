@@ -56,7 +56,7 @@
                 android:id="@+id/buttonPdf417"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:icon="@drawable/ic_pdf417"
+                app:icon="@drawable/ic_pdf_417"
                 app:iconBackground="@color/orange"
                 app:isDelimiterVisible="false"
                 app:text="@string/barcode_format_pdf_417" />

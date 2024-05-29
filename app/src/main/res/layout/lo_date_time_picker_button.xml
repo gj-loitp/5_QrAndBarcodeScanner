@@ -24,7 +24,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_small"
-        android:textColor="@color/color_icon_button_icon_and_text"
+        android:textColor="@color/selector_color_icon_button_icon_and_text"
         app:layout_constraintStart_toStartOf="@id/textViewHint"
         app:layout_constraintTop_toBottomOf="@id/textViewHint"
         tools:text="12.07.2020 13:00" />

@@ -56,8 +56,8 @@
     </style>
 
     <style name="ButtonStyle" parent="Widget.AppCompat.Button.Borderless">
-        <item name="android:textColor">@color/color_button_text</item>
-        <item name="android:background">@drawable/background_button</item>
+        <item name="android:textColor">@color/selector_color_button_text</item>
+        <item name="android:background">@drawable/selector_background_button</item>
     </style>
 
     <style name="SmallTextViewStyle">

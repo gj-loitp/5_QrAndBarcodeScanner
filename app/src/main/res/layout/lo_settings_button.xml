@@ -13,7 +13,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/margin"
-        android:textColor="@color/color_icon_button_icon_and_text"
+        android:textColor="@color/selector_color_icon_button_icon_and_text"
         app:layout_constraintEnd_toStartOf="@id/switchButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
