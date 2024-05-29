@@ -8,20 +8,21 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.core.view.isVisible
 import com.mckimquyen.barcodescanner.R
-import com.mckimquyen.barcodescanner.di.barcodeSaver
+import com.mckimquyen.barcodescanner.di.barcodeImageGenerator
+import com.mckimquyen.barcodescanner.di.barcodeImageSaver
 import com.mckimquyen.barcodescanner.di.permissionsHelper
 import com.mckimquyen.barcodescanner.extension.applySystemWindowInsets
 import com.mckimquyen.barcodescanner.extension.showError
 import com.mckimquyen.barcodescanner.extension.unsafeLazy
-import com.mckimquyen.barcodescanner.feature.BaseActivity
+import com.mckimquyen.barcodescanner.feature.ActivityBase
 import com.mckimquyen.barcodescanner.model.Barcode
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
-import kotlinx.android.synthetic.main.a_save_barcode_as_text.*
+import kotlinx.android.synthetic.main.a_save_barcode_as_image.*
 
-class SaveBarcodeAsTextActivity : BaseActivity() {
+class SaveBarcodeAsImageActivityBase : ActivityBase() {
 
     companion object {
         private const val REQUEST_PERMISSIONS_CODE = 101
@@ -30,7 +31,7 @@ class SaveBarcodeAsTextActivity : BaseActivity() {
         private const val BARCODE_KEY = "BARCODE_KEY"
 
         fun start(context: Context, barcode: Barcode) {
-            val intent = Intent(context, SaveBarcodeAsTextActivity::class.java).apply {
+            val intent = Intent(context, SaveBarcodeAsImageActivityBase::class.java).apply {
                 putExtra(BARCODE_KEY, barcode)
             }
             context.startActivity(intent)
@@ -45,7 +46,7 @@ class SaveBarcodeAsTextActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.a_save_barcode_as_text)
+        setContentView(R.layout.a_save_barcode_as_image)
         supportEdgeToEdge()
         initToolbar()
         initFormatSpinner()
@@ -75,7 +76,7 @@ class SaveBarcodeAsTextActivity : BaseActivity() {
 
     private fun initFormatSpinner() {
         spinnerSaveAs.adapter = ArrayAdapter.createFromResource(
-            this, R.array.activity_save_barcode_as_text_formats, R.layout.i_spinner
+            this, R.array.activity_save_barcode_as_image_formats, R.layout.i_spinner
         ).apply {
             setDropDownViewResource(R.layout.i_spinner_dropdown)
         }
@@ -93,14 +94,22 @@ class SaveBarcodeAsTextActivity : BaseActivity() {
 
     private fun saveBarcode() {
         val saveFunc = when (spinnerSaveAs.selectedItemPosition) {
-            0 -> barcodeSaver::saveBarcodeAsCsv
-            1 -> barcodeSaver::saveBarcodeAsJson
+            0 -> {
+                barcodeImageGenerator
+                    .generateBitmapAsync(barcode, 640, 640, 2)
+                    .flatMapCompletable { barcodeImageSaver.savePngImageToPublicDirectory(this, it, barcode) }
+            }
+            1 -> {
+                barcodeImageGenerator
+                    .generateSvgAsync(barcode, 640, 640, 2)
+                    .flatMapCompletable { barcodeImageSaver.saveSvgImageToPublicDirectory(this, it, barcode) }
+            }
             else -> return
         }
 
         showLoading(true)
 
-        saveFunc(this, barcode)
+        saveFunc
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
@@ -119,7 +128,7 @@ class SaveBarcodeAsTextActivity : BaseActivity() {
     }
 
     private fun showBarcodeSaved() {
-        Toast.makeText(this, R.string.activity_save_barcode_as_text_file_name_saved, Toast.LENGTH_LONG).show()
+        Toast.makeText(this, R.string.activity_save_barcode_as_image_file_name_saved, Toast.LENGTH_LONG).show()
         finish()
     }
 }

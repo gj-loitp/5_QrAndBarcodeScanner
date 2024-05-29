@@ -15,8 +15,8 @@ import com.mckimquyen.barcodescanner.R
 import com.mckimquyen.barcodescanner.di.*
 import com.mckimquyen.barcodescanner.extension.applySystemWindowInsets
 import com.mckimquyen.barcodescanner.extension.showError
-import com.mckimquyen.barcodescanner.feature.BaseActivity
-import com.mckimquyen.barcodescanner.feature.barcode.BarcodeActivity
+import com.mckimquyen.barcodescanner.feature.ActivityBase
+import com.mckimquyen.barcodescanner.feature.barcode.BarcodeActivityBase
 import com.mckimquyen.barcodescanner.model.Barcode
 import com.mckimquyen.barcodescanner.usecase.save
 import com.google.zxing.Result
@@ -28,7 +28,7 @@ import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.a_scan_barcode_from_file.*
 import java.util.concurrent.TimeUnit
 
-class ScanBarcodeFromFileActivity : BaseActivity() {
+class ScanBarcodeFromFileActivityBase : ActivityBase() {
 
     companion object {
         private const val CHOOSE_FILE_REQUEST_CODE = 12
@@ -37,7 +37,7 @@ class ScanBarcodeFromFileActivity : BaseActivity() {
         private val PERMISSIONS = arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE)
 
         fun start(context: Context) {
-            val intent = Intent(context, ScanBarcodeFromFileActivity::class.java)
+            val intent = Intent(context, ScanBarcodeFromFileActivityBase::class.java)
             context.startActivity(intent)
         }
     }
@@ -251,7 +251,7 @@ class ScanBarcodeFromFileActivity : BaseActivity() {
     }
 
     private fun navigateToBarcodeScreen(barcode: Barcode) {
-        BarcodeActivity.start(this, barcode)
+        BarcodeActivityBase.start(this, barcode)
         finish()
     }
 }

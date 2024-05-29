@@ -7,7 +7,7 @@ import com.mckimquyen.barcodescanner.model.schema.Other
 import com.mckimquyen.barcodescanner.model.schema.Schema
 
 abstract class BaseCreateBarcodeFragment : Fragment() {
-    protected val parentActivity by unsafeLazy { requireActivity() as CreateBarcodeActivity }
+    protected val parentActivity by unsafeLazy { requireActivity() as CreateBarcodeActivityBase }
 
     open val latitude: Double? = null
     open val longitude: Double? = null

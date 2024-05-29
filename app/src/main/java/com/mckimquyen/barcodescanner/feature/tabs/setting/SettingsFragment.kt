@@ -1,4 +1,4 @@
-package com.mckimquyen.barcodescanner.feature.tabs.settings
+package com.mckimquyen.barcodescanner.feature.tabs.setting
 
 import android.content.Intent
 import android.net.Uri
@@ -15,11 +15,11 @@ import com.mckimquyen.barcodescanner.extension.applySystemWindowInsets
 import com.mckimquyen.barcodescanner.extension.packageManager
 import com.mckimquyen.barcodescanner.extension.showError
 import com.mckimquyen.barcodescanner.feature.common.dialog.DeleteConfirmationDialogFragment
-import com.mckimquyen.barcodescanner.feature.tabs.settings.camera.ChooseCameraActivity
-import com.mckimquyen.barcodescanner.feature.tabs.settings.formats.SupportedFormatsActivity
-import com.mckimquyen.barcodescanner.feature.tabs.settings.permissions.AllPermissionsActivity
-import com.mckimquyen.barcodescanner.feature.tabs.settings.search.ChooseSearchEngineActivity
-import com.mckimquyen.barcodescanner.feature.tabs.settings.theme.ChooseThemeActivity
+import com.mckimquyen.barcodescanner.feature.tabs.setting.camera.ChooseCameraActivityBase
+import com.mckimquyen.barcodescanner.feature.tabs.setting.formats.SupportedFormatsActivityBase
+import com.mckimquyen.barcodescanner.feature.tabs.setting.permissions.AllPermissionsActivityBase
+import com.mckimquyen.barcodescanner.feature.tabs.setting.search.ChooseSearchEngineActivityBase
+import com.mckimquyen.barcodescanner.feature.tabs.setting.theme.ChooseThemeActivityBase
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
@@ -76,12 +76,12 @@ class SettingsFragment : Fragment(), DeleteConfirmationDialogFragment.Listener {
     }
 
     private fun handleButtonClicks() {
-        buttonChooseTheme.setOnClickListener { ChooseThemeActivity.start(requireActivity()) }
-        buttonChooseCamera.setOnClickListener { ChooseCameraActivity.start(requireActivity()) }
-        buttonSelectSupportedFormats.setOnClickListener { SupportedFormatsActivity.start(requireActivity()) }
+        buttonChooseTheme.setOnClickListener { ChooseThemeActivityBase.start(requireActivity()) }
+        buttonChooseCamera.setOnClickListener { ChooseCameraActivityBase.start(requireActivity()) }
+        buttonSelectSupportedFormats.setOnClickListener { SupportedFormatsActivityBase.start(requireActivity()) }
         buttonClearHistory.setOnClickListener { showDeleteHistoryConfirmationDialog() }
-        buttonChooseSearchEngine.setOnClickListener { ChooseSearchEngineActivity.start(requireContext()) }
-        buttonPermissions.setOnClickListener { AllPermissionsActivity.start(requireActivity()) }
+        buttonChooseSearchEngine.setOnClickListener { ChooseSearchEngineActivityBase.start(requireContext()) }
+        buttonPermissions.setOnClickListener { AllPermissionsActivityBase.start(requireActivity()) }
         buttonCheckUpdates.setOnClickListener { showAppInMarket() }
         buttonSourceCode.setOnClickListener { showSourceCode() }
     }

@@ -1,4 +1,4 @@
-package com.mckimquyen.barcodescanner.feature.tabs.history.export
+package com.mckimquyen.barcodescanner.feature.barcode.save
 
 import android.Manifest
 import android.content.Context
@@ -7,48 +7,54 @@ import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.core.view.isVisible
-import androidx.core.widget.addTextChangedListener
 import com.mckimquyen.barcodescanner.R
-import com.mckimquyen.barcodescanner.di.barcodeDatabase
 import com.mckimquyen.barcodescanner.di.barcodeSaver
 import com.mckimquyen.barcodescanner.di.permissionsHelper
 import com.mckimquyen.barcodescanner.extension.applySystemWindowInsets
-import com.mckimquyen.barcodescanner.extension.isNotBlank
 import com.mckimquyen.barcodescanner.extension.showError
-import com.mckimquyen.barcodescanner.extension.textString
-import com.mckimquyen.barcodescanner.feature.BaseActivity
+import com.mckimquyen.barcodescanner.extension.unsafeLazy
+import com.mckimquyen.barcodescanner.feature.ActivityBase
+import com.mckimquyen.barcodescanner.model.Barcode
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
-import kotlinx.android.synthetic.main.a_export_history.*
+import kotlinx.android.synthetic.main.a_save_barcode_as_text.*
 
-class ExportHistoryActivity : BaseActivity() {
-    private val disposable = CompositeDisposable()
+class SaveBarcodeAsTextActivityBase : ActivityBase() {
 
     companion object {
         private const val REQUEST_PERMISSIONS_CODE = 101
         private val PERMISSIONS = arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE)
 
-        fun start(context: Context) {
-            val intent = Intent(context, ExportHistoryActivity::class.java)
+        private const val BARCODE_KEY = "BARCODE_KEY"
+
+        fun start(context: Context, barcode: Barcode) {
+            val intent = Intent(context, SaveBarcodeAsTextActivityBase::class.java).apply {
+                putExtra(BARCODE_KEY, barcode)
+            }
             context.startActivity(intent)
         }
     }
 
+    private val barcode by unsafeLazy {
+        intent?.getSerializableExtra(BARCODE_KEY) as? Barcode ?: throw IllegalArgumentException("No barcode passed")
+    }
+
+    private val disposable = CompositeDisposable()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.a_export_history)
+        setContentView(R.layout.a_save_barcode_as_text)
         supportEdgeToEdge()
         initToolbar()
-        initExportTypeSpinner()
-        initFileNameEditText()
-        initExportButton()
+        initFormatSpinner()
+        initSaveButton()
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         if (permissionsHelper.areAllPermissionsGranted(grantResults)) {
-            exportHistory()
+            saveBarcode()
         }
     }
 
@@ -67,22 +73,16 @@ class ExportHistoryActivity : BaseActivity() {
         }
     }
 
-    private fun initExportTypeSpinner() {
-        spinnerExportAs.adapter = ArrayAdapter.createFromResource(
-            this, R.array.activity_export_history_types, R.layout.i_spinner
+    private fun initFormatSpinner() {
+        spinnerSaveAs.adapter = ArrayAdapter.createFromResource(
+            this, R.array.activity_save_barcode_as_text_formats, R.layout.i_spinner
         ).apply {
             setDropDownViewResource(R.layout.i_spinner_dropdown)
         }
     }
 
-    private fun initFileNameEditText() {
-        editTextFileName.addTextChangedListener {
-            buttonExport.isEnabled = editTextFileName.isNotBlank()
-        }
-    }
-
-    private fun initExportButton() {
-        buttonExport.setOnClickListener {
+    private fun initSaveButton() {
+        buttonSave.setOnClickListener {
             requestPermissions()
         }
     }
@@ -91,27 +91,20 @@ class ExportHistoryActivity : BaseActivity() {
         permissionsHelper.requestPermissions(this, PERMISSIONS, REQUEST_PERMISSIONS_CODE)
     }
 
-    private fun exportHistory() {
-        val fileName = editTextFileName.textString
-        val saveFunc = when (spinnerExportAs.selectedItemPosition) {
-            0 -> barcodeSaver::saveBarcodeHistoryAsCsv
-            1 -> barcodeSaver::saveBarcodeHistoryAsJson
+    private fun saveBarcode() {
+        val saveFunc = when (spinnerSaveAs.selectedItemPosition) {
+            0 -> barcodeSaver::saveBarcodeAsCsv
+            1 -> barcodeSaver::saveBarcodeAsJson
             else -> return
         }
 
         showLoading(true)
 
-        barcodeDatabase
-            .getAllForExport()
-            .flatMapCompletable { barcodes ->
-                saveFunc(this, fileName, barcodes)
-            }
+        saveFunc(this, barcode)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
-                {
-                    showHistoryExported()
-                },
+                { showBarcodeSaved() },
                 { error ->
                     showLoading(false)
                     showError(error)
@@ -125,8 +118,8 @@ class ExportHistoryActivity : BaseActivity() {
         scrollView.isVisible = isLoading.not()
     }
 
-    private fun showHistoryExported() {
-        Toast.makeText(this, R.string.activity_export_history_exported, Toast.LENGTH_LONG).show()
+    private fun showBarcodeSaved() {
+        Toast.makeText(this, R.string.activity_save_barcode_as_text_file_name_saved, Toast.LENGTH_LONG).show()
         finish()
     }
 }

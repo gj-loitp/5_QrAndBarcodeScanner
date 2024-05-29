@@ -17,10 +17,10 @@ import androidx.print.PrintHelper
 import com.mckimquyen.barcodescanner.R
 import com.mckimquyen.barcodescanner.di.*
 import com.mckimquyen.barcodescanner.extension.*
-import com.mckimquyen.barcodescanner.feature.BaseActivity
-import com.mckimquyen.barcodescanner.feature.barcode.otp.OtpActivity
-import com.mckimquyen.barcodescanner.feature.barcode.save.SaveBarcodeAsImageActivity
-import com.mckimquyen.barcodescanner.feature.barcode.save.SaveBarcodeAsTextActivity
+import com.mckimquyen.barcodescanner.feature.ActivityBase
+import com.mckimquyen.barcodescanner.feature.barcode.otp.OtpActivityBase
+import com.mckimquyen.barcodescanner.feature.barcode.save.SaveBarcodeAsImageActivityBase
+import com.mckimquyen.barcodescanner.feature.barcode.save.SaveBarcodeAsTextActivityBase
 import com.mckimquyen.barcodescanner.feature.common.dialog.ChooseSearchEngineDialogFragment
 import com.mckimquyen.barcodescanner.feature.common.dialog.DeleteConfirmationDialogFragment
 import com.mckimquyen.barcodescanner.feature.common.dialog.EditBarcodeNameDialogFragment
@@ -40,14 +40,14 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 
-class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listener, ChooseSearchEngineDialogFragment.Listener, EditBarcodeNameDialogFragment.Listener {
+class BarcodeActivityBase : ActivityBase(), DeleteConfirmationDialogFragment.Listener, ChooseSearchEngineDialogFragment.Listener, EditBarcodeNameDialogFragment.Listener {
 
     companion object {
         private const val BARCODE_KEY = "BARCODE_KEY"
         private const val IS_CREATED = "IS_CREATED"
 
         fun start(context: Context, barcode: Barcode, isCreated: Boolean = false) {
-            val intent = Intent(context, BarcodeActivity::class.java).apply {
+            val intent = Intent(context, BarcodeActivityBase::class.java).apply {
                 putExtra(BARCODE_KEY, barcode)
                 putExtra(IS_CREATED, isCreated)
             }
@@ -432,7 +432,7 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
 
     private fun showOtp() {
         val otp = OtpAuth.parse(barcode.otpUrl.orEmpty()) ?: return
-        OtpActivity.start(this, otp)
+        OtpActivityBase.start(this, otp)
     }
 
     private fun openOtpInOtherApp() {
@@ -524,15 +524,15 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
     }
 
     private fun navigateToBarcodeImageActivity() {
-        BarcodeImageActivity.start(this, originalBarcode)
+        BarcodeImageActivityBase.start(this, originalBarcode)
     }
 
     private fun navigateToSaveBarcodeAsTextActivity() {
-        SaveBarcodeAsTextActivity.start(this, originalBarcode)
+        SaveBarcodeAsTextActivityBase.start(this, originalBarcode)
     }
 
     private fun navigateToSaveBarcodeAsImageActivity() {
-        SaveBarcodeAsImageActivity.start(this, originalBarcode)
+        SaveBarcodeAsImageActivityBase.start(this, originalBarcode)
     }
 
 

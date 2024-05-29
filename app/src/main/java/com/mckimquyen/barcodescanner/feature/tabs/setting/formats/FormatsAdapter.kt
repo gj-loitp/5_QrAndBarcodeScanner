@@ -1,4 +1,4 @@
-package com.mckimquyen.barcodescanner.feature.tabs.settings.formats
+package com.mckimquyen.barcodescanner.feature.tabs.setting.formats
 
 import android.view.LayoutInflater
 import android.view.View

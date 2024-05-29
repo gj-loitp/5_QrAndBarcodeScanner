@@ -1,4 +1,4 @@
-package com.mckimquyen.barcodescanner.feature.tabs.settings.search
+package com.mckimquyen.barcodescanner.feature.tabs.setting.search
 
 import android.content.Context
 import android.content.Intent
@@ -8,16 +8,16 @@ import com.mckimquyen.barcodescanner.R
 import com.mckimquyen.barcodescanner.di.settings
 import com.mckimquyen.barcodescanner.extension.applySystemWindowInsets
 import com.mckimquyen.barcodescanner.extension.unsafeLazy
-import com.mckimquyen.barcodescanner.feature.BaseActivity
+import com.mckimquyen.barcodescanner.feature.ActivityBase
 import com.mckimquyen.barcodescanner.feature.common.view.SettingsRadioButton
 import com.mckimquyen.barcodescanner.model.SearchEngine
 import kotlinx.android.synthetic.main.a_choose_search_engine.*
 
-class ChooseSearchEngineActivity : BaseActivity() {
+class ChooseSearchEngineActivityBase : ActivityBase() {
 
     companion object {
         fun start(context: Context) {
-            val intent = Intent(context, ChooseSearchEngineActivity::class.java)
+            val intent = Intent(context, ChooseSearchEngineActivityBase::class.java)
             context.startActivity(intent)
         }
     }

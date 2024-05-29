@@ -10,7 +10,7 @@ import com.mckimquyen.barcodescanner.di.barcodeDatabase
 import com.mckimquyen.barcodescanner.extension.applySystemWindowInsets
 import com.mckimquyen.barcodescanner.extension.showError
 import com.mckimquyen.barcodescanner.feature.common.dialog.DeleteConfirmationDialogFragment
-import com.mckimquyen.barcodescanner.feature.tabs.history.export.ExportHistoryActivity
+import com.mckimquyen.barcodescanner.feature.tabs.history.export.ExportHistoryActivityBase
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
@@ -61,7 +61,7 @@ class BarcodeHistoryFragment : Fragment(), DeleteConfirmationDialogFragment.List
     }
 
     private fun navigateToExportHistoryScreen() {
-        ExportHistoryActivity.start(requireActivity())
+        ExportHistoryActivityBase.start(requireActivity())
     }
 
     private fun showDeleteHistoryConfirmationDialog() {

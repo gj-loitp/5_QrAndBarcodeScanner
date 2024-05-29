@@ -1,4 +1,4 @@
-package com.mckimquyen.barcodescanner.feature.tabs.settings.camera
+package com.mckimquyen.barcodescanner.feature.tabs.setting.camera
 
 import android.content.Context
 import android.content.Intent
@@ -6,14 +6,14 @@ import android.os.Bundle
 import com.mckimquyen.barcodescanner.R
 import com.mckimquyen.barcodescanner.di.settings
 import com.mckimquyen.barcodescanner.extension.applySystemWindowInsets
-import com.mckimquyen.barcodescanner.feature.BaseActivity
+import com.mckimquyen.barcodescanner.feature.ActivityBase
 import kotlinx.android.synthetic.main.activity_choose_camera.*
 
-class ChooseCameraActivity : BaseActivity() {
+class ChooseCameraActivityBase : ActivityBase() {
 
     companion object {
         fun start(context: Context) {
-            val intent = Intent(context, ChooseCameraActivity::class.java)
+            val intent = Intent(context, ChooseCameraActivityBase::class.java)
             context.startActivity(intent)
         }
     }

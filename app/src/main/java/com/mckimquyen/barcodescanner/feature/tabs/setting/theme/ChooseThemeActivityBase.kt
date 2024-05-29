@@ -1,4 +1,4 @@
-package com.mckimquyen.barcodescanner.feature.tabs.settings.theme
+package com.mckimquyen.barcodescanner.feature.tabs.setting.theme
 
 import android.content.Context
 import android.content.Intent
@@ -8,15 +8,15 @@ import com.mckimquyen.barcodescanner.R
 import com.mckimquyen.barcodescanner.di.settings
 import com.mckimquyen.barcodescanner.extension.applySystemWindowInsets
 import com.mckimquyen.barcodescanner.extension.unsafeLazy
-import com.mckimquyen.barcodescanner.feature.BaseActivity
+import com.mckimquyen.barcodescanner.feature.ActivityBase
 import com.mckimquyen.barcodescanner.usecase.Settings
 import kotlinx.android.synthetic.main.a_choose_theme.*
 
-class ChooseThemeActivity : BaseActivity() {
+class ChooseThemeActivityBase : ActivityBase() {
 
     companion object {
         fun start(context: Context) {
-            val intent = Intent(context, ChooseThemeActivity::class.java)
+            val intent = Intent(context, ChooseThemeActivityBase::class.java)
             context.startActivity(intent)
         }
     }

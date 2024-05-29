@@ -1,4 +1,4 @@
-package com.mckimquyen.barcodescanner.feature.barcode.save
+package com.mckimquyen.barcodescanner.feature.tabs.history.export
 
 import android.Manifest
 import android.content.Context
@@ -7,55 +7,48 @@ import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.core.view.isVisible
+import androidx.core.widget.addTextChangedListener
 import com.mckimquyen.barcodescanner.R
-import com.mckimquyen.barcodescanner.di.barcodeImageGenerator
-import com.mckimquyen.barcodescanner.di.barcodeImageSaver
+import com.mckimquyen.barcodescanner.di.barcodeDatabase
+import com.mckimquyen.barcodescanner.di.barcodeSaver
 import com.mckimquyen.barcodescanner.di.permissionsHelper
 import com.mckimquyen.barcodescanner.extension.applySystemWindowInsets
+import com.mckimquyen.barcodescanner.extension.isNotBlank
 import com.mckimquyen.barcodescanner.extension.showError
-import com.mckimquyen.barcodescanner.extension.unsafeLazy
-import com.mckimquyen.barcodescanner.feature.BaseActivity
-import com.mckimquyen.barcodescanner.model.Barcode
+import com.mckimquyen.barcodescanner.extension.textString
+import com.mckimquyen.barcodescanner.feature.ActivityBase
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
-import kotlinx.android.synthetic.main.a_save_barcode_as_image.*
+import kotlinx.android.synthetic.main.a_export_history.*
 
-class SaveBarcodeAsImageActivity : BaseActivity() {
+class ExportHistoryActivityBase : ActivityBase() {
+    private val disposable = CompositeDisposable()
 
     companion object {
         private const val REQUEST_PERMISSIONS_CODE = 101
         private val PERMISSIONS = arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE)
 
-        private const val BARCODE_KEY = "BARCODE_KEY"
-
-        fun start(context: Context, barcode: Barcode) {
-            val intent = Intent(context, SaveBarcodeAsImageActivity::class.java).apply {
-                putExtra(BARCODE_KEY, barcode)
-            }
+        fun start(context: Context) {
+            val intent = Intent(context, ExportHistoryActivityBase::class.java)
             context.startActivity(intent)
         }
     }
 
-    private val barcode by unsafeLazy {
-        intent?.getSerializableExtra(BARCODE_KEY) as? Barcode ?: throw IllegalArgumentException("No barcode passed")
-    }
-
-    private val disposable = CompositeDisposable()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.a_save_barcode_as_image)
+        setContentView(R.layout.a_export_history)
         supportEdgeToEdge()
         initToolbar()
-        initFormatSpinner()
-        initSaveButton()
+        initExportTypeSpinner()
+        initFileNameEditText()
+        initExportButton()
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         if (permissionsHelper.areAllPermissionsGranted(grantResults)) {
-            saveBarcode()
+            exportHistory()
         }
     }
 
@@ -74,16 +67,22 @@ class SaveBarcodeAsImageActivity : BaseActivity() {
         }
     }
 
-    private fun initFormatSpinner() {
-        spinnerSaveAs.adapter = ArrayAdapter.createFromResource(
-            this, R.array.activity_save_barcode_as_image_formats, R.layout.i_spinner
+    private fun initExportTypeSpinner() {
+        spinnerExportAs.adapter = ArrayAdapter.createFromResource(
+            this, R.array.activity_export_history_types, R.layout.i_spinner
         ).apply {
             setDropDownViewResource(R.layout.i_spinner_dropdown)
         }
     }
 
-    private fun initSaveButton() {
-        buttonSave.setOnClickListener {
+    private fun initFileNameEditText() {
+        editTextFileName.addTextChangedListener {
+            buttonExport.isEnabled = editTextFileName.isNotBlank()
+        }
+    }
+
+    private fun initExportButton() {
+        buttonExport.setOnClickListener {
             requestPermissions()
         }
     }
@@ -92,28 +91,27 @@ class SaveBarcodeAsImageActivity : BaseActivity() {
         permissionsHelper.requestPermissions(this, PERMISSIONS, REQUEST_PERMISSIONS_CODE)
     }
 
-    private fun saveBarcode() {
-        val saveFunc = when (spinnerSaveAs.selectedItemPosition) {
-            0 -> {
-                barcodeImageGenerator
-                    .generateBitmapAsync(barcode, 640, 640, 2)
-                    .flatMapCompletable { barcodeImageSaver.savePngImageToPublicDirectory(this, it, barcode) }
-            }
-            1 -> {
-                barcodeImageGenerator
-                    .generateSvgAsync(barcode, 640, 640, 2)
-                    .flatMapCompletable { barcodeImageSaver.saveSvgImageToPublicDirectory(this, it, barcode) }
-            }
+    private fun exportHistory() {
+        val fileName = editTextFileName.textString
+        val saveFunc = when (spinnerExportAs.selectedItemPosition) {
+            0 -> barcodeSaver::saveBarcodeHistoryAsCsv
+            1 -> barcodeSaver::saveBarcodeHistoryAsJson
             else -> return
         }
 
         showLoading(true)
 
-        saveFunc
+        barcodeDatabase
+            .getAllForExport()
+            .flatMapCompletable { barcodes ->
+                saveFunc(this, fileName, barcodes)
+            }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
-                { showBarcodeSaved() },
+                {
+                    showHistoryExported()
+                },
                 { error ->
                     showLoading(false)
                     showError(error)
@@ -127,8 +125,8 @@ class SaveBarcodeAsImageActivity : BaseActivity() {
         scrollView.isVisible = isLoading.not()
     }
 
-    private fun showBarcodeSaved() {
-        Toast.makeText(this, R.string.activity_save_barcode_as_image_file_name_saved, Toast.LENGTH_LONG).show()
+    private fun showHistoryExported() {
+        Toast.makeText(this, R.string.activity_export_history_exported, Toast.LENGTH_LONG).show()
         finish()
     }
 }

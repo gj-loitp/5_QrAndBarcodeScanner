@@ -4,14 +4,14 @@ import android.content.Intent
 import android.os.Build
 import android.service.quicksettings.TileService
 import androidx.annotation.RequiresApi
-import com.mckimquyen.barcodescanner.feature.tabs.BottomTabsActivity
+import com.mckimquyen.barcodescanner.feature.tabs.ActivityBottomTabsBase
 
 @RequiresApi(api = Build.VERSION_CODES.N)
-class QuickSettingsTileService : TileService() {
+class ServiceQuickSettingsTile : TileService() {
 
     override fun onClick() {
         super.onClick()
-        val intent = Intent(applicationContext, BottomTabsActivity::class.java).apply {
+        val intent = Intent(applicationContext, ActivityBottomTabsBase::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_SINGLE_TOP
         }
         startActivityAndCollapse(intent)

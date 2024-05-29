@@ -1,4 +1,4 @@
-package com.mckimquyen.barcodescanner.feature.tabs.settings.formats
+package com.mckimquyen.barcodescanner.feature.tabs.setting.formats
 
 import android.content.Context
 import android.content.Intent
@@ -8,16 +8,16 @@ import com.mckimquyen.barcodescanner.R
 import com.mckimquyen.barcodescanner.di.settings
 import com.mckimquyen.barcodescanner.extension.applySystemWindowInsets
 import com.mckimquyen.barcodescanner.extension.unsafeLazy
-import com.mckimquyen.barcodescanner.feature.BaseActivity
+import com.mckimquyen.barcodescanner.feature.ActivityBase
 import com.mckimquyen.barcodescanner.usecase.SupportedBarcodeFormats
 import com.google.zxing.BarcodeFormat
 import kotlinx.android.synthetic.main.a_supported_formats.*
 
-class SupportedFormatsActivity : BaseActivity(), FormatsAdapter.Listener {
+class SupportedFormatsActivityBase : ActivityBase(), FormatsAdapter.Listener {
 
     companion object {
         fun start(context: Context) {
-            val intent = Intent(context, SupportedFormatsActivity::class.java)
+            val intent = Intent(context, SupportedFormatsActivityBase::class.java)
             context.startActivity(intent)
         }
     }
@@ -44,7 +44,7 @@ class SupportedFormatsActivity : BaseActivity(), FormatsAdapter.Listener {
 
     private fun initRecyclerView() {
         recyclerViewFormats.apply {
-            layoutManager = LinearLayoutManager(this@SupportedFormatsActivity)
+            layoutManager = LinearLayoutManager(this@SupportedFormatsActivityBase)
             adapter = formatsAdapter
         }
     }

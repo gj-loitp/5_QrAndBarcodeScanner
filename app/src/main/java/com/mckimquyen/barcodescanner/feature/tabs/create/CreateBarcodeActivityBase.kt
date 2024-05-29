@@ -15,8 +15,8 @@ import com.mckimquyen.barcodescanner.extension.applySystemWindowInsets
 import com.mckimquyen.barcodescanner.extension.showError
 import com.mckimquyen.barcodescanner.extension.toStringId
 import com.mckimquyen.barcodescanner.extension.unsafeLazy
-import com.mckimquyen.barcodescanner.feature.BaseActivity
-import com.mckimquyen.barcodescanner.feature.barcode.BarcodeActivity
+import com.mckimquyen.barcodescanner.feature.ActivityBase
+import com.mckimquyen.barcodescanner.feature.barcode.BarcodeActivityBase
 import com.mckimquyen.barcodescanner.feature.tabs.create.barcode.*
 import com.mckimquyen.barcodescanner.feature.tabs.create.qr.*
 import com.mckimquyen.barcodescanner.model.Barcode
@@ -33,7 +33,7 @@ import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.a_create_barcode.*
 
 
-class CreateBarcodeActivity : BaseActivity(), AppAdapter.Listener {
+class CreateBarcodeActivityBase : ActivityBase(), AppAdapter.Listener {
 
     companion object {
         private const val BARCODE_FORMAT_KEY = "BARCODE_FORMAT_KEY"
@@ -47,7 +47,7 @@ class CreateBarcodeActivity : BaseActivity(), AppAdapter.Listener {
         private val CONTACTS_PERMISSIONS = arrayOf(Manifest.permission.READ_CONTACTS)
 
         fun start(context: Context, barcodeFormat: BarcodeFormat, barcodeSchema: BarcodeSchema? = null, defaultText: String? = null) {
-            val intent = Intent(context, CreateBarcodeActivity::class.java).apply {
+            val intent = Intent(context, CreateBarcodeActivityBase::class.java).apply {
                 putExtra(BARCODE_FORMAT_KEY, barcodeFormat.ordinal)
                 putExtra(BARCODE_SCHEMA_KEY, barcodeSchema?.ordinal ?: -1)
                 putExtra(DEFAULT_TEXT_KEY, defaultText)
@@ -81,7 +81,7 @@ class CreateBarcodeActivity : BaseActivity(), AppAdapter.Listener {
             }
 
             toolbar.menu?.findItem(R.id.itemCreateBarcode)?.apply {
-                icon = ContextCompat.getDrawable(this@CreateBarcodeActivity, iconId)
+                icon = ContextCompat.getDrawable(this@CreateBarcodeActivityBase, iconId)
                 isEnabled = enabled
             }
         }
@@ -332,7 +332,7 @@ class CreateBarcodeActivity : BaseActivity(), AppAdapter.Listener {
     }
 
     private fun navigateToBarcodeScreen(barcode: Barcode, finish: Boolean) {
-        BarcodeActivity.start(this, barcode, true)
+        BarcodeActivityBase.start(this, barcode, true)
 
         if (finish) {
             finish()

@@ -42,7 +42,7 @@
         </provider>
 
         <service
-            android:name=".feature.tile.QuickSettingsTileService"
+            android:name=".feature.tile.ServiceQuickSettingsTile"
             android:exported="true"
             android:icon="@drawable/ic_scan"
             android:label="@string/app_name"
@@ -53,7 +53,7 @@
         </service>
 
         <activity
-            android:name=".feature.tabs.BottomTabsActivity"
+            android:name=".feature.tabs.ActivityBottomTabsBase"
             android:configChanges="orientation|screenSize"
             android:exported="true"
             android:screenOrientation="fullSensor">
@@ -74,7 +74,7 @@
         </activity>
 
         <activity
-            android:name=".feature.tabs.scan.file.ScanBarcodeFromFileActivity"
+            android:name=".feature.tabs.scan.file.ScanBarcodeFromFileActivityBase"
             android:configChanges="orientation|screenSize"
             android:exported="true"
             android:screenOrientation="fullSensor"
@@ -95,7 +95,7 @@
         </activity>
 
         <activity
-            android:name=".feature.tabs.create.CreateBarcodeActivity"
+            android:name=".feature.tabs.create.CreateBarcodeActivityBase"
             android:configChanges="orientation|screenSize"
             android:exported="true"
             android:screenOrientation="fullSensor"
@@ -113,70 +113,70 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".feature.tabs.create.qr.CreateQrCodeAllActivity"
+            android:name=".feature.tabs.create.qr.CreateQrCodeAllActivityBase"
             android:configChanges="orientation|screenSize"
             android:exported="false"
             android:screenOrientation="fullSensor" />
         <activity
-            android:name=".feature.tabs.create.barcode.CreateBarcodeAllActivity"
-            android:configChanges="orientation|screenSize"
-            android:exported="false"
-            android:screenOrientation="fullSensor" />
-
-        <activity
-            android:name=".feature.barcode.BarcodeActivity"
-            android:configChanges="orientation|screenSize"
-            android:exported="false"
-            android:screenOrientation="fullSensor" />
-        <activity
-            android:name=".feature.barcode.BarcodeImageActivity"
-            android:configChanges="orientation|screenSize"
-            android:exported="false"
-            android:screenOrientation="fullSensor" />
-        <activity
-            android:name=".feature.barcode.otp.OtpActivity"
-            android:configChanges="orientation|screenSize"
-            android:exported="false"
-            android:screenOrientation="fullSensor" />
-        <activity
-            android:name=".feature.barcode.save.SaveBarcodeAsTextActivity"
-            android:configChanges="orientation|screenSize"
-            android:exported="false"
-            android:screenOrientation="fullSensor" />
-        <activity
-            android:name=".feature.barcode.save.SaveBarcodeAsImageActivity"
+            android:name=".feature.tabs.create.barcode.CreateBarcodeAllActivityBase"
             android:configChanges="orientation|screenSize"
             android:exported="false"
             android:screenOrientation="fullSensor" />
 
         <activity
-            android:name=".feature.tabs.history.export.ExportHistoryActivity"
+            android:name=".feature.barcode.BarcodeActivityBase"
+            android:configChanges="orientation|screenSize"
+            android:exported="false"
+            android:screenOrientation="fullSensor" />
+        <activity
+            android:name=".feature.barcode.BarcodeImageActivityBase"
+            android:configChanges="orientation|screenSize"
+            android:exported="false"
+            android:screenOrientation="fullSensor" />
+        <activity
+            android:name=".feature.barcode.otp.OtpActivityBase"
+            android:configChanges="orientation|screenSize"
+            android:exported="false"
+            android:screenOrientation="fullSensor" />
+        <activity
+            android:name=".feature.barcode.save.SaveBarcodeAsTextActivityBase"
+            android:configChanges="orientation|screenSize"
+            android:exported="false"
+            android:screenOrientation="fullSensor" />
+        <activity
+            android:name=".feature.barcode.save.SaveBarcodeAsImageActivityBase"
             android:configChanges="orientation|screenSize"
             android:exported="false"
             android:screenOrientation="fullSensor" />
 
         <activity
-            android:name=".feature.tabs.settings.theme.ChooseThemeActivity"
+            android:name=".feature.tabs.history.export.ExportHistoryActivityBase"
+            android:configChanges="orientation|screenSize"
+            android:exported="false"
+            android:screenOrientation="fullSensor" />
+
+        <activity
+            android:name=".feature.tabs.setting.theme.ChooseThemeActivityBase"
             android:configChanges="orientation|screenSize"
             android:exported="false"
             android:screenOrientation="fullSensor" />
         <activity
-            android:name=".feature.tabs.settings.camera.ChooseCameraActivity"
+            android:name=".feature.tabs.setting.camera.ChooseCameraActivityBase"
             android:configChanges="orientation|screenSize"
             android:exported="false"
             android:screenOrientation="fullSensor" />
         <activity
-            android:name=".feature.tabs.settings.formats.SupportedFormatsActivity"
+            android:name=".feature.tabs.setting.formats.SupportedFormatsActivityBase"
             android:configChanges="orientation|screenSize"
             android:exported="false"
             android:screenOrientation="fullSensor" />
         <activity
-            android:name=".feature.tabs.settings.search.ChooseSearchEngineActivity"
+            android:name=".feature.tabs.setting.search.ChooseSearchEngineActivityBase"
             android:configChanges="orientation|screenSize"
             android:exported="false"
             android:screenOrientation="fullSensor" />
         <activity
-            android:name=".feature.tabs.settings.permissions.AllPermissionsActivity"
+            android:name=".feature.tabs.setting.permissions.AllPermissionsActivityBase"
             android:configChanges="orientation|screenSize"
             android:exported="false"
             android:screenOrientation="fullSensor" />

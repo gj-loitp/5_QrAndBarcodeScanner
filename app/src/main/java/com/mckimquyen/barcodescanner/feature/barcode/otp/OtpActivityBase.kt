@@ -9,7 +9,7 @@ import com.mckimquyen.barcodescanner.R
 import com.mckimquyen.barcodescanner.di.otpGenerator
 import com.mckimquyen.barcodescanner.extension.applySystemWindowInsets
 import com.mckimquyen.barcodescanner.extension.orZero
-import com.mckimquyen.barcodescanner.feature.BaseActivity
+import com.mckimquyen.barcodescanner.feature.ActivityBase
 import com.mckimquyen.barcodescanner.model.schema.OtpAuth
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -18,13 +18,13 @@ import io.reactivex.rxkotlin.addTo
 import kotlinx.android.synthetic.main.activity_barcode_otp.*
 import java.util.concurrent.TimeUnit
 
-class OtpActivity : BaseActivity() {
+class OtpActivityBase : ActivityBase() {
 
     companion object {
         private const val OTP_KEY = "OTP_KEY"
 
         fun start(context: Context, opt: OtpAuth) {
-            val intent = Intent(context, OtpActivity::class.java).apply {
+            val intent = Intent(context, OtpActivityBase::class.java).apply {
                 putExtra(OTP_KEY, opt)
             }
             context.startActivity(intent)

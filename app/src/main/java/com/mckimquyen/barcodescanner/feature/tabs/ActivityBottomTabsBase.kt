@@ -6,15 +6,15 @@ import androidx.fragment.app.Fragment
 import com.mckimquyen.barcodescanner.BuildConfig
 import com.mckimquyen.barcodescanner.R
 import com.mckimquyen.barcodescanner.extension.applySystemWindowInsets
-import com.mckimquyen.barcodescanner.feature.BaseActivity
+import com.mckimquyen.barcodescanner.feature.ActivityBase
 import com.mckimquyen.barcodescanner.feature.tabs.create.CreateBarcodeFragment
 import com.mckimquyen.barcodescanner.feature.tabs.history.BarcodeHistoryFragment
 import com.mckimquyen.barcodescanner.feature.tabs.scan.ScanBarcodeFromCameraFragment
-import com.mckimquyen.barcodescanner.feature.tabs.settings.SettingsFragment
+import com.mckimquyen.barcodescanner.feature.tabs.setting.SettingsFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_bottom_tabs.*
 
-class BottomTabsActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
+class ActivityBottomTabsBase : ActivityBase(), BottomNavigationView.OnNavigationItemSelectedListener {
 
     companion object {
         private const val ACTION_CREATE_BARCODE = "${BuildConfig.APPLICATION_ID}.CREATE_BARCODE"
@@ -41,6 +41,7 @@ class BottomTabsActivity : BaseActivity(), BottomNavigationView.OnNavigationItem
         return true
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         if (bottom_navigation_view.selectedItemId == R.id.itemScan) {
             super.onBackPressed()
@@ -55,7 +56,7 @@ class BottomTabsActivity : BaseActivity(), BottomNavigationView.OnNavigationItem
 
     private fun initBottomNavigationView() {
         bottom_navigation_view.apply {
-            setOnNavigationItemSelectedListener(this@BottomTabsActivity)
+            setOnNavigationItemSelectedListener(this@ActivityBottomTabsBase)
         }
     }
 

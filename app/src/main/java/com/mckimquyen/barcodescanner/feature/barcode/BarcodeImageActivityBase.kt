@@ -10,20 +10,20 @@ import com.mckimquyen.barcodescanner.di.settings
 import com.mckimquyen.barcodescanner.extension.applySystemWindowInsets
 import com.mckimquyen.barcodescanner.extension.toStringId
 import com.mckimquyen.barcodescanner.extension.unsafeLazy
-import com.mckimquyen.barcodescanner.feature.BaseActivity
+import com.mckimquyen.barcodescanner.feature.ActivityBase
 import com.mckimquyen.barcodescanner.model.Barcode
 import com.mckimquyen.barcodescanner.usecase.Logger
 import kotlinx.android.synthetic.main.activity_barcode_image.*
 import java.text.SimpleDateFormat
 import java.util.*
 
-class BarcodeImageActivity : BaseActivity() {
+class BarcodeImageActivityBase : ActivityBase() {
 
     companion object {
         private const val BARCODE_KEY = "BARCODE_KEY"
 
         fun start(context: Context, barcode: Barcode) {
-            val intent = Intent(context, BarcodeImageActivity::class.java)
+            val intent = Intent(context, BarcodeImageActivityBase::class.java)
             intent.putExtra(BARCODE_KEY, barcode)
             context.startActivity(intent)
         }

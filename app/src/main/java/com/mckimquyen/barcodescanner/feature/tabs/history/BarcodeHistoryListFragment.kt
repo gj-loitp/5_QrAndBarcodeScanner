@@ -12,7 +12,7 @@ import com.mckimquyen.barcodescanner.R
 import com.mckimquyen.barcodescanner.di.barcodeDatabase
 import com.mckimquyen.barcodescanner.extension.orZero
 import com.mckimquyen.barcodescanner.extension.showError
-import com.mckimquyen.barcodescanner.feature.barcode.BarcodeActivity
+import com.mckimquyen.barcodescanner.feature.barcode.BarcodeActivityBase
 import com.mckimquyen.barcodescanner.model.Barcode
 import io.reactivex.BackpressureStrategy
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -59,7 +59,7 @@ class BarcodeHistoryListFragment : Fragment(), BarcodeHistoryAdapter.Listener {
     }
 
     override fun onBarcodeClicked(barcode: Barcode) {
-        BarcodeActivity.start(requireActivity(), barcode)
+        BarcodeActivityBase.start(requireActivity(), barcode)
     }
 
     override fun onDestroyView() {

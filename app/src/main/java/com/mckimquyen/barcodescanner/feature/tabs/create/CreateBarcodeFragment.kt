@@ -9,8 +9,8 @@ import com.mckimquyen.barcodescanner.R
 import com.mckimquyen.barcodescanner.extension.applySystemWindowInsets
 import com.mckimquyen.barcodescanner.extension.clipboardManager
 import com.mckimquyen.barcodescanner.extension.orZero
-import com.mckimquyen.barcodescanner.feature.tabs.create.barcode.CreateBarcodeAllActivity
-import com.mckimquyen.barcodescanner.feature.tabs.create.qr.CreateQrCodeAllActivity
+import com.mckimquyen.barcodescanner.feature.tabs.create.barcode.CreateBarcodeAllActivityBase
+import com.mckimquyen.barcodescanner.feature.tabs.create.qr.CreateQrCodeAllActivityBase
 import com.mckimquyen.barcodescanner.model.schema.BarcodeSchema
 import com.google.zxing.BarcodeFormat
 import kotlinx.android.synthetic.main.f_create_barcode.*
@@ -33,16 +33,16 @@ class CreateBarcodeFragment : Fragment() {
 
     private fun handleButtonsClicked() {
         // QR code
-        buttonClipboard.setOnClickListener { CreateBarcodeActivity.start(requireActivity(), BarcodeFormat.QR_CODE, BarcodeSchema.OTHER, getClipboardContent())  }
-        buttonText.setOnClickListener { CreateBarcodeActivity.start(requireActivity(), BarcodeFormat.QR_CODE, BarcodeSchema.OTHER) }
-        buttonUrl.setOnClickListener { CreateBarcodeActivity.start(requireActivity(), BarcodeFormat.QR_CODE, BarcodeSchema.URL) }
-        buttonWifi.setOnClickListener { CreateBarcodeActivity.start(requireActivity(), BarcodeFormat.QR_CODE, BarcodeSchema.WIFI) }
-        buttonLocation.setOnClickListener { CreateBarcodeActivity.start(requireActivity(), BarcodeFormat.QR_CODE, BarcodeSchema.GEO) }
-        buttonContactVcard.setOnClickListener { CreateBarcodeActivity.start(requireActivity(), BarcodeFormat.QR_CODE, BarcodeSchema.VCARD) }
-        buttonShowAllQrCode.setOnClickListener { CreateQrCodeAllActivity.start(requireActivity()) }
+        buttonClipboard.setOnClickListener { CreateBarcodeActivityBase.start(requireActivity(), BarcodeFormat.QR_CODE, BarcodeSchema.OTHER, getClipboardContent())  }
+        buttonText.setOnClickListener { CreateBarcodeActivityBase.start(requireActivity(), BarcodeFormat.QR_CODE, BarcodeSchema.OTHER) }
+        buttonUrl.setOnClickListener { CreateBarcodeActivityBase.start(requireActivity(), BarcodeFormat.QR_CODE, BarcodeSchema.URL) }
+        buttonWifi.setOnClickListener { CreateBarcodeActivityBase.start(requireActivity(), BarcodeFormat.QR_CODE, BarcodeSchema.WIFI) }
+        buttonLocation.setOnClickListener { CreateBarcodeActivityBase.start(requireActivity(), BarcodeFormat.QR_CODE, BarcodeSchema.GEO) }
+        buttonContactVcard.setOnClickListener { CreateBarcodeActivityBase.start(requireActivity(), BarcodeFormat.QR_CODE, BarcodeSchema.VCARD) }
+        buttonShowAllQrCode.setOnClickListener { CreateQrCodeAllActivityBase.start(requireActivity()) }
 
         // Barcode
-        buttonCreateBarcode.setOnClickListener { CreateBarcodeAllActivity.start(requireActivity()) }
+        buttonCreateBarcode.setOnClickListener { CreateBarcodeAllActivityBase.start(requireActivity()) }
     }
 
     private fun getClipboardContent(): String {
