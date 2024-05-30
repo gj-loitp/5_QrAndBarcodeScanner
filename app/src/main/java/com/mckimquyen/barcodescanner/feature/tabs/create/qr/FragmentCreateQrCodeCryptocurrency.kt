@@ -14,9 +14,13 @@ import com.mckimquyen.barcodescanner.model.schema.Cryptocurrency
 import com.mckimquyen.barcodescanner.model.schema.Schema
 import kotlinx.android.synthetic.main.f_create_qr_code_cryptocurrency.*
 
-class CreateQrCodeCryptocurrencyFragmentBaseCreateBarcode : FragmentBaseCreateBarcode() {
+class FragmentCreateQrCodeCryptocurrency : FragmentBaseCreateBarcode() {
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?,
+    ): View? {
         return inflater.inflate(R.layout.f_create_qr_code_cryptocurrency, container, false)
     }
 
@@ -58,7 +62,12 @@ class CreateQrCodeCryptocurrencyFragmentBaseCreateBarcode : FragmentBaseCreateBa
     }
 
     private fun handleTextChanged() {
-        listOf(editTextAddress, editTextAmount, editTextLabel, editTextMessage).forEach { editText ->
+        listOf(
+            editTextAddress,
+            editTextAmount,
+            editTextLabel,
+            editTextMessage
+        ).forEach { editText ->
             editText.addTextChangedListener { toggleCreateBarcodeButton() }
         }
     }

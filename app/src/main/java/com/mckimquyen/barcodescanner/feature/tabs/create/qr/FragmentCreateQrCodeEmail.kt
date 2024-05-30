@@ -13,9 +13,13 @@ import com.mckimquyen.barcodescanner.model.schema.Email
 import com.mckimquyen.barcodescanner.model.schema.Schema
 import kotlinx.android.synthetic.main.f_create_qr_code_email.*
 
-class CreateQrCodeEmailFragmentBaseCreateBarcode : FragmentBaseCreateBarcode() {
+class FragmentCreateQrCodeEmail : FragmentBaseCreateBarcode() {
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?,
+    ): View? {
         return inflater.inflate(R.layout.f_create_qr_code_email, container, false)
     }
 
@@ -38,12 +42,19 @@ class CreateQrCodeEmailFragmentBaseCreateBarcode : FragmentBaseCreateBarcode() {
     }
 
     private fun handleTextChanged() {
-        editTextEmail.addTextChangedListener { toggleCreateBarcodeButton() }
-        editTextSubject.addTextChangedListener { toggleCreateBarcodeButton() }
-        editTextMessage.addTextChangedListener { toggleCreateBarcodeButton() }
+        editTextEmail.addTextChangedListener {
+            toggleCreateBarcodeButton()
+        }
+        editTextSubject.addTextChangedListener {
+            toggleCreateBarcodeButton()
+        }
+        editTextMessage.addTextChangedListener {
+            toggleCreateBarcodeButton()
+        }
     }
 
     private fun toggleCreateBarcodeButton() {
-        parentActivity.isCreateBarcodeButtonEnabled = editTextEmail.isNotBlank() || editTextSubject.isNotBlank() || editTextMessage.isNotBlank()
+        parentActivity.isCreateBarcodeButtonEnabled =
+            editTextEmail.isNotBlank() || editTextSubject.isNotBlank() || editTextMessage.isNotBlank()
     }
 }

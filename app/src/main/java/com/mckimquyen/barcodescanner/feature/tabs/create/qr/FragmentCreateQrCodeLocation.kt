@@ -13,7 +13,7 @@ import com.mckimquyen.barcodescanner.model.schema.Geo
 import com.mckimquyen.barcodescanner.model.schema.Schema
 import kotlinx.android.synthetic.main.f_create_qr_code_location.*
 
-class CreateQrCodeLocationFragmentBaseCreateBarcode : FragmentBaseCreateBarcode() {
+class FragmentCreateQrCodeLocation : FragmentBaseCreateBarcode() {
 
     override val latitude: Double?
         get() = editTextLatitude.textString.toDoubleOrNull()
@@ -21,7 +21,11 @@ class CreateQrCodeLocationFragmentBaseCreateBarcode : FragmentBaseCreateBarcode(
     override val longitude: Double?
         get() = editTextLongitude.textString.toDoubleOrNull()
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?,
+    ): View? {
         return inflater.inflate(R.layout.f_create_qr_code_location, container, false)
     }
 
@@ -32,11 +36,11 @@ class CreateQrCodeLocationFragmentBaseCreateBarcode : FragmentBaseCreateBarcode(
     }
 
     override fun getBarcodeSchema(): Schema {
-       return Geo(
-           latitude = editTextLatitude.textString,
-           longitude = editTextLongitude.textString,
-           altitude = editTextAltitude.textString
-       )
+        return Geo(
+            latitude = editTextLatitude.textString,
+            longitude = editTextLongitude.textString,
+            altitude = editTextAltitude.textString
+        )
     }
 
     override fun showLocation(latitude: Double?, longitude: Double?) {
@@ -53,8 +57,12 @@ class CreateQrCodeLocationFragmentBaseCreateBarcode : FragmentBaseCreateBarcode(
     }
 
     private fun handleTextChanged() {
-        editTextLatitude.addTextChangedListener { toggleCreateBarcodeButton() }
-        editTextLongitude.addTextChangedListener { toggleCreateBarcodeButton() }
+        editTextLatitude.addTextChangedListener {
+            toggleCreateBarcodeButton()
+        }
+        editTextLongitude.addTextChangedListener {
+            toggleCreateBarcodeButton()
+        }
     }
 
     private fun toggleCreateBarcodeButton() {

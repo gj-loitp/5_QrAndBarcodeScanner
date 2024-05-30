@@ -13,9 +13,13 @@ import com.mckimquyen.barcodescanner.model.schema.Mms
 import com.mckimquyen.barcodescanner.model.schema.Schema
 import kotlinx.android.synthetic.main.f_create_qr_code_mms.*
 
-class CreateQrCodeMmsFragmentBaseCreateBarcode : FragmentBaseCreateBarcode() {
+class FragmentCreateQrCodeMms : FragmentBaseCreateBarcode() {
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?,
+    ): View? {
         return inflater.inflate(R.layout.f_create_qr_code_mms, container, false)
     }
 
@@ -45,12 +49,19 @@ class CreateQrCodeMmsFragmentBaseCreateBarcode : FragmentBaseCreateBarcode() {
     }
 
     private fun handleTextChanged() {
-        editTextPhone.addTextChangedListener { toggleCreateBarcodeButton() }
-        editTextSubject.addTextChangedListener { toggleCreateBarcodeButton() }
-        editTextMessage.addTextChangedListener { toggleCreateBarcodeButton() }
+        editTextPhone.addTextChangedListener {
+            toggleCreateBarcodeButton()
+        }
+        editTextSubject.addTextChangedListener {
+            toggleCreateBarcodeButton()
+        }
+        editTextMessage.addTextChangedListener {
+            toggleCreateBarcodeButton()
+        }
     }
 
     private fun toggleCreateBarcodeButton() {
-        parentActivity.isCreateBarcodeButtonEnabled = editTextPhone.isNotBlank() || editTextSubject.isNotBlank() || editTextMessage.isNotBlank()
+        parentActivity.isCreateBarcodeButtonEnabled =
+            editTextPhone.isNotBlank() || editTextSubject.isNotBlank() || editTextMessage.isNotBlank()
     }
 }

@@ -11,9 +11,13 @@ import com.mckimquyen.barcodescanner.model.schema.Schema
 import com.mckimquyen.barcodescanner.model.schema.VEvent
 import kotlinx.android.synthetic.main.f_create_qr_code_vevent.*
 
-class CreateQrCodeEventFragmentBaseCreateBarcode : FragmentBaseCreateBarcode() {
+class FragmentCreateQrCodeEvent : FragmentBaseCreateBarcode() {
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?,
+    ): View? {
         return inflater.inflate(R.layout.f_create_qr_code_vevent, container, false)
     }
 
