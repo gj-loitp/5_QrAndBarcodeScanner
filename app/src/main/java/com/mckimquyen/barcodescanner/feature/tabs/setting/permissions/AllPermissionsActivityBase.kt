@@ -6,7 +6,7 @@ import android.os.Bundle
 import com.mckimquyen.barcodescanner.R
 import com.mckimquyen.barcodescanner.extension.applySystemWindowInsets
 import com.mckimquyen.barcodescanner.feature.ActivityBase
-import kotlinx.android.synthetic.main.activity_all_permissions.*
+import kotlinx.android.synthetic.main.a_all_permissions.*
 
 class AllPermissionsActivityBase : ActivityBase() {
 
@@ -19,7 +19,7 @@ class AllPermissionsActivityBase : ActivityBase() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_all_permissions)
+        setContentView(R.layout.a_all_permissions)
         rootView.applySystemWindowInsets(applyTop = true, applyBottom = true)
         toolbar.setNavigationOnClickListener { finish() }
     }

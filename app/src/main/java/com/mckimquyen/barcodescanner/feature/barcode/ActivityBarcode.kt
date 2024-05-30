@@ -35,7 +35,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
-import kotlinx.android.synthetic.main.activity_barcode.*
+import kotlinx.android.synthetic.main.a_barcode.*
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -81,7 +81,7 @@ class ActivityBarcode : ActivityBase(), DialogFragmentDeleteConfirmation.Listene
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.activity_barcode)
+        setContentView(R.layout.a_barcode)
 
         supportEdgeToEdge()
         saveOriginalBrightness()
@@ -186,103 +186,103 @@ class ActivityBarcode : ActivityBase(), DialogFragmentDeleteConfirmation.Listene
     }
 
     private fun handleButtonsClicked() {
-        button_edit_name.setOnClickListener {
+        buttonEditName.setOnClickListener {
             showEditBarcodeNameDialog()
         }
-        button_search_on_web.setOnClickListener {
+        buttonSearchOnWeb.setOnClickListener {
             searchBarcodeTextOnInternet()
         }
-        button_add_to_calendar.setOnClickListener {
+        buttonAddToCalendar.setOnClickListener {
             addToCalendar()
         }
-        button_add_to_contacts.setOnClickListener {
+        buttonAddToContacts.setOnClickListener {
             addToContacts()
         }
-        button_show_location.setOnClickListener {
+        buttonShowLocation.setOnClickListener {
             showLocation()
         }
-        button_connect_to_wifi.setOnClickListener {
+        buttonConnectToWifi.setOnClickListener {
             connectToWifi()
         }
-        button_open_wifi_settings.setOnClickListener {
+        buttonOpenWifiSettings.setOnClickListener {
             openWifiSettings()
         }
-        button_copy_network_name.setOnClickListener {
+        buttonCopyNetworkName.setOnClickListener {
             copyNetworkNameToClipboard()
         }
-        button_copy_network_password.setOnClickListener {
+        buttonCopyNetworkPassword.setOnClickListener {
             copyNetworkPasswordToClipboard()
         }
-        button_open_app.setOnClickListener {
+        buttonOpenApp.setOnClickListener {
             openApp()
         }
-        button_open_in_app_market.setOnClickListener {
+        buttonOpenInAppMarket.setOnClickListener {
             openInAppMarket()
         }
-        button_open_in_youtube.setOnClickListener {
+        buttonOpenInYoutube.setOnClickListener {
             openInYoutube()
         }
-        button_show_otp.setOnClickListener {
+        buttonShowOtp.setOnClickListener {
             showOtp()
         }
-        button_open_otp.setOnClickListener {
+        buttonOpenOtp.setOnClickListener {
             openOtpInOtherApp()
         }
-        button_open_bitcoin_uri.setOnClickListener {
+        buttonOpenBitcoinUri.setOnClickListener {
             openBitcoinUrl()
         }
-        button_open_link.setOnClickListener {
+        buttonOpenLink.setOnClickListener {
             openLink()
         }
-        button_save_bookmark.setOnClickListener {
+        buttonSaveBookmark.setOnClickListener {
             saveBookmark()
         }
-        button_call_phone_1.setOnClickListener {
+        buttonCallPhone1.setOnClickListener {
             callPhone(barcode.phone)
         }
-        button_call_phone_2.setOnClickListener {
+        buttonCallPhone2.setOnClickListener {
             callPhone(barcode.secondaryPhone)
         }
-        button_call_phone_3.setOnClickListener {
+        buttonCallPhone3.setOnClickListener {
             callPhone(barcode.tertiaryPhone)
         }
-        button_send_sms_or_mms_1.setOnClickListener {
+        buttonSendSmsOrMms1.setOnClickListener {
             sendSmsOrMms(barcode.phone)
         }
         button_send_sms_or_mms_2.setOnClickListener {
             sendSmsOrMms(barcode.secondaryPhone)
         }
-        button_send_sms_or_mms_3.setOnClickListener {
+        buttonSendSmsOrMms3.setOnClickListener {
             sendSmsOrMms(barcode.tertiaryPhone)
         }
-        button_send_email_1.setOnClickListener {
+        buttonSendEmail1.setOnClickListener {
             sendEmail(barcode.email)
         }
-        button_send_email_2.setOnClickListener {
+        buttonSendEmail2.setOnClickListener {
             sendEmail(barcode.secondaryEmail)
         }
-        button_send_email_3.setOnClickListener {
+        buttonSendEmail3.setOnClickListener {
             sendEmail(barcode.tertiaryEmail)
         }
-        button_share_as_text.setOnClickListener {
+        buttonShareAsText.setOnClickListener {
             shareBarcodeAsText()
         }
-        button_copy.setOnClickListener {
+        buttonCopy.setOnClickListener {
             copyBarcodeTextToClipboard()
         }
-        button_search.setOnClickListener {
+        buttonSearch.setOnClickListener {
             searchBarcodeTextOnInternet()
         }
-        button_save_as_text.setOnClickListener {
+        buttonSaveAsText.setOnClickListener {
             navigateToSaveBarcodeAsTextActivity()
         }
-        button_share_as_image.setOnClickListener {
+        buttonShareAsImage.setOnClickListener {
             shareBarcodeAsImage()
         }
-        button_save_as_image.setOnClickListener {
+        buttonSaveAsImage.setOnClickListener {
             navigateToSaveBarcodeAsImageActivity()
         }
-        button_print.setOnClickListener {
+        buttonPrint.setOnClickListener {
             printBarcode()
         }
     }
@@ -336,7 +336,7 @@ class ActivityBarcode : ActivityBase(), DialogFragmentDeleteConfirmation.Listene
             .subscribe(
                 { id ->
                     barcode.id = id
-                    button_edit_name.isVisible = true
+                    buttonEditName.isVisible = true
                     toolbar?.menu?.findItem(R.id.itemDelete)?.isVisible = true
                 },
                 { error ->
@@ -700,8 +700,8 @@ class ActivityBarcode : ActivityBase(), DialogFragmentDeleteConfirmation.Listene
     }
 
     private fun showBarcodeName(name: String?) {
-        text_view_barcode_name.isVisible = name.isNullOrBlank().not()
-        text_view_barcode_name.text = name.orEmpty()
+        textViewBarcodeName.isVisible = name.isNullOrBlank().not()
+        textViewBarcodeName.text = name.orEmpty()
     }
 
     private fun showBarcodeText() {
@@ -740,72 +740,72 @@ class ActivityBarcode : ActivityBase(), DialogFragmentDeleteConfirmation.Listene
     }
 
     private fun showFullCountryName(fullCountryName: String) {
-        text_view_country.apply {
+        textViewCountry.apply {
             text = fullCountryName
             isVisible = fullCountryName.isBlank().not()
         }
     }
 
     private fun showOrHideButtons() {
-        button_search.isVisible = isCreated.not()
-        button_edit_name.isVisible = barcode.isInDb
+        buttonSearch.isVisible = isCreated.not()
+        buttonEditName.isVisible = barcode.isInDb
 
         if (isCreated) {
             return
         }
 
-        button_search_on_web.isVisible = barcode.isProductBarcode
-        button_search.isVisible = barcode.isProductBarcode.not()
+        buttonSearchOnWeb.isVisible = barcode.isProductBarcode
+        buttonSearch.isVisible = barcode.isProductBarcode.not()
 
-        button_add_to_calendar.isVisible = barcode.schema == BarcodeSchema.VEVENT
-        button_add_to_contacts.isVisible =
+        buttonAddToCalendar.isVisible = barcode.schema == BarcodeSchema.VEVENT
+        buttonAddToContacts.isVisible =
             barcode.schema == BarcodeSchema.VCARD || barcode.schema == BarcodeSchema.MECARD
 
-        button_call_phone_1.isVisible = barcode.phone.isNullOrEmpty().not()
-        button_call_phone_2.isVisible = barcode.secondaryPhone.isNullOrEmpty().not()
-        button_call_phone_3.isVisible = barcode.tertiaryPhone.isNullOrEmpty().not()
+        buttonCallPhone1.isVisible = barcode.phone.isNullOrEmpty().not()
+        buttonCallPhone2.isVisible = barcode.secondaryPhone.isNullOrEmpty().not()
+        buttonCallPhone3.isVisible = barcode.tertiaryPhone.isNullOrEmpty().not()
 
-        button_send_sms_or_mms_1.isVisible =
+        buttonSendSmsOrMms1.isVisible =
             barcode.phone.isNullOrEmpty().not() || barcode.smsBody.isNullOrEmpty().not()
         button_send_sms_or_mms_2.isVisible = barcode.secondaryPhone.isNullOrEmpty().not()
-        button_send_sms_or_mms_3.isVisible = barcode.tertiaryPhone.isNullOrEmpty().not()
+        buttonSendSmsOrMms3.isVisible = barcode.tertiaryPhone.isNullOrEmpty().not()
 
-        button_send_email_1.isVisible = barcode.email.isNullOrEmpty().not() || barcode.emailSubject.isNullOrEmpty()
+        buttonSendEmail1.isVisible = barcode.email.isNullOrEmpty().not() || barcode.emailSubject.isNullOrEmpty()
             .not() || barcode.emailBody.isNullOrEmpty().not()
-        button_send_email_2.isVisible = barcode.secondaryEmail.isNullOrEmpty().not()
-        button_send_email_3.isVisible = barcode.tertiaryEmail.isNullOrEmpty().not()
+        buttonSendEmail2.isVisible = barcode.secondaryEmail.isNullOrEmpty().not()
+        buttonSendEmail3.isVisible = barcode.tertiaryEmail.isNullOrEmpty().not()
 
-        button_show_location.isVisible = barcode.geoUri.isNullOrEmpty().not()
-        button_connect_to_wifi.isVisible = barcode.schema == BarcodeSchema.WIFI
-        button_open_wifi_settings.isVisible = barcode.schema == BarcodeSchema.WIFI
-        button_copy_network_name.isVisible = barcode.networkName.isNullOrEmpty().not()
-        button_copy_network_password.isVisible = barcode.networkPassword.isNullOrEmpty().not()
-        button_open_app.isVisible = barcode.appPackage.isNullOrEmpty().not() && isAppInstalled(barcode.appPackage)
-        button_open_in_app_market.isVisible = barcode.appMarketUrl.isNullOrEmpty().not()
-        button_open_in_youtube.isVisible = barcode.youtubeUrl.isNullOrEmpty().not()
-        button_show_otp.isVisible = barcode.otpUrl.isNullOrEmpty().not()
-        button_open_otp.isVisible = barcode.otpUrl.isNullOrEmpty().not()
-        button_open_bitcoin_uri.isVisible = barcode.bitcoinUri.isNullOrEmpty().not()
-        button_open_link.isVisible = barcode.url.isNullOrEmpty().not()
-        button_save_bookmark.isVisible = barcode.schema == BarcodeSchema.BOOKMARK
+        buttonShowLocation.isVisible = barcode.geoUri.isNullOrEmpty().not()
+        buttonConnectToWifi.isVisible = barcode.schema == BarcodeSchema.WIFI
+        buttonOpenWifiSettings.isVisible = barcode.schema == BarcodeSchema.WIFI
+        buttonCopyNetworkName.isVisible = barcode.networkName.isNullOrEmpty().not()
+        buttonCopyNetworkPassword.isVisible = barcode.networkPassword.isNullOrEmpty().not()
+        buttonOpenApp.isVisible = barcode.appPackage.isNullOrEmpty().not() && isAppInstalled(barcode.appPackage)
+        buttonOpenInAppMarket.isVisible = barcode.appMarketUrl.isNullOrEmpty().not()
+        buttonOpenInYoutube.isVisible = barcode.youtubeUrl.isNullOrEmpty().not()
+        buttonShowOtp.isVisible = barcode.otpUrl.isNullOrEmpty().not()
+        buttonOpenOtp.isVisible = barcode.otpUrl.isNullOrEmpty().not()
+        buttonOpenBitcoinUri.isVisible = barcode.bitcoinUri.isNullOrEmpty().not()
+        buttonOpenLink.isVisible = barcode.url.isNullOrEmpty().not()
+        buttonSaveBookmark.isVisible = barcode.schema == BarcodeSchema.BOOKMARK
     }
 
     private fun showButtonText() {
-        button_call_phone_1.text = getString(R.string.activity_barcode_call_phone, barcode.phone)
-        button_call_phone_2.text = getString(R.string.activity_barcode_call_phone, barcode.secondaryPhone)
-        button_call_phone_3.text = getString(R.string.activity_barcode_call_phone, barcode.tertiaryPhone)
+        buttonCallPhone1.text = getString(R.string.activity_barcode_call_phone, barcode.phone)
+        buttonCallPhone2.text = getString(R.string.activity_barcode_call_phone, barcode.secondaryPhone)
+        buttonCallPhone3.text = getString(R.string.activity_barcode_call_phone, barcode.tertiaryPhone)
 
-        button_send_sms_or_mms_1.text = getString(R.string.activity_barcode_send_sms, barcode.phone)
+        buttonSendSmsOrMms1.text = getString(R.string.activity_barcode_send_sms, barcode.phone)
         button_send_sms_or_mms_2.text = getString(R.string.activity_barcode_send_sms, barcode.secondaryPhone)
-        button_send_sms_or_mms_3.text = getString(R.string.activity_barcode_send_sms, barcode.tertiaryPhone)
+        buttonSendSmsOrMms3.text = getString(R.string.activity_barcode_send_sms, barcode.tertiaryPhone)
 
-        button_send_email_1.text = getString(R.string.activity_barcode_send_email, barcode.email)
-        button_send_email_2.text = getString(R.string.activity_barcode_send_email, barcode.secondaryEmail)
-        button_send_email_3.text = getString(R.string.activity_barcode_send_email, barcode.tertiaryEmail)
+        buttonSendEmail1.text = getString(R.string.activity_barcode_send_email, barcode.email)
+        buttonSendEmail2.text = getString(R.string.activity_barcode_send_email, barcode.secondaryEmail)
+        buttonSendEmail3.text = getString(R.string.activity_barcode_send_email, barcode.tertiaryEmail)
     }
 
     private fun showConnectToWifiButtonEnabled(isEnabled: Boolean) {
-        button_connect_to_wifi.isEnabled = isEnabled
+        buttonConnectToWifi.isEnabled = isEnabled
     }
 
     private fun showDeleteBarcodeConfirmationDialog() {
