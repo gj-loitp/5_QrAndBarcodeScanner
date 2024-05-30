@@ -6,8 +6,10 @@ import com.mckimquyen.barcodescanner.model.Contact
 import com.mckimquyen.barcodescanner.model.schema.Other
 import com.mckimquyen.barcodescanner.model.schema.Schema
 
-abstract class BaseCreateBarcodeFragment : Fragment() {
-    protected val parentActivity by unsafeLazy { requireActivity() as CreateBarcodeActivityBase }
+abstract class FragmentBaseCreateBarcode : Fragment() {
+    protected val parentActivity by unsafeLazy {
+        requireActivity() as ActivityCreateBarcode
+    }
 
     open val latitude: Double? = null
     open val longitude: Double? = null

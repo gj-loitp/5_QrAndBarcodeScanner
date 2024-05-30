@@ -8,12 +8,12 @@ import androidx.core.widget.addTextChangedListener
 import com.mckimquyen.barcodescanner.R
 import com.mckimquyen.barcodescanner.extension.isNotBlank
 import com.mckimquyen.barcodescanner.extension.textString
-import com.mckimquyen.barcodescanner.feature.tabs.create.BaseCreateBarcodeFragment
+import com.mckimquyen.barcodescanner.feature.tabs.create.FragmentBaseCreateBarcode
 import com.mckimquyen.barcodescanner.model.schema.Geo
 import com.mckimquyen.barcodescanner.model.schema.Schema
 import kotlinx.android.synthetic.main.f_create_qr_code_location.*
 
-class CreateQrCodeLocationFragment : BaseCreateBarcodeFragment() {
+class CreateQrCodeLocationFragmentBaseCreateBarcode : FragmentBaseCreateBarcode() {
 
     override val latitude: Double?
         get() = editTextLatitude.textString.toDoubleOrNull()

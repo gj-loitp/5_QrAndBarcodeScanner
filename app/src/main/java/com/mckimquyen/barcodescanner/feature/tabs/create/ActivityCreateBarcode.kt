@@ -33,7 +33,7 @@ import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.a_create_barcode.*
 
 
-class CreateBarcodeActivityBase : ActivityBase(), AppAdapter.Listener {
+class ActivityCreateBarcode : ActivityBase(), AppAdapter.Listener {
 
     companion object {
         private const val BARCODE_FORMAT_KEY = "BARCODE_FORMAT_KEY"
@@ -46,8 +46,13 @@ class CreateBarcodeActivityBase : ActivityBase(), AppAdapter.Listener {
         private const val CONTACTS_PERMISSION_REQUEST_CODE = 101
         private val CONTACTS_PERMISSIONS = arrayOf(Manifest.permission.READ_CONTACTS)
 
-        fun start(context: Context, barcodeFormat: BarcodeFormat, barcodeSchema: BarcodeSchema? = null, defaultText: String? = null) {
-            val intent = Intent(context, CreateBarcodeActivityBase::class.java).apply {
+        fun start(
+            context: Context,
+            barcodeFormat: BarcodeFormat,
+            barcodeSchema: BarcodeSchema? = null,
+            defaultText: String? = null,
+        ) {
+            val intent = Intent(context, ActivityCreateBarcode::class.java).apply {
                 putExtra(BARCODE_FORMAT_KEY, barcodeFormat.ordinal)
                 putExtra(BARCODE_SCHEMA_KEY, barcodeSchema?.ordinal ?: -1)
                 putExtra(DEFAULT_TEXT_KEY, defaultText)
@@ -81,7 +86,7 @@ class CreateBarcodeActivityBase : ActivityBase(), AppAdapter.Listener {
             }
 
             toolbar.menu?.findItem(R.id.itemCreateBarcode)?.apply {
-                icon = ContextCompat.getDrawable(this@CreateBarcodeActivityBase, iconId)
+                icon = ContextCompat.getDrawable(this@ActivityCreateBarcode, iconId)
                 isEnabled = enabled
             }
         }
@@ -102,7 +107,12 @@ class CreateBarcodeActivityBase : ActivityBase(), AppAdapter.Listener {
         showFragment()
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+    @Deprecated("Deprecated in Java")
+    override fun onActivityResult(
+        requestCode: Int,
+        resultCode: Int,
+        data: Intent?,
+    ) {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (resultCode != Activity.RESULT_OK) {
@@ -118,7 +128,7 @@ class CreateBarcodeActivityBase : ActivityBase(), AppAdapter.Listener {
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
-        grantResults: IntArray
+        grantResults: IntArray,
     ) {
         if (requestCode == CONTACTS_PERMISSION_REQUEST_CODE && permissionsHelper.areAllPermissionsGranted(grantResults)) {
             chooseContact()
@@ -148,10 +158,12 @@ class CreateBarcodeActivityBase : ActivityBase(), AppAdapter.Listener {
                 createBarcodeForPlainText()
                 true
             }
+
             "text/x-vcard" -> {
                 createBarcodeForVCard()
                 true
             }
+
             else -> false
         }
     }
@@ -226,33 +238,36 @@ class CreateBarcodeActivityBase : ActivityBase(), AppAdapter.Listener {
 
     private fun showFragment() {
         val fragment = when {
-            barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.OTHER -> CreateQrCodeTextFragment.newInstance(defaultText)
-            barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.URL -> CreateQrCodeUrlFragment()
-            barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.BOOKMARK -> CreateQrCodeBookmarkFragment()
-            barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.PHONE -> CreateQrCodePhoneFragment()
-            barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.WIFI -> CreateQrCodeWifiFragment()
-            barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.EMAIL -> CreateQrCodeEmailFragment()
-            barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.SMS -> CreateQrCodeSmsFragment()
-            barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.MMS -> CreateQrCodeMmsFragment()
-            barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.CRYPTOCURRENCY -> CreateQrCodeCryptocurrencyFragment()
-            barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.GEO -> CreateQrCodeLocationFragment()
-            barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.APP -> CreateQrCodeAppFragment()
-            barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.OTP_AUTH -> CreateQrCodeOtpFragment()
-            barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.VEVENT -> CreateQrCodeEventFragment()
-            barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.VCARD -> CreateQrCodeVCardFragment()
-            barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.MECARD -> CreateQrCodeMeCardFragment()
-            barcodeFormat == BarcodeFormat.DATA_MATRIX -> CreateDataMatrixFragment()
-            barcodeFormat == BarcodeFormat.AZTEC -> CreateAztecFragment()
-            barcodeFormat == BarcodeFormat.PDF_417 -> CreatePdf417Fragment()
-            barcodeFormat == BarcodeFormat.CODABAR -> CreateCodabarFragment()
-            barcodeFormat == BarcodeFormat.CODE_39 -> CreateCode39Fragment()
-            barcodeFormat == BarcodeFormat.CODE_93 -> CreateCode93Fragment()
-            barcodeFormat == BarcodeFormat.CODE_128 -> CreateCode128Fragment()
-            barcodeFormat == BarcodeFormat.EAN_8 -> CreateEan8Fragment()
-            barcodeFormat == BarcodeFormat.EAN_13 -> CreateEan13Fragment()
-            barcodeFormat == BarcodeFormat.ITF -> CreateItf14Fragment()
-            barcodeFormat == BarcodeFormat.UPC_A -> CreateUpcAFragment()
-            barcodeFormat == BarcodeFormat.UPC_E -> CreateUpcEFragment()
+            barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.OTHER -> CreateQrCodeTextFragmentBaseCreateBarcode.newInstance(
+                defaultText
+            )
+
+            barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.URL -> CreateQrCodeUrlFragmentBaseCreateBarcode()
+            barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.BOOKMARK -> CreateQrCodeBookmarkFragmentBaseCreateBarcode()
+            barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.PHONE -> CreateQrCodePhoneFragmentBaseCreateBarcode()
+            barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.WIFI -> CreateQrCodeWifiFragmentBaseCreateBarcode()
+            barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.EMAIL -> CreateQrCodeEmailFragmentBaseCreateBarcode()
+            barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.SMS -> CreateQrCodeSmsFragmentBaseCreateBarcode()
+            barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.MMS -> CreateQrCodeMmsFragmentBaseCreateBarcode()
+            barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.CRYPTOCURRENCY -> CreateQrCodeCryptocurrencyFragmentBaseCreateBarcode()
+            barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.GEO -> CreateQrCodeLocationFragmentBaseCreateBarcode()
+            barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.APP -> CreateQrCodeAppFragmentBaseCreateBarcode()
+            barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.OTP_AUTH -> CreateQrCodeOtpFragmentBaseCreateBarcode()
+            barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.VEVENT -> CreateQrCodeEventFragmentBaseCreateBarcode()
+            barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.VCARD -> CreateQrCodeVCardFragmentBaseCreateBarcode()
+            barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.MECARD -> CreateQrCodeMeCardFragmentBaseCreateBarcode()
+            barcodeFormat == BarcodeFormat.DATA_MATRIX -> CreateDataMatrixFragmentBaseCreateBarcode()
+            barcodeFormat == BarcodeFormat.AZTEC -> CreateAztecFragmentBaseCreateBarcode()
+            barcodeFormat == BarcodeFormat.PDF_417 -> CreatePdf417FragmentBaseCreateBarcode()
+            barcodeFormat == BarcodeFormat.CODABAR -> CreateCodabarFragmentBaseCreateBarcode()
+            barcodeFormat == BarcodeFormat.CODE_39 -> CreateCode39FragmentBaseCreateBarcode()
+            barcodeFormat == BarcodeFormat.CODE_93 -> CreateCode93FragmentBaseCreateBarcode()
+            barcodeFormat == BarcodeFormat.CODE_128 -> CreateCode128FragmentBaseCreateBarcode()
+            barcodeFormat == BarcodeFormat.EAN_8 -> CreateEan8FragmentBaseCreateBarcode()
+            barcodeFormat == BarcodeFormat.EAN_13 -> CreateEan13FragmentBaseCreateBarcode()
+            barcodeFormat == BarcodeFormat.ITF -> CreateItf14FragmentBaseCreateBarcode()
+            barcodeFormat == BarcodeFormat.UPC_A -> CreateUpcAFragmentBaseCreateBarcode()
+            barcodeFormat == BarcodeFormat.UPC_E -> CreateUpcEFragmentBaseCreateBarcode()
             else -> return
         }
 
@@ -327,8 +342,8 @@ class CreateBarcodeActivityBase : ActivityBase(), AppAdapter.Listener {
             .addTo(disposable)
     }
 
-    private fun getCurrentFragment(): BaseCreateBarcodeFragment {
-        return supportFragmentManager.findFragmentById(R.id.container) as BaseCreateBarcodeFragment
+    private fun getCurrentFragment(): FragmentBaseCreateBarcode {
+        return supportFragmentManager.findFragmentById(R.id.container) as FragmentBaseCreateBarcode
     }
 
     private fun navigateToBarcodeScreen(barcode: Barcode, finish: Boolean) {

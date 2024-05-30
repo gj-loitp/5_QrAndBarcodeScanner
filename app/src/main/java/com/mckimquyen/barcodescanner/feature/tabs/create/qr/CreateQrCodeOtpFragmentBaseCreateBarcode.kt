@@ -13,14 +13,14 @@ import com.mckimquyen.barcodescanner.extension.encodeBase32
 import com.mckimquyen.barcodescanner.extension.isNotBlank
 import com.mckimquyen.barcodescanner.extension.textString
 import com.mckimquyen.barcodescanner.extension.toHmacAlgorithm
-import com.mckimquyen.barcodescanner.feature.tabs.create.BaseCreateBarcodeFragment
+import com.mckimquyen.barcodescanner.feature.tabs.create.FragmentBaseCreateBarcode
 import com.mckimquyen.barcodescanner.model.schema.OtpAuth
 import com.mckimquyen.barcodescanner.model.schema.Schema
 import dev.turingcomplete.kotlinonetimepassword.RandomSecretGenerator
 import kotlinx.android.synthetic.main.f_create_qr_code_otp.*
 import java.util.*
 
-class CreateQrCodeOtpFragment : BaseCreateBarcodeFragment() {
+class CreateQrCodeOtpFragmentBaseCreateBarcode : FragmentBaseCreateBarcode() {
     private val randomGenerator = RandomSecretGenerator()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

@@ -8,15 +8,15 @@ import androidx.core.widget.addTextChangedListener
 import com.mckimquyen.barcodescanner.R
 import com.mckimquyen.barcodescanner.extension.isNotBlank
 import com.mckimquyen.barcodescanner.extension.textString
-import com.mckimquyen.barcodescanner.feature.tabs.create.BaseCreateBarcodeFragment
-import com.mckimquyen.barcodescanner.model.schema.Email
+import com.mckimquyen.barcodescanner.feature.tabs.create.FragmentBaseCreateBarcode
+import com.mckimquyen.barcodescanner.model.schema.Mms
 import com.mckimquyen.barcodescanner.model.schema.Schema
-import kotlinx.android.synthetic.main.f_create_qr_code_email.*
+import kotlinx.android.synthetic.main.f_create_qr_code_mms.*
 
-class CreateQrCodeEmailFragment : BaseCreateBarcodeFragment() {
+class CreateQrCodeMmsFragmentBaseCreateBarcode : FragmentBaseCreateBarcode() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.f_create_qr_code_email, container, false)
+        return inflater.inflate(R.layout.f_create_qr_code_mms, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -25,25 +25,32 @@ class CreateQrCodeEmailFragment : BaseCreateBarcodeFragment() {
         handleTextChanged()
     }
 
+    override fun showPhone(phone: String) {
+        editTextPhone.apply {
+            setText(phone)
+            setSelection(phone.length)
+        }
+    }
+
     override fun getBarcodeSchema(): Schema {
-        return Email(
-            email = editTextEmail.textString,
+        return Mms(
+            phone = editTextPhone.textString,
             subject = editTextSubject.textString,
-            body = editTextMessage.textString
+            message = editTextMessage.textString
         )
     }
 
     private fun initTitleEditText() {
-        editTextEmail.requestFocus()
+        editTextPhone.requestFocus()
     }
 
     private fun handleTextChanged() {
-        editTextEmail.addTextChangedListener { toggleCreateBarcodeButton() }
+        editTextPhone.addTextChangedListener { toggleCreateBarcodeButton() }
         editTextSubject.addTextChangedListener { toggleCreateBarcodeButton() }
         editTextMessage.addTextChangedListener { toggleCreateBarcodeButton() }
     }
 
     private fun toggleCreateBarcodeButton() {
-        parentActivity.isCreateBarcodeButtonEnabled = editTextEmail.isNotBlank() || editTextSubject.isNotBlank() || editTextMessage.isNotBlank()
+        parentActivity.isCreateBarcodeButtonEnabled = editTextPhone.isNotBlank() || editTextSubject.isNotBlank() || editTextMessage.isNotBlank()
     }
 }

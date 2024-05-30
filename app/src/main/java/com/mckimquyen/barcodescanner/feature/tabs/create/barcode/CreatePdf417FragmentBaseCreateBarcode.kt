@@ -8,15 +8,15 @@ import androidx.core.widget.addTextChangedListener
 import com.mckimquyen.barcodescanner.R
 import com.mckimquyen.barcodescanner.extension.isNotBlank
 import com.mckimquyen.barcodescanner.extension.textString
-import com.mckimquyen.barcodescanner.feature.tabs.create.BaseCreateBarcodeFragment
+import com.mckimquyen.barcodescanner.feature.tabs.create.FragmentBaseCreateBarcode
 import com.mckimquyen.barcodescanner.model.schema.Other
 import com.mckimquyen.barcodescanner.model.schema.Schema
-import kotlinx.android.synthetic.main.f_create_aztec.*
+import kotlinx.android.synthetic.main.f_create_pdf417.editText
 
-class CreateAztecFragment : BaseCreateBarcodeFragment() {
+class CreatePdf417FragmentBaseCreateBarcode : FragmentBaseCreateBarcode() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.f_create_aztec, container, false)
+        return inflater.inflate(R.layout.f_create_pdf417, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

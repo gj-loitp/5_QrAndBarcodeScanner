@@ -6,13 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import com.mckimquyen.barcodescanner.R
 import com.mckimquyen.barcodescanner.extension.textString
-import com.mckimquyen.barcodescanner.feature.tabs.create.BaseCreateBarcodeFragment
+import com.mckimquyen.barcodescanner.feature.tabs.create.FragmentBaseCreateBarcode
 import com.mckimquyen.barcodescanner.model.Contact
 import com.mckimquyen.barcodescanner.model.schema.MeCard
 import com.mckimquyen.barcodescanner.model.schema.Schema
 import kotlinx.android.synthetic.main.f_create_qr_code_mecard.*
 
-class CreateQrCodeMeCardFragment : BaseCreateBarcodeFragment() {
+class CreateQrCodeMeCardFragmentBaseCreateBarcode : FragmentBaseCreateBarcode() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.f_create_qr_code_mecard, container, false)

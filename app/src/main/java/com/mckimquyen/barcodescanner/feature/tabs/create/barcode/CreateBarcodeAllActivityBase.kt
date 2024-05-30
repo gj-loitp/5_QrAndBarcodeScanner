@@ -6,7 +6,7 @@ import android.os.Bundle
 import com.mckimquyen.barcodescanner.R
 import com.mckimquyen.barcodescanner.extension.applySystemWindowInsets
 import com.mckimquyen.barcodescanner.feature.ActivityBase
-import com.mckimquyen.barcodescanner.feature.tabs.create.CreateBarcodeActivityBase
+import com.mckimquyen.barcodescanner.feature.tabs.create.ActivityCreateBarcode
 import com.google.zxing.BarcodeFormat
 import kotlinx.android.synthetic.main.a_create_barcode_all.*
 
@@ -39,17 +39,17 @@ class CreateBarcodeAllActivityBase : ActivityBase() {
     }
 
     private fun handleButtonsClicked() {
-        buttonDataMatrix.setOnClickListener { CreateBarcodeActivityBase.start(this, BarcodeFormat.DATA_MATRIX) }
-        buttonAztec.setOnClickListener { CreateBarcodeActivityBase.start(this, BarcodeFormat.AZTEC) }
-        buttonPdf417.setOnClickListener { CreateBarcodeActivityBase.start(this, BarcodeFormat.PDF_417) }
-        buttonCodabar.setOnClickListener { CreateBarcodeActivityBase.start(this, BarcodeFormat.CODABAR) }
-        buttonCode39.setOnClickListener { CreateBarcodeActivityBase.start(this, BarcodeFormat.CODE_39) }
-        buttonCode93.setOnClickListener { CreateBarcodeActivityBase.start(this, BarcodeFormat.CODE_93) }
-        buttonCode128.setOnClickListener { CreateBarcodeActivityBase.start(this, BarcodeFormat.CODE_128) }
-        buttonEan8.setOnClickListener { CreateBarcodeActivityBase.start(this, BarcodeFormat.EAN_8) }
-        buttonEan13.setOnClickListener { CreateBarcodeActivityBase.start(this, BarcodeFormat.EAN_13) }
-        buttonItf14.setOnClickListener { CreateBarcodeActivityBase.start(this, BarcodeFormat.ITF) }
-        buttonUpcA.setOnClickListener { CreateBarcodeActivityBase.start(this, BarcodeFormat.UPC_A) }
-        buttonUpcE.setOnClickListener { CreateBarcodeActivityBase.start(this, BarcodeFormat.UPC_E) }
+        buttonDataMatrix.setOnClickListener { ActivityCreateBarcode.start(this, BarcodeFormat.DATA_MATRIX) }
+        buttonAztec.setOnClickListener { ActivityCreateBarcode.start(this, BarcodeFormat.AZTEC) }
+        buttonPdf417.setOnClickListener { ActivityCreateBarcode.start(this, BarcodeFormat.PDF_417) }
+        buttonCodabar.setOnClickListener { ActivityCreateBarcode.start(this, BarcodeFormat.CODABAR) }
+        buttonCode39.setOnClickListener { ActivityCreateBarcode.start(this, BarcodeFormat.CODE_39) }
+        buttonCode93.setOnClickListener { ActivityCreateBarcode.start(this, BarcodeFormat.CODE_93) }
+        buttonCode128.setOnClickListener { ActivityCreateBarcode.start(this, BarcodeFormat.CODE_128) }
+        buttonEan8.setOnClickListener { ActivityCreateBarcode.start(this, BarcodeFormat.EAN_8) }
+        buttonEan13.setOnClickListener { ActivityCreateBarcode.start(this, BarcodeFormat.EAN_13) }
+        buttonItf14.setOnClickListener { ActivityCreateBarcode.start(this, BarcodeFormat.ITF) }
+        buttonUpcA.setOnClickListener { ActivityCreateBarcode.start(this, BarcodeFormat.UPC_A) }
+        buttonUpcE.setOnClickListener { ActivityCreateBarcode.start(this, BarcodeFormat.UPC_E) }
     }
 }

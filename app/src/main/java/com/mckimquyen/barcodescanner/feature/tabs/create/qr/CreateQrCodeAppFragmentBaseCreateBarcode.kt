@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.mckimquyen.barcodescanner.R
 import com.mckimquyen.barcodescanner.extension.showError
 import com.mckimquyen.barcodescanner.extension.unsafeLazy
-import com.mckimquyen.barcodescanner.feature.tabs.create.BaseCreateBarcodeFragment
+import com.mckimquyen.barcodescanner.feature.tabs.create.FragmentBaseCreateBarcode
 import com.mckimquyen.barcodescanner.model.schema.App
 import com.mckimquyen.barcodescanner.model.schema.Schema
 import io.reactivex.Single
@@ -22,7 +22,7 @@ import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.f_create_qr_code_app.progressBarLoading
 import kotlinx.android.synthetic.main.f_create_qr_code_app.recyclerViewApps
 
-class CreateQrCodeAppFragment : BaseCreateBarcodeFragment() {
+class CreateQrCodeAppFragmentBaseCreateBarcode : FragmentBaseCreateBarcode() {
     private val disposable = CompositeDisposable()
     private val appAdapter by unsafeLazy { AppAdapter(parentActivity) }
 

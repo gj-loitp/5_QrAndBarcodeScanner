@@ -7,7 +7,7 @@ import com.mckimquyen.barcodescanner.BuildConfig
 import com.mckimquyen.barcodescanner.R
 import com.mckimquyen.barcodescanner.extension.applySystemWindowInsets
 import com.mckimquyen.barcodescanner.feature.ActivityBase
-import com.mckimquyen.barcodescanner.feature.tabs.create.CreateBarcodeFragment
+import com.mckimquyen.barcodescanner.feature.tabs.create.FragmentCreateBarcode
 import com.mckimquyen.barcodescanner.feature.tabs.history.FragmentBarcodeHistory
 import com.mckimquyen.barcodescanner.feature.tabs.scan.FragmentScanBarcodeFromCamera
 import com.mckimquyen.barcodescanner.feature.tabs.setting.SettingsFragment
@@ -71,7 +71,7 @@ class ActivityBottomTabs : ActivityBase(), BottomNavigationView.OnNavigationItem
     private fun showFragment(bottomItemId: Int) {
         val fragment = when (bottomItemId) {
             R.id.itemScan -> FragmentScanBarcodeFromCamera()
-            R.id.itemCreate -> CreateBarcodeFragment()
+            R.id.itemCreate -> FragmentCreateBarcode()
             R.id.itemHistory -> FragmentBarcodeHistory()
             R.id.itemSettings -> SettingsFragment()
             else -> null

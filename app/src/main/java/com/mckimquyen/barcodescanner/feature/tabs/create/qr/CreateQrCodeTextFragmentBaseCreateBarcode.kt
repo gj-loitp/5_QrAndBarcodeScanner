@@ -9,18 +9,18 @@ import com.mckimquyen.barcodescanner.R
 import com.mckimquyen.barcodescanner.di.barcodeParser
 import com.mckimquyen.barcodescanner.extension.isNotBlank
 import com.mckimquyen.barcodescanner.extension.textString
-import com.mckimquyen.barcodescanner.feature.tabs.create.BaseCreateBarcodeFragment
+import com.mckimquyen.barcodescanner.feature.tabs.create.FragmentBaseCreateBarcode
 import com.mckimquyen.barcodescanner.model.schema.Schema
 import com.google.zxing.BarcodeFormat
 import kotlinx.android.synthetic.main.f_create_qr_code_text.*
 
-class CreateQrCodeTextFragment : BaseCreateBarcodeFragment() {
+class CreateQrCodeTextFragmentBaseCreateBarcode : FragmentBaseCreateBarcode() {
 
     companion object {
         private const val DEFAULT_TEXT_KEY = "DEFAULT_TEXT_KEY"
 
-        fun newInstance(defaultText: String): CreateQrCodeTextFragment {
-            return CreateQrCodeTextFragment().apply {
+        fun newInstance(defaultText: String): CreateQrCodeTextFragmentBaseCreateBarcode {
+            return CreateQrCodeTextFragmentBaseCreateBarcode().apply {
                 arguments = Bundle().apply {
                     putString(DEFAULT_TEXT_KEY, defaultText)
                 }
