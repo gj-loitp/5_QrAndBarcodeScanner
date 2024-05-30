@@ -8,7 +8,7 @@ fun View.applySystemWindowInsets(
     applyLeft: Boolean = false,
     applyTop: Boolean = false,
     applyRight: Boolean = false,
-    applyBottom: Boolean = false
+    applyBottom: Boolean = false,
 ) {
     doOnApplyWindowInsets { view, insets, padding ->
         val left = if (applyLeft) insets.systemWindowInsetLeft else 0
@@ -17,10 +17,10 @@ fun View.applySystemWindowInsets(
         val bottom = if (applyBottom) insets.systemWindowInsetBottom else 0
 
         view.setPadding(
-            padding.left + left,
-            padding.top + top,
-            padding.right + right,
-            padding.bottom + bottom
+            /* left = */ padding.left + left,
+            /* top = */ padding.top + top,
+            /* right = */ padding.right + right,
+            /* bottom = */ padding.bottom + bottom
         )
     }
 }
@@ -40,11 +40,19 @@ fun View.doOnApplyWindowInsets(f: (View, WindowInsets, InitialPadding) -> Unit) 
     requestApplyInsetsWhenAttached()
 }
 
-data class InitialPadding(val left: Int, val top: Int,
-                          val right: Int, val bottom: Int)
+data class InitialPadding(
+    val left: Int,
+    val top: Int,
+    val right: Int,
+    val bottom: Int,
+)
 
 private fun recordInitialPaddingForView(view: View) = InitialPadding(
-    view.paddingLeft, view.paddingTop, view.paddingRight, view.paddingBottom)
+    left = view.paddingLeft,
+    top = view.paddingTop,
+    right = view.paddingRight,
+    bottom = view.paddingBottom
+)
 
 fun View.requestApplyInsetsWhenAttached() {
     if (isAttachedToWindow) {

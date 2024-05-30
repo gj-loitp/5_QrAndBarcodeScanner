@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment
 import com.mckimquyen.barcodescanner.RApp
 import com.mckimquyen.barcodescanner.usecase.*
 
-
 val RApp.settings
     get() = Settings.getInstance(applicationContext)
 
