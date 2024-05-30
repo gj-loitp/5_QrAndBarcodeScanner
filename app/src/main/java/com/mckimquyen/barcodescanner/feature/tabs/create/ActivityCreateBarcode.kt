@@ -16,7 +16,7 @@ import com.mckimquyen.barcodescanner.extension.showError
 import com.mckimquyen.barcodescanner.extension.toStringId
 import com.mckimquyen.barcodescanner.extension.unsafeLazy
 import com.mckimquyen.barcodescanner.feature.ActivityBase
-import com.mckimquyen.barcodescanner.feature.barcode.BarcodeActivityBase
+import com.mckimquyen.barcodescanner.feature.barcode.ActivityBarcode
 import com.mckimquyen.barcodescanner.feature.tabs.create.barcode.*
 import com.mckimquyen.barcodescanner.feature.tabs.create.qr.*
 import com.mckimquyen.barcodescanner.model.Barcode
@@ -347,7 +347,7 @@ class ActivityCreateBarcode : ActivityBase(), AdapterApp.Listener {
     }
 
     private fun navigateToBarcodeScreen(barcode: Barcode, finish: Boolean) {
-        BarcodeActivityBase.start(this, barcode, true)
+        ActivityBarcode.start(this, barcode, true)
 
         if (finish) {
             finish()

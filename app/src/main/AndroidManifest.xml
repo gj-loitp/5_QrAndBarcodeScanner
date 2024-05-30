@@ -124,12 +124,12 @@
             android:screenOrientation="fullSensor" />
 
         <activity
-            android:name=".feature.barcode.BarcodeActivityBase"
+            android:name=".feature.barcode.ActivityBarcode"
             android:configChanges="orientation|screenSize"
             android:exported="false"
             android:screenOrientation="fullSensor" />
         <activity
-            android:name=".feature.barcode.BarcodeImageActivityBase"
+            android:name=".feature.barcode.ActivityBarcodeImage"
             android:configChanges="orientation|screenSize"
             android:exported="false"
             android:screenOrientation="fullSensor" />

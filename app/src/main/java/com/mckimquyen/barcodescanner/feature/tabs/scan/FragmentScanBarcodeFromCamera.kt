@@ -15,7 +15,7 @@ import androidx.fragment.app.Fragment
 import com.budiyev.android.codescanner.*
 import com.mckimquyen.barcodescanner.di.*
 import com.mckimquyen.barcodescanner.extension.*
-import com.mckimquyen.barcodescanner.feature.barcode.BarcodeActivityBase
+import com.mckimquyen.barcodescanner.feature.barcode.ActivityBarcode
 import com.mckimquyen.barcodescanner.feature.common.dlg.DialogFragmentConfirmBarcode
 import com.mckimquyen.barcodescanner.feature.tabs.scan.file.ActivityScanBarcodeFromFile
 import com.mckimquyen.barcodescanner.model.Barcode
@@ -349,7 +349,7 @@ class FragmentScanBarcodeFromCamera : Fragment(), DialogFragmentConfirmBarcode.L
     }
 
     private fun navigateToBarcodeScreen(barcode: Barcode) {
-        BarcodeActivityBase.start(requireActivity(), barcode)
+        ActivityBarcode.start(requireActivity(), barcode)
     }
 
     private fun finishWithResult(result: Result) {

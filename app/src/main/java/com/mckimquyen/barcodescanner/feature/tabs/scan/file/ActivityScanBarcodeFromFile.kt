@@ -16,7 +16,7 @@ import com.mckimquyen.barcodescanner.di.*
 import com.mckimquyen.barcodescanner.extension.applySystemWindowInsets
 import com.mckimquyen.barcodescanner.extension.showError
 import com.mckimquyen.barcodescanner.feature.ActivityBase
-import com.mckimquyen.barcodescanner.feature.barcode.BarcodeActivityBase
+import com.mckimquyen.barcodescanner.feature.barcode.ActivityBarcode
 import com.mckimquyen.barcodescanner.model.Barcode
 import com.mckimquyen.barcodescanner.usecase.save
 import com.google.zxing.Result
@@ -262,7 +262,7 @@ class ActivityScanBarcodeFromFile : ActivityBase() {
     }
 
     private fun navigateToBarcodeScreen(barcode: Barcode) {
-        BarcodeActivityBase.start(this, barcode)
+        ActivityBarcode.start(this, barcode)
         finish()
     }
 }

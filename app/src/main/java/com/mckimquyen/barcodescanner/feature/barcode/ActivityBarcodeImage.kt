@@ -17,13 +17,13 @@ import kotlinx.android.synthetic.main.activity_barcode_image.*
 import java.text.SimpleDateFormat
 import java.util.*
 
-class BarcodeImageActivityBase : ActivityBase() {
+class ActivityBarcodeImage : ActivityBase() {
 
     companion object {
         private const val BARCODE_KEY = "BARCODE_KEY"
 
         fun start(context: Context, barcode: Barcode) {
-            val intent = Intent(context, BarcodeImageActivityBase::class.java)
+            val intent = Intent(context, ActivityBarcodeImage::class.java)
             intent.putExtra(BARCODE_KEY, barcode)
             context.startActivity(intent)
         }
@@ -70,6 +70,7 @@ class BarcodeImageActivityBase : ActivityBase() {
                         findItem(R.id.itemDecreaseBrightness).isVisible = true
                     }
                 }
+
                 R.id.itemDecreaseBrightness -> {
                     restoreOriginalBrightness()
                     toolbar.menu.apply {
@@ -95,13 +96,25 @@ class BarcodeImageActivityBase : ActivityBase() {
 
     private fun showBarcodeImage() {
         try {
-            val bitmap = barcodeImageGenerator.generateBitmap(barcode, 2000, 2000, 0, settings.barcodeContentColor, settings.barcodeBackgroundColor)
+            val bitmap = barcodeImageGenerator.generateBitmap(
+                barcode = barcode,
+                width = 2000,
+                height = 2000,
+                margin = 0,
+                codeColor = settings.barcodeContentColor,
+                backgroundColor = settings.barcodeBackgroundColor
+            )
             image_view_barcode.setImageBitmap(bitmap)
             image_view_barcode.setBackgroundColor(settings.barcodeBackgroundColor)
             layout_barcode_image_background.setBackgroundColor(settings.barcodeBackgroundColor)
 
             if (settings.isDarkTheme.not() || settings.areBarcodeColorsInversed) {
-                layout_barcode_image_background.setPadding(0, 0, 0, 0)
+                layout_barcode_image_background.setPadding(
+                    /* left = */ 0,
+                    /* top = */ 0,
+                    /* right = */ 0,
+                    /* bottom = */ 0
+                )
             }
         } catch (ex: Exception) {
             Logger.log(ex)
