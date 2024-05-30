@@ -31,7 +31,7 @@
 
             <!--Barcode image-->
             <FrameLayout
-                android:id="@+id/layout_barcode_image_background"
+                android:id="@+id/layoutBarcodeImageBackground"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin"
@@ -41,7 +41,7 @@
                 android:visibility="gone"
                 >
                 <com.mckimquyen.barcodescanner.feature.common.view.ImageViewSquare
-                    android:id="@+id/image_view_barcode"
+                    android:id="@+id/imageViewBarcode"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:scaleType="centerInside"
@@ -88,7 +88,7 @@
                 style="@style/DefaultTextViewStyle"
                 />
             <TextView
-                android:id="@+id/text_view_barcode_text"
+                android:id="@+id/textViewBarcodeText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_small"

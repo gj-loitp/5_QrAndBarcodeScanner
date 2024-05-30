@@ -15,7 +15,7 @@ import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
-import kotlinx.android.synthetic.main.activity_barcode_otp.*
+import kotlinx.android.synthetic.main.a_barcode_otp.*
 import java.util.concurrent.TimeUnit
 
 class ActivityOtp : ActivityBase() {
@@ -36,7 +36,7 @@ class ActivityOtp : ActivityBase() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_barcode_otp)
+        setContentView(R.layout.a_barcode_otp)
         enableSecurity()
         supportEdgeToEdge()
         parseOtp()
@@ -72,7 +72,7 @@ class ActivityOtp : ActivityBase() {
     }
 
     private fun handleRefreshOtpClicked() {
-        button_refresh.setOnClickListener {
+        buttonRefresh.setOnClickListener {
             refreshOtp()
         }
     }
@@ -87,18 +87,18 @@ class ActivityOtp : ActivityBase() {
             OtpAuth.HOTP_TYPE -> showHotp()
             OtpAuth.TOTP_TYPE -> showTotp()
         }
-        text_view_password.text =
+        textViewPassword.text =
             otpGenerator.generateOTP(otp) ?: getString(R.string.activity_barcode_otp_unable_to_generate_otp)
     }
 
     private fun showHotp() {
-        button_refresh.isVisible = true
-        text_view_counter.isVisible = true
-        text_view_counter.text = getString(R.string.activity_barcode_otp_counter, otp.counter.orZero().toString())
+        buttonRefresh.isVisible = true
+        textViewCounter.isVisible = true
+        textViewCounter.text = getString(R.string.activity_barcode_otp_counter, otp.counter.orZero().toString())
     }
 
     private fun showTotp() {
-        text_view_timer.isVisible = true
+        textViewTimer.isVisible = true
         startTimer()
     }
 
@@ -123,7 +123,7 @@ class ActivityOtp : ActivityBase() {
     private fun showTime(secondsLeft: Long) {
         val minutes = secondsLeft / 60
         val seconds = secondsLeft % 60
-        text_view_timer.text = getString(R.string.activity_barcode_otp_timer, minutes.toTime(), seconds.toTime())
+        textViewTimer.text = getString(R.string.activity_barcode_otp_timer, minutes.toTime(), seconds.toTime())
     }
 
     private fun Long.toTime(): String {

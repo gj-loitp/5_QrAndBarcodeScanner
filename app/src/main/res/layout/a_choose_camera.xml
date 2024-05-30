@@ -10,7 +10,7 @@
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             style="@style/ToolbarWithBackButtonStyle"
-            app:title="@string/activity_choose_theme_title" />
+            app:title="@string/activity_choose_camera_title" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
@@ -23,32 +23,23 @@
             android:orientation="vertical">
 
             <com.mckimquyen.barcodescanner.feature.common.view.RadioButtonSettings
-                android:id="@+id/buttonSystemTheme"
+                android:id="@+id/buttonBackCamera"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/toolbar"
-                app:text="@string/activity_choose_theme_system" />
+                app:text="@string/activity_choose_camera_back" />
 
             <com.mckimquyen.barcodescanner.feature.common.view.RadioButtonSettings
-                android:id="@+id/buttonLightTheme"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/buttonBackCamera"
-                app:text="@string/activity_choose_theme_light" />
-
-            <com.mckimquyen.barcodescanner.feature.common.view.RadioButtonSettings
-                android:id="@+id/buttonDarkTheme"
+                android:id="@+id/buttonFrontCamera"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:isDelimiterVisible="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/buttonBackCamera"
-                app:text="@string/activity_choose_theme_dark" />
+                app:text="@string/activity_choose_camera_front" />
         </androidx.appcompat.widget.LinearLayoutCompat>
     </androidx.core.widget.NestedScrollView>
 

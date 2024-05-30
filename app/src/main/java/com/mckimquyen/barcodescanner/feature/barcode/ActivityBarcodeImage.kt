@@ -13,7 +13,7 @@ import com.mckimquyen.barcodescanner.extension.unsafeLazy
 import com.mckimquyen.barcodescanner.feature.ActivityBase
 import com.mckimquyen.barcodescanner.model.Barcode
 import com.mckimquyen.barcodescanner.usecase.Logger
-import kotlinx.android.synthetic.main.activity_barcode_image.*
+import kotlinx.android.synthetic.main.a_barcode_image.*
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -37,7 +37,7 @@ class ActivityBarcodeImage : ActivityBase() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_barcode_image)
+        setContentView(R.layout.a_barcode_image)
         supportEdgeToEdge()
         saveOriginalBrightness()
         handleToolbarBackPressed()
@@ -104,12 +104,12 @@ class ActivityBarcodeImage : ActivityBase() {
                 codeColor = settings.barcodeContentColor,
                 backgroundColor = settings.barcodeBackgroundColor
             )
-            image_view_barcode.setImageBitmap(bitmap)
-            image_view_barcode.setBackgroundColor(settings.barcodeBackgroundColor)
-            layout_barcode_image_background.setBackgroundColor(settings.barcodeBackgroundColor)
+            imageViewBarcode.setImageBitmap(bitmap)
+            imageViewBarcode.setBackgroundColor(settings.barcodeBackgroundColor)
+            layoutBarcodeImageBackground.setBackgroundColor(settings.barcodeBackgroundColor)
 
             if (settings.isDarkTheme.not() || settings.areBarcodeColorsInversed) {
-                layout_barcode_image_background.setPadding(
+                layoutBarcodeImageBackground.setPadding(
                     /* left = */ 0,
                     /* top = */ 0,
                     /* right = */ 0,
@@ -118,7 +118,7 @@ class ActivityBarcodeImage : ActivityBase() {
             }
         } catch (ex: Exception) {
             Logger.log(ex)
-            image_view_barcode.isVisible = false
+            imageViewBarcode.isVisible = false
         }
     }
 
@@ -132,7 +132,7 @@ class ActivityBarcodeImage : ActivityBase() {
     }
 
     private fun showBarcodeText() {
-        text_view_barcode_text.text = barcode.text
+        textViewBarcodeText.text = barcode.text
     }
 
     private fun increaseBrightnessToMax() {

@@ -37,7 +37,7 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/button_back_camera"
+                app:layout_constraintTop_toBottomOf="@id/buttonBackCamera"
                 app:text="@string/activity_choose_search_engine_ask_every_time" />
 
             <com.mckimquyen.barcodescanner.feature.common.view.RadioButtonSettings
@@ -46,7 +46,7 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/button_back_camera"
+                app:layout_constraintTop_toBottomOf="@id/buttonBackCamera"
                 app:text="@string/activity_choose_search_engine_bing" />
 
             <com.mckimquyen.barcodescanner.feature.common.view.RadioButtonSettings
@@ -55,7 +55,7 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/button_back_camera"
+                app:layout_constraintTop_toBottomOf="@id/buttonBackCamera"
                 app:text="@string/activity_choose_search_engine_duck_duck_go" />
 
             <com.mckimquyen.barcodescanner.feature.common.view.RadioButtonSettings
@@ -64,7 +64,7 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/button_back_camera"
+                app:layout_constraintTop_toBottomOf="@id/buttonBackCamera"
                 app:text="@string/activity_choose_search_engine_google" />
 
             <com.mckimquyen.barcodescanner.feature.common.view.RadioButtonSettings
@@ -73,7 +73,7 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/button_back_camera"
+                app:layout_constraintTop_toBottomOf="@id/buttonBackCamera"
                 app:text="@string/activity_choose_search_engine_qwant" />
 
             <com.mckimquyen.barcodescanner.feature.common.view.RadioButtonSettings
@@ -82,7 +82,7 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/button_back_camera"
+                app:layout_constraintTop_toBottomOf="@id/buttonBackCamera"
                 app:text="@string/activity_choose_search_engine_startpage" />
 
             <com.mckimquyen.barcodescanner.feature.common.view.RadioButtonSettings
@@ -91,7 +91,7 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/button_back_camera"
+                app:layout_constraintTop_toBottomOf="@id/buttonBackCamera"
                 app:text="@string/activity_choose_search_engine_yahoo" />
 
             <com.mckimquyen.barcodescanner.feature.common.view.RadioButtonSettings
@@ -101,7 +101,7 @@
                 app:isDelimiterVisible="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/button_back_camera"
+                app:layout_constraintTop_toBottomOf="@id/buttonBackCamera"
                 app:text="@string/activity_choose_search_engine_yandex" />
         </androidx.appcompat.widget.LinearLayoutCompat>
     </androidx.core.widget.NestedScrollView>

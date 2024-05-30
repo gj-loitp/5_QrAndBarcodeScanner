@@ -7,7 +7,7 @@ import com.mckimquyen.barcodescanner.R
 import com.mckimquyen.barcodescanner.di.settings
 import com.mckimquyen.barcodescanner.extension.applySystemWindowInsets
 import com.mckimquyen.barcodescanner.feature.ActivityBase
-import kotlinx.android.synthetic.main.activity_choose_camera.*
+import kotlinx.android.synthetic.main.a_choose_camera.*
 
 class ChooseCameraActivityBase : ActivityBase() {
 
@@ -20,7 +20,7 @@ class ChooseCameraActivityBase : ActivityBase() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_choose_camera)
+        setContentView(R.layout.a_choose_camera)
         supportEdgeToEdge()
         handleToolbarBackClicked()
     }
@@ -34,8 +34,8 @@ class ChooseCameraActivityBase : ActivityBase() {
 
     private fun showSelectedCamera() {
         val isBackCamera = settings.isBackCamera
-        button_back_camera.isChecked = isBackCamera
-        button_front_camera.isChecked = isBackCamera.not()
+        buttonBackCamera.isChecked = isBackCamera
+        buttonFrontCamera.isChecked = isBackCamera.not()
     }
 
     private fun supportEdgeToEdge() {
@@ -49,18 +49,18 @@ class ChooseCameraActivityBase : ActivityBase() {
     }
 
     private fun handleBackCameraButtonChecked() {
-        button_back_camera.setCheckedChangedListener { isChecked ->
+        buttonBackCamera.setCheckedChangedListener { isChecked ->
             if (isChecked) {
-                button_front_camera.isChecked = false
+                buttonFrontCamera.isChecked = false
             }
             settings.isBackCamera = isChecked
         }
     }
 
     private fun handleFrontCameraButtonChecked() {
-        button_front_camera.setCheckedChangedListener { isChecked ->
+        buttonFrontCamera.setCheckedChangedListener { isChecked ->
             if (isChecked) {
-                button_back_camera.isChecked = false
+                buttonBackCamera.isChecked = false
             }
             settings.isBackCamera = isChecked.not()
         }

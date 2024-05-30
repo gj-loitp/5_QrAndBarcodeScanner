@@ -666,14 +666,14 @@ class ActivityBarcode : ActivityBase(), DialogFragmentDeleteConfirmation.Listene
                 codeColor = settings.barcodeContentColor,
                 backgroundColor = settings.barcodeBackgroundColor
             )
-            layout_barcode_image_background.isVisible = true
-            image_view_barcode.isVisible = true
-            image_view_barcode.setImageBitmap(bitmap)
-            image_view_barcode.setBackgroundColor(settings.barcodeBackgroundColor)
-            layout_barcode_image_background.setBackgroundColor(settings.barcodeBackgroundColor)
+            layoutBarcodeImageBackground.isVisible = true
+            imageViewBarcode.isVisible = true
+            imageViewBarcode.setImageBitmap(bitmap)
+            imageViewBarcode.setBackgroundColor(settings.barcodeBackgroundColor)
+            layoutBarcodeImageBackground.setBackgroundColor(settings.barcodeBackgroundColor)
 
             if (settings.isDarkTheme.not() || settings.areBarcodeColorsInversed) {
-                layout_barcode_image_background.setPadding(
+                layoutBarcodeImageBackground.setPadding(
                     /* left = */ 0,
                     /* top = */ 0,
                     /* right = */ 0,
@@ -682,7 +682,7 @@ class ActivityBarcode : ActivityBase(), DialogFragmentDeleteConfirmation.Listene
             }
         } catch (ex: Exception) {
             Logger.log(ex)
-            image_view_barcode.isVisible = false
+            imageViewBarcode.isVisible = false
         }
     }
 
@@ -705,7 +705,7 @@ class ActivityBarcode : ActivityBase(), DialogFragmentDeleteConfirmation.Listene
     }
 
     private fun showBarcodeText() {
-        text_view_barcode_text.text = if (isCreated) {
+        textViewBarcodeText.text = if (isCreated) {
             barcode.text
         } else {
             barcode.formattedText
