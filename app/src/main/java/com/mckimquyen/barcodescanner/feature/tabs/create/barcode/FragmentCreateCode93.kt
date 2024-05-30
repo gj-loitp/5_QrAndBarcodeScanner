@@ -11,12 +11,16 @@ import com.mckimquyen.barcodescanner.extension.textString
 import com.mckimquyen.barcodescanner.feature.tabs.create.FragmentBaseCreateBarcode
 import com.mckimquyen.barcodescanner.model.schema.Other
 import com.mckimquyen.barcodescanner.model.schema.Schema
-import kotlinx.android.synthetic.main.f_create_pdf417.editText
+import kotlinx.android.synthetic.main.f_create_code_93.*
 
-class CreatePdf417FragmentBaseCreateBarcode : FragmentBaseCreateBarcode() {
+class FragmentCreateCode93 : FragmentBaseCreateBarcode() {
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.f_create_pdf417, container, false)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?,
+    ): View? {
+        return inflater.inflate(R.layout.f_create_code_93, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

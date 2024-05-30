@@ -10,19 +10,23 @@ import com.mckimquyen.barcodescanner.extension.textString
 import com.mckimquyen.barcodescanner.feature.tabs.create.FragmentBaseCreateBarcode
 import com.mckimquyen.barcodescanner.model.schema.Other
 import com.mckimquyen.barcodescanner.model.schema.Schema
-import kotlinx.android.synthetic.main.f_create_itf_14.*
+import kotlinx.android.synthetic.main.f_create_ean_13.*
 
-class CreateItf14FragmentBaseCreateBarcode : FragmentBaseCreateBarcode() {
+class FragmentCreateEan13 : FragmentBaseCreateBarcode() {
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.f_create_itf_14, container, false)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?,
+    ): View? {
+        return inflater.inflate(R.layout.f_create_ean_13, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         editText.requestFocus()
         editText.addTextChangedListener {
-            parentActivity.isCreateBarcodeButtonEnabled = (editText.text?.length?.rem(2)) == 0
+            parentActivity.isCreateBarcodeButtonEnabled = editText.text?.length == 12
         }
     }
 

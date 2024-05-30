@@ -6,24 +6,27 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
 import com.mckimquyen.barcodescanner.R
-import com.mckimquyen.barcodescanner.extension.isNotBlank
 import com.mckimquyen.barcodescanner.extension.textString
 import com.mckimquyen.barcodescanner.feature.tabs.create.FragmentBaseCreateBarcode
 import com.mckimquyen.barcodescanner.model.schema.Other
 import com.mckimquyen.barcodescanner.model.schema.Schema
-import kotlinx.android.synthetic.main.f_create_code_93.*
+import kotlinx.android.synthetic.main.f_create_upc_e.*
 
-class CreateCode93FragmentBaseCreateBarcode : FragmentBaseCreateBarcode() {
+class FragmentCreateUpcE : FragmentBaseCreateBarcode() {
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.f_create_code_93, container, false)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?,
+    ): View? {
+        return inflater.inflate(R.layout.f_create_upc_e, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         editText.requestFocus()
         editText.addTextChangedListener {
-            parentActivity.isCreateBarcodeButtonEnabled = editText.isNotBlank()
+            parentActivity.isCreateBarcodeButtonEnabled = editText.text?.length == 7
         }
     }
 
