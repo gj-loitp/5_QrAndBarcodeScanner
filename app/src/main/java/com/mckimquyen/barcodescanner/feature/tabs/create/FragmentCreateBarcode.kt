@@ -9,7 +9,7 @@ import com.mckimquyen.barcodescanner.R
 import com.mckimquyen.barcodescanner.extension.applySystemWindowInsets
 import com.mckimquyen.barcodescanner.extension.clipboardManager
 import com.mckimquyen.barcodescanner.extension.orZero
-import com.mckimquyen.barcodescanner.feature.tabs.create.barcode.CreateBarcodeAllActivityBase
+import com.mckimquyen.barcodescanner.feature.tabs.create.barcode.ActivityCreateBarcodeAll
 import com.mckimquyen.barcodescanner.feature.tabs.create.qr.ActivityCreateQrCodeAll
 import com.mckimquyen.barcodescanner.model.schema.BarcodeSchema
 import com.google.zxing.BarcodeFormat
@@ -86,7 +86,7 @@ class FragmentCreateBarcode : Fragment() {
 
         // Barcode
         buttonCreateBarcode.setOnClickListener {
-            CreateBarcodeAllActivityBase.start(requireActivity())
+            ActivityCreateBarcodeAll.start(requireActivity())
         }
     }
 

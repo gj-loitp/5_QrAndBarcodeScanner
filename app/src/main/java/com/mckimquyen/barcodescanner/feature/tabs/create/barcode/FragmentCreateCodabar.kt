@@ -13,9 +13,13 @@ import com.mckimquyen.barcodescanner.model.schema.Other
 import com.mckimquyen.barcodescanner.model.schema.Schema
 import kotlinx.android.synthetic.main.f_create_codabar.*
 
-class CreateCodabarFragmentBaseCreateBarcode : FragmentBaseCreateBarcode() {
+class FragmentCreateCodabar : FragmentBaseCreateBarcode() {
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?,
+    ): View? {
         return inflater.inflate(R.layout.f_create_codabar, container, false)
     }
 

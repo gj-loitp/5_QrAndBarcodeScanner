@@ -11,12 +11,16 @@ import com.mckimquyen.barcodescanner.extension.textString
 import com.mckimquyen.barcodescanner.feature.tabs.create.FragmentBaseCreateBarcode
 import com.mckimquyen.barcodescanner.model.schema.Other
 import com.mckimquyen.barcodescanner.model.schema.Schema
-import kotlinx.android.synthetic.main.f_create_code_39.*
+import kotlinx.android.synthetic.main.f_create_aztec.*
 
-class CreateCode39FragmentBaseCreateBarcode : FragmentBaseCreateBarcode() {
+class FragmentCreateAztec : FragmentBaseCreateBarcode() {
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.f_create_code_39, container, false)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?,
+    ): View? {
+        return inflater.inflate(R.layout.f_create_aztec, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

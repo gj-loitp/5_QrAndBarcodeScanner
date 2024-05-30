@@ -118,7 +118,7 @@
             android:exported="false"
             android:screenOrientation="fullSensor" />
         <activity
-            android:name=".feature.tabs.create.barcode.CreateBarcodeAllActivityBase"
+            android:name=".feature.tabs.create.barcode.ActivityCreateBarcodeAll"
             android:configChanges="orientation|screenSize"
             android:exported="false"
             android:screenOrientation="fullSensor" />
