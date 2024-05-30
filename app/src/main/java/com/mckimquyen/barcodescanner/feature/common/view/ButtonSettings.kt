@@ -10,12 +10,16 @@ import androidx.core.view.isVisible
 import com.mckimquyen.barcodescanner.R
 import kotlinx.android.synthetic.main.lo_settings_button.view.*
 
-class SettingsButton : FrameLayout {
+class ButtonSettings : FrameLayout {
     private val view: View
 
     constructor(context: Context) : this(context, null)
     constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, -1)
-    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
+    constructor(
+        context: Context,
+        attrs: AttributeSet?,
+        defStyleAttr: Int,
+    ) : super(context, attrs, defStyleAttr) {
         view = LayoutInflater
             .from(context)
             .inflate(R.layout.lo_settings_button, this, true)
@@ -27,7 +31,7 @@ class SettingsButton : FrameLayout {
             recycle()
         }
     }
-    
+
     var hint: String
         get() = view.textViewHint.text.toString()
         set(value) {
@@ -39,7 +43,9 @@ class SettingsButton : FrameLayout {
 
     var isChecked: Boolean
         get() = view.switchButton.isChecked
-        set(value) { view.switchButton.isChecked = value }
+        set(value) {
+            view.switchButton.isChecked = value
+        }
 
     override fun setEnabled(enabled: Boolean) {
         super.setEnabled(enabled)

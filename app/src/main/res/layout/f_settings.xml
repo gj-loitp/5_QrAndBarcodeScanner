@@ -34,14 +34,14 @@
                 android:layout_marginBottom="@dimen/margin_small"
                 android:text="@string/fragment_settings_appearance_settings" />
 
-            <com.mckimquyen.barcodescanner.feature.common.view.SettingsButton
+            <com.mckimquyen.barcodescanner.feature.common.view.ButtonSettings
                 android:id="@+id/buttonChooseTheme"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:isSwitchVisible="false"
                 app:text="@string/fragment_settings_theme" />
 
-            <com.mckimquyen.barcodescanner.feature.common.view.SettingsButton
+            <com.mckimquyen.barcodescanner.feature.common.view.ButtonSettings
                 android:id="@+id/buttonInverseBarcodeColorsInDarkTheme"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -62,63 +62,63 @@
                 android:layout_marginBottom="@dimen/margin_small"
                 android:text="@string/fragment_settings_scanner_settings" />
 
-            <com.mckimquyen.barcodescanner.feature.common.view.SettingsButton
+            <com.mckimquyen.barcodescanner.feature.common.view.ButtonSettings
                 android:id="@+id/buttonOpenLinksAutomatically"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:hint="@string/fragment_settings_open_content_automatically_hint"
                 app:text="@string/fragment_settings_open_content_automatically" />
 
-            <com.mckimquyen.barcodescanner.feature.common.view.SettingsButton
+            <com.mckimquyen.barcodescanner.feature.common.view.ButtonSettings
                 android:id="@+id/buttonCopyToClipboard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:hint="@string/fragment_settings_copy_to_clipboard_hint"
                 app:text="@string/fragment_settings_copy_to_clipboard" />
 
-            <com.mckimquyen.barcodescanner.feature.common.view.SettingsButton
+            <com.mckimquyen.barcodescanner.feature.common.view.ButtonSettings
                 android:id="@+id/buttonSimpleAutoFocus"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:hint="@string/fragment_settings_simple_auto_focus_hint"
                 app:text="@string/fragment_settings_simple_auto_focus" />
 
-            <com.mckimquyen.barcodescanner.feature.common.view.SettingsButton
+            <com.mckimquyen.barcodescanner.feature.common.view.ButtonSettings
                 android:id="@+id/buttonFlashlight"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:hint="@string/fragment_settings_flash_hint"
                 app:text="@string/fragment_settings_flash" />
 
-            <com.mckimquyen.barcodescanner.feature.common.view.SettingsButton
+            <com.mckimquyen.barcodescanner.feature.common.view.ButtonSettings
                 android:id="@+id/buttonVibrate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:hint="@string/fragment_settings_vibrate_hint"
                 app:text="@string/fragment_settings_vibrate" />
 
-            <com.mckimquyen.barcodescanner.feature.common.view.SettingsButton
+            <com.mckimquyen.barcodescanner.feature.common.view.ButtonSettings
                 android:id="@+id/buttonContinuousScanning"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:hint="@string/fragment_settings_continuous_scanning_hint"
                 app:text="@string/fragment_settings_continuous_scanning" />
 
-            <com.mckimquyen.barcodescanner.feature.common.view.SettingsButton
+            <com.mckimquyen.barcodescanner.feature.common.view.ButtonSettings
                 android:id="@+id/buttonConfirmScansManually"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:hint="@string/fragment_settings_confirm_scans_manually_hint"
                 app:text="@string/fragment_settings_confirm_scans_manually" />
 
-            <com.mckimquyen.barcodescanner.feature.common.view.SettingsButton
+            <com.mckimquyen.barcodescanner.feature.common.view.ButtonSettings
                 android:id="@+id/buttonChooseCamera"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:isSwitchVisible="false"
                 app:text="@string/fragment_settings_camera" />
 
-            <com.mckimquyen.barcodescanner.feature.common.view.SettingsButton
+            <com.mckimquyen.barcodescanner.feature.common.view.ButtonSettings
                 android:id="@+id/buttonSelectSupportedFormats"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -137,26 +137,26 @@
                 android:layout_marginBottom="@dimen/margin_small"
                 android:text="@string/fragment_settings_history_settings" />
 
-            <com.mckimquyen.barcodescanner.feature.common.view.SettingsButton
+            <com.mckimquyen.barcodescanner.feature.common.view.ButtonSettings
                 android:id="@+id/buttonSaveScannedBarcodes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:text="@string/fragment_settings_save_scanned_barcodes_to_history" />
 
-            <com.mckimquyen.barcodescanner.feature.common.view.SettingsButton
+            <com.mckimquyen.barcodescanner.feature.common.view.ButtonSettings
                 android:id="@+id/buttonSaveCreatedBarcodes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:text="@string/fragment_settings_save_created_barcodes_to_history" />
 
-            <com.mckimquyen.barcodescanner.feature.common.view.SettingsButton
+            <com.mckimquyen.barcodescanner.feature.common.view.ButtonSettings
                 android:id="@+id/buttonDoNotSaveDuplicates"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:hint="@string/fragment_settings_do_not_save_duplicates_hint"
                 app:text="@string/fragment_settings_do_not_save_duplicates" />
 
-            <com.mckimquyen.barcodescanner.feature.common.view.SettingsButton
+            <com.mckimquyen.barcodescanner.feature.common.view.ButtonSettings
                 android:id="@+id/buttonClearHistory"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -176,7 +176,7 @@
                 android:layout_marginBottom="@dimen/margin_small"
                 android:text="@string/fragment_settings_advanced_settings" />
 
-            <com.mckimquyen.barcodescanner.feature.common.view.SettingsButton
+            <com.mckimquyen.barcodescanner.feature.common.view.ButtonSettings
                 android:id="@+id/buttonChooseSearchEngine"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -196,7 +196,7 @@
                 android:layout_marginBottom="@dimen/margin_small"
                 android:text="@string/fragment_settings_error_reports" />
 
-            <com.mckimquyen.barcodescanner.feature.common.view.SettingsButton
+            <com.mckimquyen.barcodescanner.feature.common.view.ButtonSettings
                 android:id="@+id/buttonEnableErrorReports"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -215,28 +215,28 @@
                 android:layout_marginBottom="@dimen/margin_small"
                 android:text="@string/fragment_settings_about" />
 
-            <com.mckimquyen.barcodescanner.feature.common.view.SettingsButton
+            <com.mckimquyen.barcodescanner.feature.common.view.ButtonSettings
                 android:id="@+id/buttonCheckUpdates"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:isSwitchVisible="false"
                 app:text="@string/fragment_settings_check_updates" />
 
-            <com.mckimquyen.barcodescanner.feature.common.view.SettingsButton
+            <com.mckimquyen.barcodescanner.feature.common.view.ButtonSettings
                 android:id="@+id/buttonPermissions"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:isSwitchVisible="false"
                 app:text="@string/fragment_settings_permissions" />
 
-            <com.mckimquyen.barcodescanner.feature.common.view.SettingsButton
+            <com.mckimquyen.barcodescanner.feature.common.view.ButtonSettings
                 android:id="@+id/buttonSourceCode"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:isSwitchVisible="false"
                 app:text="@string/fragment_settings_source_code" />
 
-            <com.mckimquyen.barcodescanner.feature.common.view.SettingsButton
+            <com.mckimquyen.barcodescanner.feature.common.view.ButtonSettings
                 android:id="@+id/buttonAppVersion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

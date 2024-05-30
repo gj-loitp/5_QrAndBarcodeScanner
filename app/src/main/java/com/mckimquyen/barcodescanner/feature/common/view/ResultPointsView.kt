@@ -15,19 +15,41 @@ class ResultPointsView : View {
     private val pointsPaint = Paint().apply {
         style = Paint.Style.STROKE
         color = Color.BLUE
-        strokeWidth = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 8f, Resources.getSystem().displayMetrics)
+        strokeWidth = TypedValue.applyDimension(
+            /* unit = */ TypedValue.COMPLEX_UNIT_DIP,
+            /* value = */ 8f,
+            /* metrics = */ Resources.getSystem().displayMetrics
+        )
         strokeCap = Paint.Cap.ROUND
     }
 
     private var resultPoints = floatArrayOf()
-    private var rect = RectF()
+//    private var rect = RectF()
 
 
     constructor(context: Context?) : this(context, null)
-    constructor(context: Context?, attrs: AttributeSet?) : this(context, attrs, 0)
-    constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : this(context, attrs, defStyleAttr, 0)
+    constructor(
+        context: Context?,
+        attrs: AttributeSet?,
+    ) : this(context, attrs, 0)
 
-    constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int, defStyleRes: Int) : super(context, attrs, defStyleAttr, defStyleRes) {
+    constructor(
+        context: Context?,
+        attrs: AttributeSet?,
+        defStyleAttr: Int,
+    ) : this(context, attrs, defStyleAttr, 0)
+
+    constructor(
+        context: Context?,
+        attrs: AttributeSet?,
+        defStyleAttr: Int,
+        defStyleRes: Int,
+    ) : super(
+        context,
+        attrs,
+        defStyleAttr,
+        defStyleRes
+    ) {
         context?.obtainStyledAttributes(attrs, R.styleable.ResultPointsView)?.apply {
             pointsPaint.color = getColor(
                 R.styleable.ResultPointsView_resultPointColor,
@@ -52,7 +74,12 @@ class ResultPointsView : View {
 //        }
     }
 
-    fun showResult(result: Result, imageWidth: Int, imageHeight: Int, imageRotation: Int) {
+    fun showResult(
+        result: Result,
+        imageWidth: Int,
+        imageHeight: Int,
+        imageRotation: Int,
+    ) {
         val localMatrix = createMatrix(imageWidth.toFloat(), imageHeight.toFloat(), imageRotation)
 
         resultPoints = result.resultPoints.flatMap { listOf(it.x, it.y) }.toFloatArray()
@@ -66,7 +93,11 @@ class ResultPointsView : View {
         postInvalidate()
     }
 
-    private fun createMatrix(imageWidth: Float, imageHeight: Float, imageRotation: Int) = Matrix().apply {
+    private fun createMatrix(
+        imageWidth: Float,
+        imageHeight: Float,
+        imageRotation: Int,
+    ) = Matrix().apply {
         preTranslate((width - imageWidth) / 2f, (height - imageHeight) / 2f)
         preRotate(imageRotation.toFloat(), imageWidth / 2f, imageHeight / 2f)
 

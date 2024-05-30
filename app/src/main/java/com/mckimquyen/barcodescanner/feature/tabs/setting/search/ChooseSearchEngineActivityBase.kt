@@ -9,7 +9,7 @@ import com.mckimquyen.barcodescanner.di.settings
 import com.mckimquyen.barcodescanner.extension.applySystemWindowInsets
 import com.mckimquyen.barcodescanner.extension.unsafeLazy
 import com.mckimquyen.barcodescanner.feature.ActivityBase
-import com.mckimquyen.barcodescanner.feature.common.view.SettingsRadioButton
+import com.mckimquyen.barcodescanner.feature.common.view.RadioButtonSettings
 import com.mckimquyen.barcodescanner.model.SearchEngine
 import kotlinx.android.synthetic.main.a_choose_search_engine.*
 
@@ -69,7 +69,7 @@ class ChooseSearchEngineActivityBase : ActivityBase() {
         buttonYandex.setCheckedChangedListener(SearchEngine.YANDEX)
     }
 
-    private fun SettingsRadioButton.setCheckedChangedListener(searchEngine: SearchEngine) {
+    private fun RadioButtonSettings.setCheckedChangedListener(searchEngine: SearchEngine) {
         setCheckedChangedListener { isChecked ->
             if (isChecked) {
                 uncheckOtherButtons(this)

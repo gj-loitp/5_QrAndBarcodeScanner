@@ -40,7 +40,7 @@
                 android:padding="@dimen/margin_medium2"
                 android:visibility="gone"
                 >
-                <com.mckimquyen.barcodescanner.feature.common.view.SquareImageView
+                <com.mckimquyen.barcodescanner.feature.common.view.ImageViewSquare
                     android:id="@+id/image_view_barcode"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

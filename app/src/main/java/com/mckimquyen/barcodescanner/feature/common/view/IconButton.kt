@@ -12,17 +12,25 @@ import androidx.core.content.ContextCompat
 import com.mckimquyen.barcodescanner.R
 import kotlinx.android.synthetic.main.lo_icon_button.view.*
 
-
 class IconButton : FrameLayout {
     private val view: View
 
     var text: String
         get() = view.textView.text.toString()
-        set(value) { view.textView.text = value }
+        set(value) {
+            view.textView.text = value
+        }
 
     constructor(context: Context) : this(context, null)
-    constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, -1)
-    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
+    constructor(
+        context: Context,
+        attrs: AttributeSet?,
+    ) : this(context, attrs, -1)
+    constructor(
+        context: Context,
+        attrs: AttributeSet?,
+        defStyleAttr: Int,
+    ) : super(context, attrs, defStyleAttr) {
         view = LayoutInflater
             .from(context)
             .inflate(R.layout.lo_icon_button, this, true)

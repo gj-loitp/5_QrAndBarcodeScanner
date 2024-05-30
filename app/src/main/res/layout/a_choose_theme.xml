@@ -22,7 +22,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <com.mckimquyen.barcodescanner.feature.common.view.SettingsRadioButton
+            <com.mckimquyen.barcodescanner.feature.common.view.RadioButtonSettings
                 android:id="@+id/buttonSystemTheme"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -31,7 +31,7 @@
                 app:layout_constraintTop_toBottomOf="@id/toolbar"
                 app:text="@string/activity_choose_theme_system" />
 
-            <com.mckimquyen.barcodescanner.feature.common.view.SettingsRadioButton
+            <com.mckimquyen.barcodescanner.feature.common.view.RadioButtonSettings
                 android:id="@+id/buttonLightTheme"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -40,7 +40,7 @@
                 app:layout_constraintTop_toBottomOf="@id/button_back_camera"
                 app:text="@string/activity_choose_theme_light" />
 
-            <com.mckimquyen.barcodescanner.feature.common.view.SettingsRadioButton
+            <com.mckimquyen.barcodescanner.feature.common.view.RadioButtonSettings
                 android:id="@+id/buttonDarkTheme"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

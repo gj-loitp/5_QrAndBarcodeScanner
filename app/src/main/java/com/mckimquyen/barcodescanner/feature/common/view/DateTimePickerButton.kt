@@ -6,6 +6,7 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
+import androidx.core.content.ContextCompat
 import com.mckimquyen.barcodescanner.R
 import com.mckimquyen.barcodescanner.extension.formatOrNull
 import com.github.florent37.singledateandtimepicker.dialog.SingleDateAndTimePickerDialog
@@ -18,8 +19,16 @@ class DateTimePickerButton : FrameLayout {
     private val view: View
 
     constructor(context: Context) : this(context, null)
-    constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, -1)
-    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
+    constructor(
+        context: Context,
+        attrs: AttributeSet?,
+    ) : this(context, attrs, -1)
+
+    constructor(
+        context: Context,
+        attrs: AttributeSet?,
+        defStyleAttr: Int,
+    ) : super(context, attrs, defStyleAttr) {
         view = LayoutInflater
             .from(context)
             .inflate(R.layout.lo_date_time_picker_button, this, true)
@@ -48,9 +57,11 @@ class DateTimePickerButton : FrameLayout {
 
     private fun showDateTimePickerDialog() {
         SingleDateAndTimePickerDialog.Builder(context)
-            .backgroundColor(context.resources.getColor(R.color.date_time_picker_dialog_background_color))
+//            .backgroundColor(context.resources.getColor(R.color.date_time_picker_dialog_background_color))
+            .backgroundColor(ContextCompat.getColor(context, R.color.date_time_picker_dialog_background_color))
             .title(view.textViewHint.text.toString())
-            .mainColor(context.resources.getColor(R.color.blue))
+//            .mainColor(context.resources.getColor(R.color.blue))
+            .mainColor(ContextCompat.getColor(context, R.color.blue))
             .listener { newDateTime ->
                 dateTime = newDateTime.time
                 showDateTime()

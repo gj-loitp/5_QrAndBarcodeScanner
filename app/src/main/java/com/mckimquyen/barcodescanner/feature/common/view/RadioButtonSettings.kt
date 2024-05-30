@@ -10,15 +10,21 @@ import androidx.core.view.isInvisible
 import com.mckimquyen.barcodescanner.R
 import kotlinx.android.synthetic.main.lo_settings_radio_button.view.*
 
-class SettingsRadioButton : FrameLayout {
+class RadioButtonSettings : FrameLayout {
     private val view: View
-    
+
     constructor(context: Context) : this(context, null)
-    constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, -1)
-    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
-        view = LayoutInflater
-            .from(context)
-            .inflate(R.layout.lo_settings_radio_button, this, true)
+    constructor(
+        context: Context,
+        attrs: AttributeSet?,
+    ) : this(context, attrs, -1)
+
+    constructor(
+        context: Context,
+        attrs: AttributeSet?,
+        defStyleAttr: Int,
+    ) : super(context, attrs, defStyleAttr) {
+        view = LayoutInflater.from(context).inflate(R.layout.lo_settings_radio_button, this, true)
 
         context.obtainStyledAttributes(attrs, R.styleable.SettingsRadioButton).apply {
             showText(this)
@@ -33,8 +39,10 @@ class SettingsRadioButton : FrameLayout {
 
     var isChecked: Boolean
         get() = view.radioButton.isChecked
-        set(value) { view.radioButton.isChecked = value }
-    
+        set(value) {
+            view.radioButton.isChecked = value
+        }
+
     fun setCheckedChangedListener(listener: ((Boolean) -> Unit)?) {
         view.radioButton.setOnCheckedChangeListener { _, isChecked ->
             listener?.invoke(isChecked)
@@ -46,6 +54,7 @@ class SettingsRadioButton : FrameLayout {
     }
 
     private fun showDelimiter(attributes: TypedArray) {
-        view.delimiter.isInvisible = attributes.getBoolean(R.styleable.SettingsRadioButton_isDelimiterVisible, true).not()
+        view.delimiter.isInvisible =
+            attributes.getBoolean(R.styleable.SettingsRadioButton_isDelimiterVisible, true).not()
     }
 }

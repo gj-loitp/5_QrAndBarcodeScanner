@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.core.content.ContextCompat
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import com.mckimquyen.barcodescanner.R
@@ -19,7 +20,11 @@ class IconButtonWithDelimiter : FrameLayout {
 
     constructor(context: Context) : this(context, null)
     constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, -1)
-    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
+    constructor(
+        context: Context,
+        attrs: AttributeSet?,
+        defStyleAttr: Int,
+    ) : super(context, attrs, defStyleAttr) {
         view = LayoutInflater
             .from(context)
             .inflate(R.layout.lo_icon_button_with_delimiter, this, true)
@@ -41,7 +46,11 @@ class IconButtonWithDelimiter : FrameLayout {
     }
 
     private fun showIconBackgroundColor(attributes: TypedArray) {
-        val color = attributes.getColor(R.styleable.IconButtonWithDelimiter_iconBackground, view.context.resources.getColor(R.color.green))
+        val color = attributes.getColor(
+            R.styleable.IconButtonWithDelimiter_iconBackground,
+//            view.context.resources.getColor(R.color.green)
+            ContextCompat.getColor(view.context, R.color.green)
+        )
         (view.layoutImage.background.mutate() as GradientDrawable).setColor(color)
     }
 
@@ -54,7 +63,8 @@ class IconButtonWithDelimiter : FrameLayout {
     }
 
     private fun showDelimiter(attributes: TypedArray) {
-        view.delimiter.isInvisible = attributes.getBoolean(R.styleable.IconButtonWithDelimiter_isDelimiterVisible, true).not()
+        view.delimiter.isInvisible =
+            attributes.getBoolean(R.styleable.IconButtonWithDelimiter_isDelimiterVisible, true).not()
     }
 
     override fun setEnabled(enabled: Boolean) {
