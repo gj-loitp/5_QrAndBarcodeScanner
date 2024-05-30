@@ -33,7 +33,7 @@ import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.a_create_barcode.*
 
 
-class ActivityCreateBarcode : ActivityBase(), AppAdapter.Listener {
+class ActivityCreateBarcode : ActivityBase(), AdapterApp.Listener {
 
     companion object {
         private const val BARCODE_FORMAT_KEY = "BARCODE_FORMAT_KEY"
@@ -243,7 +243,7 @@ class ActivityCreateBarcode : ActivityBase(), AppAdapter.Listener {
             )
 
             barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.URL -> FragmentCreateQrCodeUrl()
-            barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.BOOKMARK -> CreateQrCodeBookmarkFragmentBaseCreateBarcode()
+            barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.BOOKMARK -> FragmentCreateQrCodeBookmark()
             barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.PHONE -> FragmentCreateQrCodePhone()
             barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.WIFI -> FragmentCreateQrCodeWifi()
             barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.EMAIL -> FragmentCreateQrCodeEmail()
@@ -251,7 +251,7 @@ class ActivityCreateBarcode : ActivityBase(), AppAdapter.Listener {
             barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.MMS -> FragmentCreateQrCodeMms()
             barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.CRYPTOCURRENCY -> FragmentCreateQrCodeCryptocurrency()
             barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.GEO -> FragmentCreateQrCodeLocation()
-            barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.APP -> CreateQrCodeAppFragmentBaseCreateBarcode()
+            barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.APP -> FragmentCreateQrCodeApp()
             barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.OTP_AUTH -> FragmentCreateQrCodeOtp()
             barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.VEVENT -> FragmentCreateQrCodeEvent()
             barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.VCARD -> FragmentCreateQrCodeVCard()

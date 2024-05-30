@@ -113,7 +113,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".feature.tabs.create.qr.CreateQrCodeAllActivityBase"
+            android:name=".feature.tabs.create.qr.ActivityCreateQrCodeAll"
             android:configChanges="orientation|screenSize"
             android:exported="false"
             android:screenOrientation="fullSensor" />

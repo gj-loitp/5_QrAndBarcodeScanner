@@ -13,9 +13,13 @@ import com.mckimquyen.barcodescanner.model.schema.Bookmark
 import com.mckimquyen.barcodescanner.model.schema.Schema
 import kotlinx.android.synthetic.main.f_create_qr_code_bookmark.*
 
-class CreateQrCodeBookmarkFragmentBaseCreateBarcode : FragmentBaseCreateBarcode() {
+class FragmentCreateQrCodeBookmark : FragmentBaseCreateBarcode() {
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?,
+    ): View? {
         return inflater.inflate(R.layout.f_create_qr_code_bookmark, container, false)
     }
 
@@ -37,8 +41,12 @@ class CreateQrCodeBookmarkFragmentBaseCreateBarcode : FragmentBaseCreateBarcode(
     }
 
     private fun handleTextChanged() {
-        editTextTitle.addTextChangedListener { toggleCreateBarcodeButton() }
-        editTextUrl.addTextChangedListener { toggleCreateBarcodeButton() }
+        editTextTitle.addTextChangedListener {
+            toggleCreateBarcodeButton()
+        }
+        editTextUrl.addTextChangedListener {
+            toggleCreateBarcodeButton()
+        }
     }
 
     private fun toggleCreateBarcodeButton() {

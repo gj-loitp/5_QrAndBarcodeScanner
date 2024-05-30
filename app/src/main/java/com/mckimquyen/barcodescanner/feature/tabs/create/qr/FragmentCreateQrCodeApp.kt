@@ -22,11 +22,15 @@ import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.f_create_qr_code_app.progressBarLoading
 import kotlinx.android.synthetic.main.f_create_qr_code_app.recyclerViewApps
 
-class CreateQrCodeAppFragmentBaseCreateBarcode : FragmentBaseCreateBarcode() {
+class FragmentCreateQrCodeApp : FragmentBaseCreateBarcode() {
     private val disposable = CompositeDisposable()
-    private val appAdapter by unsafeLazy { AppAdapter(parentActivity) }
+    private val adapterApp by unsafeLazy { AdapterApp(parentActivity) }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?,
+    ): View? {
         return inflater.inflate(R.layout.f_create_qr_code_app, container, false)
     }
 
@@ -48,7 +52,7 @@ class CreateQrCodeAppFragmentBaseCreateBarcode : FragmentBaseCreateBarcode() {
     private fun initRecyclerView() {
         recyclerViewApps.apply {
             layoutManager = LinearLayoutManager(requireContext())
-            adapter = appAdapter
+            adapter = adapterApp
         }
     }
 
@@ -87,6 +91,6 @@ class CreateQrCodeAppFragmentBaseCreateBarcode : FragmentBaseCreateBarcode() {
     }
 
     private fun showApps(apps: List<ResolveInfo>) {
-        appAdapter.apps = apps
+        adapterApp.apps = apps
     }
 }

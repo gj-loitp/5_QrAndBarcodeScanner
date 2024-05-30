@@ -1,5 +1,6 @@
 package com.mckimquyen.barcodescanner.feature.tabs.create.qr
 
+import android.annotation.SuppressLint
 import android.content.pm.PackageManager
 import android.content.pm.ResolveInfo
 import android.view.LayoutInflater
@@ -10,13 +11,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mckimquyen.barcodescanner.R
 import kotlinx.android.synthetic.main.i_app.view.*
 
-class AppAdapter(private val listener: Listener) : RecyclerView.Adapter<AppAdapter.ViewHolder>() {
+class AdapterApp(private val listener: Listener) : RecyclerView.Adapter<AdapterApp.ViewHolder>() {
 
     interface Listener {
         fun onAppClicked(packageName: String)
     }
 
     var apps: List<ResolveInfo> = emptyList()
+        @SuppressLint("NotifyDataSetChanged")
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -42,7 +44,10 @@ class AppAdapter(private val listener: Listener) : RecyclerView.Adapter<AppAdapt
         private val packageManager: PackageManager
             get() = itemView.context.applicationContext.packageManager
 
-        fun show(app: ResolveInfo, isLastPosition: Boolean) {
+        fun show(
+            app: ResolveInfo,
+            isLastPosition: Boolean,
+        ) {
             showName(app)
             showIcon(app)
             showDelimiter(isLastPosition)

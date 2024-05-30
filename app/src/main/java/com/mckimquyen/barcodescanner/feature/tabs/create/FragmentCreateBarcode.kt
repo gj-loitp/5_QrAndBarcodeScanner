@@ -10,7 +10,7 @@ import com.mckimquyen.barcodescanner.extension.applySystemWindowInsets
 import com.mckimquyen.barcodescanner.extension.clipboardManager
 import com.mckimquyen.barcodescanner.extension.orZero
 import com.mckimquyen.barcodescanner.feature.tabs.create.barcode.CreateBarcodeAllActivityBase
-import com.mckimquyen.barcodescanner.feature.tabs.create.qr.CreateQrCodeAllActivityBase
+import com.mckimquyen.barcodescanner.feature.tabs.create.qr.ActivityCreateQrCodeAll
 import com.mckimquyen.barcodescanner.model.schema.BarcodeSchema
 import com.google.zxing.BarcodeFormat
 import kotlinx.android.synthetic.main.f_create_barcode.*
@@ -81,7 +81,7 @@ class FragmentCreateBarcode : Fragment() {
             )
         }
         buttonShowAllQrCode.setOnClickListener {
-            CreateQrCodeAllActivityBase.start(requireActivity())
+            ActivityCreateQrCodeAll.start(requireActivity())
         }
 
         // Barcode
