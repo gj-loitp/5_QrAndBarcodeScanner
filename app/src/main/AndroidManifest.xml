@@ -134,17 +134,17 @@
             android:exported="false"
             android:screenOrientation="fullSensor" />
         <activity
-            android:name=".feature.barcode.otp.OtpActivityBase"
+            android:name=".feature.barcode.otp.ActivityOtp"
             android:configChanges="orientation|screenSize"
             android:exported="false"
             android:screenOrientation="fullSensor" />
         <activity
-            android:name=".feature.barcode.save.SaveBarcodeAsTextActivityBase"
+            android:name=".feature.barcode.save.ActivitySaveBarcodeAsText"
             android:configChanges="orientation|screenSize"
             android:exported="false"
             android:screenOrientation="fullSensor" />
         <activity
-            android:name=".feature.barcode.save.SaveBarcodeAsImageActivityBase"
+            android:name=".feature.barcode.save.ActivitySaveBarcodeAsImage"
             android:configChanges="orientation|screenSize"
             android:exported="false"
             android:screenOrientation="fullSensor" />

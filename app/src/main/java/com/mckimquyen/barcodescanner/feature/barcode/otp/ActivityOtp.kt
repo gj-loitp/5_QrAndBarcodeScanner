@@ -18,13 +18,13 @@ import io.reactivex.rxkotlin.addTo
 import kotlinx.android.synthetic.main.activity_barcode_otp.*
 import java.util.concurrent.TimeUnit
 
-class OtpActivityBase : ActivityBase() {
+class ActivityOtp : ActivityBase() {
 
     companion object {
         private const val OTP_KEY = "OTP_KEY"
 
         fun start(context: Context, opt: OtpAuth) {
-            val intent = Intent(context, OtpActivityBase::class.java).apply {
+            val intent = Intent(context, ActivityOtp::class.java).apply {
                 putExtra(OTP_KEY, opt)
             }
             context.startActivity(intent)
@@ -87,7 +87,8 @@ class OtpActivityBase : ActivityBase() {
             OtpAuth.HOTP_TYPE -> showHotp()
             OtpAuth.TOTP_TYPE -> showTotp()
         }
-        text_view_password.text = otpGenerator.generateOTP(otp) ?: getString(R.string.activity_barcode_otp_unable_to_generate_otp)
+        text_view_password.text =
+            otpGenerator.generateOTP(otp) ?: getString(R.string.activity_barcode_otp_unable_to_generate_otp)
     }
 
     private fun showHotp() {

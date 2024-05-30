@@ -21,7 +21,7 @@ import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.a_save_barcode_as_text.*
 
-class SaveBarcodeAsTextActivityBase : ActivityBase() {
+class ActivitySaveBarcodeAsText : ActivityBase() {
 
     companion object {
         private const val REQUEST_PERMISSIONS_CODE = 101
@@ -30,7 +30,7 @@ class SaveBarcodeAsTextActivityBase : ActivityBase() {
         private const val BARCODE_KEY = "BARCODE_KEY"
 
         fun start(context: Context, barcode: Barcode) {
-            val intent = Intent(context, SaveBarcodeAsTextActivityBase::class.java).apply {
+            val intent = Intent(context, ActivitySaveBarcodeAsText::class.java).apply {
                 putExtra(BARCODE_KEY, barcode)
             }
             context.startActivity(intent)
@@ -52,7 +52,11 @@ class SaveBarcodeAsTextActivityBase : ActivityBase() {
         initSaveButton()
     }
 
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray,
+    ) {
         if (permissionsHelper.areAllPermissionsGranted(grantResults)) {
             saveBarcode()
         }
@@ -88,7 +92,11 @@ class SaveBarcodeAsTextActivityBase : ActivityBase() {
     }
 
     private fun requestPermissions() {
-        permissionsHelper.requestPermissions(this, PERMISSIONS, REQUEST_PERMISSIONS_CODE)
+        permissionsHelper.requestPermissions(
+            activity = this,
+            permissions = PERMISSIONS,
+            requestCode = REQUEST_PERMISSIONS_CODE
+        )
     }
 
     private fun saveBarcode() {

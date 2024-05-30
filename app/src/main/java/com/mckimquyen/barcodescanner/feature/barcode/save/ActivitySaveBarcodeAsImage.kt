@@ -22,7 +22,7 @@ import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.a_save_barcode_as_image.*
 
-class SaveBarcodeAsImageActivityBase : ActivityBase() {
+class ActivitySaveBarcodeAsImage : ActivityBase() {
 
     companion object {
         private const val REQUEST_PERMISSIONS_CODE = 101
@@ -31,7 +31,7 @@ class SaveBarcodeAsImageActivityBase : ActivityBase() {
         private const val BARCODE_KEY = "BARCODE_KEY"
 
         fun start(context: Context, barcode: Barcode) {
-            val intent = Intent(context, SaveBarcodeAsImageActivityBase::class.java).apply {
+            val intent = Intent(context, ActivitySaveBarcodeAsImage::class.java).apply {
                 putExtra(BARCODE_KEY, barcode)
             }
             context.startActivity(intent)
@@ -53,7 +53,11 @@ class SaveBarcodeAsImageActivityBase : ActivityBase() {
         initSaveButton()
     }
 
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray,
+    ) {
         if (permissionsHelper.areAllPermissionsGranted(grantResults)) {
             saveBarcode()
         }
@@ -76,7 +80,9 @@ class SaveBarcodeAsImageActivityBase : ActivityBase() {
 
     private fun initFormatSpinner() {
         spinnerSaveAs.adapter = ArrayAdapter.createFromResource(
-            this, R.array.activity_save_barcode_as_image_formats, R.layout.i_spinner
+            /* context = */ this,
+            /* textArrayResId = */ R.array.activity_save_barcode_as_image_formats,
+            /* textViewResId = */ R.layout.i_spinner
         ).apply {
             setDropDownViewResource(R.layout.i_spinner_dropdown)
         }
@@ -89,21 +95,43 @@ class SaveBarcodeAsImageActivityBase : ActivityBase() {
     }
 
     private fun requestPermissions() {
-        permissionsHelper.requestPermissions(this, PERMISSIONS, REQUEST_PERMISSIONS_CODE)
+        permissionsHelper.requestPermissions(
+            activity = this,
+            permissions = PERMISSIONS,
+            requestCode = REQUEST_PERMISSIONS_CODE
+        )
     }
 
     private fun saveBarcode() {
         val saveFunc = when (spinnerSaveAs.selectedItemPosition) {
             0 -> {
-                barcodeImageGenerator
-                    .generateBitmapAsync(barcode, 640, 640, 2)
-                    .flatMapCompletable { barcodeImageSaver.savePngImageToPublicDirectory(this, it, barcode) }
+                barcodeImageGenerator.generateBitmapAsync(
+                    barcode = barcode,
+                    width = 640,
+                    height = 640,
+                    margin = 2
+                )
+                    .flatMapCompletable {
+                        barcodeImageSaver.savePngImageToPublicDirectory(this, it, barcode)
+                    }
             }
+
             1 -> {
-                barcodeImageGenerator
-                    .generateSvgAsync(barcode, 640, 640, 2)
-                    .flatMapCompletable { barcodeImageSaver.saveSvgImageToPublicDirectory(this, it, barcode) }
+                barcodeImageGenerator.generateSvgAsync(
+                    barcode = barcode,
+                    width = 640,
+                    height = 640,
+                    margin = 2
+                )
+                    .flatMapCompletable {
+                        barcodeImageSaver.saveSvgImageToPublicDirectory(
+                            context = this,
+                            image = it,
+                            barcode = barcode
+                        )
+                    }
             }
+
             else -> return
         }
 
@@ -113,7 +141,9 @@ class SaveBarcodeAsImageActivityBase : ActivityBase() {
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
-                { showBarcodeSaved() },
+                {
+                    showBarcodeSaved()
+                },
                 { error ->
                     showLoading(false)
                     showError(error)

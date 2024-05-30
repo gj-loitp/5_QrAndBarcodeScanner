@@ -18,9 +18,9 @@ import com.mckimquyen.barcodescanner.R
 import com.mckimquyen.barcodescanner.di.*
 import com.mckimquyen.barcodescanner.extension.*
 import com.mckimquyen.barcodescanner.feature.ActivityBase
-import com.mckimquyen.barcodescanner.feature.barcode.otp.OtpActivityBase
-import com.mckimquyen.barcodescanner.feature.barcode.save.SaveBarcodeAsImageActivityBase
-import com.mckimquyen.barcodescanner.feature.barcode.save.SaveBarcodeAsTextActivityBase
+import com.mckimquyen.barcodescanner.feature.barcode.otp.ActivityOtp
+import com.mckimquyen.barcodescanner.feature.barcode.save.ActivitySaveBarcodeAsImage
+import com.mckimquyen.barcodescanner.feature.barcode.save.ActivitySaveBarcodeAsText
 import com.mckimquyen.barcodescanner.feature.common.dlg.DialogFragmentChooseSearchEngine
 import com.mckimquyen.barcodescanner.feature.common.dlg.DialogFragmentDeleteConfirmation
 import com.mckimquyen.barcodescanner.feature.common.dlg.DialogFragmentEditBarcodeName
@@ -501,7 +501,7 @@ class ActivityBarcode : ActivityBase(), DialogFragmentDeleteConfirmation.Listene
 
     private fun showOtp() {
         val otp = OtpAuth.parse(barcode.otpUrl.orEmpty()) ?: return
-        OtpActivityBase.start(this, otp)
+        ActivityOtp.start(this, otp)
     }
 
     private fun openOtpInOtherApp() {
@@ -607,11 +607,11 @@ class ActivityBarcode : ActivityBase(), DialogFragmentDeleteConfirmation.Listene
     }
 
     private fun navigateToSaveBarcodeAsTextActivity() {
-        SaveBarcodeAsTextActivityBase.start(this, originalBarcode)
+        ActivitySaveBarcodeAsText.start(this, originalBarcode)
     }
 
     private fun navigateToSaveBarcodeAsImageActivity() {
-        SaveBarcodeAsImageActivityBase.start(this, originalBarcode)
+        ActivitySaveBarcodeAsImage.start(this, originalBarcode)
     }
 
 
