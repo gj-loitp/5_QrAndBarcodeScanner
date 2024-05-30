@@ -1,4 +1,4 @@
-package com.mckimquyen.barcodescanner.feature.common.dialog
+package com.mckimquyen.barcodescanner.feature.common.dlg
 
 import android.app.Activity
 import android.app.Dialog
@@ -12,7 +12,7 @@ import androidx.fragment.app.DialogFragment
 import com.mckimquyen.barcodescanner.R
 import kotlinx.android.synthetic.main.dlg_edit_barcode_name.view.*
 
-class EditBarcodeNameDialogFragment : DialogFragment() {
+class DialogFragmentEditBarcodeName : DialogFragment() {
 
     interface Listener {
         fun onNameConfirmed(name: String)
@@ -21,8 +21,8 @@ class EditBarcodeNameDialogFragment : DialogFragment() {
     companion object {
         private const val NAME_KEY = "NAME_KEY"
 
-        fun newInstance(name: String?): EditBarcodeNameDialogFragment {
-            return EditBarcodeNameDialogFragment().apply {
+        fun newInstance(name: String?): DialogFragmentEditBarcodeName {
+            return DialogFragmentEditBarcodeName().apply {
                 arguments = Bundle().apply {
                     putString(NAME_KEY, name)
                 }
@@ -50,8 +50,10 @@ class EditBarcodeNameDialogFragment : DialogFragment() {
 
         dialog.setOnShowListener {
             initNameEditText(view.editTextBarcodeName, name)
-            dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(ContextCompat.getColor(requireContext(), R.color.blue))
-            dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(ContextCompat.getColor(requireContext(), R.color.red))
+            dialog.getButton(AlertDialog.BUTTON_POSITIVE)
+                .setTextColor(ContextCompat.getColor(requireContext(), R.color.blue))
+            dialog.getButton(AlertDialog.BUTTON_NEGATIVE)
+                .setTextColor(ContextCompat.getColor(requireContext(), R.color.red))
         }
 
         return dialog

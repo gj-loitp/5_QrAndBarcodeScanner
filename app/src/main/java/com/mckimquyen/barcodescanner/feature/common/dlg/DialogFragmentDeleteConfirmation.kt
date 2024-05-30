@@ -1,4 +1,4 @@
-package com.mckimquyen.barcodescanner.feature.common.dialog
+package com.mckimquyen.barcodescanner.feature.common.dlg
 
 import android.app.Dialog
 import android.os.Bundle
@@ -8,13 +8,13 @@ import androidx.fragment.app.DialogFragment
 import com.mckimquyen.barcodescanner.R
 import com.mckimquyen.barcodescanner.extension.orZero
 
-class DeleteConfirmationDialogFragment : DialogFragment() {
+class DialogFragmentDeleteConfirmation : DialogFragment() {
 
     companion object {
         private const val MESSAGE_ID_KEY = "MESSAGE_ID_KEY"
 
-        fun newInstance(messageId: Int): DeleteConfirmationDialogFragment {
-            return DeleteConfirmationDialogFragment().apply {
+        fun newInstance(messageId: Int): DialogFragmentDeleteConfirmation {
+            return DialogFragmentDeleteConfirmation().apply {
                 arguments = Bundle().apply {
                     putInt(MESSAGE_ID_KEY, messageId)
                 }
@@ -38,8 +38,10 @@ class DeleteConfirmationDialogFragment : DialogFragment() {
             .create()
 
         dialog.setOnShowListener {
-            dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(ContextCompat.getColor(requireContext(), R.color.red))
-            dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(ContextCompat.getColor(requireContext(), R.color.blue))
+            dialog.getButton(AlertDialog.BUTTON_POSITIVE)
+                .setTextColor(ContextCompat.getColor(requireContext(), R.color.red))
+            dialog.getButton(AlertDialog.BUTTON_NEGATIVE)
+                .setTextColor(ContextCompat.getColor(requireContext(), R.color.blue))
         }
 
         return dialog

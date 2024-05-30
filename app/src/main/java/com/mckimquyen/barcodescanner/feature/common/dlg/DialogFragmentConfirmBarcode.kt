@@ -1,4 +1,4 @@
-package com.mckimquyen.barcodescanner.feature.common.dialog
+package com.mckimquyen.barcodescanner.feature.common.dlg
 
 import android.app.Dialog
 import android.os.Bundle
@@ -9,7 +9,7 @@ import com.mckimquyen.barcodescanner.R
 import com.mckimquyen.barcodescanner.extension.toStringId
 import com.mckimquyen.barcodescanner.model.Barcode
 
-class ConfirmBarcodeDialogFragment : DialogFragment() {
+class DialogFragmentConfirmBarcode : DialogFragment() {
 
     interface Listener {
         fun onBarcodeConfirmed(barcode: Barcode)
@@ -19,8 +19,8 @@ class ConfirmBarcodeDialogFragment : DialogFragment() {
     companion object {
         private const val BARCODE_KEY = "BARCODE_FORMAT_MESSAGE_ID_KEY"
 
-        fun newInstance(barcode: Barcode): ConfirmBarcodeDialogFragment {
-            return ConfirmBarcodeDialogFragment().apply {
+        fun newInstance(barcode: Barcode): DialogFragmentConfirmBarcode {
+            return DialogFragmentConfirmBarcode().apply {
                 arguments = Bundle().apply {
                     putSerializable(BARCODE_KEY, barcode)
                 }
@@ -31,7 +31,8 @@ class ConfirmBarcodeDialogFragment : DialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val listener = parentFragment as? Listener
-        val barcode = arguments?.getSerializable(BARCODE_KEY) as? Barcode ?: throw IllegalArgumentException("No barcode passed")
+        val barcode =
+            arguments?.getSerializable(BARCODE_KEY) as? Barcode ?: throw IllegalArgumentException("No barcode passed")
         val messageId = barcode.format.toStringId()
 
         val dialog = AlertDialog.Builder(requireActivity(), R.style.DialogTheme)
@@ -47,8 +48,10 @@ class ConfirmBarcodeDialogFragment : DialogFragment() {
             .create()
 
         dialog.setOnShowListener {
-            dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(ContextCompat.getColor(requireContext(), R.color.blue))
-            dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(ContextCompat.getColor(requireContext(), R.color.red))
+            dialog.getButton(AlertDialog.BUTTON_POSITIVE)
+                .setTextColor(ContextCompat.getColor(requireContext(), R.color.blue))
+            dialog.getButton(AlertDialog.BUTTON_NEGATIVE)
+                .setTextColor(ContextCompat.getColor(requireContext(), R.color.red))
         }
 
         return dialog

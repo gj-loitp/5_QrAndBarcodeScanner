@@ -14,7 +14,7 @@ import com.mckimquyen.barcodescanner.di.settings
 import com.mckimquyen.barcodescanner.extension.applySystemWindowInsets
 import com.mckimquyen.barcodescanner.extension.packageManager
 import com.mckimquyen.barcodescanner.extension.showError
-import com.mckimquyen.barcodescanner.feature.common.dialog.DeleteConfirmationDialogFragment
+import com.mckimquyen.barcodescanner.feature.common.dlg.DialogFragmentDeleteConfirmation
 import com.mckimquyen.barcodescanner.feature.tabs.setting.camera.ChooseCameraActivityBase
 import com.mckimquyen.barcodescanner.feature.tabs.setting.formats.SupportedFormatsActivityBase
 import com.mckimquyen.barcodescanner.feature.tabs.setting.permissions.AllPermissionsActivityBase
@@ -27,7 +27,7 @@ import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.f_settings.*
 
 
-class SettingsFragment : Fragment(), DeleteConfirmationDialogFragment.Listener {
+class SettingsFragment : Fragment(), DialogFragmentDeleteConfirmation.Listener {
     private val disposable = CompositeDisposable()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -122,7 +122,7 @@ class SettingsFragment : Fragment(), DeleteConfirmationDialogFragment.Listener {
     }
 
     private fun showDeleteHistoryConfirmationDialog() {
-        val dialog = DeleteConfirmationDialogFragment.newInstance(R.string.dialog_delete_clear_history_message)
+        val dialog = DialogFragmentDeleteConfirmation.newInstance(R.string.dialog_delete_clear_history_message)
         dialog.show(childFragmentManager, "")
     }
 

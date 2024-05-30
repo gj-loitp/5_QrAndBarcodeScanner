@@ -21,9 +21,9 @@ import com.mckimquyen.barcodescanner.feature.ActivityBase
 import com.mckimquyen.barcodescanner.feature.barcode.otp.OtpActivityBase
 import com.mckimquyen.barcodescanner.feature.barcode.save.SaveBarcodeAsImageActivityBase
 import com.mckimquyen.barcodescanner.feature.barcode.save.SaveBarcodeAsTextActivityBase
-import com.mckimquyen.barcodescanner.feature.common.dialog.ChooseSearchEngineDialogFragment
-import com.mckimquyen.barcodescanner.feature.common.dialog.DeleteConfirmationDialogFragment
-import com.mckimquyen.barcodescanner.feature.common.dialog.EditBarcodeNameDialogFragment
+import com.mckimquyen.barcodescanner.feature.common.dlg.DialogFragmentChooseSearchEngine
+import com.mckimquyen.barcodescanner.feature.common.dlg.DialogFragmentDeleteConfirmation
+import com.mckimquyen.barcodescanner.feature.common.dlg.DialogFragmentEditBarcodeName
 import com.mckimquyen.barcodescanner.model.Barcode
 import com.mckimquyen.barcodescanner.model.ParsedBarcode
 import com.mckimquyen.barcodescanner.model.SearchEngine
@@ -40,7 +40,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 
-class BarcodeActivityBase : ActivityBase(), DeleteConfirmationDialogFragment.Listener, ChooseSearchEngineDialogFragment.Listener, EditBarcodeNameDialogFragment.Listener {
+class BarcodeActivityBase : ActivityBase(), DialogFragmentDeleteConfirmation.Listener, DialogFragmentChooseSearchEngine.Listener, DialogFragmentEditBarcodeName.Listener {
 
     companion object {
         private const val BARCODE_KEY = "BARCODE_KEY"
@@ -715,17 +715,17 @@ class BarcodeActivityBase : ActivityBase(), DeleteConfirmationDialogFragment.Lis
     }
 
     private fun showDeleteBarcodeConfirmationDialog() {
-        val dialog = DeleteConfirmationDialogFragment.newInstance(R.string.dialog_delete_barcode_message)
+        val dialog = DialogFragmentDeleteConfirmation.newInstance(R.string.dialog_delete_barcode_message)
         dialog.show(supportFragmentManager, "")
     }
 
     private fun showEditBarcodeNameDialog() {
-        val dialog = EditBarcodeNameDialogFragment.newInstance(barcode.name)
+        val dialog = DialogFragmentEditBarcodeName.newInstance(barcode.name)
         dialog.show(supportFragmentManager, "")
     }
 
     private fun showSearchEnginesDialog() {
-        val dialog = ChooseSearchEngineDialogFragment()
+        val dialog = DialogFragmentChooseSearchEngine()
         dialog.show(supportFragmentManager, "")
     }
 

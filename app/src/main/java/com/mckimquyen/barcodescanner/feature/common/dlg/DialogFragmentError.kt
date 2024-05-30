@@ -1,4 +1,4 @@
-package com.mckimquyen.barcodescanner.feature.common.dialog
+package com.mckimquyen.barcodescanner.feature.common.dlg
 
 import android.app.Dialog
 import android.content.Context
@@ -8,7 +8,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
 import com.mckimquyen.barcodescanner.R
 
-class ErrorDialogFragment : DialogFragment() {
+class DialogFragmentError : DialogFragment() {
 
     interface Listener {
         fun onErrorDialogPositiveButtonClicked()
@@ -17,8 +17,8 @@ class ErrorDialogFragment : DialogFragment() {
     companion object {
         private const val ERROR_MESSAGE_KEY = "ERROR_MESSAGE_KEY"
 
-        fun newInstance(context: Context, error: Throwable?): ErrorDialogFragment {
-            return ErrorDialogFragment().apply {
+        fun newInstance(context: Context, error: Throwable?): DialogFragmentError {
+            return DialogFragmentError().apply {
                 arguments = Bundle().apply {
                     putString(ERROR_MESSAGE_KEY, getErrorMessage(context, error))
                 }
@@ -49,7 +49,8 @@ class ErrorDialogFragment : DialogFragment() {
             .create()
 
         dialog.setOnShowListener {
-            dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(ContextCompat.getColor(requireContext(), R.color.blue))
+            dialog.getButton(AlertDialog.BUTTON_POSITIVE)
+                .setTextColor(ContextCompat.getColor(requireContext(), R.color.blue))
         }
 
         return dialog

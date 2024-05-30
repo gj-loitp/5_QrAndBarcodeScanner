@@ -9,7 +9,7 @@ import com.mckimquyen.barcodescanner.R
 import com.mckimquyen.barcodescanner.di.barcodeDatabase
 import com.mckimquyen.barcodescanner.extension.applySystemWindowInsets
 import com.mckimquyen.barcodescanner.extension.showError
-import com.mckimquyen.barcodescanner.feature.common.dialog.DeleteConfirmationDialogFragment
+import com.mckimquyen.barcodescanner.feature.common.dlg.DialogFragmentDeleteConfirmation
 import com.mckimquyen.barcodescanner.feature.tabs.history.export.ActivityExportHistory
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -18,7 +18,7 @@ import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.f_barcode_history.*
 
 
-class FragmentBarcodeHistory : Fragment(), DeleteConfirmationDialogFragment.Listener {
+class FragmentBarcodeHistory : Fragment(), DialogFragmentDeleteConfirmation.Listener {
     private val disposable = CompositeDisposable()
 
     override fun onCreateView(
@@ -69,7 +69,7 @@ class FragmentBarcodeHistory : Fragment(), DeleteConfirmationDialogFragment.List
     }
 
     private fun showDeleteHistoryConfirmationDialog() {
-        val dialog = DeleteConfirmationDialogFragment.newInstance(R.string.dialog_delete_clear_history_message)
+        val dialog = DialogFragmentDeleteConfirmation.newInstance(R.string.dialog_delete_clear_history_message)
         dialog.show(childFragmentManager, "")
     }
 

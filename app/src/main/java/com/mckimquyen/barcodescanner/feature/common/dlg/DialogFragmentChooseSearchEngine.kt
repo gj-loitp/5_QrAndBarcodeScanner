@@ -1,4 +1,4 @@
-package com.mckimquyen.barcodescanner.feature.common.dialog
+package com.mckimquyen.barcodescanner.feature.common.dlg
 
 import android.app.Dialog
 import android.os.Bundle
@@ -8,7 +8,7 @@ import androidx.fragment.app.DialogFragment
 import com.mckimquyen.barcodescanner.R
 import com.mckimquyen.barcodescanner.model.SearchEngine
 
-class ChooseSearchEngineDialogFragment : DialogFragment() {
+class DialogFragmentChooseSearchEngine : DialogFragment() {
 
     companion object {
         private val ITEMS = arrayOf(
@@ -48,7 +48,8 @@ class ChooseSearchEngineDialogFragment : DialogFragment() {
             .create()
 
         dialog.setOnShowListener {
-            dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(ContextCompat.getColor(requireContext(), R.color.red))
+            dialog.getButton(AlertDialog.BUTTON_NEGATIVE)
+                .setTextColor(ContextCompat.getColor(requireContext(), R.color.red))
         }
 
         return dialog

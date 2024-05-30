@@ -16,7 +16,7 @@ import com.budiyev.android.codescanner.*
 import com.mckimquyen.barcodescanner.di.*
 import com.mckimquyen.barcodescanner.extension.*
 import com.mckimquyen.barcodescanner.feature.barcode.BarcodeActivityBase
-import com.mckimquyen.barcodescanner.feature.common.dialog.ConfirmBarcodeDialogFragment
+import com.mckimquyen.barcodescanner.feature.common.dlg.DialogFragmentConfirmBarcode
 import com.mckimquyen.barcodescanner.feature.tabs.scan.file.ActivityScanBarcodeFromFile
 import com.mckimquyen.barcodescanner.model.Barcode
 import com.mckimquyen.barcodescanner.usecase.SupportedBarcodeFormats
@@ -32,7 +32,7 @@ import kotlinx.android.synthetic.main.f_scan_barcode_from_camera.*
 import java.util.concurrent.TimeUnit
 import com.mckimquyen.barcodescanner.R
 
-class FragmentScanBarcodeFromCamera : Fragment(), ConfirmBarcodeDialogFragment.Listener {
+class FragmentScanBarcodeFromCamera : Fragment(), DialogFragmentConfirmBarcode.Listener {
 
     companion object {
         private val PERMISSIONS = arrayOf(Manifest.permission.CAMERA)
@@ -276,7 +276,7 @@ class FragmentScanBarcodeFromCamera : Fragment(), ConfirmBarcodeDialogFragment.L
     }
 
     private fun showScanConfirmationDialog(barcode: Barcode) {
-        val dialog = ConfirmBarcodeDialogFragment.newInstance(barcode)
+        val dialog = DialogFragmentConfirmBarcode.newInstance(barcode)
         dialog.show(childFragmentManager, "")
     }
 
