@@ -16,13 +16,20 @@ import com.mckimquyen.barcodescanner.model.schema.Schema
 import com.mckimquyen.barcodescanner.model.schema.Wifi
 import kotlinx.android.synthetic.main.f_create_qr_code_wifi.*
 
-class CreateQrCodeWifiFragmentBaseCreateBarcode : FragmentBaseCreateBarcode() {
+class FragmentCreateQrCodeWifi : FragmentBaseCreateBarcode() {
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?,
+    ): View? {
         return inflater.inflate(R.layout.f_create_qr_code_wifi, container, false)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(
+        view: View,
+        savedInstanceState: Bundle?,
+    ) {
         super.onViewCreated(view, savedInstanceState)
         initEncryptionTypesSpinner()
         initNetworkNameEditText()
@@ -52,7 +59,12 @@ class CreateQrCodeWifiFragmentBaseCreateBarcode : FragmentBaseCreateBarcode() {
         }
 
         spinnerEncryption.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long,
+            ) {
                 textInputLayoutPassword.isVisible = position != 2
             }
 
@@ -67,8 +79,12 @@ class CreateQrCodeWifiFragmentBaseCreateBarcode : FragmentBaseCreateBarcode() {
     }
 
     private fun handleTextChanged() {
-        editTextNetworkName.addTextChangedListener { toggleCreateBarcodeButton() }
-        editTextPassword.addTextChangedListener { toggleCreateBarcodeButton() }
+        editTextNetworkName.addTextChangedListener {
+            toggleCreateBarcodeButton()
+        }
+        editTextPassword.addTextChangedListener {
+            toggleCreateBarcodeButton()
+        }
     }
 
     private fun toggleCreateBarcodeButton() {

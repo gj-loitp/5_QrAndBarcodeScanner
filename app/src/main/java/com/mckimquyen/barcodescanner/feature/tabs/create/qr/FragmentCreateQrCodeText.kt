@@ -14,13 +14,13 @@ import com.mckimquyen.barcodescanner.model.schema.Schema
 import com.google.zxing.BarcodeFormat
 import kotlinx.android.synthetic.main.f_create_qr_code_text.*
 
-class CreateQrCodeTextFragmentBaseCreateBarcode : FragmentBaseCreateBarcode() {
+class FragmentCreateQrCodeText : FragmentBaseCreateBarcode() {
 
     companion object {
         private const val DEFAULT_TEXT_KEY = "DEFAULT_TEXT_KEY"
 
-        fun newInstance(defaultText: String): CreateQrCodeTextFragmentBaseCreateBarcode {
-            return CreateQrCodeTextFragmentBaseCreateBarcode().apply {
+        fun newInstance(defaultText: String): FragmentCreateQrCodeText {
+            return FragmentCreateQrCodeText().apply {
                 arguments = Bundle().apply {
                     putString(DEFAULT_TEXT_KEY, defaultText)
                 }
@@ -28,7 +28,11 @@ class CreateQrCodeTextFragmentBaseCreateBarcode : FragmentBaseCreateBarcode() {
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?,
+    ): View? {
         return inflater.inflate(R.layout.f_create_qr_code_text, container, false)
     }
 

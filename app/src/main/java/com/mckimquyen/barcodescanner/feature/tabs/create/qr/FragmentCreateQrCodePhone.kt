@@ -9,33 +9,39 @@ import com.mckimquyen.barcodescanner.R
 import com.mckimquyen.barcodescanner.extension.isNotBlank
 import com.mckimquyen.barcodescanner.extension.textString
 import com.mckimquyen.barcodescanner.feature.tabs.create.FragmentBaseCreateBarcode
+import com.mckimquyen.barcodescanner.model.schema.Phone
 import com.mckimquyen.barcodescanner.model.schema.Schema
-import com.mckimquyen.barcodescanner.model.schema.Url
-import kotlinx.android.synthetic.main.f_create_qr_code_url.*
+import kotlinx.android.synthetic.main.f_create_qr_code_phone.*
 
-class CreateQrCodeUrlFragmentBaseCreateBarcode : FragmentBaseCreateBarcode() {
+class FragmentCreateQrCodePhone : FragmentBaseCreateBarcode() {
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.f_create_qr_code_url, container, false)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?,
+    ): View? {
+        return inflater.inflate(R.layout.f_create_qr_code_phone, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        showUrlPrefix()
+        initEditText()
         handleTextChanged()
     }
 
-    override fun getBarcodeSchema(): Schema {
-        return Url(editText.textString)
+    override fun showPhone(phone: String) {
+        editText.apply {
+            setText(phone)
+            setSelection(phone.length)
+        }
     }
 
-    private fun showUrlPrefix() {
-        val prefix = "https://"
-        editText.apply {
-            setText(prefix)
-            setSelection(prefix.length)
-            requestFocus()
-        }
+    override fun getBarcodeSchema(): Schema {
+        return Phone(editText.textString)
+    }
+
+    private fun initEditText() {
+        editText.requestFocus()
     }
 
     private fun handleTextChanged() {

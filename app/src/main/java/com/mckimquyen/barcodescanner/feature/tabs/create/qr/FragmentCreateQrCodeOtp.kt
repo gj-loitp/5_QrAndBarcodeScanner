@@ -20,10 +20,14 @@ import dev.turingcomplete.kotlinonetimepassword.RandomSecretGenerator
 import kotlinx.android.synthetic.main.f_create_qr_code_otp.*
 import java.util.*
 
-class CreateQrCodeOtpFragmentBaseCreateBarcode : FragmentBaseCreateBarcode() {
+class FragmentCreateQrCodeOtp : FragmentBaseCreateBarcode() {
     private val randomGenerator = RandomSecretGenerator()
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?,
+    ): View? {
         return inflater.inflate(R.layout.f_create_qr_code_otp, container, false)
     }
 
@@ -38,7 +42,7 @@ class CreateQrCodeOtpFragmentBaseCreateBarcode : FragmentBaseCreateBarcode() {
 
     override fun getBarcodeSchema(): Schema {
         return OtpAuth(
-            type = spinnerOptTypes.selectedItem?.toString()?.toLowerCase(Locale.ENGLISH),
+            type = spinnerOptTypes.selectedItem?.toString()?.lowercase(Locale.ENGLISH),
             algorithm = spinnerAlgorithms.selectedItem?.toString(),
             label = if (editTextIssuer.isNotBlank()) {
                 "${editTextIssuer.textString}:${editTextAccount.textString}"
@@ -61,7 +65,12 @@ class CreateQrCodeOtpFragmentBaseCreateBarcode : FragmentBaseCreateBarcode() {
         }
 
         spinnerOptTypes.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long,
+            ) {
                 textInputLayoutCounter.isVisible = position == 0
             }
 
@@ -80,10 +89,18 @@ class CreateQrCodeOtpFragmentBaseCreateBarcode : FragmentBaseCreateBarcode() {
     }
 
     private fun initEditTexts() {
-        editTextAccount.addTextChangedListener { toggleCreateBarcodeButton() }
-        editTextSecret.addTextChangedListener { toggleCreateBarcodeButton() }
-        editTextPeriod.addTextChangedListener { toggleCreateBarcodeButton() }
-        editTextCounter.addTextChangedListener { toggleCreateBarcodeButton() }
+        editTextAccount.addTextChangedListener {
+            toggleCreateBarcodeButton()
+        }
+        editTextSecret.addTextChangedListener {
+            toggleCreateBarcodeButton()
+        }
+        editTextPeriod.addTextChangedListener {
+            toggleCreateBarcodeButton()
+        }
+        editTextCounter.addTextChangedListener {
+            toggleCreateBarcodeButton()
+        }
     }
 
     private fun initGenerateRandomSecretButton() {
@@ -96,7 +113,8 @@ class CreateQrCodeOtpFragmentBaseCreateBarcode : FragmentBaseCreateBarcode() {
         val isHotp = spinnerOptTypes.selectedItemPosition == 0
         val areGeneralFieldsNotBlank = editTextAccount.isNotBlank() && editTextSecret.isNotBlank()
         val areHotpFieldsNotBlank = editTextCounter.isNotBlank() && editTextPeriod.isNotBlank()
-        parentActivity.isCreateBarcodeButtonEnabled = areGeneralFieldsNotBlank && (isHotp.not() || isHotp && areHotpFieldsNotBlank)
+        parentActivity.isCreateBarcodeButtonEnabled =
+            areGeneralFieldsNotBlank && (isHotp.not() || isHotp && areHotpFieldsNotBlank)
     }
 
     private fun showRandomSecret() {
