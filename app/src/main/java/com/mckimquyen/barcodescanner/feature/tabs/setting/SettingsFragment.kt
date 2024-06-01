@@ -13,6 +13,7 @@ import com.mckimquyen.barcodescanner.R
 import com.mckimquyen.barcodescanner.di.barcodeDatabase
 import com.mckimquyen.barcodescanner.di.settings
 import com.mckimquyen.barcodescanner.extension.applySystemWindowInsets
+import com.mckimquyen.barcodescanner.extension.ext.openUrlInBrowser
 import com.mckimquyen.barcodescanner.extension.packageManager
 import com.mckimquyen.barcodescanner.extension.showError
 import com.mckimquyen.barcodescanner.feature.common.dlg.DialogFragmentDeleteConfirmation
@@ -156,11 +157,12 @@ class SettingsFragment : Fragment(), DialogFragmentDeleteConfirmation.Listener {
 
     private fun showSourceCode() {
         if (BuildConfig.DEBUG) {
-            val intent =
-                Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/gj-loitp/5_QrAndBarcodeScanner/tree/dev"))
-            if (intent.resolveActivity(packageManager) != null) {
-                startActivity(intent)
-            }
+//            val intent =
+//                Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/gj-loitp/5_QrAndBarcodeScanner/tree/dev"))
+//            if (intent.resolveActivity(packageManager) != null) {
+//                startActivity(intent)
+//            }
+            context.openUrlInBrowser("https://github.com/gj-loitp/5_QrAndBarcodeScanner/tree/dev")
         } else {
             Toast.makeText(context, "This feature is only available in debug version", Toast.LENGTH_SHORT).show()
         }
