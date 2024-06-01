@@ -1,1 +1,0 @@
-Leitor de QR & códigos de barras, com todas as funcionalidades que precisa.
