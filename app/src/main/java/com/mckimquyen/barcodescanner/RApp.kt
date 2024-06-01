@@ -10,12 +10,12 @@ import io.reactivex.plugins.RxJavaPlugins
 //TODO finger print
 //TODO why you see ad
 //TODO import oplm vietnam
-
-//TODO change icon launcher
 //TODO double to exit app
+
+//TODO ui switch
+//TODO change icon launcher
 //TODO leak canary
 //TODO proguard
-//TODO change pkg name manifest
 //TODO keystore
 
 //done mckimquyen
@@ -23,6 +23,7 @@ import io.reactivex.plugins.RxJavaPlugins
 //policy
 //rate app, share app, more app
 //build version
+//change pkg name manifest
 
 class RApp : MultiDexApplication() {
 
