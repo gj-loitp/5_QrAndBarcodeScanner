@@ -16,12 +16,13 @@ import io.reactivex.plugins.RxJavaPlugins
 //TODO leak canary
 //TODO proguard
 //TODO change pkg name manifest
-//TODO policy
-//TODO rate app, share app, more app
-//TODO build version
 //TODO keystore
 
 //done mckimquyen
+//github
+//policy
+//rate app, share app, more app
+//build version
 
 class RApp : MultiDexApplication() {
 

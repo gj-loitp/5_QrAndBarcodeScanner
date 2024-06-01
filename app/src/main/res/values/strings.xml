@@ -381,5 +381,9 @@
     <string name="barcode_format_pdf_417" translatable="false">PDF417</string>
     <string name="barcode_format_upc_a" translatable="false">UPC-A</string>
     <string name="barcode_format_upc_e" translatable="false">UPC-E</string>
+    <string name="rate_app">Rate app</string>
+    <string name="get_more_apps">Get more apps</string>
+    <string name="share_this_app">Share this app</string>
+    <string name="policy">Policy</string>
 
 </resources>

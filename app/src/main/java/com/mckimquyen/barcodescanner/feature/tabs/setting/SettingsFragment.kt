@@ -13,7 +13,11 @@ import com.mckimquyen.barcodescanner.R
 import com.mckimquyen.barcodescanner.di.barcodeDatabase
 import com.mckimquyen.barcodescanner.di.settings
 import com.mckimquyen.barcodescanner.extension.applySystemWindowInsets
+import com.mckimquyen.barcodescanner.extension.ext.moreApp
+import com.mckimquyen.barcodescanner.extension.ext.openBrowserPolicy
 import com.mckimquyen.barcodescanner.extension.ext.openUrlInBrowser
+import com.mckimquyen.barcodescanner.extension.ext.rateApp
+import com.mckimquyen.barcodescanner.extension.ext.shareApp
 import com.mckimquyen.barcodescanner.extension.packageManager
 import com.mckimquyen.barcodescanner.extension.showError
 import com.mckimquyen.barcodescanner.feature.common.dlg.DialogFragmentDeleteConfirmation
@@ -101,6 +105,18 @@ class SettingsFragment : Fragment(), DialogFragmentDeleteConfirmation.Listener {
         }
         buttonSourceCode.setOnClickListener {
             showSourceCode()
+        }
+        btRateApp.setOnClickListener {
+            requireContext().rateApp(requireContext().packageName)
+        }
+        btMoreApp.setOnClickListener {
+            requireContext().moreApp()
+        }
+        btShareApp.setOnClickListener {
+            requireContext().shareApp()
+        }
+        btPolicy.setOnClickListener {
+            requireContext().openBrowserPolicy()
         }
     }
 

@@ -21,7 +21,8 @@
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingBottom="56dp">
 
             <!--Appearance-->
             <androidx.appcompat.widget.AppCompatTextView
@@ -235,6 +236,34 @@
                 android:layout_height="wrap_content"
                 app:isSwitchVisible="false"
                 app:text="@string/fragment_settings_source_code" />
+
+            <com.mckimquyen.barcodescanner.feature.common.view.ButtonSettings
+                android:id="@+id/btRateApp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:isSwitchVisible="false"
+                app:text="@string/rate_app" />
+
+            <com.mckimquyen.barcodescanner.feature.common.view.ButtonSettings
+                android:id="@+id/btMoreApp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:isSwitchVisible="false"
+                app:text="@string/get_more_apps" />
+
+            <com.mckimquyen.barcodescanner.feature.common.view.ButtonSettings
+                android:id="@+id/btShareApp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:isSwitchVisible="false"
+                app:text="@string/share_this_app" />
+
+            <com.mckimquyen.barcodescanner.feature.common.view.ButtonSettings
+                android:id="@+id/btPolicy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:isSwitchVisible="false"
+                app:text="@string/policy" />
 
             <com.mckimquyen.barcodescanner.feature.common.view.ButtonSettings
                 android:id="@+id/buttonAppVersion"
