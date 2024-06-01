@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.mckimquyen.barcodescanner.BuildConfig
 import com.mckimquyen.barcodescanner.R
@@ -76,14 +77,30 @@ class SettingsFragment : Fragment(), DialogFragmentDeleteConfirmation.Listener {
     }
 
     private fun handleButtonClicks() {
-        buttonChooseTheme.setOnClickListener { ChooseThemeActivityBase.start(requireActivity()) }
-        buttonChooseCamera.setOnClickListener { ChooseCameraActivityBase.start(requireActivity()) }
-        buttonSelectSupportedFormats.setOnClickListener { SupportedFormatsActivityBase.start(requireActivity()) }
-        buttonClearHistory.setOnClickListener { showDeleteHistoryConfirmationDialog() }
-        buttonChooseSearchEngine.setOnClickListener { ChooseSearchEngineActivityBase.start(requireContext()) }
-        buttonPermissions.setOnClickListener { AllPermissionsActivityBase.start(requireActivity()) }
-        buttonCheckUpdates.setOnClickListener { showAppInMarket() }
-        buttonSourceCode.setOnClickListener { showSourceCode() }
+        buttonChooseTheme.setOnClickListener {
+            ChooseThemeActivityBase.start(requireActivity())
+        }
+        buttonChooseCamera.setOnClickListener {
+            ChooseCameraActivityBase.start(requireActivity())
+        }
+        buttonSelectSupportedFormats.setOnClickListener {
+            SupportedFormatsActivityBase.start(requireActivity())
+        }
+        buttonClearHistory.setOnClickListener {
+            showDeleteHistoryConfirmationDialog()
+        }
+        buttonChooseSearchEngine.setOnClickListener {
+            ChooseSearchEngineActivityBase.start(requireContext())
+        }
+        buttonPermissions.setOnClickListener {
+            AllPermissionsActivityBase.start(requireActivity())
+        }
+        buttonCheckUpdates.setOnClickListener {
+            showAppInMarket()
+        }
+        buttonSourceCode.setOnClickListener {
+            showSourceCode()
+        }
     }
 
     private fun clearHistory() {
@@ -129,7 +146,8 @@ class SettingsFragment : Fragment(), DialogFragmentDeleteConfirmation.Listener {
     private fun showAppInMarket() {
         val uri = Uri.parse("market://details?id=" + requireContext().packageName)
         val intent = Intent(Intent.ACTION_VIEW, uri).apply {
-            flags = Intent.FLAG_ACTIVITY_NO_HISTORY or Intent.FLAG_ACTIVITY_NEW_DOCUMENT or Intent.FLAG_ACTIVITY_MULTIPLE_TASK
+            flags =
+                Intent.FLAG_ACTIVITY_NO_HISTORY or Intent.FLAG_ACTIVITY_NEW_DOCUMENT or Intent.FLAG_ACTIVITY_MULTIPLE_TASK
         }
         if (intent.resolveActivity(requireContext().packageManager) != null) {
             startActivity(intent)
@@ -137,9 +155,14 @@ class SettingsFragment : Fragment(), DialogFragmentDeleteConfirmation.Listener {
     }
 
     private fun showSourceCode() {
-        val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/wewewe718/QrAndBarcodeScanner"))
-        if (intent.resolveActivity(packageManager) != null) {
-            startActivity(intent)
+        if (BuildConfig.DEBUG) {
+            val intent =
+                Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/gj-loitp/5_QrAndBarcodeScanner/tree/dev"))
+            if (intent.resolveActivity(packageManager) != null) {
+                startActivity(intent)
+            }
+        } else {
+            Toast.makeText(context, "This feature is only available in debug version", Toast.LENGTH_SHORT).show()
         }
     }
 
