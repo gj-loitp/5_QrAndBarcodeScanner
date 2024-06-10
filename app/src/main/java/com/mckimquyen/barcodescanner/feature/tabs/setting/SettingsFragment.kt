@@ -104,7 +104,10 @@ class SettingsFragment : Fragment(), DialogFragmentDeleteConfirmation.Listener {
             showAppInMarket()
         }
         buttonSourceCode.setOnClickListener {
-            showSourceCode()
+            context.openUrlInBrowser("https://github.com/wewewe718/QrAndBarcodeScanner")
+        }
+        buttonSourceCodeFork.setOnClickListener {
+            context.openUrlInBrowser("https://github.com/gj-loitp/5_QrAndBarcodeScanner")
         }
         btRateApp.setOnClickListener {
             requireContext().rateApp(requireContext().packageName)
@@ -168,19 +171,6 @@ class SettingsFragment : Fragment(), DialogFragmentDeleteConfirmation.Listener {
         }
         if (intent.resolveActivity(requireContext().packageManager) != null) {
             startActivity(intent)
-        }
-    }
-
-    private fun showSourceCode() {
-        if (BuildConfig.DEBUG) {
-//            val intent =
-//                Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/gj-loitp/5_QrAndBarcodeScanner/tree/dev"))
-//            if (intent.resolveActivity(packageManager) != null) {
-//                startActivity(intent)
-//            }
-            context.openUrlInBrowser("https://github.com/gj-loitp/5_QrAndBarcodeScanner/tree/dev")
-        } else {
-            Toast.makeText(context, "This feature is only available in debug version", Toast.LENGTH_SHORT).show()
         }
     }
 

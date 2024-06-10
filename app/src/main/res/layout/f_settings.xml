@@ -235,7 +235,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:isSwitchVisible="false"
-                app:text="@string/fragment_settings_source_code" />
+                app:text="Source code (Original)" />
+
+            <com.mckimquyen.barcodescanner.feature.common.view.ButtonSettings
+                android:id="@+id/buttonSourceCodeFork"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:isSwitchVisible="false"
+                app:text="Source code (Forked)" />
 
             <com.mckimquyen.barcodescanner.feature.common.view.ButtonSettings
                 android:id="@+id/btRateApp"
