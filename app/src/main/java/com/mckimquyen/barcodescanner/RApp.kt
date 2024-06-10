@@ -9,9 +9,7 @@ import io.reactivex.plugins.RxJavaPlugins
 //TODO ad applovin
 //TODO finger print
 //TODO why you see ad
-//TODO import oplm vietnam
 //TODO double to exit app
-
 //TODO ui switch
 //TODO change icon launcher
 //TODO leak canary
