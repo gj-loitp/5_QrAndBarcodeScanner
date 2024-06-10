@@ -9,7 +9,6 @@ import io.reactivex.plugins.RxJavaPlugins
 //TODO finger print
 //TODO why you see ad
 
-//TODO change icon launcher
 //TODO keystore
 
 //done mckimquyen
@@ -22,6 +21,7 @@ import io.reactivex.plugins.RxJavaPlugins
 //proguard
 //double to exit app
 //ui switch
+//change icon launcher
 
 class RApp : MultiDexApplication() {
 
