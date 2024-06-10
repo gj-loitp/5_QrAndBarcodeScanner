@@ -8,7 +8,7 @@ import io.reactivex.plugins.RxJavaPlugins
 //TODO ad applovin
 //TODO finger print
 //TODO why you see ad
-//TODO double to exit app
+
 //TODO ui switch
 //TODO change icon launcher
 //TODO keystore
@@ -21,6 +21,7 @@ import io.reactivex.plugins.RxJavaPlugins
 //change pkg name manifest
 //leak canary
 //proguard
+//double to exit app
 
 class RApp : MultiDexApplication() {
 

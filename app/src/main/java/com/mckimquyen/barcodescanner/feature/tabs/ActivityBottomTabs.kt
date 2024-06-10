@@ -1,7 +1,11 @@
 package com.mckimquyen.barcodescanner.feature.tabs
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.util.Log
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.mckimquyen.barcodescanner.BuildConfig
 import com.mckimquyen.barcodescanner.R
@@ -41,10 +45,20 @@ class ActivityBottomTabs : ActivityBase(), BottomNavigationView.OnNavigationItem
         return true
     }
 
+    private var doubleBackToExitPressedOnce = false
+
     @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
+        Log.d("roy93~", "onBackPressed: ")
         if (bottomNavigationView.selectedItemId == R.id.itemScan) {
-            super.onBackPressed()
+//            super.onBackPressed()
+            if (doubleBackToExitPressedOnce) {
+                super.onBackPressed()
+                return
+            }
+            this.doubleBackToExitPressedOnce = true
+            Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show()
+            Handler(Looper.getMainLooper()).postDelayed({ doubleBackToExitPressedOnce = false }, 2000)
         } else {
             bottomNavigationView.selectedItemId = R.id.itemScan
         }
