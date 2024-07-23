@@ -10,6 +10,7 @@ import android.os.Bundle
 import android.provider.CalendarContract
 import android.provider.ContactsContract
 import android.provider.Settings
+import android.util.Log
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible

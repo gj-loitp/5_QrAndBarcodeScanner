@@ -3,7 +3,9 @@ package com.mckimquyen.barcodescanner.feature.barcode.save
 import android.Manifest
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.core.view.isVisible
@@ -26,7 +28,9 @@ class ActivitySaveBarcodeAsImage : ActivityBase() {
 
     companion object {
         private const val REQUEST_PERMISSIONS_CODE = 101
-        private val PERMISSIONS = arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+        private val PERMISSIONS = arrayOf(
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+        )
 
         private const val BARCODE_KEY = "BARCODE_KEY"
 
@@ -58,8 +62,18 @@ class ActivitySaveBarcodeAsImage : ActivityBase() {
         permissions: Array<out String>,
         grantResults: IntArray,
     ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        Log.d("roy93~", "onRequestPermissionsResult")
         if (permissionsHelper.areAllPermissionsGranted(grantResults)) {
+            Log.d("roy93~", "if")
             saveBarcode()
+        } else {
+            Log.d("roy93~", "else")
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                saveBarcode()
+            } else {
+                //do nothing
+            }
         }
     }
 
@@ -90,11 +104,13 @@ class ActivitySaveBarcodeAsImage : ActivityBase() {
 
     private fun initSaveButton() {
         buttonSave.setOnClickListener {
+            Log.d("roy93~", "setOnClickListener")
             requestPermissions()
         }
     }
 
     private fun requestPermissions() {
+        Log.d("roy93~", "requestPermissions")
         permissionsHelper.requestPermissions(
             activity = this,
             permissions = PERMISSIONS,
