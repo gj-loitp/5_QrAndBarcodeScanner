@@ -1,15 +1,15 @@
 plugins {
-    id("io.sentry.android.gradle") version "3.0.1"
+//    id("io.sentry.android.gradle") version "3.0.1"
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-android-extensions'
     id 'kotlin-kapt'
 }
 
-sentry {
-    includeProguardMapping = true
-    autoUploadProguardMapping = true
-}
+//sentry {
+//    includeProguardMapping = true
+//    autoUploadProguardMapping = true
+//}
 
 android {
     compileSdk 34
@@ -42,23 +42,29 @@ android {
         jvmTarget = JavaVersion.VERSION_11.toString()
     }
 
+    signingConfigs {
+        release {
+            storeFile file("keystore.jks")
+            storePassword "27072000"
+            keyAlias "mckimquyen"
+            keyPassword "27072000"
+            //doan thi kim quyen
+            //84
+        }
+    }
+
     buildTypes {
         release {
+            debuggable false
             minifyEnabled true
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
 
     flavorDimensions.add("market")
     productFlavors {
-//        appGallery {}
-//        googlePlay {
-//            applicationId "org.barcodescanner"
-//        }
-//        fDroid {
-//            buildConfigField "boolean", "ERROR_REPORTS_ENABLED_BY_DEFAULT", "false"
-//        }
         dev {
 
         }

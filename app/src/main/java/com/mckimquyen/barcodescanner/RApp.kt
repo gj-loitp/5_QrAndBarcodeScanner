@@ -8,8 +8,6 @@ import io.reactivex.plugins.RxJavaPlugins
 //TODO ad applovin
 //TODO finger print
 //TODO why you see ad
-
-//TODO keystore
 //TODO join beta tester
 
 //done mckimquyen
@@ -23,6 +21,7 @@ import io.reactivex.plugins.RxJavaPlugins
 //double to exit app
 //ui switch
 //change icon launcher
+//keystore
 
 class RApp : MultiDexApplication() {
 
