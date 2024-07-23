@@ -10,6 +10,7 @@ import io.reactivex.plugins.RxJavaPlugins
 //TODO why you see ad
 
 //TODO keystore
+//TODO join beta tester
 
 //done mckimquyen
 //github
