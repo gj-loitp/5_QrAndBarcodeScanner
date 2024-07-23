@@ -8,6 +8,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.os.Parcelable
 import android.provider.MediaStore
+import android.util.Log
 import android.view.MotionEvent.ACTION_UP
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
@@ -34,7 +35,11 @@ class ActivityScanBarcodeFromFile : ActivityBase() {
         private const val CHOOSE_FILE_REQUEST_CODE = 12
         private const val CHOOSE_FILE_AGAIN_REQUEST_CODE = 13
         private const val PERMISSIONS_REQUEST_CODE = 14
-        private val PERMISSIONS = arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE)
+        private val PERMISSIONS = arrayOf(
+//            Manifest.permission.READ_MEDIA_IMAGES,
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.CAMERA,
+        )
 
         fun start(context: Context) {
             val intent = Intent(context, ActivityScanBarcodeFromFile::class.java)
@@ -51,6 +56,8 @@ class ActivityScanBarcodeFromFile : ActivityBase() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.a_scan_barcode_from_file)
 
+        Log.d("roy93~", "onCreate")
+
         supportEdgeToEdge()
         handleToolbarBackPressed()
         handleToolbarMenuItemClicked()
@@ -58,7 +65,10 @@ class ActivityScanBarcodeFromFile : ActivityBase() {
         handleScanButtonClicked()
 
         if (showImageFromIntent().not()) {
+            Log.d("roy93~", "if")
             startChooseImageActivity(savedInstanceState)
+        } else {
+            Log.d("roy93~", "else")
         }
     }
 
@@ -84,6 +94,8 @@ class ActivityScanBarcodeFromFile : ActivityBase() {
         permissions: Array<out String>,
         grantResults: IntArray,
     ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        Log.d("roy93~", "onRequestPermissionsResult")
         if (requestCode == PERMISSIONS_REQUEST_CODE && permissionsHelper.areAllPermissionsGranted(grantResults)) {
             imageUri?.apply(::showImage)
         } else {
@@ -133,6 +145,7 @@ class ActivityScanBarcodeFromFile : ActivityBase() {
         savedInstanceState: Bundle?,
     ) {
         if (savedInstanceState != null) {
+            Log.d("roy93~", "startChooseImageActivity return")
             return
         }
 
@@ -140,9 +153,13 @@ class ActivityScanBarcodeFromFile : ActivityBase() {
             setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*")
         }
 
-        if (intent.resolveActivity(packageManager) != null) {
-            startActivityForResult(intent, requestCode)
-        }
+//        if (intent.resolveActivity(packageManager) != null) {
+//            Log.d("roy93~", "startChooseImageActivity if")
+//            startActivityForResult(intent, requestCode)
+//        } else {
+//            Log.d("roy93~", "startChooseImageActivity else")
+//        }
+        startActivityForResult(intent, requestCode)
     }
 
     private fun handleToolbarBackPressed() {
@@ -193,6 +210,7 @@ class ActivityScanBarcodeFromFile : ActivityBase() {
     }
 
     private fun showErrorOrRequestPermissions(error: Throwable) {
+        Log.d("roy93~", "showErrorOrRequestPermissions error $error")
         when (error) {
             is SecurityException -> permissionsHelper.requestPermissions(this, PERMISSIONS, PERMISSIONS_REQUEST_CODE)
             else -> showError(error)
