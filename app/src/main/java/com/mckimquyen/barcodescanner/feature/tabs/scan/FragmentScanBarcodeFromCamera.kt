@@ -35,7 +35,10 @@ import com.mckimquyen.barcodescanner.R
 class FragmentScanBarcodeFromCamera : Fragment(), DialogFragmentConfirmBarcode.Listener {
 
     companion object {
-        private val PERMISSIONS = arrayOf(Manifest.permission.CAMERA)
+        private val PERMISSIONS = arrayOf(
+            Manifest.permission.CAMERA,
+            Manifest.permission.POST_NOTIFICATIONS,
+        )
         private const val PERMISSION_REQUEST_CODE = 101
         private const val ZXING_SCAN_INTENT_ACTION = "com.google.zxing.client.android.SCAN"
         private const val CONTINUOUS_SCANNING_PREVIEW_DELAY = 500L
