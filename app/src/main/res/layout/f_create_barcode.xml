@@ -17,13 +17,14 @@
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/scrollView"
-        style="@style/ScrollStyle">
+        style="@style/ScrollStyle"
+        android:fillViewport="true">
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical"
-            android:paddingBottom="@dimen/margin_small">
+            android:paddingBottom="@dimen/margin_medium">
 
             <!--Barcode-->
             <androidx.appcompat.widget.AppCompatTextView

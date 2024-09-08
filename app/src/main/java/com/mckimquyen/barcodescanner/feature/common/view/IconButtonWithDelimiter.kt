@@ -14,7 +14,6 @@ import androidx.core.view.isVisible
 import com.mckimquyen.barcodescanner.R
 import kotlinx.android.synthetic.main.lo_icon_button_with_delimiter.view.*
 
-
 class IconButtonWithDelimiter : FrameLayout {
     private val view: View
 
