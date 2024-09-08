@@ -18,8 +18,8 @@ android {
         applicationId "com.mckimquyen.barcodescanner"
         minSdkVersion 21
         targetSdkVersion 34
-        versionCode 20240803
-        versionName "2024.08.03"
+        versionCode 20240908
+        versionName "2024.09.08"
         multiDexEnabled true
         vectorDrawables.useSupportLibrary true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
