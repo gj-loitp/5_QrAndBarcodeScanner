@@ -93,7 +93,9 @@ class SettingsFragment : Fragment(), DialogFragmentDeleteConfirmation.Listener {
             }
         }
         buttonChooseCamera.setOnClickListener {
-            ChooseCameraActivityBase.start(requireActivity())
+            showAd {
+                ChooseCameraActivityBase.start(requireActivity())
+            }
         }
         buttonSelectSupportedFormats.setOnClickListener {
             showAd {
