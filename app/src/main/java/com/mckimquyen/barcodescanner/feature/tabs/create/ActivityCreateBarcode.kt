@@ -32,7 +32,6 @@ import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.a_create_barcode.*
 
-
 class ActivityCreateBarcode : ActivityBase(), AdapterApp.Listener {
 
     companion object {
