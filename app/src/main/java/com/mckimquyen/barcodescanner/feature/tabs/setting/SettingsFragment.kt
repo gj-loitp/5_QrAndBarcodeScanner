@@ -103,10 +103,13 @@ class SettingsFragment : Fragment(), DialogFragmentDeleteConfirmation.Listener {
             }
         }
         buttonClearHistory.setOnClickListener {
+            //TODO roy93~ update dialog material 3
             showDeleteHistoryConfirmationDialog()
         }
         buttonChooseSearchEngine.setOnClickListener {
-            ChooseSearchEngineActivityBase.start(requireContext())
+            showAd {
+                ChooseSearchEngineActivityBase.start(requireContext())
+            }
         }
         buttonPermissions.setOnClickListener {
             AllPermissionsActivityBase.start(requireActivity())
