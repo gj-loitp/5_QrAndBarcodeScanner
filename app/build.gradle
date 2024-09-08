@@ -63,7 +63,8 @@ android {
         }
     }
 
-    flavorDimensions.add("market")
+//    flavorDimensions.add("market")
+    flavorDimensions.add("type")
     productFlavors {
         dev {
             buildConfigField "Boolean", "build_debug", "true"

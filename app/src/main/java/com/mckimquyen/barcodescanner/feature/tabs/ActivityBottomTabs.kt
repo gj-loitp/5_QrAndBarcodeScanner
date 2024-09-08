@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.applovin.mediation.ads.MaxAdView
 import com.mckimquyen.barcodescanner.BuildConfig
 import com.mckimquyen.barcodescanner.R
 import com.mckimquyen.barcodescanner.extension.applySystemWindowInsets
@@ -16,6 +17,8 @@ import com.mckimquyen.barcodescanner.feature.tabs.history.FragmentBarcodeHistory
 import com.mckimquyen.barcodescanner.feature.tabs.scan.FragmentScanBarcodeFromCamera
 import com.mckimquyen.barcodescanner.feature.tabs.setting.SettingsFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.mckimquyen.barcodescanner.extension.ext.createAdBanner
+import com.mckimquyen.barcodescanner.extension.ext.destroyAdBanner
 import kotlinx.android.synthetic.main.a_bottom_tabs.*
 
 class ActivityBottomTabs : ActivityBase(), BottomNavigationView.OnNavigationItemSelectedListener {
@@ -24,6 +27,8 @@ class ActivityBottomTabs : ActivityBase(), BottomNavigationView.OnNavigationItem
         private const val ACTION_CREATE_BARCODE = "${BuildConfig.APPLICATION_ID}.CREATE_BARCODE"
         private const val ACTION_HISTORY = "${BuildConfig.APPLICATION_ID}.HISTORY"
     }
+
+    private var adView: MaxAdView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +40,16 @@ class ActivityBottomTabs : ActivityBase(), BottomNavigationView.OnNavigationItem
         if (savedInstanceState == null) {
             showInitialFragment()
         }
+        adView = this.createAdBanner(
+            logTag = ActivityBottomTabs::class.simpleName,
+            viewGroup = flAd,
+            isAdaptiveBanner = true,
+        )
+    }
+
+    override fun onDestroy() {
+        flAd.destroyAdBanner(adView)
+        super.onDestroy()
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
@@ -49,7 +64,6 @@ class ActivityBottomTabs : ActivityBase(), BottomNavigationView.OnNavigationItem
 
     @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
-        Log.d("roy93~", "onBackPressed: ")
         if (bottomNavigationView.selectedItemId == R.id.itemScan) {
 //            super.onBackPressed()
             if (doubleBackToExitPressedOnce) {
