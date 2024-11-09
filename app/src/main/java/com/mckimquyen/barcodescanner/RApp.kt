@@ -6,9 +6,10 @@ import com.mckimquyen.barcodescanner.extension.ext.setupApplovinAd
 import com.mckimquyen.barcodescanner.usecase.Logger
 import io.reactivex.plugins.RxJavaPlugins
 
-//TODO finger print
-//TODO why you see ad
-//TODO join beta tester
+//TODO roy93~ finger print
+//TODO roy93~ why you see ad
+//TODO roy93~ join beta tester
+//TODO roy93~ khi scan image no ko work doi voi hinh anh do chinh app nay tao ra
 
 //done mckimquyen
 //ad applovin
