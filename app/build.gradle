@@ -75,8 +75,8 @@ android {
             resValue("string", "BANNER", "1cfc3df1cd94473a")
             resValue("string", "INTER", "2f81cf4ca355cdac")
 
-            resValue("string", "EnableAdInter", "true")
-            resValue("string", "EnableAdBanner", "true")
+            resValue("string", "EnableAdInter", "false")
+            resValue("string", "EnableAdBanner", "false")
         }
         production {
             buildConfigField "Boolean", "build_debug", "false"

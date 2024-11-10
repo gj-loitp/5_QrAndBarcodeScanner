@@ -1,12 +1,13 @@
 package com.mckimquyen.barcodescanner.usecase
 
 import android.graphics.Bitmap
+import android.graphics.Canvas
 import android.graphics.Color
-import com.mckimquyen.barcodescanner.model.Barcode
 import com.google.zxing.EncodeHintType
 import com.google.zxing.MultiFormatWriter
 import com.google.zxing.common.BitMatrix
 import com.journeyapps.barcodescanner.BarcodeEncoder
+import com.mckimquyen.barcodescanner.model.Barcode
 import io.reactivex.Single
 
 object BarcodeImageGenerator {
@@ -168,7 +169,7 @@ object BarcodeImageGenerator {
             }
         }
 
-        return Bitmap.createBitmap(
+        var bitmapCode = Bitmap.createBitmap(
             /* width = */ width,
             /* height = */ height,
             /* config = */ Bitmap.Config.ARGB_8888
@@ -183,5 +184,29 @@ object BarcodeImageGenerator {
                 /* height = */ height
             )
         }
+
+        return createCenteredBitmapWithWhiteBackground(bitmapCode)
+    }
+
+    private fun createCenteredBitmapWithWhiteBackground(bitmapA: Bitmap): Bitmap {
+        val marginInPx = 16
+
+        // Define the dimensions for the new bitmap (B) with added margins
+        val width = bitmapA.width + 2 * marginInPx
+        val height = bitmapA.height + 2 * marginInPx
+
+        // Create a new bitmap (B) with a white background
+        val bitmapB = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
+        val canvas = Canvas(bitmapB)
+        canvas.drawColor(Color.WHITE) // Fill with white background
+
+        // Calculate the position to center bitmapA within bitmapB with margins
+        val left = marginInPx.toFloat()
+        val top = marginInPx.toFloat()
+
+        // Draw bitmapA on the canvas, centered with margin
+        canvas.drawBitmap(bitmapA, left, top, null)
+
+        return bitmapB
     }
 }

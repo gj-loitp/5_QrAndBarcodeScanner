@@ -125,7 +125,8 @@ class ActivitySaveBarcodeAsImage : ActivityBase() {
                     barcode = barcode,
                     width = 640,
                     height = 640,
-                    margin = 2
+                    margin = 2,
+//                    backgroundColor = Color.RED,
                 )
                     .flatMapCompletable {
                         barcodeImageSaver.savePngImageToPublicDirectory(this, it, barcode)
