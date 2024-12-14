@@ -18,8 +18,8 @@ android {
         applicationId "com.mckimquyen.barcodescanner"
         minSdkVersion 21
         targetSdkVersion 34
-        versionCode 20241109
-        versionName "2024.11.09"
+        versionCode 20241214
+        versionName "2024.12.14"
         multiDexEnabled true
         vectorDrawables.useSupportLibrary true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -119,7 +119,7 @@ dependencies {
     api 'com.github.igreenwood:SimpleCropView:v1.1.6'
 //    api 'com.github.florent37:singledateandtimepicker:2.2.6'
     api 'com.github.florent37:singledateandtimepicker:2.2.7'
-    api 'com.applovin:applovin-sdk:12.6.0'
+    api 'com.applovin:applovin-sdk:13.0.1'
 //    api 'io.sentry:sentry-android:7.8.0'
     debugImplementation("com.squareup.leakcanary:leakcanary-android:2.14")
 }
