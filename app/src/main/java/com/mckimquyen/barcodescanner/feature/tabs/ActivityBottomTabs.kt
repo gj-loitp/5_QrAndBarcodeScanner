@@ -19,6 +19,7 @@ import com.mckimquyen.barcodescanner.feature.tabs.setting.SettingsFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.mckimquyen.barcodescanner.extension.ext.createAdBanner
 import com.mckimquyen.barcodescanner.extension.ext.destroyAdBanner
+import com.mckimquyen.barcodescanner.feature.rateAppInApp
 import kotlinx.android.synthetic.main.a_bottom_tabs.*
 
 class ActivityBottomTabs : ActivityBase(), BottomNavigationView.OnNavigationItemSelectedListener {
@@ -57,6 +58,8 @@ class ActivityBottomTabs : ActivityBase(), BottomNavigationView.OnNavigationItem
             return false
         }
         showFragment(item.itemId)
+        Log.d("roy93~", "onNavigationItemSelected");
+        rateAppInApp(BuildConfig.DEBUG)
         return true
     }
 

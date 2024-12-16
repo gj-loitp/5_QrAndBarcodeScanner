@@ -10,6 +10,7 @@ import io.reactivex.plugins.RxJavaPlugins
 //TODO roy93~ why you see ad
 //TODO roy93~ join beta tester
 //TODO roy93~ khi scan image no ko work doi voi hinh anh do chinh app nay tao ra
+//TODO roy93~ splash screen
 
 //done mckimquyen
 //font scale
